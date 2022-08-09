@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts",
+    "lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/content": "^2.4.3",
+    "@nuxtjs/tailwindcss": "^6.2.0",
+    "@tailwindcss/typography": "^0.5.9",
+    "nuxt": "^3.0.0"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.1.1",
+    "eslint": "^8.43.0"
+  }
+}

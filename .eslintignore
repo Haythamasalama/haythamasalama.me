@@ -1,0 +1,12 @@
+node_modules
+dist
+.husky
+.github
+.nuxt
+coverage
+*.log*
+.DS_Store
+.code
+.idea
+package-lock.json
+
