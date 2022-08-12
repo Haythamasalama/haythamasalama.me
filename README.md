@@ -27,7 +27,7 @@
 
 ## UX & UI 
 
-[Home Page](https://user-images.githubusercontent.com/37311945/184448248-245c7ff0-6d7a-4ee1-bfd0-2616658b66d3.png)
+![Home](https://user-images.githubusercontent.com/37311945/184448702-6c4ce2f5-2df2-482d-9350-e5922954b337.png)
 
 [Design](https://www.figma.com/file/BMuebRuw47Hoj64ZPPAMPH/my-website?node-id=2%3A2)
 
