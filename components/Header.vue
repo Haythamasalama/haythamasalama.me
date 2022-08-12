@@ -36,7 +36,7 @@ const menus = [
 </script>
 
 <template>
-  <div class="w-full flex justify-between items-center py-2">
+  <header class="w-full flex justify-between items-center py-2">
     <!-- logo -->
     <div>
       <img src="@/assets/images/logo.svg" />
@@ -53,5 +53,5 @@ const menus = [
     <div>
       <img src="@/assets/images/logo.svg" />
     </div>
-  </div>
+  </header>
 </template>
