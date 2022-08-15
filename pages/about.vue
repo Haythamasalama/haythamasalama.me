@@ -1,3 +1,8 @@
+<script setup>
+definePageMeta({
+  title: "About",
+});
+</script>
 <template>
-  <div></div>
+  <div>ss</div>
 </template>
