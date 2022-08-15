@@ -2,7 +2,7 @@
 const route = useRoute();
 
 useHead({
-  title: route.params.title,
+  titleTemplate: `Haytham Salama | ${route.meta.title ?? "Software Engineer"}`,
   bodyAttrs: {
     class: "bg-gray-600",
   },
@@ -10,11 +10,13 @@ useHead({
 </script>
 
 <template>
-  <div class="px-12 m-auto">
+  <div class="flex flex-col justify-between h-screen px-14">
     <!-- header -->
     <Header />
     <!-- page content -->
-    <slot />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
     <!-- footer -->
     <Footer />
   </div>
