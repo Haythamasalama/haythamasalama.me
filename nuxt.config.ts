@@ -20,10 +20,12 @@ export default defineNuxtConfig({
     },
   },
 
+  css: ["~/assets/css/main.css"],
+
   modules: ["@nuxtjs/tailwindcss"],
 
   tailwindcss: {
-    cssPath: "~/assets/css/main.css",
+    cssPath: "@/assets/css/main.css",
     configPath: "tailwind.config.ts",
   },
 });
