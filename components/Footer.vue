@@ -36,13 +36,7 @@ const menus = [
 </script>
 
 <template>
-  <footer class="w-full flex justify-center items-center py-2">
-    <nav>
-      <ul class="flex justify-between">
-        <li class="text-white mx-2" v-for="(menu, key) in menus" :key="key">
-          {{ menu.name }}
-        </li>
-      </ul>
-    </nav>
+  <footer class="w-full flex justify-center items-center py-4 border-t">
+    <Nav :menus="menus" />
   </footer>
 </template>

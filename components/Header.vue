@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const menus = [
   {
     name: "Home",
@@ -36,22 +36,33 @@ const menus = [
 </script>
 
 <template>
-  <header class="w-full flex justify-between items-center py-2">
+  <header class="flex justify-between items-center py-7">
     <!-- logo -->
     <div>
       <img src="@/assets/images/logo.svg" />
     </div>
     <!-- menus -->
-    <nav>
-      <ul class="flex justify-between">
-        <li class="text-white mx-2" v-for="(menu, key) in menus" :key="key">
-          {{ menu.name }}
-        </li>
-      </ul>
-    </nav>
+    <Nav :menus="menus" />
     <!-- icons -->
-    <div>
-      <img src="@/assets/images/logo.svg" />
+    <div class="flex items-center">
+      <a href="">
+        <IconsTwitter />
+      </a>
+      <a href="">
+        <IconsGithub />
+      </a>
+      <a href="">
+        <IconsLinkedin />
+      </a>
+      <a href="">
+        <IconsYoutube />
+      </a>
+      <a href="">
+        <IconsInstagram />
+      </a>
+      <a href="">
+        <IconsFacebook />
+      </a>
     </div>
   </header>
 </template>
