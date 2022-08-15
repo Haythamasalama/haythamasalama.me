@@ -34,12 +34,18 @@ export default <Config>{
         DEFAULT: "0px 4px 4px rgba(0, 0, 0, 0.25)",
       },
       borderRadius: {
-        DEFAULT: "10px",
+        DEFAULT: "8px",
       },
       fontFamily: {
         sans: ["IBM Plex Sans", ...fontFamily.sans],
       },
     },
+    fontSize: {
+      base: "18px",
+    },
+    borderColor: ({ theme }) => ({
+      DEFAULT: theme("colors.gray.500"),
+    }),
   },
   plugins: [],
 };
