@@ -23,6 +23,8 @@
   <Html lang="en">
     <Body class="bg-gray-600">
       <main class="flex flex-col container mx-auto sm:px-4 px-8 min-h-screen">
+        <BaseHeader :menus="app.menus.header" />
+
         <section class="flex flex-col w-full mt-10 justify-start mb-8">
           <h2 v-if="route.meta?.title" class="title-heading-primary font-extrabold mb-12">
             {{ route.meta.title }}
@@ -34,6 +36,8 @@
             </NuxtLayout>
           </div>
         </section>
+
+        <BaseFooter :menus="app.menus.footer" class="mt-auto" />
       </main>
     </Body>
   </Html>
