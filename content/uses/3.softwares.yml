@@ -1,0 +1,44 @@
+title: Softwares
+items :
+  - label: Browsers 
+    list:
+     - Chrome 
+     - Edge
+
+  - label: IDEs 
+    list:
+     - VS Code 
+     - Php Storm
+     - Intellij Idea
+     - Pycharm
+
+  - label: Database  
+    description: Mysql Workbench
+
+  - label: Terminal  
+    description: Bash
+
+  - label: Productivity  
+    list:
+     - Notions
+     - Google Docs
+     - Notability
+     - Draw.Io
+     - Toggle
+     - GitHub Projects
+
+  - label: Design And Editing Video  
+    list:
+     - Photoshop
+     - Illustrator
+     - Figma
+     - OBS Studio
+     - Audacity
+     - Premiere Pro
+
+  - label: other
+    list:
+     - Telegram
+     - KeyPass
+     - Everything
+  
