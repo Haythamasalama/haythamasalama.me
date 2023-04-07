@@ -1,0 +1,10 @@
+name: Pattern Monster
+description: A tool for creating seamless background patterns with a library of over 200 preset patterns.
+icon: https://pattern.monster/icons/mstile-150x150.png
+website: https://pattern.monster
+category: css generator
+tags:
+  - Background patterns
+  - Customizable
+  - Preview mode
+  - Open-source

@@ -1,0 +1,10 @@
+name: DocFly
+description: An online PDF tool for creating, editing, converting, and managing PDF files with a focus on simplicity.
+icon: https://www.docfly.com/assets/favicon-52523a0da92b396a745a6fb6ba8b83871ac50cb43cfded3c0dd99bc6b491d65e.ico
+website: https://www.docfly.com/
+category: pdf
+tags:
+  - PDF editing
+  - PDF conversion
+  - Create PDF
+  - Manage PDF

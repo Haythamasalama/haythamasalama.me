@@ -1,0 +1,10 @@
+name: Patterninja
+description: A tool for generating seamless SVG patterns that can be downloaded or copied to your clipboard.
+icon: https://patterninja.com/apple-touch-icon.png
+website: https://patterninja.com/
+category: css generator
+tags:
+  - SVG patterns
+  - Customizable
+  - Downloadable
+  - Open-source

@@ -1,0 +1,10 @@
+name: PDFescape
+description: A free online PDF editor for annotating, creating forms, editing, and adding passwords to PDF files.
+icon: https://www.pdfescape.com/favicon.ico
+website: https://www.pdfescape.com/
+category: pdf
+tags:
+  - PDF editing
+  - Annotate PDF
+  - Create forms
+  - Password protection

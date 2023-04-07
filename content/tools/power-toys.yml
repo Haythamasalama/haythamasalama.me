@@ -1,0 +1,5 @@
+name: Microsoft PowerToys
+description: A set of utilities for power users to streamline and enhance the Windows experience.
+icon:
+website: https://github.com/microsoft/PowerToys
+category: windows tool

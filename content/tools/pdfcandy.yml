@@ -1,0 +1,10 @@
+name: PDFCandy
+description: A free online PDF tool offering a variety of features, including editing, converting, merging, splitting, and compressing PDFs.
+icon: https://static.pdfcandy.com/images/favicon3.ico
+website: https://pdfcandy.com/
+category: pdf
+tags:
+  - PDF editing
+  - PDF conversion
+  - Merge PDF
+  - Split PDF

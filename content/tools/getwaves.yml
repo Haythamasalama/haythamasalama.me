@@ -1,0 +1,10 @@
+name: Get Waves
+description: A tool for generating customizable SVG waves for your website backgrounds.
+icon: https://getwaves.io/favicon-32x32.png?v=f13a1a2e88a9720e746d5561039d3f5f
+website: https://getwaves.io/
+category: css generator
+tags:
+  - SVG waves
+  - Customizable
+  - Preview mode
+  - Open-source

@@ -1,0 +1,5 @@
+name: TinyPNG
+description: An image optimization tool that compresses PNG and JPEG files while preserving image quality, reducing file size and loading time.
+icon: https://tinypng.com/images/apple-touch-icon.png
+website: https://tinypng.com/
+category: images

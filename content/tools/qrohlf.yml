@@ -1,0 +1,10 @@
+name: Trianglify
+description: A tool for generating triangle-shaped SVG backgrounds with customizable color palettes and cell size.
+icon: https://qrohlf.com/trianglify/favicon.14877716.png?v=3
+website: https://qrohlf.com/trianglify/
+category: css generator
+tags:
+  - SVG backgrounds
+  - Triangle shapes
+  - Customizable
+  - Open-source

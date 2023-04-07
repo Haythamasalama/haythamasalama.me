@@ -1,0 +1,9 @@
+name: QRCode Monkey
+description: A free QR code generator with customizable design, colors, and logo embedding.
+icon: https://www.qrcode-monkey.com/favicon.ico
+website: https://www.qrcode-monkey.com/
+category: qr generator
+tags:
+  - QR code generator
+  - Customizable
+  - Logo embedding

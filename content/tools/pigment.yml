@@ -1,0 +1,9 @@
+name: Pigment Shape Factory
+description: A tool for generating customizable color palettes with various color and shade options.
+icon:
+website: https://pigment.shapefactory.co/
+category: css generator
+tags:
+  - Color palettes
+  - Customizable
+  - Open-source

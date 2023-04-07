@@ -1,0 +1,9 @@
+name: Shape Divider
+description: A tool for generating customizable SVG shapes to use as dividers between sections on a webpage.
+icon: https://www.shapedivider.app/img/logo_500x500.18aca7aa.png
+website: https://www.shapedivider.app/
+category: css generator
+tags:
+  - SVG shapes
+  - Customizable
+  - Open-source
