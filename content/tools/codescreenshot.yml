@@ -1,0 +1,9 @@
+name: CodeScreenshot
+description: A tool for generating code screenshots with a simple and customizable interface.
+icon: https://codescreenshot.com/favicon.ico
+website: https://codescreenshot.com/
+category: code screenshots
+tags:
+  - Code screenshots
+  - Customizable
+  - Open-source

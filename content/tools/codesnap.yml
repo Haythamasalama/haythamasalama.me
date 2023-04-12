@@ -1,0 +1,9 @@
+name: CodeSnap
+description: A Visual Studio Code extension for creating and sharing code screenshots with customizable options and themes.
+icon: https://adpyke.gallerycdn.vsassets.io/extensions/adpyke/codesnap/1.3.4/1625238962906/Microsoft.VisualStudio.Services.Icons.Default
+website: https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap
+category: code screenshots
+tags:
+  - Code screenshots
+  - Visual Studio Code
+  - Extension
