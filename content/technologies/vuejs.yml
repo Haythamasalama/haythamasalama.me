@@ -1,0 +1,8 @@
+name: vue js
+description: JavaScript Framework
+icon: '/icons/vuejs.svg'
+website: https://vuejs.org
+order: 2
+category:
+  - main stack
+  - front end

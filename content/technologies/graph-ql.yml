@@ -1,0 +1,6 @@
+name: GraphQL
+description: Query Language
+icon: '/icons/graph-ql.svg'
+website: https://graphql.org/
+category:
+  - back end

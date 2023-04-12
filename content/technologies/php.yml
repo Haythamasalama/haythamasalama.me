@@ -1,0 +1,8 @@
+name: PHP
+description: Programming language
+icon: '/icons/php.svg'
+website: https://php.net/
+order: 3
+category:
+  - back end
+  - programming language

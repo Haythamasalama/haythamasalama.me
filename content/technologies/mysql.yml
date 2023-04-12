@@ -1,0 +1,6 @@
+name: MySQL
+description: Relational Database
+icon: '/icons/mysql.svg'
+website: https://www.mysql.com/
+category:
+  - back end

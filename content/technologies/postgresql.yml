@@ -1,0 +1,6 @@
+name: Postgresql
+description: Relational Database
+icon: '/icons/postgresql.svg'
+website: https://www.postgresql.org/
+category:
+  - back end

@@ -1,0 +1,7 @@
+name: Pest
+description: PHP Unit Testing Framework
+icon: '/icons/pest-php.svg'
+website: https://pestphp.com/
+order: 4
+category:
+  - back end

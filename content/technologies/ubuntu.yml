@@ -1,0 +1,7 @@
+name: Ubuntu
+description: Operating System
+icon: '/icons/ubuntu.svg'
+website: https://ubuntu.com/
+order: 1
+category:
+  - deployment

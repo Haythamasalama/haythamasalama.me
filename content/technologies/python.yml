@@ -1,0 +1,6 @@
+name: python
+description: Programming language
+icon: '/icons/python.svg'
+website: https://www.python.org/
+category:
+  - programming language

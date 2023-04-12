@@ -1,0 +1,8 @@
+name: Laravel
+description: back end Framework
+icon: '/icons/laravel.svg'
+website: https://laravel.com/
+order: 1
+category:
+  - main stack
+  - back end

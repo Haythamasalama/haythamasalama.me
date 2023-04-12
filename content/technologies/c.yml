@@ -1,0 +1,7 @@
+name: C Language
+description: Programming language
+icon: '/icons/c.svg'
+website:
+order: 2
+category:
+  - programming language

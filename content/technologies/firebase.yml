@@ -1,0 +1,6 @@
+name: Firebase
+description:
+icon: '/icons/firebase.svg'
+website: https://firebase.google.com/
+category:
+  - back end

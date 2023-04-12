@@ -1,0 +1,8 @@
+name: Typescript
+description: Typed superset of JavaScript.
+icon: '/icons/typescript.svg'
+website: https://www.typescriptlang.org/
+order: 5
+category:
+  - front end
+  - programming language

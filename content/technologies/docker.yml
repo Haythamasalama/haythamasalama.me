@@ -1,0 +1,7 @@
+name: Docker
+description: Containerization Technology
+icon: '/icons/docker.svg'
+website: https://www.docker.com/
+order: 4
+category:
+  - deployment

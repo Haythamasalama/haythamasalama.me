@@ -1,0 +1,7 @@
+name: Windows Server
+description: Operating System
+icon: '/icons/windows-server.svg'
+website: https://www.microsoft.com/en-us/windows-server
+order: 2
+category:
+  - deployment

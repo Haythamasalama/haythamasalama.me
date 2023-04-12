@@ -1,0 +1,6 @@
+name: Redis
+description: Database In Memory
+icon: '/icons/redis.svg'
+website: https://redis.io/
+category:
+  - back end

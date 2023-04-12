@@ -1,0 +1,6 @@
+name: jquery
+description: JavaScript Library
+icon: '/icons/jquery.svg'
+website: https://jquery.com/
+category:
+  - front end

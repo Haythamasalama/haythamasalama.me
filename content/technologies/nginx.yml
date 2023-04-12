@@ -1,0 +1,7 @@
+name: Nginx
+description: Web Server
+icon: '/icons/nginx.svg'
+website: https://nginx.org/
+order: 3
+category:
+  - deployment
