@@ -1,6 +1,10 @@
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
 
+  runtimeConfig: {
+      githubToken: ''
+  },
+
   content: {
     highlight: {
       theme: 'one-dark-pro',
