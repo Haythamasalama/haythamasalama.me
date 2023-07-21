@@ -1,5 +1,6 @@
 {
-  "private": true,
+  "name": "haythamasalama.me",
+  "version": "1.0.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
