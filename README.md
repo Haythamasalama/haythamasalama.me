@@ -22,7 +22,7 @@
 
 ## 🎨 UX & UI 
 
-![Home](https://github.com/Haythamasalama/haythamasalama.me/assets/37311945/46b3e92f-cf9d-4230-99f5-3701da5b4374)
+![home](https://github.com/Haythamasalama/haythamasalama.me/assets/37311945/86a076d6-c00e-4f85-a256-9a8389f52eff)
 
 - 🎨 [UX-UI Figma](https://www.figma.com/file/BMuebRuw47Hoj64ZPPAMPH/my-website?node-id=2%3A2)
 
