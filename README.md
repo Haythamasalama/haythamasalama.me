@@ -1,7 +1,8 @@
 # haythamasalama.me 
 <p align="center">
-  ✨ My Personal Website
   </br>
+  ✨ Personal Website
+  </br></br>
   <samp>
     <a href="https://haythamasalama.me/about" target="_blank">me</a> .
     <a href="https://haythamasalama.me/projects" target="_blank">projects</a> .
@@ -21,9 +22,9 @@
 
 ## 🎨 UX & UI 
 
-![Home](https://user-images.githubusercontent.com/37311945/184448702-6c4ce2f5-2df2-482d-9350-e5922954b337.png)
+![Home](https://github.com/Haythamasalama/haythamasalama.me/assets/37311945/46b3e92f-cf9d-4230-99f5-3701da5b4374)
 
-- [Design](https://www.figma.com/file/BMuebRuw47Hoj64ZPPAMPH/my-website?node-id=2%3A2)
+- 🎨 [UX-UI Figma](https://www.figma.com/file/BMuebRuw47Hoj64ZPPAMPH/my-website?node-id=2%3A2)
 
 
 ## 🔼 Installation
