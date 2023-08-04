@@ -3,7 +3,7 @@ items :
   - label: Browsers 
     list:
      - Chrome 
-     - Edge
+     - Safari
 
   - label: IDEs 
     list:
@@ -13,11 +13,12 @@ items :
      - Pycharm
 
   - label: Database  
-    description: Mysql Workbench
+     - MySQL Workbench
+     - TablePlus
 
   - label: Terminal  
-    description: Bash
-
+     - hyper
+     
   - label: Productivity  
     list:
      - Notions
