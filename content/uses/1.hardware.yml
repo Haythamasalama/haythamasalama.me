@@ -1,7 +1,7 @@
 title: Hardwares
 items :
-  - label: Laptop
-    description: HP Probook 450 G8 - Core I7 - 16 GB
+  - label: MacBook
+    description: MacBook Pro M2 - 16GB
 
   - label: Mouse / Keyboard
     list:
@@ -9,7 +9,7 @@ items :
      - Redragon K551 & HP Omen Vector Mouse
     
   - label: Display
-    description: 2 HP 24w Screen
+    description: 2 HP Screen
 
   - label: Chair
     description: corsair t1 race gaming chair Red
