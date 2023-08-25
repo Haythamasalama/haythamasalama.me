@@ -1,7 +1,76 @@
-<script setup>
+<script lang="ts" setup>
+  import type { Experience } from '@/types';
+
   definePageMeta({
     title: 'About'
   });
+
+  const workExperience: Experience[] = [
+    {
+      title: 'Full-Stack Engineer',
+      company: {
+        name: 'WINCH',
+        url: 'https://winch.sa/'
+      },
+      startDate: 'Feb 2023',
+      endDate: 'present',
+      employmentType: 'full-time',
+      location: {
+        name: 'Saudi Arabia',
+        type: 'Remote'
+      },
+      descriptions: [
+        'Developed and maintained a platform for the business sector and forwarders using Domain-Driven Design (DDD).',
+        'Utilized technologies like Laravel, NuxtJs, Vue, Typescript and more.'
+      ]
+    },
+    {
+      title: 'Full-Stack Developer',
+      company: {
+        name: 'Faris petrol company',
+        url: 'https://fpco.co'
+      },
+      startDate: 'Nov 2019',
+      endDate: 'April 2023',
+      employmentType: 'full-time',
+      location: {
+        name: 'Palestine'
+      },
+      descriptions: [
+        'Designed and developed a web-based reservation system for vehicle water washing pumps, incorporating electronic circuits across multiple locations based on Raspberry Pi, Laravel, VueJs, Python and other technologies.',
+        'Developed a charging balance system with test-driven development to process bulk card transactions and integrate with the financial system in background queues based on Laravel, VueJs, and PHPUnit.',
+        'Designed and Implemented a workshop car system with test-driven development to manage checklists, services, and accounts for vehicles based on Laravel, VueJs, and other technologies.',
+        'Developed a Games platform for events with interactive features using Laravel, NuxtJs, TailwindCss.',
+        'Developed a human resource management system integrated with attendance devices and other systems.',
+        'Designed and implemented a CRM system with mobile app integration, handling contacts, calls, messages, visits, tickets and more using Laravel, Flutter and other technologies.'
+      ]
+    },
+    {
+      title: 'Full-Stack Developer',
+      company: {
+        name: 'Patric Technology',
+        url: 'https://weptric.com'
+      },
+      startDate: 'Dec 2019',
+      endDate: 'March 2023',
+      employmentType: 'full-time',
+      location: {
+        name: 'Palestine'
+      },
+      descriptions: [
+        'Developed and designed various websites, including clever.ps, support.clever.ps, weptric.com, and more.'
+      ]
+    },
+    {
+      title: 'Freelancer Web Developer',
+      startDate: 'Apr 2016',
+      endDate: 'Feb 2018',
+      employmentType: 'freelance',
+      descriptions: [
+        'Designed and developed over 16 websites for a diverse range of clients.'
+      ]
+    }
+  ];
 </script>
 
 <template>
@@ -9,7 +78,7 @@
   <section class="flex flex-col sm:flex-row sm:items-center mb-8">
     <div class="flex flex-col sm:w-3/5 order-2 sm:order-1">
       <h3 class="text-2xl sm:text-4xl font-bold text-white mt-4 gaxp-x-1 sm:mt-0 flex-wrap">
-        Hi there, I'm
+        Hi 👋 , I'm
         <span class="text-primary-gradient">
           Haytham A. Salama
         </span>
@@ -60,187 +129,13 @@
   </section>
 
   <section class="flex flex-col mt-4 mb-8 text-gray-100 border-t-2 pt-8">
-    <SubTitle>Experience</SubTitle>
+    <SubTitle>Work Experience</SubTitle>
 
-    <div>
-      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center my-6">
-        <div class="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-0">
-          <span class="bg-primary-gradient px-3 py-1 rounded-full w-fit mb-3 sm:mb-0 sm:mr-4"> 1 </span>
-          <div>
-            <h4 class="text-primary-gradient font-bold capitalize">
-              WINCH
-            </h4>
-            <h4>Full-Stack Engineer</h4>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:justify-center sm:items-center">
-          <h4 class="text-primary-gradient font-bold">
-            Feb 2023 - present
-          </h4>
-          <h4>Full-time - Saudi Arabia</h4>
-          <h4>Remote</h4>
-        </div>
-      </div>
-
-      <div>
-        <ul class="list-disc list-outside px-4 text-justify">
-          <li class="my-1">
-            Develop and maintain a platform for the business sector and forwarders using DDD Utilized Laravel, NuxtJs,
-            and other technologies.
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div>
-      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center my-6">
-        <div class="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-0">
-          <span class="bg-primary-gradient px-3 py-1 rounded-full w-fit mb-3 sm:mb-0 sm:mr-4"> 2 </span>
-          <div>
-            <h4 class="text-primary-gradient font-bold capitalize">
-              Faris petrol company
-            </h4>
-            <h4>Full-Stack Developer</h4>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:justify-center sm:items-center">
-          <h4 class="text-primary-gradient font-bold">
-            Nov 2019 - April 2023
-          </h4>
-          <h4>Full-time - Palestine</h4>
-        </div>
-      </div>
-
-      <div>
-        <ul class="list-disc list-outside px-4 text-justify">
-          <li class="my-1">
-            Designed and developed a web-based reservation system for vehicle water washing pumps, incorporating
-            electronic circuits across multiple locations using Raspberry Pi, Laravel, VueJs, and other technologies.
-          </li>
-          <li class="my-1">
-            Developed and implement a charging balance system for processing bulk card transactions and integrating with
-            a financial system using TTD. Utilized Laravel, VueJs, Queues, WebSocket, and PHPUnit.
-          </li>
-          <li class="my-1">
-            Designed and Implemented a workshop car system for managing checklists, services, and accounts for vehicles
-            and cars using Laravel, VueJs, and other technologies.
-          </li>
-          <li class="my-1">
-            Developed a Games platform for events which includes a wheel of fortune, box numbers, and a scheduled QR
-            that appears at a specific time using Laravel, NuxtJs, TailwindCss, and other technologies.
-          </li>
-          <li class="my-1">
-            Developed a human resource management system, including employee profiles, holidays, leaves, attendance,
-            contracts, reports, and more. Integrated with attendance devices and other systems using Laravel, Queues,
-            Flutter, and other technologies.
-          </li>
-          <li class="my-1">
-            Designed and implemented a CRM system with an app mobile, including contacts, calls, template messages,
-            messages, visits, merchant tickets, notes, and more, integrated with other systems using Laravel, jQuery,
-            Queues, Flutter, and other technologies.
-          </li>
-          <li class="my-1">
-            Managed various network systems such as Mikrotik, Alcatel-Lucent, Unifi, VPNs, Active Directory, Kaspersky
-            Server, Truenas, 3CX, Windows Server, Ubuntu, VM, and Alcatel switches.
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div>
-      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center my-6">
-        <div class="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-0">
-          <span class="bg-primary-gradient px-3 py-1 rounded-full w-fit mb-3 sm:mb-0 sm:mr-4"> 3 </span>
-          <div>
-            <h4 class="text-primary-gradient font-bold capitalize">
-              Patric Technology
-            </h4>
-            <h4>Full-Stack Developer</h4>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:justify-center sm:items-center">
-          <h4 class="text-primary-gradient font-bold">
-            Dec 2019 - March 2023
-          </h4>
-          <h4>Full-time - Palestine</h4>
-        </div>
-      </div>
-
-      <div>
-        <p>Designed and developed different websites:</p>
-
-        <ul class="list-disc list-outside px-4 sm:text-justify">
-          <li class="my-1">
-            clever.ps, support.clever.ps, weptric.com, fpco.co, speedocloud.com.
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div>
-      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center my-6">
-        <div class="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-0">
-          <span class="bg-primary-gradient px-3 py-1 rounded-full w-fit mb-3 sm:mb-0 sm:mr-4"> 4 </span>
-          <div>
-            <h4 class="text-primary-gradient font-bold capitalize">
-              Freelancer Web Developer
-            </h4>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:justify-center sm:items-center">
-          <h4 class="text-primary-gradient font-bold">
-            Apr 2016 - Feb 2018
-          </h4>
-          <h4>Part-time - Remote</h4>
-        </div>
-      </div>
-
-      <div>
-        <p>Designed and developed different websites:</p>
-        <ul class="list-disc list-outside px-4 text-justify">
-          <li class="my-2">
-            mcm.sa
-          </li>
-          <li class="my-2">
-            eofficem.com
-          </li>
-          <li class="my-2">
-            isohere.sa
-          </li>
-          <li class="my-2">
-            drasatech.com
-          </li>
-          <li class="my-2">
-            howatperfume.sa
-          </li>
-          <li class="my-2">
-            nshamagames.com
-          </li>
-          <li class="my-2">
-            thcccam.com
-          </li>
-          <li class="my-2">
-            rashatink3.com
-          </li>
-          <li class="my-2">
-            e3lankgroup1
-          </li>
-          <li class="my-2">
-            thiptv.com
-          </li>
-          <li class="my-2">
-            shamil5.com
-          </li>
-          <li class="my-2">
-            fatlosebelly.com
-          </li>
-        </ul>
-      </div>
-    </div>
+    <WrokExperienceSection
+      v-for="(experience, key) in workExperience"
+      :key="key"
+      v-bind="experience"
+    />
 
     <Alert to="https://www.linkedin.com/in/haythamasalama/" title="Check My Linkedin Account" class="mt-4">
       <template #leading>
@@ -255,11 +150,9 @@
     <h4 class="text-primary-gradient font-bold capitalize mt-4">
       Al Azhar University - Palestine
     </h4>
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
-      <h4>Bachelor of Engineering - Software Engineering</h4>
-      <h4 class="text-primary-gradient font-bold">
-        Aug 2019 - May 2024
-      </h4>
-    </div>
+    <h4>Bachelor of Engineering - Software Engineering</h4>
+    <h4 class="text-sm">
+      Aug 2019 - May 2024
+    </h4>
   </section>
 </template>
