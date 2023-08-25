@@ -55,3 +55,18 @@ export type RepositoriesContributedTo = {
   };
 };
 
+export type Experience = {
+  title: string;
+  employmentType: 'full-time' | 'part-time' | 'freelance';
+  location?: {
+    name: string;
+    type?: string;
+  };
+  startDate: string;
+  endDate: string;
+  descriptions: string[];
+  company?: {
+    name: string;
+    url?: string;
+  };
+}

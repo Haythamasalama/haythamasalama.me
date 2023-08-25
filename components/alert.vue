@@ -11,7 +11,7 @@
   <Component
     :is="to ? NuxtLink : 'div'"
     :to="to"
-    class="flex items-center text-white border-4 transition-primary py-4 px-3 rounded-md hover:rounded-xl hover:bg-primary-gradient hover:ring-2 gap-x-3 relative"
+    class="flex items-center text-white border-2 transition-primary py-4 px-3 rounded-md hover:rounded-xl hover:bg-primary-gradient hover:ring-2 gap-x-3 relative"
     target="_blank"
   >
     <slot>
