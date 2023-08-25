@@ -112,7 +112,7 @@
   </section>
 
   <section class="mb-4">
-    <SubTitle> Experience </SubTitle>
+    <SubTitle> Work Experience </SubTitle>
 
     <p class="text-gray-400 mt-4">
       I have worked on many projects in different fields, here are some of them.
