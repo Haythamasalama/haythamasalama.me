@@ -31,7 +31,7 @@
 
     <div class="flex text-center">
       <p>
-        © 2022 - {{ new Date().getFullYear() }}  all rights reserved. made with ❤️ by Haytham Salama
+        © 2022 - {{ new Date().getFullYear() }}  all rights reserved. made with <span class="text-red-500">&#10084;&#65039;</span> by Haytham Salama
       </p>
     </div>
   </footer>
