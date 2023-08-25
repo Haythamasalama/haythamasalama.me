@@ -17,7 +17,7 @@
     to?: string;
   }>>();
 
-  const textDescription = computed(() => props.truncate && props.description ? props.description.slice(0, 30) + '...' : props.description);
+  const textDescription = computed(() => props.truncate && props.description ? props.description.slice(0, 40) + '...' : props.description);
 </script>
 
 <template>
