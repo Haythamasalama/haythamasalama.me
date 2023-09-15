@@ -14,10 +14,11 @@ items :
 
   - label: Database  
      - MySQL Workbench
-     - TablePlus
-
+     - Sequel Ace
+     
   - label: Terminal  
-     - hyper
+    list:
+     - iTerm2 & oh my zsh
      
   - label: Productivity  
     list:
