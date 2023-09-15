@@ -12,7 +12,8 @@ items :
      - Intellij Idea
      - Pycharm
 
-  - label: Database  
+  - label: Database
+    list:
      - MySQL Workbench
      - Sequel Ace
      
