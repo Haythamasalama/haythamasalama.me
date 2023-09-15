@@ -1,12 +1,6 @@
 title: Hardwares
 items :
-  - label: MacBook
-    description: MacBook Pro M2 - 16GB
-
-  - label: Mouse / Keyboard
-    list:
-     - HP Pavilion Wireless Keyboard And Mouse 800 
-     - Redragon K551 & HP Omen Vector Mouse
+  - label: MacBook Pro M2 - 16GB
     
   - label: Display
     description: 2 HP Screen
