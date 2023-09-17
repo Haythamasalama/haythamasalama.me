@@ -47,9 +47,8 @@
         Software Engineer
       </p>
       <p class="text-gray-100 mt-4 lg:text-justify">
-        I'm a software engineer with over 4 years of experience as a Full-Stack Developer, specializing in analyzing and
-        implementing software across various domains such as CRM, customer service, human resources management, workshop
-        car systems, asset management, and automation.
+        I'm a software engineer with over 5 years of experience as a Full-Stack Developer, specializing in analyzing and implementing software across various domains for enterprise applications.
+        Additionally, I actively contribute to open-source frameworks such as Laravel, Vue.js, and Nuxt.js.
       </p>
       <RouterLink
         class="flex justify-center items-center lg:justify-start text-primary gap-x-0.5 my-6"
