@@ -51,12 +51,12 @@
         implementing software across various domains such as CRM, customer service, human resources management, workshop
         car systems, asset management, and automation.
       </p>
-      <RouterLink
+      <NuxtLink
         class="flex justify-center items-center lg:justify-start text-primary gap-x-0.5 my-6"
         to="/about"
       >
         About <IconArrowRight />
-      </RouterLink>
+      </NuxtLink>
     </div>
   </section>
 
