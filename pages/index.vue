@@ -34,7 +34,7 @@
     <div>
       <img
         class="lg:mt-4 rounded-full w-[180px] h-[180px]"
-        src="/images/profile.jpeg"
+        src="https://avatars.githubusercontent.com/u/37311945?v=4"
         alt="Haytham A. Salama"
       >
     </div>
