@@ -29,12 +29,6 @@
         <a href="https://www.medium.com/@haythamasalama" target="_blank">
           <IconMedium class="fill-white hover:fill-primary w-7 h-7" />
         </a>
-        <a href="https://www.instagram.com/haythamasalama" target="_blank">
-          <IconInstagram class="fill-white hover:fill-primary" />
-        </a>
-        <a href="https://www.youtube.com/@haythamasalama" target="_blank">
-          <IconYoutube class="fill-white hover:fill-primary" />
-        </a>
       </div>
 
       <button
