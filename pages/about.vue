@@ -16,12 +16,38 @@
       endDate: 'present',
       employmentType: 'full-time',
       location: {
-        name: 'Saudi Arabia',
+        name: 'Jeddah, Saudi Arabia',
         type: 'Remote'
       },
       descriptions: [
-        'Developed and maintained a platform for the business sector and forwarders using Domain-Driven Design (DDD).',
-        'Utilized technologies like Laravel, NuxtJs, Vue, Typescript and more.'
+        'Developed and maintained platforms for businesses, forwarders, and owners using a Monolith application with Domain-Driven Design (DDD).',
+        'Migrated systems from MVC architecture to a Monolith application with a domain-driven design.',
+        'Integrated payment gateways and governmental services (e.g., Elm) into the platform.',
+        'Resolved bugs, optimized performance, improved database table designs, and applied queue processing and rate limiting to enhance system efficiency.',
+        'Utilized modern technologies such as Laravel, Nuxt.js, Vue.js, and TypeScript.',
+        'Led cross-functional teams (front-end, back-end, and mobile) to design and implement business and owner platforms.'
+      ]
+    },
+    {
+      title: 'Full-Stack Engineer',
+      company: {
+        name: 'Sanad',
+        url: 'https://investsanad.sa/'
+      },
+      startDate: 'May 2024',
+      endDate: 'present',
+      employmentType: 'part-time',
+      location: {
+        name: 'Jeddah, Saudi Arabia',
+        type: 'Remote'
+      },
+      descriptions: [
+        'Developed and deployed a platform, admin dashboard, and mobile app for collective investments in real estate and investment funds.',
+        'Led cross-functional teams to design and implement investment platforms.',
+        'Integrated payment gateways and governmental services (e.g., Elm) into the platform.',
+        'Utilizing Domain-Driven Design (DDD) for reliable platform architecture.',
+        'Ensuring data security and compliance in financial platforms.',
+        'Building scalable architectures for high-traffic investment systems.'
       ]
     },
     {
