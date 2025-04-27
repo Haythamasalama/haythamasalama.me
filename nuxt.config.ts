@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
 
   runtimeConfig: {
-      githubToken: ''
+    githubToken: ''
   },
 
   content: {
@@ -28,6 +28,19 @@ export default defineNuxtConfig({
 
   tailwindcss: {
     cssPath: '~/assets/css/main.css',
-    configPath: '~/tailwind.config.js'
+    configPath: 'tailwind.config.js',
+    exposeConfig: false,
+    viewer: false,
+    config: {
+      content: [
+        './components/**/*.{js,vue,ts}',
+        './layouts/**/*.vue',
+        './pages/**/*.vue',
+        './plugins/**/*.{js,ts}',
+        './app.vue',
+        './error.vue',
+        './content/**/*.{md,yml,json,yaml,toml,csv}'
+      ]
+    }
   }
 });
