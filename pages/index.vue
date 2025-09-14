@@ -47,8 +47,7 @@
         Software Engineer
       </p>
       <p class="text-gray-100 mt-4 lg:text-justify">
-        I'm a software engineer with over 5 years of experience as a Full-Stack Developer, specializing in analyzing and implementing software across various domains for enterprise applications.
-        Additionally, I actively contribute to open-source frameworks such as Laravel, Vue.js, and Nuxt.js.
+        Full-stack software engineer with 5+ years of experience building scalable logistics and fintech platforms. Specialized in Domain-Driven Design (DDD) and modern stacks (Laravel, Vue.js, Nuxt.js, TypeScript). Experienced in leading cross-functional teams and delivering high-performance systems. Passionate about open-source contributions and applying clean architecture to complex business challenges.
       </p>
       <RouterLink
         class="flex justify-center items-center lg:justify-start text-primary gap-x-0.5 my-6"
