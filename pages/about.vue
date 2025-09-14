@@ -20,12 +20,11 @@
         type: 'Remote'
       },
       descriptions: [
-        'Developed and maintained platforms for businesses, forwarders, and owners using a Monolith application with Domain-Driven Design (DDD).',
-        'Migrated systems from MVC architecture to a Monolith application with a domain-driven design.',
-        'Integrated payment gateways and governmental services (e.g., Elm) into the platform.',
-        'Resolved bugs, optimized performance, improved database table designs, and applied queue processing and rate limiting to enhance system efficiency.',
-        'Utilized modern technologies such as Laravel, Nuxt.js, Vue.js, and TypeScript.',
-        'Led cross-functional teams (front-end, back-end, and mobile) to design and implement business and owner platforms.'
+        'Built and maintained business platforms using Domain-Driven Design (DDD), improving long-term scalability and system clarity.',
+        'Migrated legacy systems from MVC to a monolithic DDD structure, reducing complexity and easing future development.',
+        'Integrated payment gateways and government services (e.g., Elm) to enable secure transactions and compliance.',
+        'Improved performance through database redesign, queue processing, and rate limiting, making the system more efficient and stable.',
+        'Led cross-functional teams (front-end, back-end, mobile) to deliver reliable business and owner platforms.',
       ]
     },
     {
@@ -42,12 +41,10 @@
         type: 'Remote'
       },
       descriptions: [
-        'Developed and deployed a platform, admin dashboard, and mobile app for collective investments in real estate and investment funds.',
-        'Led cross-functional teams to design and implement investment platforms.',
+        'Developed a platform and an admin dashboard for collective real estate investments.',
+        'Designed the platform architecture using DDD to ensure reliability and scalability for financial systems.',
         'Integrated payment gateways and governmental services (e.g., Elm) into the platform.',
-        'Utilizing Domain-Driven Design (DDD) for reliable platform architecture.',
-        'Ensuring data security and compliance in financial platforms.',
-        'Building scalable architectures for high-traffic investment systems.'
+        'Collaborated with teams to build a high-traffic investment system with strong data security and compliance standards.',
       ]
     },
     {
@@ -63,12 +60,12 @@
         name: 'Palestine'
       },
       descriptions: [
-        'Designed and developed a web-based reservation system for vehicle water washing pumps, incorporating electronic circuits across multiple locations based on Raspberry Pi, Laravel, VueJs, Python and other technologies.',
-        'Developed a charging balance system with test-driven development to process bulk card transactions and integrate with the financial system in background queues based on Laravel, VueJs, and PHPUnit.',
-        'Designed and Implemented a workshop car system with test-driven development to manage checklists, services, and accounts for vehicles based on Laravel, VueJs, and other technologies.',
-        'Developed a Games platform for events with interactive features using Laravel, NuxtJs, TailwindCss.',
-        'Developed a human resource management system integrated with attendance devices and other systems.',
-        'Designed and implemented a CRM system with mobile app integration, handling contacts, calls, messages, visits, tickets and more using Laravel, Flutter and other technologies.'
+        'Designed and developed a reservation system for vehicle water washing pumps, using Raspberry Pi and Laravel to automate operations across multiple locations.',
+        'Built a charging balance system with test-driven development (TDD), handling bulk card transactions in background queues.',
+        'Created a workshop management system with TDD to track checklists, services, and vehicle accounts.',
+        'Developed a games platform for events with interactive features, enhancing customer engagement.',
+        'Delivered a human resource system integrated with attendance devices, improving workforce management.',
+        'Built a CRM with mobile integration, managing calls, messages, visits, tickets, and more for business teams.'
       ]
     },
     {
@@ -84,7 +81,7 @@
         name: 'Palestine'
       },
       descriptions: [
-        'Developed and designed various websites, including clever.ps, support.clever.ps, weptric.com, and more.'
+        'Designed and developed websites, including clever.ps, support.clever.ps, and weptric.com, helping clients establish their digital presence.'
       ]
     },
     {
@@ -93,7 +90,7 @@
       endDate: 'Feb 2018',
       employmentType: 'freelance',
       descriptions: [
-        'Designed and developed over 16 websites for a diverse range of clients.'
+        'Delivered more than 16 custom websites for a range of clients, building early experience in full-stack development and client communication.'
       ]
     }
   ];
@@ -111,8 +108,7 @@
       </h3>
 
       <p class="sm:text-justify mt-4 text-gray-100">
-        I'm a software engineer with over 5 years of experience as a Full-Stack Developer, specializing in analyzing and implementing software across various domains for enterprise applications.
-        Additionally, I actively contribute to open-source frameworks such as Laravel, Vue.js, and Nuxt.js.
+        Full-stack software engineer with 5+ years of experience building scalable logistics and fintech platforms. Specialized in Domain-Driven Design (DDD) and modern stacks (Laravel, Vue.js, Nuxt.js, TypeScript). Experienced in leading cross-functional teams and delivering high-performance systems. Passionate about open-source contributions and applying clean architecture to complex business challenges.
       </p>
     </div>
 
