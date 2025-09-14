@@ -6,23 +6,16 @@ export default defineNuxtConfig({
   },
 
   content: {
-    highlight: {
-      theme: 'one-dark-pro',
-
-      preload: [
-        'html',
-        'css',
-        'bash',
-        'javascript',
-        'typescript',
-        'json',
-        'scss',
-        'php',
-        'python',
-        'sql',
-        'vue',
-        'java'
-      ]
+    build: {
+      markdown: {
+        highlight: {
+          theme: 'one-dark-pro',
+          preload: [
+            'html', 'css', 'bash', 'javascript', 'typescript',
+            'json', 'scss', 'php', 'python', 'sql', 'vue', 'java', 'json'
+          ]
+        }
+      }
     }
   },
 

@@ -5,15 +5,9 @@
 
   const { data: technologies } = await useAsyncData(
     'technologies',
-    () => queryContent('technologies')
-      .only(['category', 'name', 'icon', 'website', 'description'])
-      .where({
-        category: {
-          $contains: [selectedTechnology.value]
-        }
-      })
-      .sort({ order: 1 })
-      .find(),
+    () => queryCollection('technologies')
+      .where('category', 'LIKE', `%${selectedTechnology.value}%`)
+      .all(),
     {
       watch: [selectedTechnology]
     }
@@ -21,11 +15,10 @@
 
   const { data: articles } = await useAsyncData(
     'articles',
-    () => queryContent('articles')
-      .only(['title', 'image', 'date', '_path'])
-      .sort({ _path: -1, $numeric: true })
+    () => queryCollection('articles')
+      .order('path', 'DESC')
       .limit(3)
-      .find()
+      .all()
   );
 </script>
 
@@ -99,11 +92,11 @@
     <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 gap-4 w-full">
       <Card
         v-for="post in articles"
-        :key="post._path"
+        :key="post.path"
         class="flex flex-col justify-start"
-        :to="post._path"
+        :to="post.path"
         :title="post.title"
-        :date="post.date"
+        :date="post.meta?.date as string"
       />
     </div>
   </div>

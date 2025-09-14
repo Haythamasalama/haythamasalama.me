@@ -6,10 +6,9 @@
   });
 
   const { data: projects } = await useAsyncData('projects', () =>
-    queryContent('projects')
-      .only(['_path', 'category', 'title', 'startAt', 'endAt', 'description'])
-      .sort({ _path: -1, $numeric: true })
-      .find()
+    queryCollection('projects')
+      .order('path', 'DESC')
+      .all()
   );
 
   const repos = ref<RepositoriesContributedTo>({
@@ -121,11 +120,12 @@
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full mt-4">
       <Card
         v-for="project in projects"
-        :key="project._path"
+        :key="project.path"
         :title="project.title"
         :description="project.description"
-        :read-more="project._path"
-        :date="`${project.startAt} - ${project.endAt}`"
+        :read-more="project.path"
+        :date="`${project.meta.startAt} - ${project.meta.endAt}`"
+        :to="project.path"
         truncate
       />
     </div>

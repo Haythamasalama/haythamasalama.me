@@ -5,17 +5,27 @@
     notFoundText?: string;
   }>();
 
+  const collectionName = computed<'blog' | 'projects' | 'articles'>(() => {
+    const segments = route.path.split('/').filter(Boolean);
 
-  const linkSlug = computed(() => {
-    return route.path
-      .split('/')
-      .filter(item => item !== route.params.slug)
-      .join('/');
+    return segments[0] as 'blog' | 'projects' | 'articles';
   });
+
+  const { data: doc } = await useAsyncData(route.path, () => {
+    return queryCollection(collectionName.value).path(route.path).first();
+  });
+
+  const { data: relatedContent } = await useAsyncData(
+    `related-${collectionName.value}`,
+    () => queryCollection(collectionName.value)
+      .where('path', '<>', route.path)
+      .limit(6)
+      .all()
+  );
 </script>
 
 <template>
-  <ContentDoc v-slot="{ doc }">
+  <div v-if="doc">
     <HeaderTitle :title="doc.title" />
 
     <HeaderInfo class="my-10" :post="doc" />
@@ -28,23 +38,21 @@
       Related Articles
     </SubTitle>
 
-    <ContentList :path="linkSlug">
-      <template #default="{ list }">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 w-full mt-4">
-          <Card
-            v-for="content in list"
-            :key="content._path"
-            :to="content._path"
-            class="h-full"
-            :title="content.title"
-            :date="content.date || `${content.startAt} - ${content.endAt}`"
-          />
-        </div>
-      </template>
-
-      <template #not-found>
-        <Card :title="notFoundText || 'No content found'" />
-      </template>
-    </ContentList>
-  </ContentDoc>
+    <div v-if="relatedContent && relatedContent.length > 0" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 w-full mt-4">
+      <Card
+        v-for="content in relatedContent"
+        :key="content.path"
+        :to="content.path"
+        class="h-full"
+        :title="content.title"
+        :date="content.meta.date || `${content.meta.startAt} - ${content.meta.endAt}`"
+      />
+    </div>
+    <div v-else>
+      <Card :title="notFoundText || 'No related content found'" />
+    </div>
+  </div>
+  <div v-else>
+    <Card :title="notFoundText || 'Content not found'" />
+  </div>
 </template>

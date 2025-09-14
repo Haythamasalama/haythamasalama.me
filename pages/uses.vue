@@ -3,7 +3,7 @@
     title: 'Uses'
   });
 
-  const { data: uses } = await useAsyncData('uses', () => queryContent('uses').sort({ order: 1 }).find());
+  const { data: uses } = await useAsyncData('uses', () => queryCollection('uses').all());
 </script>
 
 <template>

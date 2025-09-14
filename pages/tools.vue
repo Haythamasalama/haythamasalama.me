@@ -12,15 +12,16 @@
   const { data: tools } = await useAsyncData(
     'tools',
     () =>
-      queryContent('tools')
-        .only(['category', 'name', 'website', 'icon', 'description'])
-        .where({
-          category: {
-            $contains: [selectedCatogory.value]
-          }
-        })
-        .sort({ title: 1, category: -1 })
-        .find(),
+      selectedCatogory.value
+        ? queryCollection('tools')
+          .where('category', 'LIKE', `%${selectedCatogory.value}%`)
+          .order('name', 'ASC')
+          .order('category', 'DESC')
+          .all()
+        : queryCollection('tools')
+          .order('name', 'ASC')
+          .order('category', 'DESC')
+          .all(),
     {
       watch: [selectedCatogory]
     }

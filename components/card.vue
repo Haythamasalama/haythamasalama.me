@@ -32,12 +32,12 @@
         <div v-if="icon?.path || icon?.isText" class="w-2/6" :class="{ 'mb-4': horizontal }">
           <img
             v-if="icon.path"
-            class="w-[60px] h-[60px] rounded-md"
+            class="w-[50px] h-[50px] rounded-md"
             :class="icon.class"
             :src="icon.path"
             :alt="title"
           >
-          <div v-if="!icon.path && icon?.isText && title" class="text-2xl w-[60px] h-[60px] p-3 rounded-md shadow-md bg-gray-600 border text-white text-center capitalize">
+          <div v-if="!icon.path && icon?.isText && title" class="text-2xl  p-3 rounded-md shadow-md bg-gray-600 border text-white text-center capitalize">
             {{ title[0] }}{{ title[title.length - 1] }}
           </div>
         </div>

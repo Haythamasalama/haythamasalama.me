@@ -24,7 +24,7 @@
         'Migrated legacy systems from MVC to a monolithic DDD structure, reducing complexity and easing future development.',
         'Integrated payment gateways and government services (e.g., Elm) to enable secure transactions and compliance.',
         'Improved performance through database redesign, queue processing, and rate limiting, making the system more efficient and stable.',
-        'Led cross-functional teams (front-end, back-end, mobile) to deliver reliable business and owner platforms.',
+        'Led cross-functional teams (front-end, back-end, mobile) to deliver reliable business and owner platforms.'
       ]
     },
     {
@@ -44,7 +44,7 @@
         'Developed a platform and an admin dashboard for collective real estate investments.',
         'Designed the platform architecture using DDD to ensure reliability and scalability for financial systems.',
         'Integrated payment gateways and governmental services (e.g., Elm) into the platform.',
-        'Collaborated with teams to build a high-traffic investment system with strong data security and compliance standards.',
+        'Collaborated with teams to build a high-traffic investment system with strong data security and compliance standards.'
       ]
     },
     {
