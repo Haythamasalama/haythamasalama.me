@@ -10,6 +10,10 @@ export default defineContentConfig({
       type: 'page',
       source: 'projects/**/*.md'
     }),
+    contributions: defineCollection({
+      type: 'page',
+      source: 'contributions/**/*.md'
+    }),
     technologies: defineCollection({
       type: 'data',
       source: 'technologies/**/*.yml',

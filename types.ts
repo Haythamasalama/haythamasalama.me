@@ -34,27 +34,6 @@ export type Tool = {
     createdAt?: number;
 };
 
-export type RepositoriesContributedTo = {
-  data: {
-    viewer: {
-      repositoriesContributedTo: {
-        nodes: {
-          nameWithOwner: string;
-          description?: string;
-          url: string;
-          owner: {
-            avatarUrl: string;
-          };
-        }[];
-        pageInfo: {
-          endCursor: string;
-          hasNextPage: boolean;
-        };
-      };
-    };
-  };
-};
-
 export type Experience = {
   title: string;
   employmentType: 'full-time' | 'part-time' | 'freelance';

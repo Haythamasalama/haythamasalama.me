@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-  import type { RepositoriesContributedTo } from '~/types';
-
   definePageMeta({
     title: 'Projects'
   });
@@ -11,63 +9,11 @@
       .all()
   );
 
-  const repos = ref<RepositoriesContributedTo>({
-    data: {
-      viewer: {
-        repositoriesContributedTo: {
-          nodes: [],
-          pageInfo: {
-            endCursor: '',
-            hasNextPage: true
-          }
-        }
-      }
-    }
-  });
-
-  const endCursor = ref('');
-
-  const { data: repositories, pending } = await useAsyncData<RepositoriesContributedTo>(
-    'repos',
-    () => $fetch('/api/github', {
-      params: {
-        endCursor: endCursor.value
-      }
-    }), {
-      watch: [endCursor]
-    }
+  const { data: contributions } = await useAsyncData('contributions', () =>
+    queryCollection('contributions')
+      .order('title', 'ASC')
+      .all()
   );
-
-  const loadMoreRepos = () => {
-    endCursor.value = repos.value.data.viewer.repositoriesContributedTo.pageInfo.endCursor;
-  };
-
-  const hasNextPage = computed(() => repos.value.data.viewer.repositoriesContributedTo.pageInfo.hasNextPage);
-
-  watch(
-    () => repositories.value,
-    (repositories) => {
-      if (!repositories?.data?.viewer) {
-        return;
-      }
-
-      repos.value = {
-        data: {
-          viewer: {
-            repositoriesContributedTo: {
-              ...repositories.data.viewer.repositoriesContributedTo,
-              nodes: [
-                ...(repos.value.data.viewer.repositoriesContributedTo.nodes || []),
-                ...(repositories.data.viewer.repositoriesContributedTo.nodes || [])
-              ]
-            }
-          }
-        }
-      };
-    },
-    { immediate: true }
-  );
-
 </script>
 
 <template>
@@ -80,34 +26,53 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full mt-4">
       <a
-        v-for="repo in repos?.data?.viewer?.repositoriesContributedTo.nodes"
-        :key="repo.nameWithOwner"
-        :href="repo.url"
+        v-for="contribution in contributions"
+        :key="contribution.path"
         target="_blank"
       >
         <Card
           class="h-full"
-          :title="repo.nameWithOwner"
-          :icon="{ path: repo.owner.avatarUrl, class: 'object-cover' }"
-          :description="repo.description"
+          :title="(contribution.meta?.name as string)"
+          horizontal
+          :icon="{
+            path: `https://github.com/${contribution.meta?.username}.png`,
+            class: 'object-cover',
+          }"
           truncate
-        />
+        >
+          <template #description>
+            <template v-if="contribution.meta.links">
+              <BaseLinkIcon  
+                v-for="(link, key) in contribution.meta.links"
+                :key="key"
+                :to="`https://github.com/${link}`"
+                :title="link"
+              />
+            </template>
+           
+            <BaseLinkIcon  
+              v-else
+              :to="(contribution.meta?.url as string)"
+            >
+              <template #title>
+                <span 
+                  v-for="(type, key) in contribution.meta?.types" 
+                  :key="key"
+                >
+                  {{ type }}
+                </span>
+              </template>
+            </BaseLinkIcon>
+          </template>
+        </Card>
       </a>
     </div>
 
-    <div v-if="pending">
-      <Card class="justify-center mt-4" title="Loading..." />
-    </div>
-
-    <Alert to="https://github.com/HaythamaSalama/cipherTool" title="Check My GitHub Account" class="mt-8">
+    <Alert to="https://github.com/HaythamaSalama/" title="Check My GitHub Account" class="mt-8">
       <template #leading>
         <IconGithub class="fill-white" />
       </template>
     </Alert>
-
-    <div v-if="hasNextPage" class="my-8 w-full text-center">
-      <BaseButton more @click="loadMoreRepos" />
-    </div>
   </section>
 
   <section class="mb-4">

@@ -2,7 +2,7 @@
   const NuxtLink = resolveComponent('NuxtLink');
 
   const props = defineProps<Partial<{
-    title: string;
+    title?: string;
     description: string;
     readMore: string;
     icon: Partial<{
@@ -55,13 +55,15 @@
             {{ title }}
           </h5>
 
-          <p v-if="description" class="text-gray-400 w-full">
-            {{ textDescription }}
+          <slot name="description">
+            <p v-if="description" class="text-gray-400 w-full">
+              {{ textDescription }}
 
-            <NuxtLink v-if="readMore" :to="readMore" class="text-primary">
-              more
-            </NuxtLink>
-          </p>
+              <NuxtLink v-if="readMore" :to="readMore" class="text-primary">
+                more
+              </NuxtLink>
+            </p>
+          </slot>
 
           <p v-if="date" class="text-gray-400">
             {{ date }}
