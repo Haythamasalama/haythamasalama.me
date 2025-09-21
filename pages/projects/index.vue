@@ -25,26 +25,26 @@
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full mt-4">
-      <a
+      <Card
         v-for="contribution in contributions"
         :key="contribution.path"
         target="_blank"
+        class="h-full"
+        :title="(contribution.meta?.name as string)"
+        horizontal
+        :capitalize="false"
+        :icon="{
+          path: `https://github.com/${contribution.meta?.username}.png`,
+          class: 'object-cover',
+        }"
       >
-        <Card
-          class="h-full"
-          :title="(contribution.meta?.name as string)"
-          horizontal
-          :icon="{
-            path: `https://github.com/${contribution.meta?.username}.png`,
-            class: 'object-cover',
-          }"
-          truncate
-        >
-          <template #description>
+        <template #description>
+          <div class="mt-2">
             <template v-if="contribution.meta.links">
               <BaseLinkIcon  
                 v-for="(link, key) in contribution.meta.links"
                 :key="key"
+                class="mb-1"
                 :to="`https://github.com/${link}`"
                 :title="link"
               />
@@ -53,6 +53,7 @@
             <BaseLinkIcon  
               v-else
               :to="(contribution.meta?.url as string)"
+              class="mb-1"
             >
               <template #title>
                 <span 
@@ -63,9 +64,9 @@
                 </span>
               </template>
             </BaseLinkIcon>
-          </template>
-        </Card>
-      </a>
+          </div>
+        </template>
+      </Card>
     </div>
 
     <Alert to="https://github.com/HaythamaSalama/" title="Check My GitHub Account" class="mt-8">

@@ -9,9 +9,10 @@
 </script>
 
 <template>
-  <NuxtLink  
-    class="flex items-center text-primary transition-primary gap-x-2"
+  <Component
+    :is="to ? NuxtLink : 'a'"
     :to="to"
+    class="flex items-center text-primary transition-primary gap-x-2"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,5 +28,5 @@
     <slot name="title">
       {{ title }}
     </slot>
-  </NuxtLink>
+  </Component>
 </template>

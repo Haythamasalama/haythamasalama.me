@@ -1,21 +1,27 @@
 <script lang="ts" setup>
   const NuxtLink = resolveComponent('NuxtLink');
 
-  const props = defineProps<Partial<{
+  const props = withDefaults(defineProps<Partial<{
     title?: string;
-    description: string;
-    readMore: string;
-    icon: Partial<{
+    description?: string;
+    readMore?: string;
+    icon?: Partial<{
       path: string;
       class: string;
       isText: boolean;
     }>;
     image: string;
-    truncate: boolean;
+    truncate?: boolean;
+    capitalize?: boolean;
     date: string;
-    horizontal: boolean;
+    horizontal?: boolean;
     to?: string;
-  }>>();
+  }>>(), {
+    capitalize: true,
+    truncate: true,
+    horizontal: false,
+    to: ''
+  });
 
   const textDescription = computed(() => props.truncate && props.description ? props.description.slice(0, 40) + '...' : props.description);
 </script>
@@ -37,7 +43,13 @@
             :src="icon.path"
             :alt="title"
           >
-          <div v-if="!icon.path && icon?.isText && title" class="text-2xl  p-3 rounded-md shadow-md bg-gray-600 border text-white text-center capitalize">
+          <div
+            v-if="!icon.path && icon?.isText && title" 
+            class="text-2xl p-3 rounded-md shadow-md bg-gray-600 border text-white text-center"
+            :class="{
+              'capitalize': capitalize,
+            }"
+          >
             {{ title[0] }}{{ title[title.length - 1] }}
           </div>
         </div>
@@ -51,7 +63,12 @@
             >
           </div>
 
-          <h5 class="text-white capitalize w-full">
+          <h5
+            class="text-white w-full"
+            :class="{
+              'capitalize': capitalize,
+            }"
+          >
             {{ title }}
           </h5>
 
