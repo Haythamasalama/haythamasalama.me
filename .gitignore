@@ -4,5 +4,12 @@ node_modules
 .nitro
 .cache
 .output
+.data
 .env
+.env.*
+!.env.example
+.vercel
 dist
+.DS_Store
+.idea
+.agents

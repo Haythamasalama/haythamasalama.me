@@ -1,5 +1,6 @@
 ---
 title: How to Contribute to Open-Source Projects ?
+description: 'Practical ways to contribute to open-source projects, from features and docs to bug fixes, with real examples.'
 author: 
   username: 'haythamasalama'
   platform: 'twitter'

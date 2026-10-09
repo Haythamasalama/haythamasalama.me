@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      nuxt:
+        patterns: ['nuxt', '@nuxt/*', '@nuxtjs/*', 'vue', 'vue-router', 'better-sqlite3']
+      tailwind:
+        patterns: ['tailwindcss', '@tailwindcss/*']
+      tooling:
+        patterns: ['eslint', 'typescript', 'vue-tsc']
+      security:
+        applies-to: security-updates
+        patterns: ['*']
+    ignore:
+      # typescript-eslint and vue-tsc do not support the TypeScript 7 native compiler yet.
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
