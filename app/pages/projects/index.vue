@@ -35,13 +35,13 @@
         :capitalize="false"
         :icon="{
           path: `https://github.com/${contribution.meta?.username}.png`,
-          class: 'object-cover',
+          class: 'object-cover'
         }"
       >
         <template #description>
           <div class="mt-2">
             <template v-if="contribution.meta.links">
-              <BaseLinkIcon  
+              <BaseLinkIcon
                 v-for="(link, key) in contribution.meta.links"
                 :key="key"
                 class="mb-1"
@@ -49,15 +49,15 @@
                 :title="link"
               />
             </template>
-           
-            <BaseLinkIcon  
+
+            <BaseLinkIcon
               v-else
               :to="(contribution.meta?.url as string)"
               class="mb-1"
             >
               <template #title>
-                <span 
-                  v-for="(type, key) in contribution.meta?.types" 
+                <span
+                  v-for="(type, key) in contribution.meta?.types"
                   :key="key"
                 >
                   {{ type }}

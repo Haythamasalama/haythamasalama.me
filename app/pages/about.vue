@@ -152,7 +152,7 @@
   <section class="flex flex-col mt-4 mb-8 text-gray-100 border-t-2 pt-8">
     <SubTitle>Work Experience</SubTitle>
 
-    <WrokExperienceSection
+    <WorkExperienceSection
       v-for="(experience, key) in workExperience"
       :key="key"
       v-bind="experience"

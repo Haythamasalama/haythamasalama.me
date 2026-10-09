@@ -3,7 +3,7 @@
     post: Partial<{
       author: {
         username: string;
-        platform?: 'github'|'twitter';
+        platform?: 'github' | 'twitter';
       };
       date: string;
       tags: string[];

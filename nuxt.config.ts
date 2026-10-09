@@ -1,9 +1,11 @@
-export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
+import tailwindcss from '@tailwindcss/vite';
 
-  runtimeConfig: {
-      githubToken: ''
-  },
+export default defineNuxtConfig({
+  modules: ['@nuxt/content', '@nuxt/eslint'],
+
+  devtools: { enabled: true },
+
+  css: ['~/assets/css/main.css'],
 
   content: {
     build: {
@@ -12,15 +14,28 @@ export default defineNuxtConfig({
           theme: 'one-dark-pro',
           preload: [
             'html', 'css', 'bash', 'javascript', 'typescript',
-            'json', 'scss', 'php', 'python', 'sql', 'vue', 'java', 'json'
+            'json', 'scss', 'php', 'python', 'sql', 'vue', 'java'
           ]
         }
       }
     }
   },
 
-  tailwindcss: {
-    cssPath: '~/assets/css/main.css',
-    configPath: '~/tailwind.config.js'
+  compatibilityDate: '2026-10-01',
+
+  vite: {
+    plugins: [tailwindcss()]
+  },
+
+  eslint: {
+    config: {
+      stylistic: {
+        semi: true,
+        quotes: 'single',
+        commaDangle: 'never',
+        braceStyle: 'stroustrup',
+        arrowParens: false
+      }
+    }
   }
 });

@@ -44,10 +44,10 @@
             :alt="title"
           >
           <div
-            v-if="!icon.path && icon?.isText && title" 
+            v-if="!icon.path && icon?.isText && title"
             class="text-2xl p-3 rounded-md shadow-md bg-gray-600 border text-white text-center"
             :class="{
-              'capitalize': capitalize,
+              capitalize: capitalize
             }"
           >
             {{ title[0] }}{{ title[title.length - 1] }}
@@ -66,7 +66,7 @@
           <h5
             class="text-white w-full"
             :class="{
-              'capitalize': capitalize,
+              capitalize: capitalize
             }"
           >
             {{ title }}
