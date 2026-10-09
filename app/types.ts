@@ -16,6 +16,14 @@ export const toolCategories = [
   'chrome extension'
 ];
 
+// Display names for tool categories whose stored value is not already proper case.
+export const toolCategoryLabels: Record<string, string> = {
+  'ux-ui': 'UX/UI',
+  'qr generator': 'QR generator',
+  'pdf': 'PDF',
+  'css generator': 'CSS generator'
+};
+
 export const technologyCategories = [
   'main stack',
   'back end',

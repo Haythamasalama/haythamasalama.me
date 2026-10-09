@@ -56,7 +56,7 @@
 
   <div class="flex flex-col items-center w-full border-b-2 mt-2 py-10">
     <h3 class="title-heading-primary text-center mb-8">
-      I Used To Build Great Application
+      What I Use To Build Great Applications
     </h3>
 
     <ul class="grid grid-cols-1 md:grid-cols-3 lg:grid-flow-col gap-x-10 gap-y-4 text-gray-400 capitalize mb-8">
@@ -82,6 +82,7 @@
         :key="technology.name"
         target="_blank"
         :to="technology.website"
+        :capitalize="false"
         :title="technology.name"
         :icon="{ path: technology.icon }"
         :description="technology.description"

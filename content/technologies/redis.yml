@@ -1,5 +1,5 @@
 name: Redis
-description: Database In Memory
+description: In-Memory Database
 icon: '/icons/redis.svg'
 website: https://redis.io/
 category:

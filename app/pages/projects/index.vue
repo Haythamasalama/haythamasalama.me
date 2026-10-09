@@ -23,7 +23,7 @@
     <SubTitle> Open Source </SubTitle>
 
     <p class="text-gray-400 mt-4">
-      I am a big fan of open source software and I try to contribute to it as much as I can.
+      I am a big fan of open-source software, and I try to contribute to it as much as I can.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full mt-4">
@@ -81,7 +81,7 @@
     <SubTitle> Work Experience </SubTitle>
 
     <p class="text-gray-400 mt-4">
-      I have worked on many projects in different fields, here are some of them.
+      I have worked on many projects in different fields; here are some of them.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full mt-4">

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { toolCategories } from '@/types';
+  import { toolCategories, toolCategoryLabels } from '@/types';
 
   definePageMeta({
     title: 'Tools'
@@ -46,7 +46,7 @@
         :aria-pressed="selectedCategory === category"
         @click="toggleCategory(category)"
       >
-        {{ category }}
+        {{ toolCategoryLabels[category] ?? category }}
       </button>
     </div>
 
@@ -58,6 +58,7 @@
         :to="tool.website"
         target="_blank"
         horizontal
+        :capitalize="false"
         :title="tool.name"
         :description="tool.description"
         :icon="{ path: tool.icon, isText: true, class: 'object-cover' }"

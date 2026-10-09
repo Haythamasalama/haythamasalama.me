@@ -8,7 +8,7 @@ date: '2023-01-16'
 readTime: '1 min'
 ---
 
-### 1. Install Pritter
+### 1. Install Prettier
 
 ```bash
 npm install --save-dev --save-exact prettier
@@ -16,7 +16,7 @@ npm install --save-dev --save-exact prettier
 
 ### 2. Create Prettier Configuration File
 
-Create a `.prettierrc` file and paste your configuration into it. For more options, refer to the [ Prettier documentation.](https://prettier.io/docs/en/options.html)
+Create a `.prettierrc` file and paste your configuration into it. For more options, refer to the [Prettier documentation](https://prettier.io/docs/en/options.html).
 
 ```json
 {
@@ -44,7 +44,7 @@ npm pkg set scripts.prepare="husky install"
 npx husky add .husky/pre-commit "lint-staged"
 ```
 
-## 4. Update `package.json` with Lint-Staged Configuration
+### 4. Update `package.json` with lint-staged Configuration
 
 ```json
  "lint-staged": {
@@ -55,10 +55,10 @@ npx husky add .husky/pre-commit "lint-staged"
 
 ### References
 
-- [lint staged](https://github.com/okonet/lint-staged)
+- [lint-staged](https://github.com/okonet/lint-staged)
 
-- [husky](https://github.com/typicode/husky)
+- [Husky](https://github.com/typicode/husky)
 
-- [prettier options](https://prettier.io/docs/en/options.html)
+- [Prettier options](https://prettier.io/docs/en/options.html)
 
-- [prettier precommit](https://prettier.io/docs/en/precommit.html)
+- [Prettier pre-commit hook](https://prettier.io/docs/en/precommit.html)

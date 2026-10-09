@@ -10,7 +10,7 @@
   <section
     v-for="(use, key) in uses"
     :key="key"
-    class="flex flex-col text-gray-100 capitalize"
+    class="flex flex-col text-gray-100"
   >
     <SubTitle>{{ use.title }}</SubTitle>
 
@@ -20,7 +20,7 @@
         :key="index"
         class="my-1"
       >
-        {{ item.label }} {{ item.description ? ` :  ${item.description}` : '' }}
+        {{ item.label }}{{ item.description ? `: ${item.description}` : '' }}
 
         <ul v-if="item.list" class="list-disc list-outside px-4 mt-1 text-justify">
           <li v-for="(listItem, indexItem) in item.list" :key="indexItem">

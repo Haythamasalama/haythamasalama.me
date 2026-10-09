@@ -1,4 +1,4 @@
-name: Postgresql
+name: PostgreSQL
 description: Relational Database
 icon: '/icons/postgresql.svg'
 website: https://www.postgresql.org/

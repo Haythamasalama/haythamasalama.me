@@ -1,5 +1,5 @@
-name: SASS
-description: Preprocessor scripting for CSS
+name: Sass
+description: CSS Preprocessor
 icon: '/icons/sass.svg'
 website: https://sass-lang.com/
 category:
