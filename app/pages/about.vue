@@ -13,7 +13,7 @@
         url: 'https://winch.sa/'
       },
       startDate: 'Feb 2023',
-      endDate: 'present',
+      endDate: 'Present',
       employmentType: 'full-time',
       location: {
         name: 'Jeddah, Saudi Arabia',
@@ -34,7 +34,7 @@
         url: 'https://investsanad.sa/'
       },
       startDate: 'May 2024',
-      endDate: 'present',
+      endDate: 'Present',
       employmentType: 'part-time',
       location: {
         name: 'Jeddah, Saudi Arabia',
@@ -50,11 +50,11 @@
     {
       title: 'Full-Stack Developer',
       company: {
-        name: 'Faris petrol company',
+        name: 'Faris Petrol Company',
         url: 'https://fpco.co'
       },
       startDate: 'Nov 2019',
-      endDate: 'April 2023',
+      endDate: 'Apr 2023',
       employmentType: 'full-time',
       location: {
         name: 'Palestine'
@@ -75,7 +75,7 @@
         url: 'https://weptric.com'
       },
       startDate: 'Dec 2019',
-      endDate: 'March 2023',
+      endDate: 'Mar 2023',
       employmentType: 'full-time',
       location: {
         name: 'Palestine'
@@ -85,7 +85,7 @@
       ]
     },
     {
-      title: 'Freelancer Web Developer',
+      title: 'Freelance Web Developer',
       startDate: 'Apr 2016',
       endDate: 'Feb 2018',
       employmentType: 'freelance',
@@ -101,7 +101,7 @@
   <section class="flex flex-col sm:flex-row sm:items-center mb-8">
     <div class="flex flex-col sm:w-3/5 order-2 sm:order-1">
       <h3 class="text-2xl sm:text-4xl font-bold text-white mt-4 sm:mt-0 flex-wrap">
-        Hi 👋 , I'm
+        Hi 👋, I'm
         <span class="text-primary-gradient">
           Haytham A. Salama
         </span>
@@ -135,10 +135,10 @@
       and how to install Windows.<br><br>
 
       And after a while, I started learning graphic design and editing videos using different programs such as
-      Photoshop, Illustrator, Premiere, After Effect, etc. Then I provided this service on freelance sites. Then I
+      Photoshop, Illustrator, Premiere, After Effects, etc. Then I provided this service on freelance sites. Then I
       started learning new things about programming, like programming desktop applications and other fields down to web
       applications. I started my journey on the web when I was 15 years old. I started learning the basics, such as
-      HTML, CSS, and JS. Then I started gradually, providing services for building websites and WordPress, selling
+      HTML, CSS, and JS. Then I gradually started providing services for building websites and WordPress, selling
       templates, etc., and gradually completing my learning roadmap and work so far.<br><br>
 
       During the learning journey, I used resources that helped me, such as Google, YouTube, various sites, and daily
@@ -146,8 +146,8 @@
       I started studying software engineering with a Bachelor's degree and working with different organizations in the
       software industry field.<br><br>
 
-      I'm planning to study for a master's degree in machine learning, and I aspire to have an associate professor
-      degree in it and achieve international awards.
+      I'm planning to study for a master's degree in machine learning, and I aspire to become an associate professor
+      in it and achieve international awards.
     </p>
   </section>
 
@@ -160,7 +160,7 @@
       v-bind="experience"
     />
 
-    <Alert to="https://www.linkedin.com/in/haythamasalama/" title="Check My Linkedin Account" class="mt-4">
+    <Alert to="https://www.linkedin.com/in/haythamasalama/" title="Check My LinkedIn Account" class="mt-4">
       <template #leading>
         <IconLinkedin class="fill-white" />
       </template>

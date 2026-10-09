@@ -28,21 +28,21 @@
     </div>
 
     <div v-if="post.date">
-      <span class="text-gray-400 me-2">Date :</span>
+      <span class="text-gray-400 me-2">Date:</span>
       <time :datetime="post.date">
         {{ post.date }}
       </time>
     </div>
 
     <div v-if="post.tags?.length">
-      <span class="text-gray-400 me-2">Tags :</span>
+      <span class="text-gray-400 me-2">Tags:</span>
       <span>
         {{ post.tags.join(' , ') }}
       </span>
     </div>
 
     <div v-if="post.readTime">
-      <span class="text-gray-400 me-2"> Read Time :</span>
+      <span class="text-gray-400 me-2">Read Time:</span>
       <span>
         {{ post.readTime }}
       </span>

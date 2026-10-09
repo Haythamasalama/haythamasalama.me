@@ -1,47 +1,46 @@
-title: Softwares
-items :
-  - label: Browsers 
+title: Software
+items:
+  - label: Browsers
     list:
-     - Chrome 
-     - Safari
+      - Chrome
+      - Safari
 
-  - label: IDEs 
+  - label: IDEs
     list:
-     - VS Code 
-     - Php Storm
-     - Intellij Idea
-     - Pycharm
+      - VS Code
+      - PhpStorm
+      - IntelliJ IDEA
+      - PyCharm
 
   - label: Database
     list:
-     - MySQL Workbench
-     - Sequel Ace
-     
-  - label: Terminal  
-    list:
-     - iTerm2 & oh my zsh
-     
-  - label: Productivity  
-    list:
-     - Notions
-     - Google Docs
-     - Notability
-     - Draw.Io
-     - Toggle
-     - GitHub Projects
+      - MySQL Workbench
+      - Sequel Ace
 
-  - label: Design And Editing Video  
+  - label: Terminal
     list:
-     - Photoshop
-     - Illustrator
-     - Figma
-     - OBS Studio
-     - Audacity
-     - Premiere Pro
+      - iTerm2 & Oh My Zsh
 
-  - label: other
+  - label: Productivity
     list:
-     - Telegram
-     - KeyPass
-     - Everything
-  
+      - Notion
+      - Google Docs
+      - Notability
+      - draw.io
+      - Toggl
+      - GitHub Projects
+
+  - label: Design & Video Editing
+    list:
+      - Photoshop
+      - Illustrator
+      - Figma
+      - OBS Studio
+      - Audacity
+      - Premiere Pro
+
+  - label: Other
+    list:
+      - Telegram
+      - KeePass
+      - Everything
