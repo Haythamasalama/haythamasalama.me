@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-  import { technologyCatogories } from '@/types';
+  import { technologyCategories } from '@/types';
 
-  const selectedTechnology = ref(technologyCatogories[0]);
+  const selectedTechnology = ref(technologyCategories[0]);
 
   const { data: technologies } = await useAsyncData(
-    'technologies',
+    'home-technologies',
     () => queryCollection('technologies')
       .where('category', 'LIKE', `%${selectedTechnology.value}%`)
       .all(),
@@ -14,9 +14,9 @@
   );
 
   const { data: articles } = await useAsyncData(
-    'articles',
+    'home-latest-articles',
     () => queryCollection('articles')
-      .order('path', 'DESC')
+      .order('date', 'DESC')
       .limit(3)
       .all()
   );
@@ -29,6 +29,9 @@
         class="lg:mt-4 rounded-full w-[180px] h-[180px]"
         src="https://avatars.githubusercontent.com/u/37311945?v=4"
         alt="Haytham A. Salama"
+        width="180"
+        height="180"
+        fetchpriority="high"
       >
     </div>
 
@@ -42,12 +45,12 @@
       <p class="text-gray-100 mt-4 lg:text-justify">
         Full-stack software engineer with 5+ years of experience building scalable logistics and fintech platforms. Specialized in Domain-Driven Design (DDD) and modern stacks (Laravel, Vue.js, Nuxt.js, TypeScript). Experienced in leading cross-functional teams and delivering high-performance systems. Passionate about open-source contributions and applying clean architecture to complex business challenges.
       </p>
-      <RouterLink
+      <NuxtLink
         class="flex justify-center items-center lg:justify-start text-primary gap-x-0.5 my-6"
         to="/about"
       >
         About <IconArrowRight />
-      </RouterLink>
+      </NuxtLink>
     </div>
   </section>
 
@@ -58,16 +61,18 @@
 
     <ul class="grid grid-cols-1 md:grid-cols-3 lg:grid-flow-col gap-x-10 gap-y-4 text-gray-400 capitalize mb-8">
       <li
-        v-for="(category, key) in technologyCatogories"
-        :key="key"
+        v-for="category in technologyCategories"
+        :key="category"
       >
-        <div
-          class="hover:text-white transition-primary cursor-pointer text-center"
+        <button
+          type="button"
+          class="hover:text-white transition-primary cursor-pointer text-center capitalize w-full"
           :class="{ 'text-white rounded': selectedTechnology === category }"
+          :aria-pressed="selectedTechnology === category"
           @click="selectedTechnology = category"
         >
           {{ category }}
-        </div>
+        </button>
       </li>
     </ul>
 
@@ -96,7 +101,7 @@
         class="flex flex-col justify-start"
         :to="post.path"
         :title="post.title"
-        :date="post.meta?.date as string"
+        :date="post.date"
       />
     </div>
   </div>

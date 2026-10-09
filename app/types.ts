@@ -1,4 +1,4 @@
-export const toolCatogories = [
+export const toolCategories = [
   'windows tool',
   'website online',
   'video downloader',
@@ -16,7 +16,7 @@ export const toolCatogories = [
   'chrome extension'
 ];
 
-export const technologyCatogories = [
+export const technologyCategories = [
   'main stack',
   'back end',
   'front end',
@@ -24,14 +24,9 @@ export const technologyCatogories = [
   'programming language'
 ];
 
-export type Tool = {
+export type MenuItem = {
   name: string;
-  description: string;
-  icon?: string;
-  website: string;
-  category: string;
-  tags?: string[];
-  createdAt?: number;
+  path: string;
 };
 
 export type Experience = {

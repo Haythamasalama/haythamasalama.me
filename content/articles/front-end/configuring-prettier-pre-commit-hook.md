@@ -1,6 +1,6 @@
 ---
 title: Configuring Prettier pre-commit hook
-description: 'meta description of the page'
+description: 'Set up Prettier with Husky and lint-staged so staged files are formatted automatically on every commit.'
 author: 
   username: 'haythamasalama'
   platform: 'twitter'

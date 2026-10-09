@@ -1,6 +1,6 @@
 ---
 title: Setting Up Authentication for Laravel Single Page Applications (SPA)
-description: 'meta description of the page'
+description: 'Configure CORS, session domain and Sanctum stateful domains to authenticate a Laravel SPA running on a separate frontend.'
 author: 
   username: 'haythamasalama'
   platform: 'twitter'

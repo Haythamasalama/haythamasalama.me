@@ -24,20 +24,20 @@
   <div class="flex flex-col sm:flex-row gap-2 sm:gap-x-5 text-gray-400 border-b pb-6">
     <div v-if="post.author?.username" class="flex items-center text-secondary">
       <span>@</span>
-      <a :href="urlAuthor"> {{ post.author.username }} </a>
+      <a :href="urlAuthor" target="_blank" rel="noopener noreferrer"> {{ post.author.username }} </a>
     </div>
 
     <div v-if="post.date">
       <span class="text-gray-400 me-2">Date :</span>
-      <span>
+      <time :datetime="post.date">
         {{ post.date }}
-      </span>
+      </time>
     </div>
 
-    <div v-if="post.tags">
+    <div v-if="post.tags?.length">
       <span class="text-gray-400 me-2">Tags :</span>
       <span>
-        {{ post.tags?.join(' , ') }}
+        {{ post.tags.join(' , ') }}
       </span>
     </div>
 

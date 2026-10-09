@@ -4,15 +4,36 @@ export default defineContentConfig({
   collections: {
     articles: defineCollection({
       type: 'page',
-      source: 'articles/**/*.md'
+      source: 'articles/**/*.md',
+      schema: z.object({
+        author: z.object({
+          username: z.string(),
+          platform: z.enum(['github', 'twitter']).optional()
+        }).optional(),
+        date: z.string(),
+        readTime: z.string().optional(),
+        tags: z.array(z.string()).optional()
+      })
     }),
     projects: defineCollection({
       type: 'page',
-      source: 'projects/**/*.md'
+      source: 'projects/**/*.md',
+      schema: z.object({
+        startAt: z.string(),
+        endAt: z.string(),
+        associated: z.string().optional()
+      })
     }),
     contributions: defineCollection({
       type: 'page',
-      source: 'contributions/**/*.md'
+      source: 'contributions/**/*.md',
+      schema: z.object({
+        name: z.string(),
+        username: z.string(),
+        types: z.array(z.string()),
+        links: z.array(z.string()).optional(),
+        url: z.string().optional()
+      })
     }),
     technologies: defineCollection({
       type: 'data',
@@ -34,7 +55,7 @@ export default defineContentConfig({
         icon: z.string().optional(),
         website: z.string().optional(),
         category: z.string(),
-        tags: z.array(z.string())
+        tags: z.array(z.string()).optional()
       })
     }),
     uses: defineCollection({

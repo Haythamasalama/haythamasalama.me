@@ -21,6 +21,20 @@ export default defineNuxtConfig({
     }
   },
 
+  routeRules: {
+    '/**': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'SAMEORIGIN',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+      }
+    },
+    // Gists come from the rate-limited GitHub API, so cache the rendered page for an hour.
+    '/snippets': { swr: 3600 },
+    '/sitemap.xml': { prerender: true }
+  },
+
   compatibilityDate: '2026-10-01',
 
   vite: {

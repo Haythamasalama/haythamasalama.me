@@ -7,9 +7,9 @@
 <template>
   <h2 :id="id">
     <NuxtLink :href="`#${id}`" class="group">
-      <div class="-ms-12 p-1 rounded-md inline-flex opacity-0 group-hover:opacity-100 transition-opacity absolute bg-primary-gradient shadow">
+      <span class="-ms-12 p-1 rounded-md inline-flex opacity-0 group-hover:opacity-100 transition-opacity absolute bg-primary-gradient shadow" aria-hidden="true">
         <IconHashtag class="w-4 h-4 text-white" />
-      </div>
+      </span>
 
       <slot />
     </NuxtLink>

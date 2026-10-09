@@ -23,7 +23,15 @@
     to: ''
   });
 
-  const textDescription = computed(() => props.truncate && props.description ? props.description.slice(0, 40) + '...' : props.description);
+  const maxDescriptionLength = 40;
+
+  const textDescription = computed(() => {
+    if (!props.truncate || !props.description || props.description.length <= maxDescriptionLength) {
+      return props.description;
+    }
+
+    return `${props.description.slice(0, maxDescriptionLength)}...`;
+  });
 </script>
 
 <template>
@@ -42,6 +50,10 @@
             :class="icon.class"
             :src="icon.path"
             :alt="title"
+            width="50"
+            height="50"
+            loading="lazy"
+            decoding="async"
           >
           <div
             v-if="!icon.path && icon?.isText && title"
@@ -60,6 +72,8 @@
               :src="image"
               :alt="title"
               class="h-[180px] w-full object-cover rounded-t"
+              loading="lazy"
+              decoding="async"
             >
           </div>
 
@@ -76,7 +90,9 @@
             <p v-if="description" class="text-gray-400 w-full">
               {{ textDescription }}
 
-              <NuxtLink v-if="readMore" :to="readMore" class="text-primary">
+              <!-- The whole card is already a link, so avoid nesting <a> elements. -->
+              <span v-if="readMore && to" class="text-primary">more</span>
+              <NuxtLink v-else-if="readMore" :to="readMore" class="text-primary">
                 more
               </NuxtLink>
             </p>

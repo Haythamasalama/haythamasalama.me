@@ -10,10 +10,10 @@
   <Component
     :is="to ? NuxtLink : 'div'"
     :to="to"
+    :target="to ? '_blank' : undefined"
     class="flex items-center text-white border-4 mb-4 transition-primary py-4 px-3 rounded-md hover:rounded-xl hover:bg-primary-gradient hover:ring-2 gap-x-3 relative"
-    target="_blank"
   >
-    <span v-if="to" class="absolute right-2 top-2">
+    <span v-if="to" class="absolute right-2 top-2" aria-hidden="true">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -26,6 +26,6 @@
       </svg>
     </span>
 
-    <ContentSlot :use="$slots.default" unwrap="p" />
-  </component>
+    <slot mdc-unwrap="p" />
+  </Component>
 </template>

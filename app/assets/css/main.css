@@ -41,10 +41,12 @@
   }
 }
 
+/* Inter variable font: declare the full weight range so browsers use real weights instead of synthesizing bold. */
 @font-face {
   font-family: "Inter";
+  font-weight: 100 900;
   font-display: swap;
-  src: local("Inter"), url(~/assets/fonts/Inter.ttf) format("woff2");
+  src: local("Inter"), url(~/assets/fonts/Inter.woff2) format("woff2");
 }
 
 @utility bg-primary-gradient {

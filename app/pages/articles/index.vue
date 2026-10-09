@@ -3,7 +3,11 @@
     title: 'Articles'
   });
 
-  const { data: articles } = await useAsyncData('articles', () => queryCollection('articles').all());
+  const { data: articles } = await useAsyncData('articles', () =>
+    queryCollection('articles')
+      .order('date', 'DESC')
+      .all()
+  );
 </script>
 
 <template>
@@ -15,7 +19,7 @@
         :title="article.title"
         :description="article.description"
         :read-more="article.path"
-        :date="`${article.meta.date}`"
+        :date="article.date"
         :to="article.path"
         truncate
       />

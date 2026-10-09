@@ -5,9 +5,9 @@
 </script>
 
 <template>
-  <div class="d-flex">
-    <h2 class="text-4xl font-bold text-primary-gradient capitalize">
+  <div>
+    <h1 class="text-4xl font-bold text-primary-gradient capitalize">
       {{ title }}
-    </h2>
+    </h1>
   </div>
 </template>

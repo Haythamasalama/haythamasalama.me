@@ -1,44 +1,61 @@
 <script lang="ts" setup>
+  import interFont from '~/assets/fonts/Inter.woff2?url';
+
   const app = useAppConfig();
   const route = useRoute();
 
+  const canonicalUrl = computed(() => `${app.url}${route.path === '/' ? '' : route.path}`);
+
   useHead({
-    titleTemplate: () => (route.meta?.title ? `${route.meta?.title} | Haytham Salama` : app.title),
-    link: [{ rel: 'icon', type: 'image/png', href: '/images/icon.jpg' }],
+    htmlAttrs: { lang: 'en' },
+    bodyAttrs: { class: 'bg-gray-600' },
+    title: () => route.meta?.title as string | undefined,
+    titleTemplate: titleChunk => (titleChunk ? `${titleChunk} | Haytham Salama` : app.title),
     meta: [
-      { hid: 'robots', name: 'robots', content: 'index, follow' },
-      { hid: 'viewport', name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: app.description },
-      { hid: 'keywords', name: 'keywords', content: app.keywords },
-      { hid: 'og:site_name', property: 'og:site_name', content: app.author.name },
-      { hid: 'og:url', property: 'og:url', content: 'https://haythamasalama.me' },
-      { hid: 'og:description', property: 'og:description', content: app.description },
-      { hid: 'og:type', property: 'og:type', content: 'website' },
-      { hid: 'og:image', property: 'og:image', content: '/images/opengraph-logo.jpg' }
+      { name: 'keywords', content: app.keywords }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/jpeg', href: '/images/icon.jpg' },
+      { rel: 'preload', as: 'font', type: 'font/woff2', href: interFont, crossorigin: '' },
+      { rel: 'canonical', href: canonicalUrl }
     ]
+  });
+
+  useSeoMeta({
+    robots: 'index, follow',
+    description: app.description,
+    author: app.author.name,
+    ogSiteName: app.author.name,
+    ogUrl: canonicalUrl,
+    ogTitle: () => (route.meta?.title ? `${route.meta.title} | Haytham Salama` : app.title),
+    ogDescription: app.description,
+    ogType: 'website',
+    ogImage: `${app.url}/images/opengraph-logo.jpg`,
+    ogImageWidth: 500,
+    ogImageHeight: 500,
+    ogImageAlt: app.author.name,
+    twitterCard: 'summary',
+    twitterSite: '@haythamasalama',
+    twitterCreator: '@haythamasalama'
   });
 </script>
 
 <template>
-  <Html lang="en">
-    <Body class="bg-gray-600">
-      <main class="flex flex-col container mx-auto sm:px-4 px-8 min-h-screen">
-        <BaseHeader :menus="app.menus.header" />
+  <main class="flex flex-col container mx-auto sm:px-4 px-8 min-h-screen">
+    <BaseHeader :menus="app.menus.header" />
 
-        <section class="flex flex-col w-full mt-10 justify-start mb-8">
-          <h2 v-if="route.meta?.title" class="title-heading-primary font-extrabold mb-12">
-            {{ route.meta.title }}
-          </h2>
+    <section class="flex flex-col w-full mt-10 justify-start mb-8">
+      <h1 v-if="route.meta?.title" class="title-heading-primary font-extrabold mb-12">
+        {{ route.meta.title }}
+      </h1>
 
-          <div>
-            <NuxtLayout>
-              <NuxtPage />
-            </NuxtLayout>
-          </div>
-        </section>
+      <div>
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+      </div>
+    </section>
 
-        <BaseFooter :menus="app.menus.footer" class="mt-auto" />
-      </main>
-    </Body>
-  </Html>
+    <BaseFooter :menus="app.menus.footer" class="mt-auto" />
+  </main>
 </template>

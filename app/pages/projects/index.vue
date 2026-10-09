@@ -14,6 +14,8 @@
       .order('title', 'ASC')
       .all()
   );
+
+  const githubUrl = (path: string) => `https://github.com/${path}`;
 </script>
 
 <template>
@@ -28,37 +30,36 @@
       <Card
         v-for="contribution in contributions"
         :key="contribution.path"
-        target="_blank"
         class="h-full"
-        :title="(contribution.meta?.name as string)"
+        :title="contribution.name"
         horizontal
         :capitalize="false"
         :icon="{
-          path: `https://github.com/${contribution.meta?.username}.png`,
+          path: `${githubUrl(contribution.username)}.png`,
           class: 'object-cover'
         }"
       >
         <template #description>
           <div class="mt-2">
-            <template v-if="contribution.meta.links">
+            <template v-if="contribution.links">
               <BaseLinkIcon
-                v-for="(link, key) in contribution.meta.links"
-                :key="key"
+                v-for="link in contribution.links"
+                :key="link"
                 class="mb-1"
-                :to="`https://github.com/${link}`"
+                :to="githubUrl(link)"
                 :title="link"
               />
             </template>
 
             <BaseLinkIcon
               v-else
-              :to="(contribution.meta?.url as string)"
+              :to="contribution.url"
               class="mb-1"
             >
               <template #title>
                 <span
-                  v-for="(type, key) in contribution.meta?.types"
-                  :key="key"
+                  v-for="type in contribution.types"
+                  :key="type"
                 >
                   {{ type }}
                 </span>
@@ -69,7 +70,7 @@
       </Card>
     </div>
 
-    <Alert to="https://github.com/HaythamaSalama/" title="Check My GitHub Account" class="mt-8">
+    <Alert to="https://github.com/haythamasalama" title="Check My GitHub Account" class="mt-8">
       <template #leading>
         <IconGithub class="fill-white" />
       </template>
@@ -90,7 +91,7 @@
         :title="project.title"
         :description="project.description"
         :read-more="project.path"
-        :date="`${project.meta.startAt} - ${project.meta.endAt}`"
+        :date="`${project.startAt} - ${project.endAt}`"
         :to="project.path"
         truncate
       />

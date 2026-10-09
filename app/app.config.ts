@@ -1,9 +1,16 @@
 export default defineAppConfig({
-  title: 'Haytham A. Salama  | Software Engineer',
-  description: 'Full-Stack Engineer - Laravel, Vuejs, Nuxtjs, Tawillindcss',
+  url: 'https://haythamasalama.me',
+  title: 'Haytham A. Salama | Software Engineer',
+  description: 'Full-Stack Engineer - Laravel, Vue.js, Nuxt.js, Tailwind CSS',
   keywords: 'Haytham Salama, Software Engineer, Full-Stack Developer, Full-Stack Engineer, Software Engineering',
   author: {
     name: 'Haytham A. Salama'
+  },
+  socials: {
+    twitter: 'https://twitter.com/haythamasalama',
+    github: 'https://github.com/haythamasalama',
+    linkedin: 'https://www.linkedin.com/in/haythamasalama',
+    medium: 'https://www.medium.com/@haythamasalama'
   },
   menus: {
     header: [

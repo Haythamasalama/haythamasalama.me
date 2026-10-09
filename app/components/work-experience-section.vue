@@ -8,7 +8,12 @@
   <div class="flex flex-col mt-6 border-2 p-6 rounded-md  hover:rounded-xl hover:ring-2 transition-primary">
     <div class="mb-2">
       <h4 class="text-primary-gradient font-bold text-lg">
-        <span class="capitalize">{{ title }}</span> <a v-if="company?.url && company?.name" :href="company?.url" target="_blank">  at {{ company.name }}</a>
+        <span class="capitalize">{{ title }}</span> <a
+          v-if="company?.url && company?.name"
+          :href="company.url"
+          target="_blank"
+          rel="noopener noreferrer"
+        >  at {{ company.name }}</a>
       </h4>
     </div>
 

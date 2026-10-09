@@ -100,7 +100,7 @@
   <!-- about me in short -->
   <section class="flex flex-col sm:flex-row sm:items-center mb-8">
     <div class="flex flex-col sm:w-3/5 order-2 sm:order-1">
-      <h3 class="text-2xl sm:text-4xl font-bold text-white mt-4 gaxp-x-1 sm:mt-0 flex-wrap">
+      <h3 class="text-2xl sm:text-4xl font-bold text-white mt-4 sm:mt-0 flex-wrap">
         Hi 👋 , I'm
         <span class="text-primary-gradient">
           Haytham A. Salama
@@ -117,6 +117,8 @@
         class="w-48 rounded-full shadow-lg hover:scale-105 hover:shadow-2xl transition-primary"
         src="https://avatars.githubusercontent.com/u/37311945?v=4"
         alt="Haytham A. Salama"
+        width="192"
+        height="192"
       >
     </div>
   </section>
@@ -153,8 +155,8 @@
     <SubTitle>Work Experience</SubTitle>
 
     <WorkExperienceSection
-      v-for="(experience, key) in workExperience"
-      :key="key"
+      v-for="experience in workExperience"
+      :key="`${experience.company?.name ?? experience.title}-${experience.startDate}`"
       v-bind="experience"
     />
 
