@@ -1,3 +1,3 @@
 <template>
-  <PageContentLayout />
+  <PageContentLayout collection="projects" />
 </template>

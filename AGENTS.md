@@ -35,7 +35,7 @@ The site has a single dark design. Do not change colors, spacing or typography u
 
 - Theme tokens are in the `@theme` block of `app/assets/css/main.css`: `primary` `#5194FF`, `secondary` `#7981E6` and a custom gray scale (`gray-600` page background, `gray-500` cards and borders, `gray-400` muted text, `gray-100` body text).
 - The Tailwind v4 setup deliberately keeps the v3 defaults the design was built on: default border color `gray-500`, default ring `3px rgb(59 130 246 / 0.5)`, pointer cursor on buttons and sRGB gradients (`bg-linear-to-r/srgb`). Keep that compatibility layer.
-- Shared custom utilities: `bg-primary-gradient`, `text-primary-gradient`, `transition-primary`, `title-heading-primary`, `btn`.
+- Shared custom utilities: `bg-primary-gradient`, `text-primary-gradient`, `transition-primary`, `title-heading-primary`.
 - Articles use `prose prose-primary`; code blocks are highlighted with Shiki's `one-dark-pro`.
 - Font: self-hosted Inter variable font (`app/assets/fonts/Inter.woff2`).
 - Verify UI changes visually at desktop and mobile widths before and after the change.

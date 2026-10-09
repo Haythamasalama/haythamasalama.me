@@ -1,39 +1,27 @@
 <script lang="ts" setup>
   import type { ArticlesCollectionItem, ProjectsCollectionItem } from '@nuxt/content';
 
-  defineProps<{
-    notFoundText?: string;
+  const props = defineProps<{
+    collection: 'articles' | 'projects';
   }>();
 
   const route = useRoute();
   const app = useAppConfig();
 
-  const pageCollections = ['articles', 'projects'] as const;
-
-  const collectionName = computed(() => {
-    const segment = route.path.split('/').find(Boolean);
-
-    return pageCollections.find(collection => collection === segment);
-  });
-
   const { data: doc } = await useAsyncData(
     () => `page-${route.path}`,
-    () => collectionName.value
-      ? queryCollection(collectionName.value).path(route.path).first()
-      : Promise.resolve(null)
+    () => queryCollection(props.collection).path(route.path).first()
   );
 
   const { data: relatedContent } = await useAsyncData(
     () => `related-${route.path}`,
-    () => collectionName.value
-      ? queryCollection(collectionName.value)
-        .where('path', '<>', route.path)
-        .limit(6)
-        .all()
-      : Promise.resolve([])
+    () => queryCollection(props.collection)
+      .where('path', '<>', route.path)
+      .limit(6)
+      .all()
   );
 
-  const relatedTitle = computed(() => (collectionName.value === 'projects' ? 'Related Projects' : 'Related Articles'));
+  const relatedTitle = computed(() => (props.collection === 'projects' ? 'Related Projects' : 'Related Articles'));
 
   type PageItem = ArticlesCollectionItem | ProjectsCollectionItem;
 
@@ -110,10 +98,10 @@
       />
     </div>
     <div v-else>
-      <Card :title="notFoundText || 'No related content found'" />
+      <Card title="No related content found" />
     </div>
   </div>
   <div v-else>
-    <Card :title="notFoundText || 'Content not found'" />
+    <Card title="Content not found" />
   </div>
 </template>

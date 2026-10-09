@@ -57,10 +57,6 @@ export default defineAppConfig({
         path: '/articles'
       },
       {
-        name: 'videos',
-        path: '/videos'
-      },
-      {
         name: 'snippets',
         path: '/snippets'
       },

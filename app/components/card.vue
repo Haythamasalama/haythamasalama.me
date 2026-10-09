@@ -10,7 +10,6 @@
       class: string;
       isText: boolean;
     }>;
-    image: string;
     truncate?: boolean;
     capitalize?: boolean;
     date: string;
@@ -67,16 +66,6 @@
         </div>
 
         <div class="flex flex-col items-start justify-center gap-y-1.5 break-words" :class="{ 'w-4/6 sm:w-full': !horizontal && icon?.path }">
-          <div v-if="image" class="w-full">
-            <img
-              :src="image"
-              :alt="title"
-              class="h-[180px] w-full object-cover rounded-t"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-
           <h5
             class="text-white w-full"
             :class="{
