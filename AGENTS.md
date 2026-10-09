@@ -54,4 +54,7 @@ Skills for this stack are pinned in `skills-lock.json` and are not committed: `n
 ## Dependency notes
 
 - TypeScript stays on 6.x: `typescript-eslint` and `vue-tsc` do not support the TypeScript 7 native compiler yet, so Dependabot ignores TypeScript major updates.
-- `npm audit` reports build and dev-time advisories that have no upstream fix yet: `braces` (via `@nuxt/content`), `node-forge` (Nuxt dev server), `simple-git` (`@nuxt/devtools`, whose import breaks on simple-git 4) and `postcss-selector-parser` (pinned by `@tailwindcss/typography`). None of them ship in the deployed server bundle.
+- `overrides` in `package.json` exist only to clear security advisories:
+  - `@nuxt/devtools` is forced to `4.0.0-beta.4` (npm's `latest` tag) because DevTools 3.x depends on a vulnerable `simple-git`. Nuxt 4.6 still asks for `^3.4.2`; drop the override once Nuxt depends on DevTools 4.
+  - `@tailwindcss/typography` gets `postcss-selector-parser` `^7.1.6` instead of its pinned 6.0.10; the generated CSS is byte-identical. Drop it once the plugin updates the dependency.
+- `npm audit` still lists `braces` (via `@nuxt/content` → `micromatch`) and `node-forge` (Nuxt dev server via `listhen`). Neither has a patched release, both are build/dev-time only, and neither ships in the deployed server bundle. Do not run `npm audit fix --force`: it "fixes" them by downgrading Nuxt and Nuxt Content.
