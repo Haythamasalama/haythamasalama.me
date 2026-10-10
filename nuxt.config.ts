@@ -52,12 +52,15 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    // Where /snippets reads gists from. Set NUXT_GITHUB_TOKEN (a token with no
-    // scopes is enough) to lift GitHub's anonymous limit of 60 requests an hour.
+    // Gists (/snippets) and contributions (/open-source) come from this GitHub
+    // account. Set NUXT_GITHUB_TOKEN (a token with no scopes is enough) to lift
+    // GitHub's anonymous limit of 60 requests an hour.
     github: {
       token: '',
-      gistsUser: 'Haythamasalama',
-      apiBase: 'https://api.github.com'
+      username: 'Haythamasalama',
+      apiBase: 'https://api.github.com',
+      /** Organisations of my own, left out of "contributions to other projects". */
+      ownOrgs: ['aug-projects']
     }
   },
 
@@ -70,9 +73,11 @@ export default defineNuxtConfig({
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
       }
     },
-    '/': { prerender: true },
+    // Home and Open source show live GitHub activity, refreshed every six hours.
+    '/': { isr: 6 * 60 * 60, prerender: false },
+    '/open-source': { isr: 6 * 60 * 60, prerender: false },
+    '/api/open-source': { isr: 6 * 60 * 60 },
     '/work': { prerender: true },
-    '/open-source': { prerender: true },
     '/articles/**': { prerender: true },
     // Gists are fetched at request time and cached for an hour, so new ones
     // show up without a redeploy.
@@ -99,7 +104,7 @@ export default defineNuxtConfig({
     prerender: {
       // Follow links from the prerendered pages so every article is generated too.
       crawlLinks: true,
-      routes: ['/', '/sitemap.xml']
+      routes: ['/articles', '/sitemap.xml']
     }
   },
 

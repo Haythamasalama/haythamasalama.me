@@ -202,20 +202,10 @@ async function toSnippet (gist: Gist): Promise<Snippet> {
 }
 
 export default defineCachedEventHandler(async () => {
-  const { github } = useRuntimeConfig();
+  const { api, username } = useGitHub();
 
   try {
-    const gists = await $fetch<Gist[]>(`/users/${github.gistsUser}/gists`, {
-      baseURL: github.apiBase,
-      query: { per_page: 100 },
-      headers: {
-        'Accept': 'application/vnd.github+json',
-        'User-Agent': 'haythamasalama.me',
-        'X-GitHub-Api-Version': '2022-11-28',
-        ...(github.token ? { Authorization: `Bearer ${github.token}` } : {})
-      }
-    });
-
+    const gists = await api<Gist[]>(`/users/${username}/gists`, { query: { per_page: 100 } });
     const snippets = await Promise.all(gists.filter(gist => gist.public).map(toSnippet));
 
     return snippets.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));

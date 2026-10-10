@@ -79,6 +79,10 @@ export default defineContentConfig({
       })
     }),
 
+    /**
+     * What GitHub cannot tell: roles, discussions and projects I started.
+     * Pull requests and issues are read live from GitHub (`server/api/open-source.get.ts`).
+     */
     contributions: defineCollection({
       type: 'data',
       source: 'contributions/*.yml',
@@ -86,18 +90,12 @@ export default defineContentConfig({
         repo: z.string(),
         url: z.string().url(),
         avatar: z.string(),
-        kind: z.enum(['maintainer', 'pull-request', 'issue', 'discussion', 'created']),
+        kind: z.enum(['maintainer', 'discussion', 'created']),
         /** Short role line, e.g. "Maintainer · 2 months". */
         role: z.string().optional(),
-        links: z.array(link).default([]),
         note: z.string().optional(),
-        order: z.number(),
-        /** Shown in the "Open source" list on the home page when set. */
-        highlight: z.object({
-          note: z.string(),
-          url: z.string().url(),
-          order: z.number()
-        }).optional()
+        links: z.array(link).default([]),
+        order: z.number()
       })
     }),
 

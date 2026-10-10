@@ -3,12 +3,12 @@ url: https://github.com/nuxt/ui
 avatar: /avatars/nuxt.png
 kind: maintainer
 role: Maintainer · 2 months
+note: A maintainer of Nuxt's official UI library for two months — reviewing, fixing and shaping components the Vue community builds on.
 links:
-- label: See my commits
+- label: My commits
   to: https://github.com/nuxt/ui/commits?author=Haythamasalama
-note: One of the top four contributors to Nuxt's official UI library, and a maintainer for two months — reviewing, fixing and shaping components the Vue community builds on.
+- label: Nuxt UI team
+  to: https://ui.nuxt.com/team
+- label: Nuxters profile
+  to: https://nuxters.nuxt.com/Haythamasalama
 order: 1
-highlight:
-  note: Top-4 contributor · maintainer
-  url: https://github.com/nuxt/ui/commits?author=Haythamasalama
-  order: 1

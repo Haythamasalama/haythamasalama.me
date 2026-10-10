@@ -11,7 +11,8 @@
     default: () => []
   });
 
-  // Never let a GitHub outage be cached as the page for an hour.
+  // Vercel keeps serving the last good copy when a regeneration fails, so a
+  // GitHub outage is never cached as the page.
   if (import.meta.server && error.value) {
     setResponseStatus(useRequestEvent()!, 503);
   }

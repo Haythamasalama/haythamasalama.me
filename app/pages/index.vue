@@ -7,9 +7,8 @@
   });
 
   const { data } = await useAsyncData('home', async () => {
-    const [projects, contributions, technologies, articles, uses] = await Promise.all([
+    const [projects, technologies, articles, uses] = await Promise.all([
       queryCollection('projects').all(),
-      queryCollection('contributions').all(),
       queryCollection('technologies').where('home', '=', true).order('order', 'ASC').all(),
       queryCollection('articles').order('date', 'DESC').limit(3).all(),
       queryCollection('uses').all()
@@ -19,9 +18,6 @@
       work: projects
         .filter(project => project.highlight)
         .sort((a, b) => a.highlight!.order - b.highlight!.order),
-      openSource: contributions
-        .filter(contribution => contribution.highlight)
-        .sort((a, b) => a.highlight!.order - b.highlight!.order),
       stack: technologies,
       articles,
       desk: uses
@@ -30,6 +26,9 @@
         .sort((a, b) => a.desk! - b.desk!)
     };
   });
+
+  // Live from GitHub; falls back to the maintained and created projects alone.
+  const { highlights: openSource } = await useOpenSource();
 
   const stackRows = computed(() => {
     const stack = data.value?.stack ?? [];
@@ -137,13 +136,13 @@
       </p>
       <div class="flex flex-col">
         <NuxtLink
-          v-for="contribution in data?.openSource"
-          :key="contribution.id"
-          :to="contribution.highlight!.url"
+          v-for="item in openSource"
+          :key="item.key"
+          :to="item.url"
           class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
         >
           <img
-            :src="contribution.avatar"
+            :src="item.avatar"
             alt=""
             width="22"
             height="22"
@@ -151,8 +150,8 @@
             class="size-[22px] shrink-0 rounded-md"
           >
           <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-            <span class="font-mono text-sm">{{ contribution.repo }}</span>
-            <span class="text-[13px] text-faint">{{ contribution.highlight!.note }}</span>
+            <span class="font-mono text-sm">{{ item.name }}</span>
+            <span class="text-[13px] text-faint">{{ item.note }}</span>
           </span>
         </NuxtLink>
       </div>
