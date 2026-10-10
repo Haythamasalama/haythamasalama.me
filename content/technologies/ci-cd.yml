@@ -1,0 +1,5 @@
+name: CI/CD pipelines
+icon: lucide:workflow
+group: DevOps
+order: 5
+home: true

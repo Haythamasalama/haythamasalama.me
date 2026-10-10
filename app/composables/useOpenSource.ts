@@ -39,7 +39,8 @@ export async function useOpenSource () {
         name: entry.repo,
         avatar: entry.avatar,
         url: entry.github?.pullRequestsUrl ?? entry.url,
-        note: entry.github?.rank ? `Maintainer · #${entry.github.rank} contributor` : 'Maintainer'
+        // The role says how long, e.g. "Maintainer · 2 months".
+        note: [entry.role ?? 'Maintainer', entry.github?.rank && `#${entry.github.rank} contributor`].filter(Boolean).join(' · ')
       })),
       ...repos.value
         .filter(repo => !maintainedNames.includes(repo.name.toLowerCase()) && repo.pullRequests.length)
@@ -65,6 +66,7 @@ export async function useOpenSource () {
     live: computed(() => Boolean(activity.value)),
     activity,
     repos,
+    findRepo,
     maintained,
     discussions,
     created,

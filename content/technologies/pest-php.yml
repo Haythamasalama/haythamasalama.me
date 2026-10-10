@@ -1,5 +1,5 @@
 name: Pest
 icon: lucide:bug
 url: https://pestphp.com/
-group: Testing
-order: 2
+group: Back end
+order: 3

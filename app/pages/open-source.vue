@@ -61,7 +61,7 @@
           alt=""
           width="44"
           height="44"
-          class="size-11 shrink-0 rounded-[11px]"
+          class="avatar-mono size-11 shrink-0 rounded-[11px]"
         >
         <div class="flex min-w-0 flex-auto flex-col gap-2">
           <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -130,7 +130,7 @@
         </SectionTitle>
         <span class="font-mono text-xs text-faint">by repository</span>
       </div>
-      <ol class="border-b border-line">
+      <ol class="flex flex-col">
         <RepoActivity
           v-for="(repo, index) in withPullRequests"
           :key="repo.name"
@@ -147,7 +147,7 @@
       <SectionTitle id="issues" class="mb-1">
         Issues
       </SectionTitle>
-      <ul class="border-b border-line">
+      <ul class="flex flex-col">
         <RepoActivity
           v-for="repo in withIssues"
           :key="repo.name"
@@ -163,11 +163,11 @@
       <SectionTitle id="elsewhere" class="mb-1">
         Discussions &amp; projects I started
       </SectionTitle>
-      <ul class="border-b border-line">
+      <ul class="flex flex-col">
         <li
           v-for="entry in [...discussions, ...created]"
           :key="entry.id"
-          class="flex items-center gap-3.5 border-t border-line"
+          class="flex items-center gap-3.5"
         >
           <img
             :src="entry.avatar"
@@ -175,7 +175,7 @@
             width="32"
             height="32"
             loading="lazy"
-            class="size-8 shrink-0 rounded-lg"
+            class="avatar-mono size-8 shrink-0 rounded-lg"
           >
           <span class="flex min-w-0 flex-auto flex-wrap items-center justify-between gap-x-4">
             <NuxtLink :to="entry.url" class="link inline-flex min-h-12 items-center font-mono text-sm">
@@ -202,7 +202,7 @@
         Getting started?
       </SectionTitle>
       <p class="text-[15px] leading-[1.7] text-muted">
-        I wrote down what worked for me across six projects in 2023 — from good first issues to getting a pull request
+        I wrote down what worked for me across six projects in 2023, from good first issues to getting a pull request
         merged.
       </p>
       <div class="mt-2 flex flex-wrap gap-x-[22px]">

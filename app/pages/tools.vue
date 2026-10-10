@@ -135,7 +135,7 @@
   <div>
     <PageHeader title="Tools">
       <p>
-        Small, mostly free tools that save me time — sorted by what they help with. Search for something specific, or
+        Small, mostly free tools that save me time, sorted by what they help with. Search for something specific, or
         pick an area.
       </p>
       <p class="text-[15px] text-muted">
@@ -186,12 +186,14 @@
         <section
           v-for="section in sections"
           :key="section.name"
-          :aria-label="section.name"
+          :aria-labelledby="slugify(section.name)"
           class="pt-8"
         >
           <header class="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-            <h2 class="text-[15px] font-medium">
-              {{ section.name }}
+            <h2 :id="slugify(section.name)" class="text-[15px] font-medium">
+              <AnchorLink :target="slugify(section.name)">
+                {{ section.name }}
+              </AnchorLink>
             </h2>
             <p class="text-[13px] text-faint">
               {{ section.description }}

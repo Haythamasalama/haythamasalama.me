@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { skillGroups } from '#shared/skill-groups';
+
   const { site, socials } = useAppConfig();
 
   usePageSeo({
@@ -30,15 +32,10 @@
   // Live from GitHub; falls back to the maintained and created projects alone.
   const { highlights: openSource } = await useOpenSource();
 
-  const stackRows = computed(() => {
-    const stack = data.value?.stack ?? [];
-
-    return [
-      { label: 'Every day', items: stack.filter(tech => tech.group === 'Main stack'), strong: true },
-      { label: 'Back end', items: stack.filter(tech => tech.group === 'Back end') },
-      { label: 'Shipping', items: stack.filter(tech => tech.group === 'Deployment') }
-    ];
-  });
+  // The same groups as the About page, with a few tools from each.
+  const stackRows = computed(() => skillGroups
+    .map(group => ({ group, items: data.value?.stack.filter(tech => tech.group === group) ?? [] }))
+    .filter(row => row.items.length));
 </script>
 
 <template>
@@ -65,13 +62,14 @@
 
       <p class="mt-8 animate-rise text-[17px] leading-[1.7] text-soft [animation-delay:.15s]">
         I'm a
-        <span class="text-gradient pr-0.5 font-serif text-[22px] italic">creative developer</span>
-        who turns messy business problems into calm, durable software. For 5+ years I've built logistics and fintech
-        platforms — designed around the domain, tested from day one, and fast where it matters.
+        <span class="text-gradient pr-0.5 font-serif text-[22px] italic">software engineer</span>
+        who builds the systems behind logistics and fintech: the APIs, integrations and security that real operations
+        depend on. I design them around the business with Domain-Driven Design, and I've been shipping software since
+        2016.
       </p>
       <p class="mt-[18px] animate-rise text-[17px] leading-[1.7] text-soft [animation-delay:.25s]">
-        Before code, I repaired radios, wired Arduinos and designed in Photoshop and After Effects. I still work that
-        way: curious about how things are made, and picky about how they feel.
+        AI is part of how I work every day. I plan, write and review code with agents like Claude Code and Cursor, and
+        at WINCH I write the agents and skills our engineers code with.
       </p>
 
       <p
@@ -82,9 +80,9 @@
           aria-hidden="true"
         />
         <span>
-          <span class="text-fg">Now</span> — full-stack engineer at
-          <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink> and
-          <NuxtLink to="https://investsanad.sa/" class="link-underline">Sanad</NuxtLink>, remote
+          <span class="text-fg">Now</span> · at
+          <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink>, remote from Cairo, and building
+          <NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink> on the side
         </span>
       </p>
 
@@ -109,7 +107,7 @@
         <NuxtLink
           v-for="project in data?.work"
           :key="project.id"
-          to="/work"
+          to="/projects"
           class="-mx-3 flex items-start gap-3.5 rounded-[10px] p-3 transition-colors hover:bg-surface"
         >
           <LogoTile :mark="project.mark" :size="36" />
@@ -122,13 +120,13 @@
           </span>
         </NuxtLink>
       </div>
-      <GoLink to="/work" class="mt-1">
-        All work
+      <GoLink to="/projects" class="mt-1">
+        All projects
       </GoLink>
     </section>
 
-    <section aria-labelledby="oss" class="pt-16">
-      <SectionTitle id="oss" class="mb-3">
+    <section aria-labelledby="open-source" class="pt-16">
+      <SectionTitle id="open-source" class="mb-3">
         Open source
       </SectionTitle>
       <p class="mb-3 text-[15px] leading-[1.65] text-muted">
@@ -147,7 +145,7 @@
             width="22"
             height="22"
             loading="lazy"
-            class="size-[22px] shrink-0 rounded-md"
+            class="avatar-mono size-[22px] shrink-0 rounded-md"
           >
           <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
             <span class="font-mono text-sm">{{ item.name }}</span>
@@ -160,36 +158,14 @@
       </GoLink>
     </section>
 
-    <section aria-labelledby="stack" class="pt-16">
-      <SectionTitle id="stack" class="mb-5">
+    <section aria-labelledby="skills" class="pt-16">
+      <SectionTitle id="skills" class="mb-5">
         Skills &amp; stack
       </SectionTitle>
       <dl class="flex flex-col gap-3.5 text-[15px] leading-relaxed">
-        <div v-for="row in stackRows.slice(0, 2)" :key="row.label" class="flex flex-wrap gap-x-6 gap-y-1.5">
+        <div v-for="row in stackRows" :key="row.group" class="flex flex-wrap gap-x-6 gap-y-1.5">
           <dt class="flex-[0_0_120px] font-mono text-xs leading-7 text-faint">
-            {{ row.label }}
-          </dt>
-          <dd class="flex flex-[1_1_360px] flex-wrap gap-1.5">
-            <TechChip
-              v-for="tech in row.items"
-              :key="tech.id"
-              :label="tech.name"
-              :icon="tech.icon"
-              :strong="row.strong"
-            />
-          </dd>
-        </div>
-        <div class="flex flex-wrap gap-x-6 gap-y-0.5">
-          <dt class="flex-[0_0_120px] font-mono text-xs leading-6 text-faint">
-            Practice
-          </dt>
-          <dd class="flex-[1_1_360px] text-soft">
-            Domain-Driven Design, TDD with PHPUnit &amp; Pest, clean architecture
-          </dd>
-        </div>
-        <div v-for="row in stackRows.slice(2)" :key="row.label" class="flex flex-wrap gap-x-6 gap-y-1.5">
-          <dt class="flex-[0_0_120px] font-mono text-xs leading-7 text-faint">
-            {{ row.label }}
+            {{ row.group }}
           </dt>
           <dd class="flex flex-[1_1_360px] flex-wrap gap-1.5">
             <TechChip
@@ -201,14 +177,14 @@
           </dd>
         </div>
       </dl>
-      <GoLink to="/about" class="mt-2">
+      <GoLink to="/about#skills" class="mt-2">
         Skills in depth
       </GoLink>
     </section>
 
-    <section aria-labelledby="writing" class="pt-16">
-      <SectionTitle id="writing" class="mb-3">
-        Writing
+    <section aria-labelledby="blog" class="pt-16">
+      <SectionTitle id="blog" class="mb-3">
+        Blog
       </SectionTitle>
       <div class="flex flex-col">
         <NuxtLink
@@ -239,9 +215,9 @@
         Where I'm headed
       </SectionTitle>
       <p class="text-[17px] leading-[1.7] text-soft">
-        Next comes a master's in <span class="text-fg">machine learning</span> — and, further out, becoming an
-        associate professor in the field. Until then I'll keep shipping domain-driven systems and giving back to the
-        open-source tools I build on.
+        For years I've built platforms that move money and deliveries. My next step is
+        <span class="text-fg">a master's degree in artificial intelligence</span>, to build systems that learn from the
+        data these platforms already hold. Along the way, I'll keep giving back to the open-source tools I build on.
       </p>
       <GoLink to="/about" class="mt-2">
         My story

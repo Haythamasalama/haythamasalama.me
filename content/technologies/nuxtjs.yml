@@ -1,6 +1,6 @@
 name: Nuxt
 icon: simple-icons:nuxt
 url: https://nuxt.com/
-group: Main stack
-order: 3
+group: Front end
+order: 2
 home: true

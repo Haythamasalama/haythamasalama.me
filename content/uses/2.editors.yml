@@ -5,24 +5,17 @@ items:
   note: Laravel & PHP
   mark:
     icon: simple-icons:phpstorm
+  theme: GitHub Dark
   desk: 2
-- name: Cursor
-  note: AI-first editing
-  mark:
-    icon: simple-icons:cursor
-  desk: 3
 - name: VS Code
   note: Front end & quick edits
   mark:
-    icon: lucide:code-xml
+    icon: simple-icons:visualstudiocode
+  theme: One Dark Pro Night Flat
 - name: IntelliJ IDEA
   note: Java
   mark:
     icon: simple-icons:intellijidea
-- name: PyCharm
-  note: Python
-  mark:
-    icon: simple-icons:pycharm
 - name: iTerm2
   note: Terminal
   mark:

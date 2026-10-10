@@ -1,6 +1,6 @@
 name: Laravel
 icon: simple-icons:laravel
 url: https://laravel.com/
-group: Main stack
+group: Back end
 order: 1
 home: true

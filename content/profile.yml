@@ -1,0 +1,25 @@
+# The About page: headline, story, organizations, awards and vision.
+# Experience, education and skills come from their own collections.
+headline: Senior Software Engineer at WINCH
+focus: SaaS · AI · FinTech · Logistics
+location: Cairo, Egypt
+careerStart: 2016-04
+about:
+  - "I'm a senior software engineer at WINCH, a logistics platform in Saudi Arabia, working remotely from Cairo. I build the APIs behind its business and carrier apps and dashboards, and the core components every product relies on: security, notifications and integrations. I shaped the Domain-Driven Design structure the back end follows, keep evolving it, and helped move the old code onto it. Now I'm helping turn the whole system into Rotex, a SaaS that will let other logistics companies run it as their own."
+  - Before WINCH, I built fintech and operations software. At Faris Petrol I built the vehicle inspection and maintenance system its workshops ran on, handling thousands of inspections a month across several branches, along with its CRM, its HR system and IoT control for its wash stations. At Sanad I designed and built an investment platform for real-estate financing, from investor wallets to profit distribution, on Domain-Driven Design so every financial transaction stays reliable. It all started in 2016, building websites for clients as a freelancer.
+  - These days much of my work happens alongside AI. Coding agents like Claude Code and Cursor are part of how I plan, write and review software every day. Outside WINCH, I'm building Runarks, my own SaaS for governed, approval-based access to production databases, and contributing to the Nuxt ecosystem.
+organizations:
+  - name: Nuxt
+    url: https://github.com/nuxt
+    image: /avatars/nuxt.png
+  - name: aug-projects
+    url: https://github.com/aug-projects
+    image: /avatars/aug-projects.png
+awards:
+  - title: Research Excellence Award
+    issuer: Ministry of Education, West Gaza Directorate
+    year: '2017'
+    note: For the interactive physics program I built for a study of tenth-grade students.
+vision:
+  line: From building software to building intelligence.
+  text: For years I've built platforms that move money and deliveries. My next step is a master's degree in artificial intelligence, to go from software that processes data to systems that learn from it, starting with the fintech and logistics problems I know best.

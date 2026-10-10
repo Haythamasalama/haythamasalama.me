@@ -73,11 +73,12 @@ export default defineNuxtConfig({
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
       }
     },
-    // Home and Open source show live GitHub activity, refreshed every six hours.
+    // Home, About and Open source show live GitHub activity, refreshed every six hours.
     '/': { isr: 6 * 60 * 60, prerender: false },
+    '/about': { isr: 6 * 60 * 60, prerender: false },
     '/open-source': { isr: 6 * 60 * 60, prerender: false },
     '/api/open-source': { isr: 6 * 60 * 60 },
-    '/work': { prerender: true },
+    '/projects': { prerender: true },
     '/articles/**': { prerender: true },
     // Gists are fetched at request time and cached for an hour, so new ones
     // show up without a redeploy.
@@ -85,17 +86,7 @@ export default defineNuxtConfig({
     '/api/snippets': { isr: 3600 },
     '/tools': { prerender: true },
     '/uses': { prerender: true },
-    '/about': { prerender: true },
-    '/brand': { prerender: true },
-
-    // Old URLs from the previous version of the site
-    '/projects': { redirect: { to: '/work', statusCode: 301 } },
-    '/projects/**': { redirect: { to: '/work', statusCode: 301 } },
-    '/videos': { redirect: { to: '/articles', statusCode: 301 } },
-    '/videos/**': { redirect: { to: '/articles', statusCode: 301 } },
-    '/articles/laravel': { redirect: { to: '/articles', statusCode: 301 } },
-    '/articles/front-end': { redirect: { to: '/articles', statusCode: 301 } },
-    '/articles/software-engineering': { redirect: { to: '/articles', statusCode: 301 } }
+    '/brand': { prerender: true }
   },
 
   compatibilityDate: '2026-10-01',

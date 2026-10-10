@@ -1,6 +1,6 @@
 name: PostgreSQL
 icon: simple-icons:postgresql
 url: https://www.postgresql.org/
-group: Back end
-order: 4
+group: Data
+order: 3
 home: true

@@ -1,6 +1,6 @@
 <script setup lang="ts">
   usePageSeo({
-    title: 'Writing',
+    title: 'Blog',
     description: 'Short, practical notes on Laravel, Vue and shipping software by Haytham A. Salama.'
   });
 
@@ -21,8 +21,8 @@
 
 <template>
   <div>
-    <PageHeader title="Writing">
-      <p>Short, practical notes on Laravel, Vue and shipping software — mostly the things I wish I'd found sooner.</p>
+    <PageHeader title="Blog">
+      <p>Short, practical notes on Laravel, Vue and shipping software, mostly the things I wish I'd found sooner.</p>
     </PageHeader>
 
     <section
@@ -32,7 +32,9 @@
       class="pt-14"
     >
       <h2 :id="`y${group.year}`" class="mb-2 font-mono text-xs font-medium tracking-[0.08em] text-faint">
-        {{ group.year }}
+        <AnchorLink :target="`y${group.year}`">
+          {{ group.year }}
+        </AnchorLink>
       </h2>
       <div class="flex flex-col">
         <NuxtLink

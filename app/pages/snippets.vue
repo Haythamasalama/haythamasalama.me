@@ -77,8 +77,10 @@
           <header class="flex items-start gap-3.5 p-4">
             <LogoTile :mark="{ icon: snippet.icon }" :size="36" />
             <div class="flex min-w-0 flex-auto flex-col gap-1">
-              <h2 class="text-base leading-snug font-medium">
-                {{ snippet.title }}
+              <h2 :id="slugify(snippet.title)" class="text-base leading-snug font-medium">
+                <AnchorLink :target="slugify(snippet.title)">
+                  {{ snippet.title }}
+                </AnchorLink>
               </h2>
               <p class="flex flex-wrap gap-x-3 gap-y-0.5 font-mono text-xs text-faint">
                 <span v-for="file in snippet.files" :key="file">{{ file }}</span>

@@ -5,7 +5,7 @@
   const canonicalUrl = computed(() => `${site.url}${route.path === '/' ? '' : route.path}`);
 
   useHead({
-    titleTemplate: title => title && title !== site.name ? `${title} — ${site.name}` : site.title,
+    titleTemplate: title => title && title !== site.name ? `${title} · ${site.name}` : site.title,
     meta: [{ name: 'theme-color', content: '#0B0B0C' }],
     link: [{ rel: 'canonical', href: canonicalUrl }]
   });
@@ -19,7 +19,7 @@
     ogImage: `${site.url}/og.png`,
     ogImageWidth: 1200,
     ogImageHeight: 630,
-    ogImageAlt: 'Haytham A. Salama — creative developer and full-stack engineer',
+    ogImageAlt: 'Haytham A. Salama · software engineer for SaaS, AI, fintech and logistics',
     twitterCard: 'summary_large_image',
     twitterImage: `${site.url}/og.png`,
     twitterSite: '@haythamasalama',

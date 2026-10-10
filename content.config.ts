@@ -1,5 +1,6 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content';
 import { defineSitemapSchema } from '@nuxtjs/sitemap/content';
+import { skillGroups } from './shared/skill-groups';
 import { toolCategoryNames } from './shared/tool-categories';
 
 /** A small square visual: one-colour logo, Iconify icon, colour image or monogram. */
@@ -29,6 +30,35 @@ export default defineContentConfig({
       })
     }),
 
+    /** The About page: headline, story, organizations, awards and vision. */
+    profile: defineCollection({
+      type: 'data',
+      source: 'profile.yml',
+      schema: z.object({
+        headline: z.string(),
+        focus: z.string(),
+        location: z.string(),
+        /** First paid engineering work, `YYYY-MM`; "years shipping" counts from here. */
+        careerStart: z.string().regex(/^\d{4}-\d{2}$/),
+        about: z.array(z.string()),
+        organizations: z.array(z.object({
+          name: z.string(),
+          url: z.string().url(),
+          image: z.string()
+        })),
+        awards: z.array(z.object({
+          title: z.string(),
+          issuer: z.string(),
+          year: z.string(),
+          note: z.string().optional()
+        })),
+        vision: z.object({
+          line: z.string(),
+          text: z.string()
+        })
+      })
+    }),
+
     experience: defineCollection({
       type: 'data',
       source: 'experience/*.yml',
@@ -37,10 +67,15 @@ export default defineContentConfig({
         url: z.string().url().optional(),
         mark,
         role: z.string(),
-        detail: z.string().optional(),
+        /** How the job was held, as on LinkedIn: "Full-time · Jeddah, Saudi Arabia · Remote". */
+        type: z.enum(['Full-time', 'Part-time']).optional(),
+        location: z.string().optional(),
+        workplace: z.enum(['Remote', 'On-site', 'Hybrid']).optional(),
         start: z.string(),
         end: z.string(),
         summary: z.string(),
+        /** Bullet points shown on the About page, LinkedIn style. */
+        highlights: z.array(z.string()).default([]),
         order: z.number()
       })
     }),
@@ -106,9 +141,9 @@ export default defineContentConfig({
         name: z.string(),
         icon: z.string(),
         url: z.string().url().optional(),
-        group: z.enum(['Main stack', 'Back end', 'Front end', 'Testing', 'Deployment', 'Languages', 'Hardware']),
+        group: z.enum(skillGroups),
         order: z.number(),
-        /** Listed under "Skills & stack" on the home page. */
+        /** Also listed under "Skills & stack" on the home page, in its group's row. */
         home: z.boolean().default(false)
       })
     }),
@@ -140,6 +175,8 @@ export default defineContentConfig({
           name: z.string(),
           note: z.string(),
           mark,
+          /** The colour theme I run it with, for editors and terminals. */
+          theme: z.string().optional(),
           /** Position in "On my desk" on the home page, if pinned there. */
           desk: z.number().optional()
         }))

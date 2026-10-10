@@ -3,8 +3,14 @@ url: https://investsanad.sa/
 mark:
   logo: sanad
 role: Full-stack engineer
-detail: part-time, remote
+type: Part-time
+location: Jeddah, Saudi Arabia
+workplace: Remote
 start: May 2024
-end: now
-summary: A collective real-estate investment platform, designed with DDD for reliable, secure, compliant money flows.
+end: May 2025
+summary: An investment platform for real-estate financing, and its admin dashboard.
+highlights:
+- Designed the platform's architecture with Domain-Driven Design, so every financial transaction stays reliable.
+- 'Built the investment platform and its admin dashboard: the investor wallet and its transactions, and the distribution of profits and returns.'
+- Built investor identity verification through the government Absher integration, and integrated payment gateways with the security and compliance financial systems need.
 order: 2

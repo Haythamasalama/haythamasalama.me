@@ -37,13 +37,14 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 - Vue SFCs use `<script setup lang="ts">` with the script body indented one level. Semicolons, single quotes, no trailing commas, stroustrup braces and a space before function parentheses are enforced by ESLint.
 - Components are auto-imported by file name (`LogoTile.vue` is `<LogoTile>`, `brand/BrandSwatch.vue` is `<BrandSwatch>`).
 - Read content through `queryCollection` and add new front matter fields to the collection schema in `content.config.ts`.
-- Most content is data: add a YAML file to `content/projects`, `tools`, `uses`, `technologies`, `experience` or `contributions` rather than editing a page.
+- Most content is data: add a YAML file to `content/projects`, `tools`, `uses`, `technologies`, `experience` or `contributions` rather than editing a page. The About page's headline, bio, organizations, awards and vision live in `content/profile.yml`.
 - A tool's `category` must be a name from `shared/tool-categories.ts`; add a category there (one line) rather than reusing a vague one.
 - Snippets are the owner's public GitHub gists and contributions come from GitHub search; never copy them into `content/`. `content/contributions` only holds what GitHub cannot provide: maintainer roles, discussions and projects he started.
 - Give every `useAsyncData` call a unique key. Nuxt 4 shares state between calls with the same key.
 - Set page metadata with `usePageSeo({ title, description })`.
+- Give each section a `<SectionTitle id="…">` (or wrap a heading's text in `<AnchorLink>`): the title becomes a shareable link like `/about#experience`, and links to a section scroll to it smoothly unless the visitor prefers reduced motion (`app/plugins/smooth-scroll.client.ts`). Use readable ids; `slugify()` makes them from titles.
 - Format dates with the helpers in `app/utils/date.ts` (fixed locale and UTC) so server and client render the same text.
-- Pages are prerendered and links are crawled at build time; a new page only needs to be linked from somewhere. The exceptions read GitHub at request time with ISR: `/` and `/open-source` (6 hours) and `/snippets` (1 hour). Such pages must still render when GitHub fails, but with a 503: Vercel then keeps serving the last good copy and retries, so an outage is never cached.
+- Pages are prerendered and links are crawled at build time; a new page only needs to be linked from somewhere. The exceptions read GitHub at request time with ISR: `/`, `/about` and `/open-source` (6 hours) and `/snippets` (1 hour). Such pages must still render when GitHub fails, but with a 503: Vercel then keeps serving the last good copy and retries, so an outage is never cached.
 - The GitHub routes run without a token, but `NUXT_GITHUB_TOKEN` (no scopes) avoids the anonymous limit of 60 requests an hour. `NUXT_GITHUB_API_BASE` points them at a mock for offline work.
 
 ## Design rules
@@ -51,9 +52,9 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 Dark by default with an optional light theme (`@nuxtjs/color-mode`, stored as `theme`). Do not change colours, spacing or typography unless the owner asks. The full brand system is documented on the `/brand` page.
 
 - Use the semantic colour tokens from `main.css`, never raw hex in pages: `bg`, `surface` (tiles, hover), `raised` (cards, code), `line` (borders), `edge` (tile borders), `chip`, `fg`, `soft`, `muted`, `faint`, `mark` (icons), `accent` / `accent-2`. They switch with the theme.
-- Iris (`iris-500` `#7F7CF2`) and Azure (`azure-500` `#4F9BFF`) are for small details only: hover, focus, badges, the live dot, one gradient word per page. Never more than about 5% of a screen.
+- Iris (`iris-500` `#7F7CF2`) and Azure (`azure-500` `#4F9BFF`) are for small details only: focus rings, badges, the live dot, one gradient word per page. Never more than about 5% of a screen. Links and icons hover to a brighter neutral (`fg`), and selected states (the current page, an active filter chip) are neutral too; the signature is the only thing that takes the gradient on hover.
 - The signature is the logo. It is white on dark and black on light, takes the gradient only on hover/focus, and is drawn stroke by stroke by `SignatureMark`. Do not redraw or recolour it.
-- Company logos are one-colour masks (`BrandLogo` / `LogoTile` with `logo:`) so they follow the theme; register new ones in `app/utils/logos.ts`.
+- Company logos are one-colour masks (`BrandLogo` / `LogoTile` with `logo:`) so they follow the theme; register new ones in `app/utils/logos.ts`. GitHub avatars and other logo photos get the `avatar-mono` utility (greyscale), so nothing on the site shows a logo in its own colours.
 - Icons come from `@nuxt/icon` with the local `lucide` and `simple-icons` collections; LinkedIn is `brand:linkedin`.
 - Code is highlighted with the brand themes in `shared/code-theme.ts` (Iris keywords, Azure strings and values, grey punctuation). Adjust those palettes instead of switching to a stock Shiki theme.
 - Type: Geist for text, Geist Mono for labels, dates and code, Instrument Serif italic for one human phrase per page (all self-hosted via Fontsource).

@@ -1,6 +1,6 @@
 name: Tailwind CSS
 icon: simple-icons:tailwindcss
 url: https://tailwindcss.com/
-group: Main stack
-order: 5
+group: Front end
+order: 4
 home: true

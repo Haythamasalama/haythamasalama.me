@@ -1,6 +1,6 @@
 ---
 title: 'Setting up authentication for Laravel single-page apps'
-description: 'The three settings — CORS origins, session domain and Sanctum stateful domains — that make a separate SPA front end log in cleanly.'
+description: 'The three settings (CORS origins, session domain and Sanctum stateful domains) that make a separate SPA front end log in cleanly.'
 date: '2022-10-11'
 category: 'Laravel'
 icon: 'simple-icons:laravel'

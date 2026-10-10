@@ -34,7 +34,7 @@
         <button type="button" class="go link-muted inline-flex min-h-11 cursor-pointer items-center text-sm" @click="clearError({ redirect: '/' })">
           Back home<span class="arrow" aria-hidden="true">→</span>
         </button>
-        <GoLink to="/work">
+        <GoLink to="/projects">
           See my work
         </GoLink>
         <GoLink to="/articles">

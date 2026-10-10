@@ -4,7 +4,7 @@
  */
 export function usePageSeo (seo: { title: string; description: string; type?: 'website' | 'article' }) {
   const { site } = useAppConfig();
-  const fullTitle = seo.title === site.name ? site.title : `${seo.title} — ${site.name}`;
+  const fullTitle = seo.title === site.name ? site.title : `${seo.title} · ${site.name}`;
 
   useSeoMeta({
     title: seo.title,

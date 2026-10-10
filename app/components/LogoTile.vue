@@ -25,7 +25,7 @@
       :height="size"
       loading="lazy"
       decoding="async"
-      class="size-full object-cover"
+      class="avatar-mono size-full object-cover"
     >
   </span>
   <span

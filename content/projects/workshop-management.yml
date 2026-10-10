@@ -1,7 +1,12 @@
-title: Workshop car management
+title: 'Vehicle inspection & maintenance'
 year: 2021
-context: Faris · May 2021 — Dec 2022
-description: Checklists, services and accounts for every vehicle that comes through the workshop. Built test-first.
+context: Faris Petrol · May 2021 – Dec 2022
+description: 'The inspection and maintenance system for the company''s workshops. Technicians record every check, from oils and filters to battery and tyres, and supervisors follow each branch and technician on one dashboard. It handled thousands of inspections a month across several branches.'
 mark:
   icon: lucide:wrench
-order: 6
+order: 1
+highlight:
+  title: Vehicle inspection & maintenance
+  description: Thousands of inspections a month across Faris Petrol's workshops, with a dashboard for every branch, technician and supervisor.
+  period: 2021 – 2022
+  order: 4

@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <li class="border-t border-line py-3.5">
+  <li class="py-3">
     <div class="flex items-center gap-3.5">
       <span
         v-if="position"
@@ -27,7 +27,7 @@
         width="32"
         height="32"
         loading="lazy"
-        class="size-8 shrink-0 rounded-lg"
+        class="avatar-mono size-8 shrink-0 rounded-lg"
       >
       <span class="flex min-w-0 flex-auto flex-wrap items-center justify-between gap-x-4">
         <span class="flex min-w-0 items-center gap-2.5">

@@ -1,92 +1,195 @@
 <script setup lang="ts">
+  import { skillGroups } from '#shared/skill-groups';
+
+  const { site, socials } = useAppConfig();
+
   usePageSeo({
     title: 'About',
-    description: 'Haytham A. Salama — a full-stack engineer who started out taking radios apart. His story, skills, how he works and where he is headed.'
+    description: 'Haytham A. Salama, senior software engineer at WINCH. Experience, products, open source, skills and where his work with AI agents is going.'
   });
 
-  const { data: technologies } = await useAsyncData('about-technologies', () =>
-    queryCollection('technologies').order('order', 'ASC').all()
-  );
+  const { data } = await useAsyncData('about', async () => {
+    const [profile, experience, education, technologies] = await Promise.all([
+      queryCollection('profile').first(),
+      queryCollection('experience').order('order', 'ASC').all(),
+      queryCollection('education').order('order', 'ASC').all(),
+      queryCollection('technologies').order('order', 'ASC').all()
+    ]);
 
-  const groupOrder = ['Main stack', 'Back end', 'Front end', 'Testing', 'Deployment', 'Languages', 'Hardware'] as const;
+    return { profile, experience, education, technologies };
+  });
 
-  const skills = computed(() => groupOrder
-    .map(group => ({ group, items: technologies.value?.filter(tech => tech.group === group) ?? [] }))
+  // Live from GitHub; the page still renders (as a 503) when GitHub is down.
+  const { activity, repos, findRepo } = await useOpenSource();
+
+  const profile = computed(() => data.value?.profile);
+
+  /** Whole years since the first paid engineering work. */
+  const yearsShipping = computed(() => {
+    const [year = 0, month = 1] = (profile.value?.careerStart ?? '').split('-').map(Number);
+    const now = new Date();
+
+    return Math.floor((now.getUTCFullYear() * 12 + now.getUTCMonth() - (year * 12 + month - 1)) / 12);
+  });
+
+  const stats = computed(() => {
+    const nuxtUi = findRepo('nuxt/ui');
+
+    return [
+      { value: `${yearsShipping.value}`, label: 'years shipping' },
+      activity.value && { value: `${activity.value.totals.pullRequests}`, label: 'merged open-source PRs' },
+      activity.value && { value: `${activity.value.totals.repositories}`, label: 'repositories contributed to' },
+      nuxtUi?.rank && { value: `#${nuxtUi.rank}`, label: 'contributor to Nuxt UI' }
+    ].filter(stat => !!stat);
+  });
+
+  const topRepos = computed(() => repos.value.filter(repo => repo.pullRequests.length).slice(0, 4));
+
+  const skills = computed(() => skillGroups
+    .map(group => ({ group, items: data.value?.technologies.filter(tech => tech.group === group) ?? [] }))
     .filter(row => row.items.length));
-
-  const story = [
-    { when: 'Age 5', icon: 'lucide:cpu', text: 'Fell for computers and circuit boards. Repaired radios and PCs, then moved on to Arduino.' },
-    { when: 'Design', icon: 'lucide:palette', text: 'Taught myself Photoshop, Illustrator, Premiere and After Effects, and sold design and video work as a freelancer.' },
-    { when: 'Age 15', icon: 'lucide:globe', text: 'Found the web: HTML, CSS and JavaScript, then WordPress sites and templates for clients.' },
-    { when: '2016', icon: 'lucide:briefcase', text: 'Went freelance as a web developer and delivered more than 16 custom websites.' },
-    { when: '2019', icon: 'lucide:graduation-cap', text: 'Started a software engineering degree at Al Azhar University and my first full-time engineering roles.' },
-    { when: 'Today', icon: 'lucide:layers', text: 'Building domain-driven logistics and fintech platforms at WINCH and Sanad, and leading the teams around them.' }
-  ];
-
-  // Step numbers fade from Iris to Azure down the list.
-  const principles = [
-    { title: 'Model the domain first', icon: 'lucide:boxes', color: '#7F7CF2', text: 'Software that mirrors the business stays easy to change. Anything that moves money or enforces rules gets Domain-Driven Design.' },
-    { title: 'Tests are the spec', icon: 'lucide:flask-conical', color: '#6E89F0', text: 'For card charging and workshop systems I wrote the tests first, so behaviour was agreed before any code existed.' },
-    { title: 'Speed is a feature', icon: 'lucide:zap', color: '#618EF8', text: 'Database redesigns, queues and rate limits are product work, not chores — users feel every one of them.' },
-    { title: 'Lead across the stack', icon: 'lucide:users', color: '#4F9BFF', text: 'I\'m at my best between front-end, back-end and mobile teams, turning one plan into software that ships.' }
-  ];
-
-  const goals = [
-    { label: 'Master\'s in ML', icon: 'lucide:graduation-cap' },
-    { label: 'Research & teaching', icon: 'lucide:presentation' },
-    { label: 'More open source', icon: 'lucide:git-pull-request' }
-  ];
-
-  const contacts = [
-    { label: 'LinkedIn', to: 'https://www.linkedin.com/in/haythamasalama', icon: 'brand:linkedin', size: 15 },
-    { label: 'X', to: 'https://x.com/haythamasalama', icon: 'simple-icons:x', size: 14 },
-    { label: 'GitHub', to: 'https://github.com/haythamasalama', icon: 'simple-icons:github', size: 16 }
-  ];
 </script>
 
 <template>
-  <div>
-    <section class="flex flex-wrap items-center gap-x-7 gap-y-6 pt-16 md:pt-20">
-      <img
-        class="photo size-28 shrink-0 rounded-[28px] object-cover"
-        src="/images/haytham.jpg"
-        alt="Portrait of Haytham A. Salama"
-        width="112"
-        height="112"
-        fetchpriority="high"
-      >
-      <div class="min-w-0 flex-[1_1_320px]">
-        <h1 class="text-[28px] leading-tight font-semibold tracking-[-0.02em] md:text-[30px]">
-          About
-        </h1>
-        <p class="mt-3 text-[17px] leading-[1.7] text-soft">
-          I'm Haytham — a full-stack engineer who started out as the kid taking radios apart to see how they worked. I
-          still build that way.
+  <div v-if="profile">
+    <section aria-labelledby="name" class="pt-16 md:pt-20">
+      <div class="flex flex-wrap items-center gap-x-7 gap-y-6">
+        <img
+          class="photo size-28 shrink-0 rounded-[28px] object-cover"
+          src="/images/haytham.jpg"
+          alt="Portrait of Haytham A. Salama"
+          width="112"
+          height="112"
+          fetchpriority="high"
+        >
+        <div class="min-w-0 flex-[1_1_320px]">
+          <h1 id="name" class="text-[28px] leading-tight font-semibold tracking-[-0.02em] md:text-[30px]">
+            {{ site.name }}
+          </h1>
+          <p class="mt-1.5 text-[17px] text-soft">
+            {{ profile.headline }}
+          </p>
+          <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[13px] text-faint">
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="lucide:map-pin" class="size-3.5" />
+              {{ profile.location }}
+            </span>
+            <span>{{ profile.focus }}</span>
+          </p>
+        </div>
+      </div>
+
+      <dl class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-4">
+        <div v-for="stat in stats" :key="stat.label" class="flex flex-col gap-0.5 bg-bg px-4 py-3.5">
+          <dt class="order-last text-[13px] leading-snug text-faint">
+            {{ stat.label }}
+          </dt>
+          <dd class="font-mono text-xl font-medium">
+            {{ stat.value }}
+          </dd>
+        </div>
+      </dl>
+
+      <div class="mt-3 flex flex-wrap gap-x-[22px] text-sm">
+        <NuxtLink
+          v-for="social in socials"
+          :key="social.label"
+          :to="social.to"
+          class="link-muted inline-flex min-h-11 items-center gap-2"
+        >
+          <Icon :name="social.icon" class="size-4 text-mark" />
+          {{ social.label }}
+        </NuxtLink>
+      </div>
+    </section>
+
+    <section aria-labelledby="about" class="pt-12">
+      <SectionTitle id="about" class="mb-4">
+        About
+      </SectionTitle>
+      <div class="flex flex-col gap-4 text-[16px] leading-[1.75] text-soft">
+        <p v-for="paragraph in profile.about" :key="paragraph">
+          {{ paragraph }}
         </p>
       </div>
     </section>
 
-    <section aria-labelledby="story" class="pt-14">
-      <SectionTitle id="story" class="mb-2">
-        The story so far
+    <section aria-labelledby="experience" class="pt-14">
+      <SectionTitle id="experience" class="mb-2">
+        Experience
       </SectionTitle>
-      <ol class="border-b border-line">
-        <li v-for="step in story" :key="step.when" class="flex items-start gap-4 border-t border-line py-4">
-          <LogoTile
-            :mark="{ icon: step.icon }"
-            :size="36"
-          />
-          <span class="flex min-w-0 flex-auto flex-col gap-0.5">
-            <span class="font-mono text-xs text-faint">{{ step.when }}</span>
-            <span class="text-[15px] leading-[1.65] text-soft">{{ step.text }}</span>
-          </span>
-        </li>
+      <ol class="flex flex-col">
+        <TimelineItem
+          v-for="job in data?.experience"
+          :key="job.id"
+          :title="job.company"
+          :to="job.url"
+          :period="`${job.start} – ${job.end}`"
+          :subtitle="job.role"
+          :meta="[job.type, job.location, job.workplace]"
+          :summary="job.summary"
+          :highlights="job.highlights"
+          :mark="job.mark"
+        />
       </ol>
+      <GoLink to="/projects" class="mt-1">
+        Projects in detail
+      </GoLink>
+    </section>
+
+    <section aria-labelledby="open-source" class="pt-14">
+      <SectionTitle id="open-source" class="mb-2">
+        Open source
+      </SectionTitle>
+      <ul v-if="topRepos.length" class="flex flex-col">
+        <li v-for="repo in topRepos" :key="repo.name">
+          <NuxtLink
+            :to="repo.url"
+            class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
+          >
+            <img
+              :src="repo.avatar"
+              alt=""
+              width="22"
+              height="22"
+              loading="lazy"
+              class="avatar-mono size-[22px] shrink-0 rounded-md"
+            >
+            <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+              <span class="font-mono text-sm">{{ repo.name }}</span>
+              <span class="text-[13px] text-faint">
+                <template v-if="repo.rank">#{{ repo.rank }} contributor · </template>
+                {{ plural(repo.pullRequests.length, 'merged PR') }}
+              </span>
+            </span>
+          </NuxtLink>
+        </li>
+      </ul>
+      <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <span class="font-mono text-xs text-faint">Organizations</span>
+        <ul class="flex gap-2">
+          <li v-for="org in profile.organizations" :key="org.name">
+            <NuxtLink :to="org.url" :title="org.name" class="block rounded-lg">
+              <img
+                :src="org.image"
+                :alt="org.name"
+                width="32"
+                height="32"
+                loading="lazy"
+                class="avatar-mono size-8 rounded-lg border border-line"
+              >
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+      <GoLink to="/open-source" class="mt-2">
+        All contributions
+      </GoLink>
     </section>
 
     <section aria-labelledby="skills" class="pt-14">
       <SectionTitle id="skills" class="mb-5">
-        Skills &amp; technologies
+        Skills
       </SectionTitle>
       <dl class="flex flex-col gap-[18px]">
         <div v-for="row in skills" :key="row.group" class="flex flex-wrap gap-x-6 gap-y-2">
@@ -106,54 +209,41 @@
       </dl>
     </section>
 
-    <section aria-labelledby="how" class="pt-14">
-      <SectionTitle id="how" class="mb-2">
-        How I work
+    <section aria-labelledby="education" class="pt-14">
+      <SectionTitle id="education" class="mb-2">
+        Education &amp; awards
       </SectionTitle>
-      <ol class="border-b border-line">
-        <li
-          v-for="(principle, index) in principles"
-          :key="principle.title"
-          class="flex items-start gap-4 border-t border-line py-[18px]"
-        >
-          <LogoTile
-            :mark="{ icon: principle.icon }"
-            :size="40"
-            :icon-size="20"
-          />
-          <span class="flex flex-col gap-1">
-            <span class="flex items-baseline gap-2.5">
-              <span class="font-mono text-xs" :style="{ color: principle.color }">{{ String(index + 1).padStart(2, '0') }}</span>
-              <span class="text-base font-medium">{{ principle.title }}</span>
-            </span>
-            <span class="text-[15px] leading-[1.65] text-muted">{{ principle.text }}</span>
-          </span>
-        </li>
+      <ol class="flex flex-col">
+        <TimelineItem
+          v-for="school in data?.education"
+          :key="school.id"
+          :title="school.school"
+          :period="school.period"
+          :subtitle="school.degree"
+          :mark="school.mark"
+        />
+        <TimelineItem
+          v-for="award in profile.awards"
+          :key="award.title"
+          :title="award.title"
+          :period="award.year"
+          :subtitle="award.issuer"
+          :summary="award.note"
+          :mark="{ icon: 'lucide:award' }"
+        />
       </ol>
     </section>
 
     <section aria-labelledby="vision" class="pt-14">
       <SectionTitle id="vision" class="mb-5">
-        Where I'm headed
+        Vision
       </SectionTitle>
       <p class="font-serif text-[32px] leading-[1.25] tracking-[-0.005em] text-fg italic">
-        From building systems to researching them.
+        {{ profile.vision.line }}
       </p>
       <p class="mt-5 text-[17px] leading-[1.7] text-soft">
-        I'm planning a master's degree in machine learning, and I aspire to become an associate professor in the field
-        and earn international recognition for the work. Along the way I'll keep doing what I love today: designing
-        clean, domain-driven software and giving back to open source.
+        {{ profile.vision.text }}
       </p>
-      <ul class="mt-6 grid grid-cols-[repeat(auto-fill,minmax(min(100%,180px),1fr))] gap-2.5">
-        <li
-          v-for="goal in goals"
-          :key="goal.label"
-          class="flex items-center gap-2.5 rounded-xl bg-surface px-3.5 py-3 text-sm text-soft"
-        >
-          <Icon :name="goal.icon" class="size-4 text-accent-2" />
-          {{ goal.label }}
-        </li>
-      </ul>
     </section>
 
     <section aria-labelledby="hello" class="pt-14">
@@ -165,13 +255,13 @@
       </p>
       <div class="mt-2 flex flex-wrap gap-x-[22px] text-sm">
         <NuxtLink
-          v-for="contact in contacts"
-          :key="contact.label"
-          :to="contact.to"
+          v-for="social in socials"
+          :key="social.label"
+          :to="social.to"
           class="link-muted inline-flex min-h-11 items-center gap-2"
         >
-          <Icon :name="contact.icon" class="text-mark" :style="{ width: `${contact.size}px`, height: `${contact.size}px` }" />
-          {{ contact.label }}
+          <Icon :name="social.icon" class="size-4 text-mark" />
+          {{ social.label }}
         </NuxtLink>
       </div>
     </section>

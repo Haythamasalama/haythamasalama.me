@@ -1,6 +1,5 @@
 name: TypeScript
 icon: simple-icons:typescript
 url: https://www.typescriptlang.org/
-group: Main stack
-order: 4
-home: true
+group: Languages
+order: 2

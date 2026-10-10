@@ -1,21 +1,19 @@
 <script setup lang="ts">
   usePageSeo({
     title: 'Uses',
-    description: 'The hardware and software Haytham A. Salama uses every day — editors, terminal, databases, planning and design tools.'
+    description: 'The hardware and software Haytham A. Salama uses every day: editors, terminal, databases, planning and design tools.'
   });
 
   const { data: sections } = await useAsyncData('uses', () =>
     queryCollection('uses').order('order', 'ASC').all()
   );
-
-  const slug = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 </script>
 
 <template>
   <div>
     <PageHeader title="Uses">
       <p>
-        My own setup — the hardware and software I open every day. Something only lands here once it has earned a
+        My own setup: the hardware and software I open every day. Something only lands here once it has earned a
         permanent spot.
       </p>
       <p class="text-[15px] text-muted">
@@ -26,10 +24,10 @@
     <section
       v-for="section in sections"
       :key="section.id"
-      :aria-labelledby="`uses-${slug(section.title)}`"
+      :aria-labelledby="slugify(section.title)"
       class="pt-14"
     >
-      <SectionTitle :id="`uses-${slug(section.title)}`" class="mb-2">
+      <SectionTitle :id="slugify(section.title)" class="mb-2">
         {{ section.title }}
       </SectionTitle>
       <ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,260px),1fr))] gap-x-6">
@@ -38,6 +36,11 @@
           <span class="flex flex-col gap-0.5">
             <span class="text-[15px] font-medium">{{ item.name }}</span>
             <span class="text-[13px] text-faint">{{ item.note }}</span>
+            <span v-if="item.theme" class="inline-flex items-center gap-1.5 font-mono text-[11.5px] text-faint">
+              <Icon name="lucide:palette" class="size-3 shrink-0" aria-hidden="true" />
+              <span class="sr-only">Theme:</span>
+              {{ item.theme }}
+            </span>
           </span>
         </li>
       </ul>

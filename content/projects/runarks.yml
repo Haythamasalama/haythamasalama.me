@@ -1,0 +1,24 @@
+title: 'Runarks · Governed access to production databases'
+year: 2026
+context: Founder · Aug 2026 – now
+description: 'A SaaS that puts every query against a production database through review. Each statement is read for what it does before anyone approves it; reads need one approval and writes two by default, adjustable per project, and nobody approves their own request. The person who asked runs it once, sensitive fields are masked before results leave, DROP and TRUNCATE never run, and every step lands in an append-only log. Nobody is shown a database password.'
+mark:
+  logo: runarks
+tags:
+- label: Laravel
+  icon: simple-icons:laravel
+- label: Vue
+  icon: simple-icons:vuedotjs
+- label: Inertia.js
+  icon: simple-icons:inertia
+- label: DDD
+- label: Security
+links:
+- label: runarks.com
+  to: https://runarks.com/
+order: 1
+highlight:
+  title: Runarks · Governed database access
+  description: Every query against production is reviewed, approved, run once and logged, with sensitive fields masked and no shared passwords.
+  period: 2026 – now
+  order: 2

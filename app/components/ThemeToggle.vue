@@ -20,7 +20,7 @@
 <template>
   <button
     type="button"
-    class="inline-flex size-11 cursor-pointer items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface hover:text-accent-2"
+    class="inline-flex size-11 cursor-pointer items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface hover:text-fg"
     :aria-label="label"
     :title="label"
     @click="toggle"
