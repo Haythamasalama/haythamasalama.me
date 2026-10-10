@@ -1,7 +1,7 @@
 name: ColorPick
-category: Design
+category: Colours & gradients
 kind: Extension
 description: Pick any colour from a page and keep it.
-url: https://chrome.google.com/webstore/detail/colorpick-eyedropper/ohcpnigalekghcmgcdcenkpelffpdolg
+url: https://chromewebstore.google.com/detail/colorpick-eyedropper/ohcpnigalekghcmgcdcenkpelffpdolg
 icon: lucide:pipette
 featured: true

@@ -1,6 +1,6 @@
 name: QR Code Generator
-category: Files
+category: QR codes
 kind: Web
-description: A comprehensive QR code management platform offering QR code generation, tracking, and design customization.
+description: QR codes with tracking and editable links.
 url: https://www.qr-code-generator.com/
 icon: lucide:qr-code

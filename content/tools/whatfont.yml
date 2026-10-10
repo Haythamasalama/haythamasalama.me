@@ -1,7 +1,7 @@
 name: WhatFont
-category: Design
+category: Web development
 kind: Extension
 description: Identify the font on any page with one click.
-url: https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm
+url: https://chromewebstore.google.com/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm
 icon: lucide:type
 featured: true

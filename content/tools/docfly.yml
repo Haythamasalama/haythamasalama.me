@@ -1,6 +1,6 @@
 name: DocFly
-category: Files
+category: PDF tools
 kind: Web
-description: An online PDF tool for creating, editing, converting, and managing PDF files with a focus on simplicity.
+description: Create, edit and convert PDFs online.
 url: https://www.docfly.com/
 icon: lucide:file-text

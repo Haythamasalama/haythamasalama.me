@@ -1,6 +1,6 @@
-name: Pigment Shape Factory
-category: Design
+name: Pigment
+category: Colours & gradients
 kind: Web
-description: A tool for generating customizable color palettes with various color and shade options.
+description: Colour palettes from sliders, by Shape Factory.
 url: https://pigment.shapefactory.co/
 icon: lucide:paintbrush

@@ -1,6 +1,6 @@
 name: Keepa
-category: Browser
+category: Shopping
 kind: Extension
-description: An extension that tracks Amazon product prices, providing price history charts and alerts for desired products.
+description: Amazon price history and drop alerts.
 url: https://keepa.com/
 icon: lucide:line-chart

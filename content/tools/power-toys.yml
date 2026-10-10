@@ -1,6 +1,6 @@
 name: PowerToys
-category: Focus
-kind: Windows
+category: Desktop utilities
+kind: Windows app
 description: Power-user utilities for Windows.
 url: https://github.com/microsoft/PowerToys
 icon: lucide:wrench

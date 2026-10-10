@@ -1,6 +1,6 @@
 <script setup lang="ts">
   defineProps<{
-    options: { label: string; count: number }[];
+    options: { label: string; count: number; badge?: string }[];
     label: string;
   }>();
 
@@ -22,6 +22,12 @@
     >
       {{ option.label }}
       <span class="ml-1.5 font-mono text-[11.5px] opacity-65">{{ option.count }}</span>
+      <span
+        v-if="option.badge"
+        class="ml-2 rounded-[5px] border-gradient px-1.5 font-mono text-[9.5px] leading-4 tracking-[0.1em] uppercase"
+      >
+        <span class="text-gradient">{{ option.badge }}</span>
+      </span>
     </button>
   </div>
 </template>

@@ -1,6 +1,6 @@
 name: Video Speed Controller
-category: Browser
+category: Video & YouTube
 kind: Extension
-description: An extension that allows you to control the playback speed of HTML5 videos.
-url: https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk
+description: Speed up any HTML5 video with shortcuts.
+url: https://chromewebstore.google.com/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk
 icon: lucide:gauge

@@ -1,7 +1,7 @@
 name: JSON Viewer
-category: Code
+category: Web development
 kind: Extension
 description: Readable, collapsible JSON right in the browser.
-url: https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh
+url: https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh
 icon: simple-icons:json
 featured: true

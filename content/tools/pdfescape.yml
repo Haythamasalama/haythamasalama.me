@@ -1,6 +1,6 @@
 name: PDFescape
-category: Files
+category: PDF tools
 kind: Web
-description: A free online PDF editor for annotating, creating forms, editing, and adding passwords to PDF files.
+description: Annotate PDFs and fill in forms.
 url: https://www.pdfescape.com/
 icon: lucide:file-text

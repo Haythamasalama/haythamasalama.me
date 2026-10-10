@@ -1,7 +1,7 @@
 name: Fake Filler
-category: Code
+category: Web development
 kind: Extension
 description: Fills forms with random data so testing goes faster.
-url: https://chrome.google.com/webstore/detail/fake-filler/bnjjngeaknajbdcgpfkgnonkmififhfo
+url: https://chromewebstore.google.com/detail/fake-filler/bnjjngeaknajbdcgpfkgnonkmififhfo
 icon: lucide:clipboard-list
 featured: true

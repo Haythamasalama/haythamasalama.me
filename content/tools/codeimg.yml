@@ -1,6 +1,6 @@
 name: Codeimg
-category: Code
+category: Code screenshots
 kind: Web
-description: A tool for creating and sharing code screenshots with a simple API and customizable settings.
+description: Code to PNG, JPEG or SVG, sized for social posts.
 url: https://codeimg.io/
 icon: lucide:camera

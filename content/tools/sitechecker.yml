@@ -1,6 +1,6 @@
-name: Sitechecker
-category: Code
+name: Sitechecker Similar Websites
+category: Web development
 kind: Web
-description: A tool that provides a list of websites similar to a given URL, helping you discover new sources of information and inspiration.
+description: Another way to find sites like the one you are on.
 url: https://sitechecker.pro/similar-websites/
 icon: lucide:search

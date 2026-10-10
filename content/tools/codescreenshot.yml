@@ -1,6 +1,6 @@
 name: CodeScreenshot
-category: Code
+category: Code screenshots
 kind: Web
-description: A tool for generating code screenshots with a simple and customizable interface.
+description: Quick, customisable screenshots of a snippet.
 url: https://codescreenshot.com/
 icon: lucide:camera

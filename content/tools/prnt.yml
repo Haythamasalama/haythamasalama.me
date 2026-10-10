@@ -1,6 +1,6 @@
 name: Lightshot
-category: Media
-kind: Web
-description: A screenshot tool that allows you to quickly capture and share screenshots, with editing and annotation features.
+category: Images & screenshots
+kind: App
+description: Grab part of the screen and share a link.
 url: https://prnt.sc/
 icon: lucide:crop

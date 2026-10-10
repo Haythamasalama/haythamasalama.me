@@ -1,6 +1,6 @@
 name: SimilarSites
-category: Code
+category: Web development
 kind: Web
-description: A website discovery tool that helps you find similar websites based on content, audience, and features.
+description: Find websites similar to one you already like.
 url: https://www.similarsites.com/
 icon: lucide:search

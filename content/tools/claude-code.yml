@@ -1,0 +1,7 @@
+name: Claude Code
+category: AI for code
+kind: CLI & editor
+description: An agent that reads, edits and ships code in your repo.
+url: https://www.anthropic.com/claude-code
+icon: simple-icons:anthropic
+featured: true

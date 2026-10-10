@@ -1,6 +1,6 @@
-name: Free VPN for Chrome
-category: Browser
+name: VeePN
+category: Privacy & ad blocking
 kind: Extension
-description: A free VPN extension for Chrome that provides secure browsing, access to blocked content, and privacy protection.
-url: https://chrome.google.com/webstore/detail/free-vpn-for-chrome-vpn-p/majdfhpaihoncoakbjgbdhglocklcgno
+description: A free VPN extension for Chrome.
+url: https://chromewebstore.google.com/detail/free-vpn-for-chrome-vpn-p/majdfhpaihoncoakbjgbdhglocklcgno
 icon: lucide:lock

@@ -1,6 +1,6 @@
 name: PDF2Go
-category: Files
+category: PDF tools
 kind: Web
-description: A web-based PDF editor for editing, converting, compressing, merging, splitting, and protecting PDF files.
+description: Edit, convert and compress PDFs online.
 url: https://www.pdf2go.com/
 icon: lucide:file-text

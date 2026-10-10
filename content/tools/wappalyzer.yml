@@ -1,7 +1,7 @@
 name: Wappalyzer
-category: Code
+category: Web development
 kind: Extension
 description: Reveals the stack behind any website.
-url: https://chrome.google.com/webstore/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg
+url: https://chromewebstore.google.com/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg
 icon: simple-icons:wappalyzer
 featured: true

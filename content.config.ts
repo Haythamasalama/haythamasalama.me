@@ -1,5 +1,6 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content';
 import { defineSitemapSchema } from '@nuxtjs/sitemap/content';
+import { toolCategoryNames } from './shared/tool-categories';
 
 /** A small square visual: one-colour logo, Iconify icon, colour image or monogram. */
 const mark = z.object({
@@ -130,12 +131,14 @@ export default defineContentConfig({
       source: 'tools/*.yml',
       schema: z.object({
         name: z.string(),
-        category: z.enum(['Code', 'Design', 'Focus', 'Writing', 'Files', 'Media', 'Browser']),
+        /** One of the categories in `shared/tool-categories.ts`. */
+        category: z.enum(toolCategoryNames),
+        /** Where it runs: Web, Extension, App, VS Code… */
         kind: z.string(),
         description: z.string(),
         url: z.string().url(),
         icon: z.string(),
-        /** Picked for the short list; everything else shows under "All". */
+        /** One of my favourites; listed first in its category. */
         featured: z.boolean().default(false)
       })
     }),

@@ -1,6 +1,6 @@
-name: DuckDuckGo Privacy Essentials
-category: Browser
+name: DuckDuckGo Search & Tracker Protection
+category: Privacy & ad blocking
 kind: Extension
-description: A privacy-focused extension that blocks trackers, enforces encryption, and provides private search.
-url: https://duckduckgo.com/app
+description: Private search plus tracker and cookie blocking.
+url: https://chromewebstore.google.com/detail/duckduckgo-search-tracker/bkdgflcldnnnapblkhphbgpggdiikppg
 icon: simple-icons:duckduckgo

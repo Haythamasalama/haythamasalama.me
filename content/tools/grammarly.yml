@@ -1,7 +1,7 @@
 name: Grammarly
-category: Writing
+category: Writing & grammar
 kind: Extension
 description: Grammar and clarity checks as you type.
-url: https://chrome.google.com/webstore/detail/grammarly-grammar-checker/kbfnbcaeplbcioakkpcpgfkobkghlhen
+url: https://chromewebstore.google.com/detail/grammarly-grammar-checker/kbfnbcaeplbcioakkpcpgfkobkghlhen
 icon: simple-icons:grammarly
 featured: true

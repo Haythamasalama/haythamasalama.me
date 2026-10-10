@@ -1,0 +1,7 @@
+name: Claude
+category: AI assistants
+kind: Web & app
+description: Thinking partner for writing, research and code.
+url: https://claude.ai/
+icon: simple-icons:claude
+featured: true

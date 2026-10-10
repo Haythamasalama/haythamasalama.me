@@ -1,6 +1,6 @@
 name: Dark Reader
-category: Browser
+category: Dark mode
 kind: Extension
-description: An extension that enables dark mode on websites, reducing eye strain and improving readability at night.
+description: A dark theme for every website, open source.
 url: https://darkreader.org/
-icon: lucide:moon-star
+icon: simple-icons:darkreader

@@ -1,6 +1,6 @@
 name: CSS Gradient Generator
-category: Design
+category: Colours & gradients
 kind: Web
-description: A free online tool for generating CSS gradients that can be easily copied to your clipboard.
+description: Build a CSS gradient and copy the code.
 url: https://cssgradient.io/
 icon: lucide:paintbrush

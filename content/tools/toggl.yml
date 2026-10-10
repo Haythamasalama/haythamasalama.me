@@ -1,7 +1,7 @@
 name: Toggl Track
-category: Focus
+category: Notes & time tracking
 kind: App
 description: Time tracking that stays out of the way.
 url: https://track.toggl.com/timer
-icon: simple-icons:toggl
+icon: simple-icons:toggltrack
 featured: true

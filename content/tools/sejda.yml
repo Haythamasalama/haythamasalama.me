@@ -1,6 +1,6 @@
 name: Sejda
-category: Files
+category: PDF tools
 kind: Web
-description: An online PDF editor for editing, converting, merging, splitting, compressing, and protecting PDF files.
+description: Edit PDF text, sign and split pages.
 url: https://www.sejda.com/
 icon: lucide:file-text

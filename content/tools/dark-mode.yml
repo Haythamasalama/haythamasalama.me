@@ -1,6 +1,6 @@
 name: Dark Mode
-category: Browser
+category: Dark mode
 kind: Extension
-description: An extension that enables dark mode on all websites for improved readability and reduced eye strain.
-url: https://chrome.google.com/webstore/detail/dark-mode/dmghijelimhndkbmpgbldicpogfkceaj
+description: One-click dark mode for any site.
+url: https://chromewebstore.google.com/detail/dark-mode/dmghijelimhndkbmpgbldicpogfkceaj
 icon: lucide:moon
