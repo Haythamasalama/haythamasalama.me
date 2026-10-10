@@ -213,7 +213,12 @@ export default defineCachedEventHandler(async () => {
   catch (error) {
     // Usually GitHub's rate limit. Failures are never cached: the last good copy
     // keeps being served and the next request tries again.
-    throw createError({ statusCode: 502, statusMessage: 'Could not load gists from GitHub', cause: error });
+    const reason = describeGitHubError(error);
+
+    // Shows up in the Vercel function logs; /api/snippets returns it too.
+    console.error('[github] Loading gists failed:', reason);
+
+    throw createError({ statusCode: 502, statusMessage: 'Could not load gists from GitHub', data: reason, cause: error });
   }
 }, {
   name: 'gists',

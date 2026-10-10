@@ -17,3 +17,16 @@ export function useGitHub () {
 
   return { api, username: github.username };
 }
+
+/**
+ * What went wrong, in a form that is safe to log and to return: GitHub's status
+ * and message (e.g. 403 "API rate limit exceeded"), or the error's own message.
+ */
+export function describeGitHubError (error: unknown) {
+  const { status, data } = (error ?? {}) as { status?: number; data?: { message?: string } };
+
+  return {
+    status,
+    message: data?.message ?? (error instanceof Error ? error.message : String(error))
+  };
+}

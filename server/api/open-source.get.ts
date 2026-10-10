@@ -153,7 +153,12 @@ export default defineCachedEventHandler(async (): Promise<OpenSourceActivity> =>
   }
   catch (error) {
     // Failures are never cached: the last good copy keeps being served.
-    throw createError({ statusCode: 502, statusMessage: 'Could not load contributions from GitHub', cause: error });
+    const reason = describeGitHubError(error);
+
+    // Shows up in the Vercel function logs; /api/open-source returns it too.
+    console.error('[github] Loading contributions failed:', reason);
+
+    throw createError({ statusCode: 502, statusMessage: 'Could not load contributions from GitHub', data: reason, cause: error });
   }
 }, {
   name: 'open-source',
