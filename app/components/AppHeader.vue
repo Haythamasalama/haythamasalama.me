@@ -140,8 +140,8 @@
             v-for="child in item.children"
             :key="child.to"
             :to="child.to"
-            class="link flex min-h-13 items-center"
-            active-class="text-gradient"
+            class="link-muted flex min-h-13 items-center"
+            active-class="!text-fg"
           >
             {{ child.label }}
           </NuxtLink>
@@ -149,8 +149,8 @@
         <NuxtLink
           v-else
           :to="item.to"
-          class="link flex min-h-13 items-center"
-          active-class="text-gradient"
+          class="link-muted flex min-h-13 items-center"
+          active-class="!text-fg"
         >
           {{ item.label }}
         </NuxtLink>

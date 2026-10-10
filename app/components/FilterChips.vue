@@ -16,7 +16,7 @@
       :aria-pressed="selected === option.label"
       class="inline-flex min-h-9 cursor-pointer items-center rounded-full px-3.5 text-[13px] transition-colors"
       :class="selected === option.label
-        ? 'border-gradient text-fg [--bg:var(--surface)]'
+        ? 'border border-fg bg-surface text-fg'
         : 'border border-chip text-muted hover:text-fg'"
       @click="selected = option.label"
     >
