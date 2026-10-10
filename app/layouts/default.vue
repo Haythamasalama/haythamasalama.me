@@ -1,8 +1,9 @@
 <script setup lang="ts">
   const route = useRoute();
 
-  // Most pages read best at 640px; the brand guide needs a little more room.
-  const maxWidth = computed(() => route.meta.wide ? 'max-w-[760px]' : 'max-w-[640px]');
+  // Lists and grids use the full width; paragraphs are capped at a readable
+  // measure in main.css. The brand guide gets a little more room.
+  const maxWidth = computed(() => route.meta.wide ? 'max-w-[1040px]' : 'max-w-[880px]');
 </script>
 
 <template>

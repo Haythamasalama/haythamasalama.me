@@ -528,7 +528,7 @@
           role="img"
           aria-label="The signature gradient, from Iris 500 to Azure 500"
         />
-        <p class="flex flex-wrap justify-between gap-x-4 gap-y-1 font-mono text-xs text-faint">
+        <p class="flex max-w-none flex-wrap justify-between gap-x-4 gap-y-1 font-mono text-xs text-faint">
           <span><span class="text-fg">Signature gradient</span> · Iris 500 → Azure 500</span>
           <span class="min-w-0 wrap-anywhere">linear-gradient(90deg, #7F7CF2, #6C8CF9, #4F9BFF)</span>
         </p>

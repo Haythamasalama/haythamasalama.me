@@ -49,7 +49,7 @@ Dark by default with an optional light theme (`@nuxtjs/color-mode`, stored as `t
 - Company logos are one-colour masks (`BrandLogo` / `LogoTile` with `logo:`) so they follow the theme; register new ones in `app/utils/logos.ts`.
 - Icons come from `@nuxt/icon` with the local `lucide` and `simple-icons` collections; LinkedIn is `brand:linkedin`.
 - Type: Geist for text, Geist Mono for labels, dates and code, Instrument Serif italic for one human phrase per page (all self-hosted via Fontsource).
-- Reading column is 640px (760px on `/brand` via `definePageMeta({ wide: true })`); tap targets are at least 44px.
+- The page column is 880px (1040px on `/brand` via `definePageMeta({ wide: true })`); paragraphs are capped at 70ch by a base rule in `main.css`, and articles read in a 720px column. Tap targets are at least 44px.
 - Respect `prefers-reduced-motion` for any new animation.
 - Verify UI changes visually at desktop and phone widths, in both themes, before and after the change.
 

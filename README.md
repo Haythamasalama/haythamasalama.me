@@ -42,7 +42,7 @@ app/
   assets/icons/         Local icon collection (`brand:*`)
   components/           Layout pieces and small UI building blocks
   components/content/   Components used inside Markdown (code blocks, callouts)
-  layouts/default.vue   Header, footer and the 640px reading column
+  layouts/default.vue   Header, footer and the 880px page column
   pages/                One file per route
   utils/                Signature strokes, logo registry, date helpers
 content/                Everything you read on the site — Markdown and YAML

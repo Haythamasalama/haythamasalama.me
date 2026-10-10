@@ -71,11 +71,10 @@
         The story so far
       </SectionTitle>
       <ol class="border-b border-line">
-        <li v-for="step in story" :key="step.when" class="group flex items-start gap-4 border-t border-line py-4">
+        <li v-for="step in story" :key="step.when" class="flex items-start gap-4 border-t border-line py-4">
           <LogoTile
             :mark="{ icon: step.icon }"
             :size="36"
-            class="transition-colors group-hover:border-iris-900 group-hover:text-accent-2"
           />
           <span class="flex min-w-0 flex-auto flex-col gap-0.5">
             <span class="font-mono text-xs text-faint">{{ step.when }}</span>
@@ -115,13 +114,12 @@
         <li
           v-for="(principle, index) in principles"
           :key="principle.title"
-          class="group flex items-start gap-4 border-t border-line py-[18px]"
+          class="flex items-start gap-4 border-t border-line py-[18px]"
         >
           <LogoTile
             :mark="{ icon: principle.icon }"
             :size="40"
             :icon-size="20"
-            class="transition-colors group-hover:border-iris-900 group-hover:text-accent-2"
           />
           <span class="flex flex-col gap-1">
             <span class="flex items-baseline gap-2.5">

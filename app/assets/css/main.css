@@ -148,6 +148,11 @@
     background: rgb(127 124 242 / 0.35);
   }
 
+  /* Keep running text at a readable line length, however wide the page is. */
+  :where(main p) {
+    max-width: 70ch;
+  }
+
   a {
     transition: color 0.15s ease, background-color 0.15s ease;
   }

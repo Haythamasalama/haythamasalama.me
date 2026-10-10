@@ -51,7 +51,7 @@
 </script>
 
 <template>
-  <article v-if="article">
+  <article v-if="article" class="max-w-[720px]">
     <header class="pt-16 md:pt-[72px]">
       <NuxtLink to="/articles" class="go link-muted -ml-0.5 inline-flex min-h-11 items-center text-sm">
         <span class="mr-1.5" aria-hidden="true">←</span> Writing
