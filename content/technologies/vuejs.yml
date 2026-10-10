@@ -1,6 +1,6 @@
 name: Vue
 icon: simple-icons:vuedotjs
 url: https://vuejs.org
-group: Main stack
-order: 2
-home: true
+group: Front end
+order: 1
+home: Every day

@@ -1,4 +1,4 @@
 name: TDD
 icon: lucide:list-checks
-group: Testing
-order: 3
+group: Engineering
+order: 2

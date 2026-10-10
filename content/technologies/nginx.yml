@@ -1,6 +1,6 @@
 name: Nginx
 icon: simple-icons:nginx
 url: https://nginx.org/
-group: Deployment
+group: Infrastructure
 order: 2
-home: true
+home: Shipping

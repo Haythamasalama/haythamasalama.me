@@ -43,7 +43,7 @@
 
   const topRepos = computed(() => repos.value.filter(repo => repo.pullRequests.length).slice(0, 4));
 
-  const groupOrder = ['AI & agents', 'Main stack', 'Back end', 'Front end', 'Testing', 'Deployment', 'Languages', 'Hardware'] as const;
+  const groupOrder = ['AI & agents', 'Languages', 'Back end', 'Front end', 'Data', 'Engineering', 'Infrastructure', 'IoT'] as const;
 
   const skills = computed(() => groupOrder
     .map(group => ({ group, items: data.value?.technologies.filter(tech => tech.group === group) ?? [] }))

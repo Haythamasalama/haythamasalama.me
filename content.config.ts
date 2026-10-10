@@ -147,10 +147,10 @@ export default defineContentConfig({
         name: z.string(),
         icon: z.string(),
         url: z.string().url().optional(),
-        group: z.enum(['AI & agents', 'Main stack', 'Back end', 'Front end', 'Testing', 'Deployment', 'Languages', 'Hardware']),
+        group: z.enum(['AI & agents', 'Languages', 'Back end', 'Front end', 'Data', 'Engineering', 'Infrastructure', 'IoT']),
         order: z.number(),
-        /** Listed under "Skills & stack" on the home page. */
-        home: z.boolean().default(false)
+        /** The row it is listed in under "Skills & stack" on the home page, if any. */
+        home: z.enum(['Every day', 'Back end', 'Shipping']).optional()
       })
     }),
 

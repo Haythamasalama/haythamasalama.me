@@ -9,7 +9,7 @@
   const { data } = await useAsyncData('home', async () => {
     const [projects, technologies, articles, uses] = await Promise.all([
       queryCollection('projects').all(),
-      queryCollection('technologies').where('home', '=', true).order('order', 'ASC').all(),
+      queryCollection('technologies').where('home', 'IS NOT NULL').order('order', 'ASC').order('name', 'ASC').all(),
       queryCollection('articles').order('date', 'DESC').limit(3).all(),
       queryCollection('uses').all()
     ]);
@@ -34,9 +34,9 @@
     const stack = data.value?.stack ?? [];
 
     return [
-      { label: 'Every day', items: stack.filter(tech => tech.group === 'Main stack'), strong: true },
-      { label: 'Back end', items: stack.filter(tech => tech.group === 'Back end') },
-      { label: 'Shipping', items: stack.filter(tech => tech.group === 'Deployment') }
+      { label: 'Every day', items: stack.filter(tech => tech.home === 'Every day'), strong: true },
+      { label: 'Back end', items: stack.filter(tech => tech.home === 'Back end') },
+      { label: 'Shipping', items: stack.filter(tech => tech.home === 'Shipping') }
     ];
   });
 </script>

@@ -1,5 +1,5 @@
 name: PHPUnit
 icon: lucide:flask-conical
 url: https://phpunit.de/
-group: Testing
-order: 1
+group: Engineering
+order: 4

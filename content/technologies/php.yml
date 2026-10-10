@@ -1,6 +1,6 @@
 name: PHP
 icon: simple-icons:php
 url: https://php.net/
-group: Back end
+group: Languages
 order: 1
-home: true
+home: Back end
