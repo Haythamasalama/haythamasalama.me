@@ -1,22 +1,16 @@
 <script setup lang="ts">
   usePageSeo({
     title: 'Projects',
-    description: 'Where Haytham A. Salama has worked and what he has shipped — from a physics app in high school to fintech platforms today.'
+    description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today.'
   });
 
-  const { data } = await useAsyncData('work', async () => {
-    const [experience, education, projects] = await Promise.all([
-      queryCollection('experience').order('order', 'ASC').all(),
-      queryCollection('education').order('order', 'ASC').all(),
-      queryCollection('projects').order('order', 'ASC').all()
-    ]);
+  const { data } = await useAsyncData('projects', async () => {
+    const projects = await queryCollection('projects').order('order', 'ASC').all();
 
     // Group projects by year, newest first.
     const years = [...new Set(projects.map(project => project.year))].sort((a, b) => b - a);
 
     return {
-      experience,
-      education,
       projectsByYear: years.map(year => ({ year, projects: projects.filter(project => project.year === year) }))
     };
   });
@@ -25,50 +19,8 @@
 <template>
   <div>
     <PageHeader title="Projects">
-      <p>Where I've worked and what I've shipped — from a physics app in high school to fintech platforms today.</p>
+      <p>What I've built and shipped, from a physics app in high school to fintech and logistics platforms today.</p>
     </PageHeader>
-
-    <section aria-labelledby="experience" class="pt-14">
-      <SectionTitle id="experience" class="mb-2">
-        Experience
-      </SectionTitle>
-      <ol class="flex flex-col border-b border-line">
-        <TimelineItem
-          v-for="job in data?.experience"
-          :key="job.id"
-          :title="job.company"
-          :to="job.url"
-          :period="`${job.start} — ${job.end}`"
-          :subtitle="job.role"
-          :meta="[job.type, job.location, job.workplace]"
-          :summary="job.summary"
-          :mark="job.mark"
-        />
-      </ol>
-      <NuxtLink
-        to="https://www.linkedin.com/in/haythamasalama/"
-        class="link-muted mt-2 inline-flex min-h-11 items-center gap-2 text-sm"
-      >
-        <Icon name="brand:linkedin" class="size-[15px] text-mark" />
-        Full résumé on LinkedIn ↗
-      </NuxtLink>
-    </section>
-
-    <section aria-labelledby="education" class="pt-14">
-      <SectionTitle id="education" class="mb-2">
-        Education
-      </SectionTitle>
-      <ol class="flex flex-col border-b border-line">
-        <TimelineItem
-          v-for="school in data?.education"
-          :key="school.id"
-          :title="school.school"
-          :period="school.period"
-          :subtitle="school.degree"
-          :mark="school.mark"
-        />
-      </ol>
-    </section>
 
     <section aria-labelledby="projects" class="pt-14">
       <SectionTitle id="projects" class="mb-2">
