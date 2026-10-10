@@ -51,8 +51,9 @@
         class="signature-link inline-flex min-h-11 items-center"
         aria-label="Haytham A. Salama, home"
       >
-        <SignatureMark class="md:hidden" :width="72" />
-        <SignatureMark class="hidden md:block" :width="80" />
+        <!-- Keyed by page, so the signature draws itself again on every page. -->
+        <SignatureMark :key="`m${route.path}`" class="md:hidden" :width="72" />
+        <SignatureMark :key="`d${route.path}`" class="hidden md:block" :width="80" />
       </NuxtLink>
 
       <nav

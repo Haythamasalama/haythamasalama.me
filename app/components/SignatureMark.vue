@@ -12,18 +12,6 @@
 
   // Each instance needs its own gradient id, or hover breaks when two are on a page.
   const gradientId = useId();
-
-  // Remember that it has been drawn, so other pages in this visit skip the animation.
-  onMounted(() => {
-    if (animated) {
-      try {
-        sessionStorage.setItem('signature-drawn', '1');
-      }
-      catch {
-        // Storage can be blocked; the signature then just draws again.
-      }
-    }
-  });
 </script>
 
 <template>

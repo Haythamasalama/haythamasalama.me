@@ -243,12 +243,6 @@
   animation-fill-mode: forwards;
 }
 
-/* Already drawn earlier in this visit (see app.vue). */
-.signature-drawn .signature path {
-  animation: none;
-  stroke-dashoffset: 0 !important;
-}
-
 .signature-link:hover .signature path,
 .signature-link:focus-visible .signature path {
   stroke: var(--signature-gradient);
