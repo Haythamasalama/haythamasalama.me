@@ -1,28 +1,24 @@
 title: Hardware
 order: 1
 items:
-- name: MacBook Pro M2
-  note: 16 GB · daily machine
+- name: MacBook Pro M5
+  note: Daily machine
   mark:
     icon: simple-icons:apple
   desk: 1
-- name: Two HP monitors
-  note: Dual-screen desk
-  mark:
-    icon: simple-icons:hp
-- name: Corsair T1 Race
-  note: Chair
-  mark:
-    icon: simple-icons:corsair
-- name: iPad (8th gen)
-  note: Tablet
-  mark:
-    icon: simple-icons:apple
-- name: iPhone 13
+- name: iPhone 17 Pro Max
   note: Phone
   mark:
     icon: simple-icons:apple
-- name: Soundcore Q30 & Life P3
-  note: Headphones & earbuds
+- name: Apple Watch
+  note: Watch
   mark:
-    icon: lucide:headphones
+    icon: simple-icons:apple
+- name: AirPods
+  note: Earbuds
+  mark:
+    icon: simple-icons:apple
+- name: Sony WH-1000XM5
+  note: Noise-cancelling headphones
+  mark:
+    icon: simple-icons:sony

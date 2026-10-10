@@ -1,5 +1,5 @@
 title: Databases & browsers
-order: 3
+order: 4
 items:
 - name: Sequel Ace
   note: MySQL client
@@ -13,7 +13,7 @@ items:
   note: Development
   mark:
     icon: simple-icons:googlechrome
-  desk: 7
+  desk: 8
 - name: Safari
   note: Everyday browsing
   mark:

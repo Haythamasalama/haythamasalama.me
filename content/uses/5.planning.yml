@@ -1,11 +1,11 @@
 title: Planning
-order: 4
+order: 5
 items:
 - name: Notion
   note: Notes & docs
   mark:
     icon: simple-icons:notion
-  desk: 5
+  desk: 6
 - name: GitHub Projects
   note: Roadmaps & issues
   mark:
@@ -18,12 +18,7 @@ items:
   note: Handwritten notes
   mark:
     icon: lucide:pen-line
-- name: draw.io
-  note: Diagrams
+- name: Excalidraw
+  note: Sketches & diagrams
   mark:
-    icon: simple-icons:diagramsdotnet
-- name: Toggl Track
-  note: Time tracking
-  mark:
-    icon: simple-icons:toggl
-  desk: 6
+    icon: simple-icons:excalidraw

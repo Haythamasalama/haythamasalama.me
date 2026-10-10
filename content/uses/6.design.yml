@@ -1,0 +1,8 @@
+title: Design
+order: 6
+items:
+- name: Figma
+  note: Interface design
+  mark:
+    icon: simple-icons:figma
+  desk: 5

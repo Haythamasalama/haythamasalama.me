@@ -1,11 +1,10 @@
 title: Everything else
-order: 6
+order: 7
 items:
 - name: Telegram
   note: Chat
   mark:
     icon: simple-icons:telegram
-  desk: 8
 - name: KeePass
   note: Passwords
   mark:
