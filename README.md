@@ -1,7 +1,7 @@
 # haythamasalama.me
 
 <p align="center">
-  <img src="public/brand/haytham-signature-white.svg" width="220" alt="Haytham A. Salama — signature">
+  <img src="public/brand-kit/haytham-signature-white.svg" width="220" alt="Haytham A. Salama — signature">
 </p>
 
 <p align="center">
@@ -47,7 +47,7 @@ content/                Everything you read on the site — Markdown and YAML
   articles/  snippets/  projects/  experience/  education/
   contributions/  technologies/  tools/  uses/
 content.config.ts       Collection schemas
-public/brand/           The downloadable brand kit
+public/brand-kit/       The downloadable brand kit
 ```
 
 Most edits never touch code: add a YAML file to `content/projects`, `content/tools` or `content/uses`, or a Markdown file to `content/articles`, and the page picks it up.
@@ -74,7 +74,7 @@ npm run dev         # http://localhost:3000
 
 ## Brand
 
-The signature, colours, type and downloadable files live on the [brand guidelines](https://haythamasalama.me/brand) page and in [`public/brand`](public/brand).
+The signature, colours, type and downloadable files live on the [brand guidelines](https://haythamasalama.me/brand) page and in [`public/brand-kit`](public/brand-kit).
 
 ## License
 
