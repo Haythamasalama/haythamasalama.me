@@ -1,6 +1,0 @@
-name: Nginx
-icon: simple-icons:nginx
-url: https://nginx.org/
-group: Infrastructure
-order: 2
-home: Shipping

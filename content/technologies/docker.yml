@@ -1,6 +1,6 @@
 name: Docker
 icon: simple-icons:docker
 url: https://www.docker.com/
-group: Infrastructure
-order: 1
+group: DevOps
+order: 4
 home: Shipping

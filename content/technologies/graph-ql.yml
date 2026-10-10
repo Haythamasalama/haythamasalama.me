@@ -1,6 +1,6 @@
 name: GraphQL
 icon: simple-icons:graphql
 url: https://graphql.org/
-group: Back end
-order: 5
+group: Data
+order: 6
 home: Back end

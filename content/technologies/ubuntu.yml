@@ -1,6 +1,0 @@
-name: Ubuntu
-icon: simple-icons:ubuntu
-url: https://ubuntu.com/
-group: Infrastructure
-order: 3
-home: Shipping

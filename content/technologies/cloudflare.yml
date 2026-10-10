@@ -1,4 +1,5 @@
 name: Cloudflare
 icon: simple-icons:cloudflare
-group: Infrastructure
-order: 4
+group: DevOps
+order: 3
+home: Shipping

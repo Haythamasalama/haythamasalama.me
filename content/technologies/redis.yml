@@ -2,5 +2,5 @@ name: Redis
 icon: simple-icons:redis
 url: https://redis.io/
 group: Data
-order: 4
+order: 5
 home: Back end

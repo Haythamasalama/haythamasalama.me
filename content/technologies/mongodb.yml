@@ -1,0 +1,5 @@
+name: MongoDB
+icon: simple-icons:mongodb
+url: https://www.mongodb.com/
+group: Data
+order: 4
