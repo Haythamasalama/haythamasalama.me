@@ -29,6 +29,45 @@ export default defineContentConfig({
       })
     }),
 
+    /** The About page: headline, story, pinned work, awards and vision. */
+    profile: defineCollection({
+      type: 'data',
+      source: 'profile.yml',
+      schema: z.object({
+        headline: z.string(),
+        focus: z.string(),
+        location: z.string(),
+        /** First full-time engineering job, `YYYY-MM`; "years shipping" counts from here. */
+        careerStart: z.string().regex(/^\d{4}-\d{2}$/),
+        about: z.array(z.string()),
+        pinned: z.array(z.object({
+          title: z.string(),
+          label: z.string(),
+          status: z.string().optional(),
+          description: z.string(),
+          url: z.string().url(),
+          mark,
+          /** `owner/name`: shows my live rank and merged pull requests. */
+          repo: z.string().optional()
+        })),
+        organizations: z.array(z.object({
+          name: z.string(),
+          url: z.string().url(),
+          image: z.string()
+        })),
+        awards: z.array(z.object({
+          title: z.string(),
+          issuer: z.string(),
+          year: z.string(),
+          note: z.string().optional()
+        })),
+        vision: z.object({
+          line: z.string(),
+          text: z.string()
+        })
+      })
+    }),
+
     experience: defineCollection({
       type: 'data',
       source: 'experience/*.yml',
@@ -41,6 +80,8 @@ export default defineContentConfig({
         start: z.string(),
         end: z.string(),
         summary: z.string(),
+        /** Bullet points shown on the About page, LinkedIn style. */
+        highlights: z.array(z.string()).default([]),
         order: z.number()
       })
     }),
@@ -106,7 +147,7 @@ export default defineContentConfig({
         name: z.string(),
         icon: z.string(),
         url: z.string().url().optional(),
-        group: z.enum(['Main stack', 'Back end', 'Front end', 'Testing', 'Deployment', 'Languages', 'Hardware']),
+        group: z.enum(['AI & agents', 'Main stack', 'Back end', 'Front end', 'Testing', 'Deployment', 'Languages', 'Hardware']),
         order: z.number(),
         /** Listed under "Skills & stack" on the home page. */
         home: z.boolean().default(false)

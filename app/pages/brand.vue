@@ -143,13 +143,13 @@
       id: 'short',
       label: 'SHORT BIO · 40 WORDS',
       copyLabel: 'short bio',
-      text: 'Haytham A. Salama is a creative developer and full-stack engineer who builds logistics and fintech platforms with Laravel, Vue and Nuxt. He is a top contributor to Nuxt UI, writes about shipping software, and is heading toward a master’s in machine learning.'
+      text: 'Haytham A. Salama is a creative developer and full-stack engineer who builds logistics and fintech platforms with Laravel, Vue and Nuxt. He contributes to Nuxt UI, writes about shipping software, and works every day alongside AI coding agents.'
     },
     {
       id: 'long',
       label: 'LONG BIO · 90 WORDS',
       copyLabel: 'long bio',
-      text: 'Haytham A. Salama is a full-stack engineer with more than five years of experience building scalable logistics and fintech platforms — today at WINCH and Sanad. He designs systems around the domain, tests them from day one, and leads front-end, back-end and mobile teams to ship them. Before code, he repaired electronics and worked as a designer and video editor, which still shapes how his software feels. He has contributed to Laravel, Nuxt and Nuxt UI, and is preparing for a master’s in machine learning, with an eye on research and teaching.'
+      text: 'Haytham A. Salama is a senior full-stack engineer who has built logistics and fintech platforms since 2019 — today at WINCH. He designs systems around the domain, tests them from day one, and leads front-end, back-end and mobile teams to ship them. Before code, he repaired electronics and worked as a designer and video editor, which still shapes how his software feels. He has contributed to Laravel, Nuxt and Nuxt UI, works every day alongside AI coding agents, and is building Runarks, a SaaS of his own.'
     }
   ];
 

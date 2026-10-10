@@ -66,7 +66,7 @@
       <p class="mt-8 animate-rise text-[17px] leading-[1.7] text-soft [animation-delay:.15s]">
         I'm a
         <span class="text-gradient pr-0.5 font-serif text-[22px] italic">creative developer</span>
-        who turns messy business problems into calm, durable software. For 5+ years I've built logistics and fintech
+        who turns messy business problems into calm, durable software. Since 2019 I've built logistics and fintech
         platforms — designed around the domain, tested from day one, and fast where it matters.
       </p>
       <p class="mt-[18px] animate-rise text-[17px] leading-[1.7] text-soft [animation-delay:.25s]">
@@ -83,8 +83,7 @@
         />
         <span>
           <span class="text-fg">Now</span> — full-stack engineer at
-          <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink> and
-          <NuxtLink to="https://investsanad.sa/" class="link-underline">Sanad</NuxtLink>, remote
+          <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink>, remote from Cairo
         </span>
       </p>
 
@@ -239,9 +238,9 @@
         Where I'm headed
       </SectionTitle>
       <p class="text-[17px] leading-[1.7] text-soft">
-        Next comes a master's in <span class="text-fg">machine learning</span> — and, further out, becoming an
-        associate professor in the field. Until then I'll keep shipping domain-driven systems and giving back to the
-        open-source tools I build on.
+        Software is moving from screens people click to <span class="text-fg">agents that act</span> on their behalf. I
+        want the platforms I build — the ones that move money and deliveries — to be ready for it, and I'll keep giving
+        back to the open-source tools I build on.
       </p>
       <GoLink to="/about" class="mt-2">
         My story

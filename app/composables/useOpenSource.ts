@@ -65,6 +65,7 @@ export async function useOpenSource () {
     live: computed(() => Boolean(activity.value)),
     activity,
     repos,
+    findRepo,
     maintained,
     discussions,
     created,

@@ -1,5 +1,0 @@
-name: Windows Server
-icon: lucide:server
-url: https://www.microsoft.com/en-us/windows-server
-group: Deployment
-order: 4

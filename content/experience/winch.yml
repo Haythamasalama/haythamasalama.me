@@ -6,5 +6,10 @@ role: Full-stack engineer
 detail: full-time, remote
 start: Feb 2023
 end: now
-summary: Business and owner platforms on Domain-Driven Design; payments and Elm integrations; leading front-end, back-end and mobile teams.
+summary: Business and owner platforms for a logistics company in Saudi Arabia.
+highlights:
+- Moved a legacy MVC codebase to a domain-driven monolith that is easier to change.
+- Integrated payment gateways and Elm government services.
+- Made the platform faster and steadier with a database redesign, queues and rate limiting.
+- Lead the front-end, back-end and mobile engineers who ship the business and owner platforms.
 order: 1

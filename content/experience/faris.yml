@@ -3,8 +3,12 @@ url: https://fpco.co/
 mark:
   logo: faris
 role: Full-stack developer
-detail: Palestine
+detail: full-time, Palestine
 start: Nov 2019
-end: Apr 2023
+end: May 2023
 summary: Six internal products, from a CRM and HR system to test-driven charging and workshop platforms.
+highlights:
+- Automated wash-pump reservations across several stations with Raspberry Pi and Laravel.
+- Built a test-driven card-charging system that processes bulk transactions in queues.
+- Delivered workshop, HR and CRM systems, plus a games platform for live events.
 order: 3

@@ -73,8 +73,9 @@ export default defineNuxtConfig({
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
       }
     },
-    // Home and Open source show live GitHub activity, refreshed every six hours.
+    // Home, About and Open source show live GitHub activity, refreshed every six hours.
     '/': { isr: 6 * 60 * 60, prerender: false },
+    '/about': { isr: 6 * 60 * 60, prerender: false },
     '/open-source': { isr: 6 * 60 * 60, prerender: false },
     '/api/open-source': { isr: 6 * 60 * 60 },
     '/work': { prerender: true },
@@ -85,7 +86,6 @@ export default defineNuxtConfig({
     '/api/snippets': { isr: 3600 },
     '/tools': { prerender: true },
     '/uses': { prerender: true },
-    '/about': { prerender: true },
     '/brand': { prerender: true },
 
     // Old URLs from the previous version of the site

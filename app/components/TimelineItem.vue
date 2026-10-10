@@ -8,6 +8,8 @@
     period: string;
     subtitle: string;
     summary?: string;
+    /** LinkedIn-style bullet points under the summary. */
+    highlights?: string[];
     mark: Mark;
   }>();
 </script>
@@ -23,6 +25,15 @@
       </span>
       <span class="text-sm text-soft">{{ subtitle }}</span>
       <span v-if="summary" class="text-sm leading-relaxed text-muted">{{ summary }}</span>
+      <ul v-if="highlights?.length" class="mt-1.5 flex flex-col gap-1.5">
+        <li
+          v-for="highlight in highlights"
+          :key="highlight"
+          class="relative pl-4 text-sm leading-relaxed text-muted before:absolute before:top-[0.6em] before:left-0.5 before:size-1 before:rounded-full before:bg-chip"
+        >
+          {{ highlight }}
+        </li>
+      </ul>
     </span>
   </li>
 </template>

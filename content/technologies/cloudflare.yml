@@ -1,0 +1,4 @@
+name: Cloudflare
+icon: simple-icons:cloudflare
+group: Deployment
+order: 5

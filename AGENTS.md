@@ -37,13 +37,13 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 - Vue SFCs use `<script setup lang="ts">` with the script body indented one level. Semicolons, single quotes, no trailing commas, stroustrup braces and a space before function parentheses are enforced by ESLint.
 - Components are auto-imported by file name (`LogoTile.vue` is `<LogoTile>`, `brand/BrandSwatch.vue` is `<BrandSwatch>`).
 - Read content through `queryCollection` and add new front matter fields to the collection schema in `content.config.ts`.
-- Most content is data: add a YAML file to `content/projects`, `tools`, `uses`, `technologies`, `experience` or `contributions` rather than editing a page.
+- Most content is data: add a YAML file to `content/projects`, `tools`, `uses`, `technologies`, `experience` or `contributions` rather than editing a page. The About page's headline, bio, pinned items, awards and vision live in `content/profile.yml`.
 - A tool's `category` must be a name from `shared/tool-categories.ts`; add a category there (one line) rather than reusing a vague one.
 - Snippets are the owner's public GitHub gists and contributions come from GitHub search; never copy them into `content/`. `content/contributions` only holds what GitHub cannot provide: maintainer roles, discussions and projects he started.
 - Give every `useAsyncData` call a unique key. Nuxt 4 shares state between calls with the same key.
 - Set page metadata with `usePageSeo({ title, description })`.
 - Format dates with the helpers in `app/utils/date.ts` (fixed locale and UTC) so server and client render the same text.
-- Pages are prerendered and links are crawled at build time; a new page only needs to be linked from somewhere. The exceptions read GitHub at request time with ISR: `/` and `/open-source` (6 hours) and `/snippets` (1 hour). Such pages must still render when GitHub fails, but with a 503: Vercel then keeps serving the last good copy and retries, so an outage is never cached.
+- Pages are prerendered and links are crawled at build time; a new page only needs to be linked from somewhere. The exceptions read GitHub at request time with ISR: `/`, `/about` and `/open-source` (6 hours) and `/snippets` (1 hour). Such pages must still render when GitHub fails, but with a 503: Vercel then keeps serving the last good copy and retries, so an outage is never cached.
 - The GitHub routes run without a token, but `NUXT_GITHUB_TOKEN` (no scopes) avoids the anonymous limit of 60 requests an hour. `NUXT_GITHUB_API_BASE` points them at a mock for offline work.
 
 ## Design rules
