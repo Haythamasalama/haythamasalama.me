@@ -8,9 +8,9 @@
   <footer class="mt-24 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-line pt-7 pb-10">
     <div class="flex flex-wrap items-center gap-x-5 text-[13px] text-faint">
       <p>© {{ site.since }}–{{ year }} {{ site.name }}</p>
-      <NuxtLink to="/brand" class="link-muted inline-flex min-h-11 items-center">
+      <GoLink to="/brand">
         Brand
-      </NuxtLink>
+      </GoLink>
     </div>
 
     <div class="-mr-3 flex items-center">
