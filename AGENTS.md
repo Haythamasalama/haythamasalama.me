@@ -51,7 +51,7 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 Dark by default with an optional light theme (`@nuxtjs/color-mode`, stored as `theme`). Do not change colours, spacing or typography unless the owner asks. The full brand system is documented on the `/brand` page.
 
 - Use the semantic colour tokens from `main.css`, never raw hex in pages: `bg`, `surface` (tiles, hover), `raised` (cards, code), `line` (borders), `edge` (tile borders), `chip`, `fg`, `soft`, `muted`, `faint`, `mark` (icons), `accent` / `accent-2`. They switch with the theme.
-- Iris (`iris-500` `#7F7CF2`) and Azure (`azure-500` `#4F9BFF`) are for small details only: hover, focus, badges, the live dot, one gradient word per page. Never more than about 5% of a screen.
+- Iris (`iris-500` `#7F7CF2`) and Azure (`azure-500` `#4F9BFF`) are for small details only: focus rings, badges, the live dot, one gradient word per page. Never more than about 5% of a screen. Links and icons hover to a brighter neutral (`fg`), never to a colour; the signature is the only thing that takes the gradient on hover.
 - The signature is the logo. It is white on dark and black on light, takes the gradient only on hover/focus, and is drawn stroke by stroke by `SignatureMark`. Do not redraw or recolour it.
 - Company logos are one-colour masks (`BrandLogo` / `LogoTile` with `logo:`) so they follow the theme; register new ones in `app/utils/logos.ts`. GitHub avatars and other logo photos get the `avatar-mono` utility (greyscale), so nothing on the site shows a logo in its own colours.
 - Icons come from `@nuxt/icon` with the local `lucide` and `simple-icons` collections; LinkedIn is `brand:linkedin`.

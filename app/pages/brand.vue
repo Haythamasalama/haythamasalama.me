@@ -40,7 +40,7 @@
   const principles = [
     { title: 'Ink first', color: 'text-iris-400 light:text-iris-600', text: 'Black, white and generous space carry everything. If a layout works without colour, it\'s right.' },
     { title: 'Signed by hand', color: 'text-[#868FFE] light:text-[#486AD2]', text: 'The signature is the logo — personal, a little imperfect on purpose, and never retyped, redrawn or replaced.' },
-    { title: 'Colour is a signal', color: 'text-azure-400 light:text-azure-600', text: 'Iris + Azure live in small, precise places — a badge, a hairline, a hover. Rare colour is recognisable colour.' }
+    { title: 'Colour is a signal', color: 'text-azure-400 light:text-azure-600', text: 'Iris + Azure live in small, precise places — a badge, a hairline, a focus ring. Links hover in white, not colour. Rare colour is recognisable colour.' }
   ];
 
   const donts = [
@@ -622,9 +622,8 @@
             >
               Focus
             </span>
-            <span class="text-[13px] text-azure-400 light:text-azure-600">Link →</span>
           </span>
-          <span class="text-[13px] text-muted"><span class="text-fg">Focus &amp; hover</span> — 400s on dark</span>
+          <span class="text-[13px] text-muted"><span class="text-fg">Focus</span> — 400s on dark; hover stays neutral</span>
         </li>
         <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
           <span class="text-[15px] text-soft">

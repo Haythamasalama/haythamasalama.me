@@ -27,8 +27,8 @@
     <span class="flex min-w-0 flex-auto flex-col gap-1">
       <span class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
         <NuxtLink v-if="to" :to="to" class="group inline-flex flex-wrap items-baseline gap-x-2">
-          <span class="link-underline text-base font-medium group-hover:text-accent">{{ title }}</span>
-          <span v-if="domain" class="font-mono text-xs text-faint transition-colors group-hover:text-accent-2">{{ domain }} ↗</span>
+          <span class="link-underline text-base font-medium">{{ title }}</span>
+          <span v-if="domain" class="font-mono text-xs text-faint transition-colors group-hover:text-soft">{{ domain }} ↗</span>
         </NuxtLink>
         <span v-else class="text-base font-medium">{{ title }}</span>
         <span class="font-mono text-xs text-faint">{{ period }}</span>

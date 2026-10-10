@@ -110,14 +110,12 @@
         >
           {{ contact.label }}
         </NuxtLink>
-        <ThemeToggle class="-mr-3" />
       </nav>
 
       <div class="-mr-2.5 flex items-center gap-1 md:hidden">
-        <ThemeToggle />
         <button
           type="button"
-          class="inline-flex size-11 cursor-pointer items-center justify-center rounded-lg text-soft transition-colors hover:bg-surface hover:text-accent-2"
+          class="inline-flex size-11 cursor-pointer items-center justify-center rounded-lg text-soft transition-colors hover:bg-surface hover:text-fg"
           :aria-label="menuOpen ? 'Close menu' : 'Open menu'"
           :aria-expanded="menuOpen"
           aria-controls="mobile-menu"

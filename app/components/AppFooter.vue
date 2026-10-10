@@ -11,24 +11,25 @@
         <SignatureMark :width="56" :animated="false" />
       </NuxtLink>
       <p class="text-[13px] leading-normal text-faint">
-        Designed &amp; built by {{ site.name }}<br>
-        © {{ site.since }}–{{ year }} · <NuxtLink to="/brand" class="link-muted">
+        Designed &amp; built by {{ site.name }} · <span class="whitespace-nowrap">© {{ site.since }}–{{ year }}</span> · <NuxtLink to="/brand" class="link-muted">
           Brand guidelines
         </NuxtLink>
       </p>
     </div>
 
-    <div class="-mr-3 flex">
+    <div class="-mr-3 flex items-center">
       <NuxtLink
         v-for="social in socials"
         :key="social.label"
         :to="social.to"
         :aria-label="social.label"
-        class="inline-flex size-11 items-center justify-center rounded-lg text-mark transition-colors hover:bg-surface hover:text-accent"
+        class="inline-flex size-11 items-center justify-center rounded-lg text-mark transition-colors hover:bg-surface hover:text-fg"
         external
       >
         <Icon :name="social.icon" :style="{ width: `${social.size}px`, height: `${social.size}px` }" />
       </NuxtLink>
+      <span class="mx-1.5 h-5 w-px bg-line" aria-hidden="true" />
+      <ThemeToggle />
     </div>
   </footer>
 </template>
