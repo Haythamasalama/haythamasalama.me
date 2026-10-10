@@ -3,7 +3,7 @@
 
   usePageSeo({
     title: 'About',
-    description: 'Haytham A. Salama — senior full-stack engineer at WINCH. Experience, products, open source, skills and where his work with AI agents is going.'
+    description: 'Haytham A. Salama — senior software engineer at WINCH. Experience, products, open source, skills and where his work with AI agents is going.'
   });
 
   const { data } = await useAsyncData('about', async () => {
@@ -22,7 +22,7 @@
 
   const profile = computed(() => data.value?.profile);
 
-  /** Whole years since the first full-time engineering job. */
+  /** Whole years since the first paid engineering work. */
   const yearsShipping = computed(() => {
     const [year = 0, month = 1] = (profile.value?.careerStart ?? '').split('-').map(Number);
     const now = new Date();
@@ -48,14 +48,6 @@
   const skills = computed(() => groupOrder
     .map(group => ({ group, items: data.value?.technologies.filter(tech => tech.group === group) ?? [] }))
     .filter(row => row.items.length));
-
-  // Step numbers fade from Iris to Azure down the list.
-  const principles = [
-    { title: 'Model the domain first', icon: 'lucide:boxes', color: '#7F7CF2', text: 'Software that mirrors the business stays easy to change. Anything that moves money or enforces rules gets Domain-Driven Design.' },
-    { title: 'Tests are the spec', icon: 'lucide:flask-conical', color: '#6E89F0', text: 'For card charging and workshop systems I wrote the tests first, so behaviour was agreed before any code existed.' },
-    { title: 'Speed is a feature', icon: 'lucide:zap', color: '#618EF8', text: 'Database redesigns, queues and rate limits are product work, not chores — users feel every one of them.' },
-    { title: 'Lead across the stack', icon: 'lucide:users', color: '#4F9BFF', text: 'I\'m at my best between front-end, back-end and mobile teams, turning one plan into software that ships.' }
-  ];
 </script>
 
 <template>
@@ -181,7 +173,7 @@
           :mark="job.mark"
         />
       </ol>
-      <GoLink to="/work" class="mt-1">
+      <GoLink to="/projects" class="mt-1">
         Projects in detail
       </GoLink>
     </section>
@@ -253,32 +245,6 @@
           </dd>
         </div>
       </dl>
-    </section>
-
-    <section aria-labelledby="how" class="pt-14">
-      <SectionTitle id="how" class="mb-2">
-        How I work
-      </SectionTitle>
-      <ol class="border-b border-line">
-        <li
-          v-for="(principle, index) in principles"
-          :key="principle.title"
-          class="flex items-start gap-4 border-t border-line py-[18px]"
-        >
-          <LogoTile
-            :mark="{ icon: principle.icon }"
-            :size="40"
-            :icon-size="20"
-          />
-          <span class="flex flex-col gap-1">
-            <span class="flex items-baseline gap-2.5">
-              <span class="font-mono text-xs" :style="{ color: principle.color }">{{ String(index + 1).padStart(2, '0') }}</span>
-              <span class="text-base font-medium">{{ principle.title }}</span>
-            </span>
-            <span class="text-[15px] leading-[1.65] text-muted">{{ principle.text }}</span>
-          </span>
-        </li>
-      </ol>
     </section>
 
     <section aria-labelledby="education" class="pt-14">

@@ -37,7 +37,7 @@ export default defineContentConfig({
         headline: z.string(),
         focus: z.string(),
         location: z.string(),
-        /** First full-time engineering job, `YYYY-MM`; "years shipping" counts from here. */
+        /** First paid engineering work, `YYYY-MM`; "years shipping" counts from here. */
         careerStart: z.string().regex(/^\d{4}-\d{2}$/),
         about: z.array(z.string()),
         pinned: z.array(z.object({

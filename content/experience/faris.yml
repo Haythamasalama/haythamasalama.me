@@ -6,9 +6,10 @@ role: Full-stack developer
 detail: full-time, Palestine
 start: Nov 2019
 end: May 2023
-summary: Six internal products, from a CRM and HR system to test-driven charging and workshop platforms.
+summary: The company's internal systems, from its maintenance workshops to its wash stations.
 highlights:
-- Automated wash-pump reservations across several stations with Raspberry Pi and Laravel.
+- Built the vehicle inspection and maintenance system for the company's workshops, handling thousands of inspections a month across several branches, with a dashboard for every branch, technician and supervisor.
+- Built the company's CRM and HR systems.
+- Built IoT control for the company's wash stations with Raspberry Pi and Laravel, automating pump reservations.
 - Built a test-driven card-charging system that processes bulk transactions in queues.
-- Delivered workshop, HR and CRM systems, plus a games platform for live events.
 order: 3

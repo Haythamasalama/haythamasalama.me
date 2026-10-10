@@ -2,14 +2,16 @@ company: WINCH
 url: https://winch.sa/
 mark:
   logo: winch
-role: Full-stack engineer
+role: Senior Software Engineer
 detail: full-time, remote
 start: Feb 2023
 end: now
-summary: Business and owner platforms for a logistics company in Saudi Arabia.
+summary: A logistics platform in Saudi Arabia.
 highlights:
-- Moved a legacy MVC codebase to a domain-driven monolith that is easier to change.
-- Integrated payment gateways and Elm government services.
-- Made the platform faster and steadier with a database redesign, queues and rate limiting.
-- Lead the front-end, back-end and mobile engineers who ship the business and owner platforms.
+- Build the APIs behind the business app and Business Sector dashboard, and the carriers app and Carriers dashboard.
+- 'Built the platform''s core components: security, notifications, and the integration engine that connects WINCH to government platforms like Tamm, Yaqeen and ZATCA, payment gateways and AI models.'
+- Shaped the Domain-Driven Design structure the back end follows, keep evolving it, helped the teams move the legacy code onto it, and review pull requests to keep it consistent.
+- 'Write the AI agents and skills our engineers code with: they teach coding agents our Domain-Driven Design rules, scaffold new features in that structure, and review changes against it.'
+- Helping turn the platform into Rotex, a SaaS that will let other logistics companies run it as their own.
+- Lead small teams that take features to production.
 order: 1
