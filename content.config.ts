@@ -29,7 +29,7 @@ export default defineContentConfig({
       })
     }),
 
-    /** The About page: headline, story, pinned work, awards and vision. */
+    /** The About page: headline, story, organizations, awards and vision. */
     profile: defineCollection({
       type: 'data',
       source: 'profile.yml',
@@ -40,16 +40,6 @@ export default defineContentConfig({
         /** First paid engineering work, `YYYY-MM`; "years shipping" counts from here. */
         careerStart: z.string().regex(/^\d{4}-\d{2}$/),
         about: z.array(z.string()),
-        pinned: z.array(z.object({
-          title: z.string(),
-          label: z.string(),
-          status: z.string().optional(),
-          description: z.string(),
-          url: z.string().url(),
-          mark,
-          /** `owner/name`: shows my live rank and merged pull requests. */
-          repo: z.string().optional()
-        })),
         organizations: z.array(z.object({
           name: z.string(),
           url: z.string().url(),

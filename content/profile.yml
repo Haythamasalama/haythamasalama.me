@@ -1,4 +1,4 @@
-# The About page: headline, story, pinned work and vision.
+# The About page: headline, story, organizations, awards and vision.
 # Experience, education and skills come from their own collections.
 headline: Senior Software Engineer at WINCH
 focus: SaaS · AI · FinTech · Logistics
@@ -8,33 +8,6 @@ about:
   - "I'm a senior software engineer at WINCH, a logistics platform in Saudi Arabia, working remotely from Cairo. I build the APIs behind its business and carrier apps and dashboards, and the core components every product relies on: security, notifications and integrations. I shaped the Domain-Driven Design structure the back end follows, keep evolving it, and helped move the old code onto it. Now I'm helping turn the whole system into Rotex, a SaaS that will let other logistics companies run it as their own."
   - Before WINCH, I built fintech and operations software. At Faris Petrol I built the vehicle inspection and maintenance system its workshops ran on, handling thousands of inspections a month across several branches, along with its CRM, its HR system and IoT control for its wash stations. At Sanad I designed and built an investment platform for real-estate financing, from investor wallets to profit distribution, on Domain-Driven Design so every financial transaction stays reliable. It all started in 2016, building websites for clients as a freelancer.
   - These days much of my work happens alongside AI. Coding agents like Claude Code and Cursor are part of how I plan, write and review software every day. Outside WINCH, I'm building Runarks, my own SaaS for governed, approval-based access to production databases, and contributing to the Nuxt ecosystem.
-pinned:
-  - title: WINCH
-    label: Work · now
-    description: 'The business and carrier apps and dashboards, and the core components behind them: security, notifications and integrations.'
-    url: https://winch.sa/
-    mark:
-      logo: winch
-  - title: Runarks
-    label: My product
-    status: Building
-    description: Governed access to production — run SQL behind a mandatory approval cycle, with guardrails, masking and an audit log.
-    url: https://runarks.com/
-    mark:
-      logo: runarks
-  - title: nuxt/ui
-    label: Open source
-    repo: nuxt/ui
-    description: Nuxt's official UI library. I was a maintainer for two months and still contribute.
-    url: https://github.com/nuxt/ui
-    mark:
-      icon: simple-icons:nuxt
-  - title: aug-projects
-    label: Archive
-    description: 'The projects from my Computer Systems Engineering degree at Al-Azhar University: coursework, labs and graduation projects, shared for the students who come after me.'
-    url: https://github.com/aug-projects
-    mark:
-      image: /avatars/aug-projects.png
 organizations:
   - name: Nuxt
     url: https://github.com/nuxt

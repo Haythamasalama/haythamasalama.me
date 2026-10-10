@@ -37,7 +37,7 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 - Vue SFCs use `<script setup lang="ts">` with the script body indented one level. Semicolons, single quotes, no trailing commas, stroustrup braces and a space before function parentheses are enforced by ESLint.
 - Components are auto-imported by file name (`LogoTile.vue` is `<LogoTile>`, `brand/BrandSwatch.vue` is `<BrandSwatch>`).
 - Read content through `queryCollection` and add new front matter fields to the collection schema in `content.config.ts`.
-- Most content is data: add a YAML file to `content/projects`, `tools`, `uses`, `technologies`, `experience` or `contributions` rather than editing a page. The About page's headline, bio, pinned items, awards and vision live in `content/profile.yml`.
+- Most content is data: add a YAML file to `content/projects`, `tools`, `uses`, `technologies`, `experience` or `contributions` rather than editing a page. The About page's headline, bio, organizations, awards and vision live in `content/profile.yml`.
 - A tool's `category` must be a name from `shared/tool-categories.ts`; add a category there (one line) rather than reusing a vague one.
 - Snippets are the owner's public GitHub gists and contributions come from GitHub search; never copy them into `content/`. `content/contributions` only holds what GitHub cannot provide: maintainer roles, discussions and projects he started.
 - Give every `useAsyncData` call a unique key. Nuxt 4 shares state between calls with the same key.

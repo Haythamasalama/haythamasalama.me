@@ -114,48 +114,6 @@
       </div>
     </section>
 
-    <section aria-labelledby="pinned" class="pt-14">
-      <SectionTitle id="pinned" class="mb-4">
-        Pinned
-      </SectionTitle>
-      <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <li v-for="item in profile.pinned" :key="item.title">
-          <NuxtLink
-            :to="item.url"
-            class="flex h-full flex-col gap-3 rounded-xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface"
-          >
-            <span class="flex items-start justify-between gap-3">
-              <LogoTile :mark="item.mark" :size="40" :icon-size="20" />
-              <span class="flex items-center gap-2 pt-0.5 font-mono text-[11px] text-faint">
-                <span
-                  v-if="item.status"
-                  class="rounded-[5px] border-gradient px-1.5 text-[9.5px] leading-4 tracking-[0.1em] uppercase"
-                >
-                  <span class="text-gradient">{{ item.status }}</span>
-                </span>
-                {{ item.label }}
-              </span>
-            </span>
-            <span class="flex flex-col gap-1">
-              <span class="text-[15px] font-medium">{{ item.title }}</span>
-              <span class="text-sm leading-[1.55] text-muted">{{ item.description }}</span>
-            </span>
-            <span
-              v-if="item.repo && findRepo(item.repo)"
-              class="mt-auto flex flex-wrap gap-x-3 font-mono text-xs text-faint"
-            >
-              <span v-if="findRepo(item.repo)?.rank" class="text-soft">#{{ findRepo(item.repo)?.rank }} contributor</span>
-              <span>{{ plural(findRepo(item.repo)?.pullRequests.length ?? 0, 'merged PR') }}</span>
-              <span class="inline-flex items-center gap-1">
-                <Icon name="lucide:star" class="size-3" />
-                {{ formatCount(findRepo(item.repo)?.stars ?? 0) }}
-              </span>
-            </span>
-          </NuxtLink>
-        </li>
-      </ul>
-    </section>
-
     <section aria-labelledby="experience" class="pt-14">
       <SectionTitle id="experience" class="mb-2">
         Experience
