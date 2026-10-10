@@ -175,6 +175,8 @@ export default defineContentConfig({
           name: z.string(),
           note: z.string(),
           mark,
+          /** The colour theme I run it with, for editors and terminals. */
+          theme: z.string().optional(),
           /** Position in "On my desk" on the home page, if pinned there. */
           desk: z.number().optional()
         }))

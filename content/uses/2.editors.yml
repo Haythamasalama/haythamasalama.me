@@ -5,11 +5,13 @@ items:
   note: Laravel & PHP
   mark:
     icon: simple-icons:phpstorm
+  theme: GitHub Dark
   desk: 2
 - name: VS Code
   note: Front end & quick edits
   mark:
     icon: simple-icons:visualstudiocode
+  theme: One Dark Pro Night Flat
 - name: IntelliJ IDEA
   note: Java
   mark:
