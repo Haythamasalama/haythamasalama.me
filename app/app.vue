@@ -7,7 +7,13 @@
   useHead({
     titleTemplate: title => title && title !== site.name ? `${title} — ${site.name}` : site.title,
     meta: [{ name: 'theme-color', content: '#0B0B0C' }],
-    link: [{ rel: 'canonical', href: canonicalUrl }]
+    link: [{ rel: 'canonical', href: canonicalUrl }],
+    // The signature draws itself once per visit. Mark the page before it paints,
+    // so a reload in the same tab shows it finished instead of drawing it again.
+    script: [{
+      innerHTML: 'try{sessionStorage.getItem("signature-drawn")&&document.documentElement.classList.add("signature-drawn")}catch(e){}',
+      tagPosition: 'head'
+    }]
   });
 
   useSeoMeta({
