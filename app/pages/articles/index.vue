@@ -56,7 +56,7 @@
     </section>
 
     <section class="pt-10">
-      <p class="flex items-center gap-2.5 border-t border-line pt-6 text-[15px] leading-[1.7] text-muted">
+      <p class="flex max-w-none items-center gap-2.5 border-t border-line pt-6 text-[15px] leading-[1.7] text-muted">
         <Icon name="simple-icons:medium" class="size-4 shrink-0 text-mark" />
         <span>
           I also write on <NuxtLink to="https://medium.com/@haythamasalama" class="link-underline">Medium ↗</NuxtLink>,

@@ -246,7 +246,7 @@
         </button>
       </div>
 
-      <p class="mt-10 border-t border-line pt-5 text-sm leading-relaxed text-faint">
+      <p class="mt-10 max-w-none border-t border-line pt-5 text-sm leading-relaxed text-faint">
         Know one I'd love? Send it my way on <NuxtLink to="https://x.com/haythamasalama" class="link-underline">X</NuxtLink>.
       </p>
     </section>
