@@ -1,6 +1,0 @@
-name: QR Code Generator
-category: QR codes
-kind: Web
-description: QR codes with tracking and editable links.
-url: https://www.qr-code-generator.com/
-icon: lucide:qr-code
