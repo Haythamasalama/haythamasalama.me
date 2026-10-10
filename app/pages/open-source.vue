@@ -121,7 +121,7 @@
     </section>
 
     <section aria-labelledby="start" class="pt-14">
-      <SectionTitle id="start">
+      <SectionTitle id="start" class="mb-3">
         Getting started?
       </SectionTitle>
       <p class="text-[15px] leading-[1.7] text-muted">

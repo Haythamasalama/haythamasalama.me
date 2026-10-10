@@ -72,6 +72,14 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2026-10-01',
 
+  nitro: {
+    prerender: {
+      // Follow links from the prerendered pages so every article is generated too.
+      crawlLinks: true,
+      routes: ['/', '/sitemap.xml']
+    }
+  },
+
   vite: {
     plugins: [tailwindcss()]
   },

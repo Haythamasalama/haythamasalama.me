@@ -103,7 +103,7 @@
     </section>
 
     <section aria-labelledby="work" class="animate-rise pt-[72px] [animation-delay:.55s]">
-      <SectionTitle id="work">
+      <SectionTitle id="work" class="mb-3">
         Selected work
       </SectionTitle>
       <div class="flex flex-col">
@@ -129,7 +129,7 @@
     </section>
 
     <section aria-labelledby="oss" class="pt-16">
-      <SectionTitle id="oss">
+      <SectionTitle id="oss" class="mb-3">
         Open source
       </SectionTitle>
       <p class="mb-3 text-[15px] leading-[1.65] text-muted">
@@ -208,7 +208,7 @@
     </section>
 
     <section aria-labelledby="writing" class="pt-16">
-      <SectionTitle id="writing">
+      <SectionTitle id="writing" class="mb-3">
         Writing
       </SectionTitle>
       <div class="flex flex-col">

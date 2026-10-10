@@ -159,7 +159,7 @@
     </section>
 
     <section aria-labelledby="hello" class="pt-14">
-      <SectionTitle id="hello">
+      <SectionTitle id="hello" class="mb-3">
         Say hello
       </SectionTitle>
       <p class="text-[15px] leading-[1.7] text-muted">

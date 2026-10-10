@@ -50,7 +50,9 @@
     />
 
     <footer v-if="more?.length" class="mt-16 border-t border-line pt-8">
-      <SectionTitle>More writing</SectionTitle>
+      <SectionTitle class="mb-3">
+        More writing
+      </SectionTitle>
       <div class="flex flex-col">
         <NuxtLink
           v-for="item in more"

@@ -1,7 +1,15 @@
 <script setup lang="ts">
   const colorMode = useColorMode();
 
-  const isDark = computed(() => colorMode.value !== 'light');
+  // The server can't know a saved preference, so render the default (dark)
+  // label first and switch once mounted — this avoids a hydration mismatch.
+  const mounted = ref(false);
+
+  onMounted(() => {
+    mounted.value = true;
+  });
+
+  const isDark = computed(() => !mounted.value || colorMode.value !== 'light');
   const label = computed(() => isDark.value ? 'Switch to light theme' : 'Switch to dark theme');
 
   function toggle() {
@@ -17,11 +25,6 @@
     :title="label"
     @click="toggle"
   >
-    <ClientOnly>
-      <Icon :name="isDark ? 'lucide:sun' : 'lucide:moon'" class="size-[18px]" />
-      <template #fallback>
-        <Icon name="lucide:sun" class="size-[18px]" />
-      </template>
-    </ClientOnly>
+    <Icon :name="isDark ? 'lucide:sun' : 'lucide:moon'" class="size-[18px]" />
   </button>
 </template>

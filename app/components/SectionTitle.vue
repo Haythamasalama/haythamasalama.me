@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <component :is="as" class="eyebrow mb-3">
+  <component :is="as" class="eyebrow">
     <slot />
   </component>
 </template>
