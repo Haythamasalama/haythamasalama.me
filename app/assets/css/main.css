@@ -133,6 +133,7 @@
 
 @layer base {
   html {
+    scroll-padding-top: 32px;
     background-color: var(--bg);
     color: var(--fg);
     -webkit-font-smoothing: antialiased;

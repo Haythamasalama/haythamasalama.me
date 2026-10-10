@@ -32,7 +32,9 @@
       class="pt-14"
     >
       <h2 :id="`y${group.year}`" class="mb-2 font-mono text-xs font-medium tracking-[0.08em] text-faint">
-        {{ group.year }}
+        <AnchorLink :target="`y${group.year}`">
+          {{ group.year }}
+        </AnchorLink>
       </h2>
       <div class="flex flex-col">
         <NuxtLink

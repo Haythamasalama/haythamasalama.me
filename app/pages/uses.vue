@@ -7,8 +7,6 @@
   const { data: sections } = await useAsyncData('uses', () =>
     queryCollection('uses').order('order', 'ASC').all()
   );
-
-  const slug = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 </script>
 
 <template>
@@ -26,10 +24,10 @@
     <section
       v-for="section in sections"
       :key="section.id"
-      :aria-labelledby="`uses-${slug(section.title)}`"
+      :aria-labelledby="slugify(section.title)"
       class="pt-14"
     >
-      <SectionTitle :id="`uses-${slug(section.title)}`" class="mb-2">
+      <SectionTitle :id="slugify(section.title)" class="mb-2">
         {{ section.title }}
       </SectionTitle>
       <ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,260px),1fr))] gap-x-6">

@@ -42,6 +42,7 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 - Snippets are the owner's public GitHub gists and contributions come from GitHub search; never copy them into `content/`. `content/contributions` only holds what GitHub cannot provide: maintainer roles, discussions and projects he started.
 - Give every `useAsyncData` call a unique key. Nuxt 4 shares state between calls with the same key.
 - Set page metadata with `usePageSeo({ title, description })`.
+- Give each section a `<SectionTitle id="…">` (or wrap a heading's text in `<AnchorLink>`): the title becomes a shareable link like `/about#experience`, and links to a section scroll to it smoothly unless the visitor prefers reduced motion (`app/plugins/smooth-scroll.client.ts`). Use readable ids; `slugify()` makes them from titles.
 - Format dates with the helpers in `app/utils/date.ts` (fixed locale and UTC) so server and client render the same text.
 - Pages are prerendered and links are crawled at build time; a new page only needs to be linked from somewhere. The exceptions read GitHub at request time with ISR: `/`, `/about` and `/open-source` (6 hours) and `/snippets` (1 hour). Such pages must still render when GitHub fails, but with a 503: Vercel then keeps serving the last good copy and retries, so an outage is never cached.
 - The GitHub routes run without a token, but `NUXT_GITHUB_TOKEN` (no scopes) avoids the anonymous limit of 60 requests an hour. `NUXT_GITHUB_API_BASE` points them at a mock for offline work.

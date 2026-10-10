@@ -125,8 +125,8 @@
       </GoLink>
     </section>
 
-    <section aria-labelledby="oss" class="pt-16">
-      <SectionTitle id="oss" class="mb-3">
+    <section aria-labelledby="open-source" class="pt-16">
+      <SectionTitle id="open-source" class="mb-3">
         Open source
       </SectionTitle>
       <p class="mb-3 text-[15px] leading-[1.65] text-muted">
@@ -158,8 +158,8 @@
       </GoLink>
     </section>
 
-    <section aria-labelledby="stack" class="pt-16">
-      <SectionTitle id="stack" class="mb-5">
+    <section aria-labelledby="skills" class="pt-16">
+      <SectionTitle id="skills" class="mb-5">
         Skills &amp; stack
       </SectionTitle>
       <dl class="flex flex-col gap-3.5 text-[15px] leading-relaxed">
@@ -177,13 +177,13 @@
           </dd>
         </div>
       </dl>
-      <GoLink to="/about" class="mt-2">
+      <GoLink to="/about#skills" class="mt-2">
         Skills in depth
       </GoLink>
     </section>
 
-    <section aria-labelledby="writing" class="pt-16">
-      <SectionTitle id="writing" class="mb-3">
+    <section aria-labelledby="blog" class="pt-16">
+      <SectionTitle id="blog" class="mb-3">
         Blog
       </SectionTitle>
       <div class="flex flex-col">

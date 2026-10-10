@@ -186,12 +186,14 @@
         <section
           v-for="section in sections"
           :key="section.name"
-          :aria-label="section.name"
+          :aria-labelledby="slugify(section.name)"
           class="pt-8"
         >
           <header class="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-            <h2 class="text-[15px] font-medium">
-              {{ section.name }}
+            <h2 :id="slugify(section.name)" class="text-[15px] font-medium">
+              <AnchorLink :target="slugify(section.name)">
+                {{ section.name }}
+              </AnchorLink>
             </h2>
             <p class="text-[13px] text-faint">
               {{ section.description }}
