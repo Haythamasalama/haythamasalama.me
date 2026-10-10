@@ -1,6 +1,5 @@
-name: SASS
-description: Preprocessor scripting for CSS
-icon: '/icons/sass.svg'
-website: https://sass-lang.com/
-category:
-  - front end
+name: Sass
+icon: simple-icons:sass
+url: https://sass-lang.com/
+group: Front end
+order: 2

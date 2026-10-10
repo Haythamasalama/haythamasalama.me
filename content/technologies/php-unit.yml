@@ -1,7 +1,5 @@
 name: PHPUnit
-description: PHP Unit Testing Framework
-icon: '/icons/php-unit.svg'
-website: https://phpunit.de/
-order: 5
-category:
-  - back end
+icon: lucide:flask-conical
+url: https://phpunit.de/
+group: Testing
+order: 1

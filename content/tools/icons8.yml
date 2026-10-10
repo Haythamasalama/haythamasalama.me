@@ -1,5 +1,7 @@
 name: Icons8
-description: A collection of customizable icons in various styles and formats for different platforms.
-icon: https://maxst.icons8.com/vue-static/icon/favicon/icons8_fav_32%C3%9732.png
-website: https://icons8.com/icons
-category: icons
+category: Design
+kind: Web
+description: Icons in every style, plus photos and illustrations.
+url: https://icons8.com/icons
+icon: simple-icons:icons8
+featured: true

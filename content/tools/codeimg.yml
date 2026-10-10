@@ -1,10 +1,6 @@
 name: Codeimg
+category: Code
+kind: Web
 description: A tool for creating and sharing code screenshots with a simple API and customizable settings.
-icon: https://codeimg.io/img/logo-black-white.3a439316.svg
-website: https://codeimg.io/
-category: code screenshots
-tags:
-  - Code screenshots
-  - API
-  - Customizable
-  - Open-source
+url: https://codeimg.io/
+icon: lucide:camera

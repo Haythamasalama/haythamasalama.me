@@ -1,7 +1,5 @@
 name: Pest
-description: PHP Unit Testing Framework
-icon: '/icons/pest-php.svg'
-website: https://pestphp.com/
-order: 4
-category:
-  - back end
+icon: lucide:bug
+url: https://pestphp.com/
+group: Testing
+order: 2

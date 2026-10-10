@@ -1,0 +1,14 @@
+repo: nuxt/ui
+url: https://github.com/nuxt/ui
+avatar: /avatars/nuxt.png
+kind: maintainer
+role: Maintainer · 2 months
+links:
+- label: See my commits
+  to: https://github.com/nuxt/ui/commits?author=Haythamasalama
+note: One of the top four contributors to Nuxt's official UI library, and a maintainer for two months — reviewing, fixing and shaping components the Vue community builds on.
+order: 1
+highlight:
+  note: Top-4 contributor · maintainer
+  url: https://github.com/nuxt/ui/commits?author=Haythamasalama
+  order: 1

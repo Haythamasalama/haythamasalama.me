@@ -1,9 +1,6 @@
 name: QRStuff
+category: Files
+kind: Web
 description: A simple and efficient QR code generator with various data types and customization options.
-icon: https://www.qrstuff.com/favicon.ico
-website: https://www.qrstuff.com/
-category: qr generator
-tags:
-  - QR code generator
-  - Customizable
-  - Data types
+url: https://www.qrstuff.com/
+icon: lucide:qr-code

@@ -1,6 +1,5 @@
 name: Firebase
-description:
-icon: '/icons/firebase.svg'
-website: https://firebase.google.com/
-category:
-  - back end
+icon: simple-icons:firebase
+url: https://firebase.google.com/
+group: Back end
+order: 7

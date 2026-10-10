@@ -1,0 +1,21 @@
+title: Sanad — collective real-estate investing
+year: 2024
+description: An investment platform and admin dashboard where people invest in real estate together. I designed the architecture with DDD so the money flows stay reliable, and integrated payment gateways and Elm government services.
+mark:
+  logo: sanad
+tags:
+- label: Laravel
+  icon: simple-icons:laravel
+- label: Vue
+  icon: simple-icons:vuedotjs
+- label: DDD
+- label: Payments
+links:
+- label: investsanad.sa
+  to: https://investsanad.sa/
+order: 1
+highlight:
+  title: Sanad — real-estate investing
+  description: Investment platform and admin dashboard for collective real-estate, architected with DDD and wired to payment gateways and Elm.
+  period: 2024 — now
+  order: 1

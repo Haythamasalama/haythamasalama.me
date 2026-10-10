@@ -1,0 +1,28 @@
+title: Design & video
+order: 5
+items:
+- name: Figma
+  note: Interface design
+  mark:
+    icon: simple-icons:figma
+  desk: 4
+- name: Photoshop
+  note: Images
+  mark:
+    text: Ps
+- name: Illustrator
+  note: Vectors
+  mark:
+    text: Ai
+- name: Premiere Pro
+  note: Video editing
+  mark:
+    text: Pr
+- name: OBS Studio
+  note: Screen recording
+  mark:
+    icon: simple-icons:obsstudio
+- name: Audacity
+  note: Audio
+  mark:
+    icon: simple-icons:audacity

@@ -1,5 +1,7 @@
-name: Reverso Translation, dictionary
-description: A translation and dictionary extension providing instant translations, synonyms, and definitions.
-icon: https://www.reverso.net/favicon.ico
-website: https://chrome.google.com/webstore/detail/reverso-%E2%80%93-translation-dic/onhiacboedfinnofagfgoaanfedhmfab
-category: chrome extension
+name: Reverso
+category: Writing
+kind: Extension
+description: Translations, synonyms and definitions in context.
+url: https://chrome.google.com/webstore/detail/reverso-%E2%80%93-translation-dic/onhiacboedfinnofagfgoaanfedhmfab
+icon: lucide:languages
+featured: true

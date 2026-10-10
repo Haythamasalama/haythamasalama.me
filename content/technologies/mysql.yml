@@ -1,6 +1,6 @@
 name: MySQL
-description: Relational Database
-icon: '/icons/mysql.svg'
-website: https://www.mysql.com/
-category:
-  - back end
+icon: simple-icons:mysql
+url: https://www.mysql.com/
+group: Back end
+order: 3
+home: true

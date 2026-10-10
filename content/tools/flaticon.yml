@@ -1,5 +1,6 @@
 name: Flaticon
+category: Design
+kind: Web
 description: A large database of free and premium vector icons in various formats and styles.
-icon: https://www.flaticon.com/favicon.ico
-website: https://www.flaticon.com/
-category: icons
+url: https://www.flaticon.com/
+icon: lucide:shapes

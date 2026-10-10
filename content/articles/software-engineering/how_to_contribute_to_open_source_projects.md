@@ -1,10 +1,10 @@
 ---
-title: How to Contribute to Open-Source Projects ?
-author: 
-  username: 'haythamasalama'
-  platform: 'twitter'
+title: 'How to contribute to open-source projects'
+description: 'What I learned contributing to six projects in one year, with real examples of each way to help.'
 date: '2023-07-21'
-readTime: '2 min'
+category: 'Software engineering'
+icon: 'simple-icons:github'
+readingTime: '2 min read'
 ---
 
 ![how_to_contribute_to_open_source_projects](/articles/how_to_contribute_to_open_source_projects.png)

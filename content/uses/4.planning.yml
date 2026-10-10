@@ -1,0 +1,29 @@
+title: Planning
+order: 4
+items:
+- name: Notion
+  note: Notes & docs
+  mark:
+    icon: simple-icons:notion
+  desk: 5
+- name: GitHub Projects
+  note: Roadmaps & issues
+  mark:
+    icon: simple-icons:github
+- name: Google Docs
+  note: Shared writing
+  mark:
+    icon: simple-icons:googledocs
+- name: Notability
+  note: Handwritten notes
+  mark:
+    icon: lucide:pen-line
+- name: draw.io
+  note: Diagrams
+  mark:
+    icon: simple-icons:diagramsdotnet
+- name: Toggl Track
+  note: Time tracking
+  mark:
+    icon: simple-icons:toggl
+  desk: 6

@@ -1,6 +1,4 @@
 name: Bootstrap
-description: CSS Framework
-icon: '/icons/bootstrap.svg'
-website: 
-category:
-  - front end
+icon: simple-icons:bootstrap
+group: Front end
+order: 3

@@ -1,10 +1,6 @@
 name: Gradient Shape Factory
+category: Design
+kind: Web
 description: A tool for generating customizable CSS gradients with various shape options and live preview.
-icon:
-website: https://gradient.shapefactory.co/
-category: css generator
-tags:
-  - CSS gradients
-  - Customizable
-  - Preview mode
-  - Open-source
+url: https://gradient.shapefactory.co/
+icon: lucide:paintbrush

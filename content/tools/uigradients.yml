@@ -1,5 +1,6 @@
 name: UIGradients
+category: Design
+kind: Web
 description: A handpicked collection of stunning gradients for designers and developers.
-icon: https://uigradients.com/static/images/favicon-16x16.png
-website: https://uigradients.com/
-category: colors
+url: https://uigradients.com/
+icon: lucide:palette

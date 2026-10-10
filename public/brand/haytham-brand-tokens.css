@@ -1,0 +1,33 @@
+/* Haytham A. Salama — brand tokens
+   Ink first. Iris + Azure in the details (≤ 5% of any surface). */
+:root {
+  /* Neutrals */
+  --ink: #0B0B0C;        /* page, dark theme */
+  --surface: #131316;    /* tiles, hover */
+  --line: #1F1F23;       /* borders */
+  --text: #EDEDEF;       /* 16.7:1 on ink */
+  --muted: #A1A1AA;      /* 7.7:1 on ink */
+  --faint: #85858F;      /* 5.4:1 on ink */
+  --paper: #FFFFFF;      /* page, light theme */
+
+  /* Iris */
+  --iris-50: #F5F6FE; --iris-100: #E9EBFE; --iris-200: #D4D7FE; --iris-300: #BABEFE;
+  --iris-400: #9D9FFE; --iris-500: #7F7CF2; --iris-600: #6762D3; --iris-700: #534DAF;
+  --iris-800: #3F3B87; --iris-900: #2C2A62; --iris-950: #1D1B45;
+
+  /* Azure */
+  --azure-50: #F2F7FE; --azure-100: #E2EEFF; --azure-200: #C5DDFE; --azure-300: #9EC7FE;
+  --azure-400: #70ADFF; --azure-500: #4F9BFF; --azure-600: #2873D1; --azure-700: #195CAE;
+  --azure-800: #134686; --azure-900: #0D3261; --azure-950: #052144;
+
+  /* Gradients */
+  --gradient-signature: linear-gradient(90deg, #7F7CF2, #6C8CF9, #4F9BFF); /* hairlines, dots, badges */
+  --gradient-glow: linear-gradient(90deg, #9D9FFE, #70ADFF);               /* hover on dark */
+  --gradient-text: linear-gradient(90deg, #BABEFE, #9EC7FE);               /* one word on dark */
+  --gradient-deep: linear-gradient(90deg, #6762D3, #2873D1);               /* details on light */
+
+  /* Type */
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-accent: "Instrument Serif", Georgia, serif; /* italic, one phrase per page */
+}

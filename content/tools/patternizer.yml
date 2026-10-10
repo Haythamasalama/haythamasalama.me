@@ -1,10 +1,6 @@
 name: Patternizer
+category: Design
+kind: Web
 description: A tool for generating custom stripe patterns with preview mode and export options.
-icon: https://patternizer.com/favicon.ico
-website: https://patternizer.com/
-category: css generator
-tags:
-  - Stripe patterns
-  - Customizable
-  - Preview mode
-  - Export options
+url: https://patternizer.com/
+icon: lucide:paintbrush

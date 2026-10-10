@@ -1,8 +1,6 @@
-name: vue js
-description: JavaScript Framework
-icon: '/icons/vuejs.svg'
-website: https://vuejs.org
+name: Vue
+icon: simple-icons:vuedotjs
+url: https://vuejs.org
+group: Main stack
 order: 2
-category:
-  - main stack
-  - front end
+home: true

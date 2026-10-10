@@ -1,16 +1,28 @@
-title: Hardwares
-items :
-  - label: MacBook Pro M2 - 16GB
-    
-  - label: Display
-    description: 2 HP Screen
-
-  - label: Chair
-    description: corsair t1 race gaming chair Red
-
-  - label: Other Tech
-    list:
-     - Apple Ipad 8
-     - Apple Iphone 13
-     - Soundcore Q30
-     - Soundcore Life P3 - Airpods
+title: Hardware
+order: 1
+items:
+- name: MacBook Pro M2
+  note: 16 GB · daily machine
+  mark:
+    icon: simple-icons:apple
+  desk: 1
+- name: Two HP monitors
+  note: Dual-screen desk
+  mark:
+    icon: simple-icons:hp
+- name: Corsair T1 Race
+  note: Chair
+  mark:
+    icon: simple-icons:corsair
+- name: iPad (8th gen)
+  note: Tablet
+  mark:
+    icon: simple-icons:apple
+- name: iPhone 13
+  note: Phone
+  mark:
+    icon: simple-icons:apple
+- name: Soundcore Q30 & Life P3
+  note: Headphones & earbuds
+  mark:
+    icon: lucide:headphones

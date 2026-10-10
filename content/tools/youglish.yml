@@ -1,5 +1,7 @@
 name: YouGlish
-description: A tool for finding and listening to native speakers pronouncing words in various contexts to improve pronunciation.
-icon:
-website: https://youglish.com/pronounce/data/english
-category: english
+category: Writing
+kind: Web
+description: Hear how native speakers say a word, in context.
+url: https://youglish.com/pronounce/data/english
+icon: lucide:volume-2
+featured: true

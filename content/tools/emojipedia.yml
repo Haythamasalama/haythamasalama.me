@@ -1,5 +1,6 @@
 name: Emojipedia
+category: Design
+kind: Web
 description: A comprehensive emoji reference, providing information, meanings, and usage examples for emojis.
-icon: https://emojipedia.org/static/img/favicons/favicon-32x32.png
-website: https://emojipedia.org/
-category: icons
+url: https://emojipedia.org/
+icon: lucide:smile

@@ -1,5 +1,6 @@
 name: FlatUIColors
-category: colors
+category: Design
+kind: Web
 description: A collection of beautiful flat color palettes for your projects.
-icon: https://flatuicolors.com/static/favicon.ico
-website: https://flatuicolors.com/
+url: https://flatuicolors.com/
+icon: lucide:palette

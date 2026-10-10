@@ -1,5 +1,6 @@
-name: Sitechecker Similar Websites
+name: Sitechecker
+category: Code
+kind: Web
 description: A tool that provides a list of websites similar to a given URL, helping you discover new sources of information and inspiration.
-icon: https://sitechecker.pro/wp-content/themes/sitechecker/favicons/favicon.ico
-website: https://sitechecker.pro/similar-websites/
-category: images
+url: https://sitechecker.pro/similar-websites/
+icon: lucide:search

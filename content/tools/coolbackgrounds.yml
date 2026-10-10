@@ -1,10 +1,6 @@
 name: Cool Backgrounds
+category: Design
+kind: Web
 description: A collection of abstract and modern SVG backgrounds that can be customized and downloaded as PNG or SVG files.
-icon: https://coolbackgrounds.io/images/favicon-fe5a0ff5.png
-website: https://coolbackgrounds.io/
-category: css generator
-tags:
-  - SVG backgrounds
-  - Customizable
-  - Downloadable
-  - Modern design
+url: https://coolbackgrounds.io/
+icon: lucide:paintbrush

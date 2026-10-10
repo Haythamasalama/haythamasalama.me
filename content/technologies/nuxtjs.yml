@@ -1,8 +1,6 @@
-name: Nuxt Js
-description: Intuitive Vue Framework
-icon: '/icons/nuxtjs.svg'
-website: https://nuxtjs.com
-order: 1
-category:
-  - main stack
-  - front end
+name: Nuxt
+icon: simple-icons:nuxt
+url: https://nuxtjs.com
+group: Main stack
+order: 3
+home: true

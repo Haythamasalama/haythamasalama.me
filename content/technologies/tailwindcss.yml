@@ -1,8 +1,6 @@
-name: Tailwindcss
-description: CSS Framework
-icon: '/icons/tailwindcss.svg'
-website: https://tailwindcss.com/
-order: 3
-category:
-  - main stack
-  - front end
+name: Tailwind CSS
+icon: simple-icons:tailwindcss
+url: https://tailwindcss.com/
+group: Main stack
+order: 5
+home: true

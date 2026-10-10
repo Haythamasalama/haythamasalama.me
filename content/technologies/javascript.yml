@@ -1,8 +1,5 @@
-name: Javascript
-description: Programming language
-icon: '/icons/javascript.svg'
-website: https://www.javascript.com/
-order: 4
-category:
-  - front end
-  - programming language
+name: JavaScript
+icon: simple-icons:javascript
+url: https://www.javascript.com/
+group: Front end
+order: 1

@@ -1,5 +1,7 @@
 name: Monkeytype
-description: A customizable typing test tool that helps you improve your typing speed and accuracy.
-icon: https://monkeytype.com/images/favicon/favicon.ico
-website: https://monkeytype.com/
-category: website online
+category: Focus
+kind: Web
+description: A typing test that actually makes you faster.
+url: https://monkeytype.com/
+icon: simple-icons:monkeytype
+featured: true

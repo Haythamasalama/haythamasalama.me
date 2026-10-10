@@ -1,5 +1,6 @@
 name: Honey
+category: Browser
+kind: Extension
 description: A browser extension that automatically finds and applies coupon codes at checkout for online shopping.
-icon: https://www.joinhoney.com/favicon.ico
-website: https://www.joinhoney.com/
-category: chrome extension
+url: https://www.joinhoney.com/
+icon: lucide:tag

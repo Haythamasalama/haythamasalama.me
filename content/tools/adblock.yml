@@ -1,5 +1,6 @@
-name: AdBlock — best ad blocker
+name: AdBlock
+category: Browser
+kind: Extension
 description: A popular ad-blocking extension for Chrome to block intrusive ads and improve browsing experience.
-icon: https://adblockplus.org/favicon.ico
-website: https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom
-category: chrome extension
+url: https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom
+icon: lucide:shield

@@ -1,8 +1,6 @@
 name: PHP
-description: Programming language
-icon: '/icons/php.svg'
-website: https://php.net/
-order: 3
-category:
-  - back end
-  - programming language
+icon: simple-icons:php
+url: https://php.net/
+group: Back end
+order: 1
+home: true

@@ -1,0 +1,16 @@
+title: Everything else
+order: 6
+items:
+- name: Telegram
+  note: Chat
+  mark:
+    icon: simple-icons:telegram
+  desk: 8
+- name: KeePass
+  note: Passwords
+  mark:
+    icon: lucide:key-round
+- name: Everything
+  note: Instant file search
+  mark:
+    icon: lucide:search

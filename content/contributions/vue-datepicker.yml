@@ -1,0 +1,12 @@
+repo: Vuepic/vue-datepicker
+url: https://github.com/Vuepic/vue-datepicker
+avatar: /avatars/vuepic.png
+kind: pull-request
+links:
+- label: '#488'
+  to: https://github.com/Vuepic/vue-datepicker/pull/488
+order: 5
+highlight:
+  note: Pull request
+  url: https://github.com/Vuepic/vue-datepicker/pull/488
+  order: 5

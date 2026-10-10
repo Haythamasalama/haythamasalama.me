@@ -1,54 +1,158 @@
-import { defineContentConfig, defineCollection, z } from '@nuxt/content';
+import { defineCollection, defineContentConfig, z } from '@nuxt/content';
+import { defineSitemapSchema } from '@nuxtjs/sitemap/content';
+
+/** A small square visual: one-colour logo, Iconify icon, colour image or monogram. */
+const mark = z.object({
+  logo: z.string().optional(),
+  icon: z.string().optional(),
+  image: z.string().optional(),
+  text: z.string().optional()
+});
+
+const link = z.object({
+  label: z.string(),
+  to: z.string()
+});
 
 export default defineContentConfig({
   collections: {
     articles: defineCollection({
       type: 'page',
-      source: 'articles/**/*.md'
-    }),
-    projects: defineCollection({
-      type: 'page',
-      source: 'projects/**/*.md'
-    }),
-    contributions: defineCollection({
-      type: 'page',
-      source: 'contributions/**/*.md'
-    }),
-    technologies: defineCollection({
-      type: 'data',
-      source: 'technologies/**/*.yml',
+      source: 'articles/**/*.md',
       schema: z.object({
-        name: z.string(),
-        description: z.string().optional(),
-        icon: z.string().optional(),
-        website: z.string().optional(),
-        category: z.array(z.string())
-      })
-    }),
-    tools: defineCollection({
-      type: 'data',
-      source: 'tools/**/*.yml',
-      schema: z.object({
-        name: z.string(),
-        description: z.string().optional(),
-        icon: z.string().optional(),
-        website: z.string().optional(),
+        date: z.string().date(),
         category: z.string(),
-        tags: z.array(z.string())
+        icon: z.string(),
+        readingTime: z.string(),
+        sitemap: defineSitemapSchema({ z })
       })
     }),
-    uses: defineCollection({
+
+    snippets: defineCollection({
+      type: 'page',
+      source: 'snippets/*.md',
+      schema: z.object({
+        category: z.string(),
+        icon: z.string().optional(),
+        order: z.number(),
+        article: link.optional()
+      })
+    }),
+
+    experience: defineCollection({
       type: 'data',
-      source: 'uses/**/*.yml',
+      source: 'experience/*.yml',
+      schema: z.object({
+        company: z.string(),
+        url: z.string().url().optional(),
+        mark,
+        role: z.string(),
+        detail: z.string().optional(),
+        start: z.string(),
+        end: z.string(),
+        summary: z.string(),
+        order: z.number()
+      })
+    }),
+
+    education: defineCollection({
+      type: 'data',
+      source: 'education/*.yml',
+      schema: z.object({
+        school: z.string(),
+        mark,
+        degree: z.string(),
+        period: z.string(),
+        order: z.number()
+      })
+    }),
+
+    projects: defineCollection({
+      type: 'data',
+      source: 'projects/*.yml',
       schema: z.object({
         title: z.string(),
-        items: z.array(
-          z.object({
-            label: z.string(),
-            description: z.string().optional(),
-            list: z.array(z.string()).optional()
-          })
-        )
+        year: z.number(),
+        context: z.string().optional(),
+        description: z.string(),
+        mark,
+        tags: z.array(z.object({ label: z.string(), icon: z.string().optional() })).default([]),
+        links: z.array(link).default([]),
+        order: z.number(),
+        /** Shown in "Selected work" on the home page when set. */
+        highlight: z.object({
+          title: z.string(),
+          description: z.string(),
+          period: z.string(),
+          order: z.number()
+        }).optional()
+      })
+    }),
+
+    contributions: defineCollection({
+      type: 'data',
+      source: 'contributions/*.yml',
+      schema: z.object({
+        repo: z.string(),
+        url: z.string().url(),
+        avatar: z.string(),
+        kind: z.enum(['maintainer', 'pull-request', 'issue', 'discussion', 'created']),
+        /** Short role line, e.g. "Maintainer · 2 months". */
+        role: z.string().optional(),
+        links: z.array(link).default([]),
+        note: z.string().optional(),
+        order: z.number(),
+        /** Shown in the "Open source" list on the home page when set. */
+        highlight: z.object({
+          note: z.string(),
+          url: z.string().url(),
+          order: z.number()
+        }).optional()
+      })
+    }),
+
+    technologies: defineCollection({
+      type: 'data',
+      source: 'technologies/*.yml',
+      schema: z.object({
+        name: z.string(),
+        icon: z.string(),
+        url: z.string().url().optional(),
+        group: z.enum(['Main stack', 'Back end', 'Front end', 'Testing', 'Deployment', 'Languages', 'Hardware']),
+        order: z.number(),
+        /** Listed under "Skills & stack" on the home page. */
+        home: z.boolean().default(false)
+      })
+    }),
+
+    tools: defineCollection({
+      type: 'data',
+      source: 'tools/*.yml',
+      schema: z.object({
+        name: z.string(),
+        category: z.enum(['Code', 'Design', 'Focus', 'Writing', 'Files', 'Media', 'Browser']),
+        kind: z.string(),
+        description: z.string(),
+        url: z.string().url(),
+        icon: z.string(),
+        /** Picked for the short list; everything else shows under "All". */
+        featured: z.boolean().default(false)
+      })
+    }),
+
+    uses: defineCollection({
+      type: 'data',
+      source: 'uses/*.yml',
+      schema: z.object({
+        title: z.string(),
+        order: z.number(),
+        items: z.array(z.object({
+          name: z.string(),
+          note: z.string(),
+          mark,
+          /** Position in "On my desk" on the home page, if pinned there. */
+          desk: z.number().optional()
+        }))
       })
     })
   }

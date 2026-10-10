@@ -1,0 +1,8 @@
+repo: xiaoluoboding/vue-sonner
+url: https://github.com/xiaoluoboding/vue-sonner
+avatar: /avatars/xiaoluoboding.png
+kind: pull-request
+links:
+- label: '#12'
+  to: https://github.com/xiaoluoboding/vue-sonner/pull/12
+order: 6
