@@ -43,7 +43,7 @@
 
   const topRepos = computed(() => repos.value.filter(repo => repo.pullRequests.length).slice(0, 4));
 
-  const groupOrder = ['AI & agents', 'Languages', 'Back end', 'Front end', 'Data', 'Engineering', 'Infrastructure', 'IoT'] as const;
+  const groupOrder = ['AI & agents', 'Languages', 'Back end', 'Front end', 'Data', 'DevOps', 'IoT'] as const;
 
   const skills = computed(() => groupOrder
     .map(group => ({ group, items: data.value?.technologies.filter(tech => tech.group === group) ?? [] }))
@@ -167,7 +167,8 @@
           :title="job.company"
           :to="job.url"
           :period="`${job.start} — ${job.end}`"
-          :subtitle="job.detail ? `${job.role} · ${job.detail}` : job.role"
+          :subtitle="job.role"
+          :meta="[job.type, job.location, job.workplace]"
           :summary="job.summary"
           :highlights="job.highlights"
           :mark="job.mark"

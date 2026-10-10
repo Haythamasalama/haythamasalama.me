@@ -76,7 +76,10 @@ export default defineContentConfig({
         url: z.string().url().optional(),
         mark,
         role: z.string(),
-        detail: z.string().optional(),
+        /** How the job was held, as on LinkedIn: "Full-time · Jeddah, Saudi Arabia · Remote". */
+        type: z.enum(['Full-time', 'Part-time']).optional(),
+        location: z.string().optional(),
+        workplace: z.enum(['Remote', 'On-site', 'Hybrid']).optional(),
         start: z.string(),
         end: z.string(),
         summary: z.string(),
@@ -147,7 +150,7 @@ export default defineContentConfig({
         name: z.string(),
         icon: z.string(),
         url: z.string().url().optional(),
-        group: z.enum(['AI & agents', 'Languages', 'Back end', 'Front end', 'Data', 'Engineering', 'Infrastructure', 'IoT']),
+        group: z.enum(['AI & agents', 'Languages', 'Back end', 'Front end', 'Data', 'DevOps', 'IoT']),
         order: z.number(),
         /** The row it is listed in under "Skills & stack" on the home page, if any. */
         home: z.enum(['Every day', 'Back end', 'Shipping']).optional()

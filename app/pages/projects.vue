@@ -39,7 +39,8 @@
           :title="job.company"
           :to="job.url"
           :period="`${job.start} — ${job.end}`"
-          :subtitle="job.detail ? `${job.role} · ${job.detail}` : job.role"
+          :subtitle="job.role"
+          :meta="[job.type, job.location, job.workplace]"
           :summary="job.summary"
           :mark="job.mark"
         />
