@@ -1,7 +1,7 @@
 <script setup lang="ts">
   usePageSeo({
     title: 'Uses',
-    description: 'The hardware and software Haytham A. Salama uses every day — editors, terminal, databases, planning and design tools.'
+    description: 'The hardware and software Haytham A. Salama uses every day: editors, terminal, databases, planning and design tools.'
   });
 
   const { data: sections } = await useAsyncData('uses', () =>
@@ -13,7 +13,7 @@
   <div>
     <PageHeader title="Uses">
       <p>
-        My own setup — the hardware and software I open every day. Something only lands here once it has earned a
+        My own setup: the hardware and software I open every day. Something only lands here once it has earned a
         permanent spot.
       </p>
       <p class="text-[15px] text-muted">

@@ -2,9 +2,9 @@ export default defineAppConfig({
   site: {
     name: 'Haytham A. Salama',
     url: 'https://haythamasalama.me',
-    title: 'Haytham A. Salama — Software Engineer for SaaS, AI, FinTech & Logistics',
+    title: 'Haytham A. Salama · Software Engineer for SaaS, AI, FinTech & Logistics',
     role: 'Senior Software Engineer · SaaS, AI, FinTech & Logistics',
-    description: 'Haytham A. Salama is a senior software engineer building SaaS, fintech and logistics platforms in Saudi Arabia — domain-driven, secure, and built alongside AI. Today at WINCH; next, a master\'s in artificial intelligence.',
+    description: 'Haytham A. Salama is a senior software engineer building SaaS, fintech and logistics platforms in Saudi Arabia: domain-driven, secure, and built alongside AI. Today at WINCH; next, a master\'s in artificial intelligence.',
     since: 2022
   },
 

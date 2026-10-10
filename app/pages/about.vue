@@ -5,7 +5,7 @@
 
   usePageSeo({
     title: 'About',
-    description: 'Haytham A. Salama — senior software engineer at WINCH. Experience, products, open source, skills and where his work with AI agents is going.'
+    description: 'Haytham A. Salama, senior software engineer at WINCH. Experience, products, open source, skills and where his work with AI agents is going.'
   });
 
   const { data } = await useAsyncData('about', async () => {
@@ -124,7 +124,7 @@
           :key="job.id"
           :title="job.company"
           :to="job.url"
-          :period="`${job.start} — ${job.end}`"
+          :period="`${job.start} – ${job.end}`"
           :subtitle="job.role"
           :meta="[job.type, job.location, job.workplace]"
           :summary="job.summary"

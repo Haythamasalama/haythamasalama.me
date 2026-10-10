@@ -135,7 +135,7 @@
   <div>
     <PageHeader title="Tools">
       <p>
-        Small, mostly free tools that save me time — sorted by what they help with. Search for something specific, or
+        Small, mostly free tools that save me time, sorted by what they help with. Search for something specific, or
         pick an area.
       </p>
       <p class="text-[15px] text-muted">

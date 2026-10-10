@@ -22,7 +22,7 @@
 <template>
   <div>
     <PageHeader title="Blog">
-      <p>Short, practical notes on Laravel, Vue and shipping software — mostly the things I wish I'd found sooner.</p>
+      <p>Short, practical notes on Laravel, Vue and shipping software, mostly the things I wish I'd found sooner.</p>
     </PageHeader>
 
     <section

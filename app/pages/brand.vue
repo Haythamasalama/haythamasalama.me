@@ -5,7 +5,7 @@
 
   usePageSeo({
     title: 'Brand guidelines',
-    description: 'The visual identity of Haytham A. Salama — the handwritten signature, colour, type and voice, plus a brand kit to download.'
+    description: 'The visual identity of Haytham A. Salama: the handwritten signature, colour, type and voice, plus a brand kit to download.'
   });
 
   interface Swatch {
@@ -39,8 +39,8 @@
   // Number colours fade from Iris to Azure, one step darker on the light theme.
   const principles = [
     { title: 'Ink first', color: 'text-iris-400 light:text-iris-600', text: 'Black, white and generous space carry everything. If a layout works without colour, it\'s right.' },
-    { title: 'Signed by hand', color: 'text-[#868FFE] light:text-[#486AD2]', text: 'The signature is the logo — personal, a little imperfect on purpose, and never retyped, redrawn or replaced.' },
-    { title: 'Colour is a signal', color: 'text-azure-400 light:text-azure-600', text: 'Iris + Azure live in small, precise places — a badge, a hairline, a focus ring. Links hover in white, not colour. Rare colour is recognisable colour.' }
+    { title: 'Signed by hand', color: 'text-[#868FFE] light:text-[#486AD2]', text: 'The signature is the logo: personal, a little imperfect on purpose, and never retyped, redrawn or replaced.' },
+    { title: 'Colour is a signal', color: 'text-azure-400 light:text-azure-600', text: 'Iris + Azure live in small, precise places: a badge, a hairline, a focus ring. Links hover in white, not colour. Rare colour is recognisable colour.' }
   ];
 
   const donts = [
@@ -100,21 +100,21 @@
       sampleClass: 'text-[34px] leading-[1.15] font-semibold tracking-[-0.025em]',
       font: 'Geist',
       url: 'https://fonts.google.com/specimen/Geist',
-      note: '400 · 500 · 600 — headings and everything you read.'
+      note: '400 · 500 · 600, for headings and everything you read.'
     },
     {
       sample: 'JUL 2023 · laravel/framework #46405',
       sampleClass: 'font-mono text-base tracking-[0.04em] text-soft',
       font: 'Geist Mono',
       url: 'https://fonts.google.com/specimen/Geist+Mono',
-      note: '— labels, dates, repositories and code.'
+      note: 'for labels, dates, repositories and code.'
     },
     {
       sample: 'software engineer',
       sampleClass: 'font-serif text-[40px] leading-[1.1] italic',
       font: 'Instrument Serif',
       url: 'https://fonts.google.com/specimen/Instrument+Serif',
-      note: 'italic — one human phrase per page.'
+      note: 'italic, for one human phrase per page.'
     }
   ];
 
@@ -131,7 +131,7 @@
   ];
 
   const identity = [
-    { term: 'Full name', value: 'Haytham A. Salama', note: '— spelled Haytham, never Haitham.' },
+    { term: 'Full name', value: 'Haytham A. Salama', note: '· spelled Haytham, never Haitham.' },
     { term: 'Short', value: 'Haytham' },
     { term: 'Title', value: 'Senior Software Engineer · SaaS, AI, FinTech & Logistics' },
     { term: 'Handle', value: '@haythamasalama', valueClass: 'font-mono text-sm leading-[1.7]' },
@@ -149,13 +149,13 @@
       id: 'long',
       label: 'LONG BIO · 90 WORDS',
       copyLabel: 'long bio',
-      text: 'Haytham A. Salama is a senior software engineer who has built logistics and fintech platforms since 2019 — today at WINCH. He designs systems around the domain, tests them from day one, and leads front-end, back-end and mobile teams to ship them. Before code, he repaired electronics and worked as a designer and video editor, which still shapes how his software feels. He has contributed to Laravel, Nuxt and Nuxt UI, works every day alongside AI coding agents, and is building Runarks, a SaaS of his own.'
+      text: 'Haytham A. Salama is a senior software engineer who has been shipping software since 2016, today at WINCH. He designs systems around the domain, builds the APIs, integrations and security they run on, and leads small teams that take them to production. Before code, he repaired electronics and worked as a designer and video editor, which still shapes how his software feels. He has contributed to Laravel, Nuxt and Nuxt UI, works every day alongside AI coding agents, and is building Runarks, a SaaS of his own.'
     }
   ];
 
   const files: BrandFile[] = [
     {
-      name: 'Signature — white',
+      name: 'Signature · white',
       meta: 'SVG · for dark backgrounds',
       url: '/brand-kit/haytham-signature-white.svg',
       download: 'haytham-signature-white.svg',
@@ -165,7 +165,7 @@
       height: 17
     },
     {
-      name: 'Signature — white, small sizes',
+      name: 'Signature · white, small sizes',
       meta: 'SVG · heavier stroke, under 120 px',
       url: '/brand-kit/haytham-signature-white-small.svg',
       download: 'haytham-signature-white-small.svg',
@@ -175,7 +175,7 @@
       height: 17
     },
     {
-      name: 'Signature — black',
+      name: 'Signature · black',
       meta: 'SVG · for light backgrounds',
       url: '/brand-kit/haytham-signature-black.svg',
       download: 'haytham-signature-black.svg',
@@ -185,7 +185,7 @@
       height: 17
     },
     {
-      name: 'Signature — black, small sizes',
+      name: 'Signature · black, small sizes',
       meta: 'SVG · heavier stroke, under 120 px',
       url: '/brand-kit/haytham-signature-black-small.svg',
       download: 'haytham-signature-black-small.svg',
@@ -195,7 +195,7 @@
       height: 17
     },
     {
-      name: 'Signature — Iris → Azure',
+      name: 'Signature · Iris → Azure',
       meta: 'SVG · hover and focus only',
       url: '/brand-kit/haytham-signature-gradient.svg',
       download: 'haytham-signature-gradient.svg',
@@ -215,7 +215,7 @@
       height: 30
     },
     {
-      name: 'Favicon — 16 px',
+      name: 'Favicon · 16 px',
       meta: 'SVG · the H stroke only',
       url: '/brand-kit/haytham-favicon-16.svg',
       download: 'haytham-favicon-16.svg',
@@ -295,7 +295,7 @@
       </div>
 
       <p class="mt-8 text-[17px] leading-[1.7] text-soft">
-        This is the visual identity of Haytham A. Salama —
+        This is the visual identity of Haytham A. Salama,
         <span class="text-gradient pr-0.5 font-serif text-[22px] italic">software engineer</span>.
         It's a small, personal system: one handwritten signature, black and white doing most
         of the work, and two colours saved for the moments that matter.
@@ -309,7 +309,7 @@
 
     <section aria-labelledby="principles" class="pt-[72px]">
       <SectionTitle id="principles" class="mb-5">
-        00 — Three principles
+        00 · Three principles
       </SectionTitle>
       <ol class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] gap-3">
         <li
@@ -330,7 +330,7 @@
 
     <section aria-labelledby="signature" class="pt-[72px]">
       <SectionTitle id="signature" class="mb-2">
-        01 — The signature
+        01 · The signature
       </SectionTitle>
       <p class="mb-6 text-[15px] leading-[1.7] text-muted">
         Written once, used everywhere. It's ink: white on dark, black on light. It only takes colour when someone
@@ -339,7 +339,7 @@
 
       <!-- Specimen tiles keep their own colours on both site themes. -->
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-4">
-        <BrandFigure title="Dark — the default." caption="White signature on Ink.">
+        <BrandFigure title="Dark, the default." caption="White signature on Ink.">
           <div class="flex h-[200px] items-center justify-center rounded-2xl border border-[#1F1F23] bg-[#0F0F11]">
             <img
               src="/brand-kit/haytham-signature-white.svg"
@@ -468,11 +468,11 @@
 
     <section aria-labelledby="favicon" class="pt-[72px]">
       <SectionTitle id="favicon" class="mb-2">
-        02 — Favicon &amp; app icon
+        02 · Favicon &amp; app icon
       </SectionTitle>
       <p class="mb-6 text-[15px] leading-[1.7] text-muted">
         The same signature on an Ink tile. Below 32 px only the big "H" stroke survives, so the smallest favicon keeps
-        just that. The app icon is the same mark, larger — no colour at all.
+        just that. The app icon is the same mark, larger, with no colour at all.
       </p>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-4">
         <div class="flex h-[190px] items-end justify-center gap-5 rounded-2xl border border-[#1F1F23] bg-[#16161A] pb-8">
@@ -512,11 +512,11 @@
 
     <section aria-labelledby="colour" class="pt-[72px]">
       <SectionTitle id="colour" class="mb-2">
-        03 — Colour
+        03 · Colour
       </SectionTitle>
       <p class="mb-6 text-[15px] leading-[1.7] text-muted">
-        Two neutrals do the heavy lifting. Iris is the creative side — the designer and video editor before the code.
-        Azure is the engineer — clear, calm, trusted with money. Click any swatch to copy it.
+        Two neutrals do the heavy lifting. Iris is the creative side: the designer and video editor before the code.
+        Azure is the engineer: clear, calm, trusted with money. Click any swatch to copy it.
       </p>
       <div class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,150px),1fr))] gap-3">
         <BrandSwatch v-for="swatch in swatches" :key="swatch.name" v-bind="swatch" />
@@ -586,7 +586,7 @@
           <span class="self-start rounded-md border-gradient px-[7px] py-0.5 font-mono text-[10.5px] tracking-[0.1em]">
             <span class="text-gradient">PRO</span>
           </span>
-          <span class="text-[13px] text-muted"><span class="text-fg">Badges</span> — PRO, LIVE, NEW</span>
+          <span class="text-[13px] text-muted"><span class="text-fg">Badges</span> · PRO, LIVE, NEW</span>
         </li>
         <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
           <span class="inline-flex items-center gap-2 text-[13px] text-fg">
@@ -596,15 +596,15 @@
             />
             Live now
           </span>
-          <span class="text-[13px] text-muted"><span class="text-fg">Status dot</span> — with a soft pulse</span>
+          <span class="text-[13px] text-muted"><span class="text-fg">Status dot</span> · with a soft pulse</span>
         </li>
         <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
           <span class="flex gap-3.5 text-[13px] text-muted">
             <span>About</span>
-            <span class="pb-[5px] text-fg [background:var(--gradient)_no-repeat_0_100%/100%_1.5px]">Projects</span>
+            <span class="text-fg">Projects</span>
             <span>Blog</span>
           </span>
-          <span class="text-[13px] text-muted"><span class="text-fg">Active underline</span> — 1.5 px</span>
+          <span class="text-[13px] text-muted"><span class="text-fg">Current page</span> · white, never coloured</span>
         </li>
         <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
           <span class="flex flex-col gap-2">
@@ -613,7 +613,7 @@
               <span class="block h-full w-[64%] [background:var(--gradient)]" />
             </span>
           </span>
-          <span class="text-[13px] text-muted"><span class="text-fg">Progress</span> — a thin bar, never a block</span>
+          <span class="text-[13px] text-muted"><span class="text-fg">Progress</span> · a thin bar, never a block</span>
         </li>
         <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
           <span class="flex items-center gap-3">
@@ -623,20 +623,20 @@
               Focus
             </span>
           </span>
-          <span class="text-[13px] text-muted"><span class="text-fg">Focus</span> — 400s on dark; hover stays neutral</span>
+          <span class="text-[13px] text-muted"><span class="text-fg">Focus</span> · 400s on dark; hover stays neutral</span>
         </li>
         <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
           <span class="text-[15px] text-soft">
             a <span class="text-gradient pr-0.5 font-serif text-xl italic">creative</span> word
           </span>
-          <span class="text-[13px] text-muted"><span class="text-fg">One word</span> — per page, at most</span>
+          <span class="text-[13px] text-muted"><span class="text-fg">One word</span> · per page, at most</span>
         </li>
       </ul>
     </section>
 
     <section aria-labelledby="typography" class="pt-[72px]">
       <SectionTitle id="typography" class="mb-6">
-        04 — Typography
+        04 · Typography
       </SectionTitle>
       <div class="flex flex-col border-t border-line">
         <div
@@ -654,7 +654,7 @@
 
     <section aria-labelledby="icons" class="pt-[72px]">
       <SectionTitle id="icons" class="mb-2">
-        05 — Icons &amp; the people I've worked with
+        05 · Icons &amp; the people I've worked with
       </SectionTitle>
       <p class="mb-5 text-[15px] leading-[1.7] text-muted">
         Tools, technologies and companies are shown in one soft white on a Surface tile, so they sit quietly together
@@ -671,7 +671,7 @@
 
     <section aria-labelledby="in-the-world" class="pt-[72px]">
       <SectionTitle id="in-the-world" class="mb-6">
-        06 — Out in the world
+        06 · Out in the world
       </SectionTitle>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-4">
         <figure class="flex flex-col gap-2.5">
@@ -691,7 +691,7 @@
 
     <section aria-labelledby="voice" class="pt-[72px]">
       <SectionTitle id="voice" class="mb-6">
-        07 — Name, title &amp; voice
+        07 · Name, title &amp; voice
       </SectionTitle>
       <dl class="flex flex-col border-t border-line">
         <div
@@ -731,7 +731,7 @@
 
     <section aria-labelledby="kit" class="pt-[72px]">
       <SectionTitle id="kit" class="mb-2 scroll-mt-8">
-        08 — Brand kit
+        08 · Brand kit
       </SectionTitle>
       <p class="mb-5 text-[15px] leading-[1.7] text-muted">
         Every file on this page, ready to drop into Figma, slides or code. Vector where it matters.
@@ -778,7 +778,7 @@
         </li>
       </ul>
       <p class="mt-5 text-sm leading-[1.7] text-faint">
-        Need something that isn't here — a print file, a podcast cover, a talk slide? Message me on
+        Need something that isn't here, like a print file, a podcast cover or a talk slide? Message me on
         <NuxtLink to="https://www.linkedin.com/in/haythamasalama" class="link-underline">LinkedIn</NuxtLink> or
         <NuxtLink to="https://x.com/haythamasalama" class="link-underline">X</NuxtLink>.
       </p>

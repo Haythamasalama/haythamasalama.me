@@ -80,7 +80,7 @@
           aria-hidden="true"
         />
         <span>
-          <span class="text-fg">Now</span> — at
+          <span class="text-fg">Now</span> · at
           <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink>, remote from Cairo, and building
           <NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink> on the side
         </span>

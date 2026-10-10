@@ -202,7 +202,7 @@
         Getting started?
       </SectionTitle>
       <p class="text-[15px] leading-[1.7] text-muted">
-        I wrote down what worked for me across six projects in 2023 — from good first issues to getting a pull request
+        I wrote down what worked for me across six projects in 2023, from good first issues to getting a pull request
         merged.
       </p>
       <div class="mt-2 flex flex-wrap gap-x-[22px]">
