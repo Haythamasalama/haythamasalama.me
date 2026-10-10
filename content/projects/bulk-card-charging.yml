@@ -1,7 +1,7 @@
-title: Bulk card charging
+title: 'Bulk card charging'
 year: 2022
 context: Faris Petrol · Oct – Dec 2022
-description: A test-driven card-charging system that processes bulk transactions in background queues and posts them to the financial system.
+description: 'A queue-based system that charges cards in bulk and posts every transaction to the financial system, built test-first.'
 mark:
   icon: lucide:credit-card
 order: 2

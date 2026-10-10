@@ -1,7 +1,7 @@
-title: WINCH · logistics platform
+title: 'WINCH · Business and carrier platforms'
 year: 2023
 context: Senior Software Engineer · Feb 2023 – now
-description: 'The APIs behind the business app and Business Sector dashboard, and the carriers app and Carriers dashboard, plus the core components every product relies on: security, notifications, and an integration engine for government platforms like Tamm, Yaqeen and ZATCA, payment gateways and AI models. I shaped the Domain-Driven Design structure the back end follows, and I write the AI agents and skills our engineers code with.'
+description: 'APIs for WINCH''s business app and Business Sector dashboard, and for its carriers app and Carriers dashboard. Behind them sit the components every product shares: security, notifications, and an integration engine for government platforms such as Tamm, Yaqeen and ZATCA, payment gateways and AI models. The back end follows a Domain-Driven Design structure, and the AI agents and skills the engineers code with keep new work inside it.'
 mark:
   logo: winch
 tags:
@@ -17,7 +17,7 @@ links:
   to: https://winch.sa/
 order: 1
 highlight:
-  title: WINCH · logistics platform
+  title: WINCH · Business and carrier platforms
   description: The APIs behind the business and carrier apps and dashboards, plus the security, notification and integration components every product relies on.
   period: 2023 – now
   order: 1
