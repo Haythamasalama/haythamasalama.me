@@ -3,4 +3,4 @@ icon: simple-icons:nuxt
 url: https://nuxt.com/
 group: Front end
 order: 2
-home: Every day
+home: true

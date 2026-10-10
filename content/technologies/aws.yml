@@ -3,4 +3,4 @@ icon: simple-icons:amazonwebservices
 url: https://aws.amazon.com/
 group: DevOps
 order: 1
-home: Shipping
+home: true

@@ -3,4 +3,4 @@ icon: simple-icons:laravel
 url: https://laravel.com/
 group: Back end
 order: 1
-home: Every day
+home: true

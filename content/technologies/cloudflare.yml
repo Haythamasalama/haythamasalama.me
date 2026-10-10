@@ -2,4 +2,4 @@ name: Cloudflare
 icon: simple-icons:cloudflare
 group: DevOps
 order: 3
-home: Shipping
+home: true

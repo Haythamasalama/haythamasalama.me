@@ -3,4 +3,4 @@ icon: simple-icons:vuedotjs
 url: https://vuejs.org
 group: Front end
 order: 1
-home: Every day
+home: true

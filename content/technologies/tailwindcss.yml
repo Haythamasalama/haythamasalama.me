@@ -3,4 +3,4 @@ icon: simple-icons:tailwindcss
 url: https://tailwindcss.com/
 group: Front end
 order: 4
-home: Every day
+home: true

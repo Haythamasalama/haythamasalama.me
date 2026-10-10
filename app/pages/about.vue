@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { skillGroups } from '#shared/skill-groups';
+
   const { site, socials } = useAppConfig();
 
   usePageSeo({
@@ -43,9 +45,7 @@
 
   const topRepos = computed(() => repos.value.filter(repo => repo.pullRequests.length).slice(0, 4));
 
-  const groupOrder = ['AI & agents', 'Languages', 'Back end', 'Front end', 'Data', 'DevOps', 'IoT'] as const;
-
-  const skills = computed(() => groupOrder
+  const skills = computed(() => skillGroups
     .map(group => ({ group, items: data.value?.technologies.filter(tech => tech.group === group) ?? [] }))
     .filter(row => row.items.length));
 </script>

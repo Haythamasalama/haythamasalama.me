@@ -1,5 +1,6 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content';
 import { defineSitemapSchema } from '@nuxtjs/sitemap/content';
+import { skillGroups } from './shared/skill-groups';
 import { toolCategoryNames } from './shared/tool-categories';
 
 /** A small square visual: one-colour logo, Iconify icon, colour image or monogram. */
@@ -140,10 +141,10 @@ export default defineContentConfig({
         name: z.string(),
         icon: z.string(),
         url: z.string().url().optional(),
-        group: z.enum(['AI & agents', 'Languages', 'Back end', 'Front end', 'Data', 'DevOps', 'IoT']),
+        group: z.enum(skillGroups),
         order: z.number(),
-        /** The row it is listed in under "Skills & stack" on the home page, if any. */
-        home: z.enum(['Every day', 'Back end', 'Shipping']).optional()
+        /** Also listed under "Skills & stack" on the home page, in its group's row. */
+        home: z.boolean().default(false)
       })
     }),
 

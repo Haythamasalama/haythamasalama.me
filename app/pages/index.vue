@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { skillGroups } from '#shared/skill-groups';
+
   const { site, socials } = useAppConfig();
 
   usePageSeo({
@@ -9,7 +11,7 @@
   const { data } = await useAsyncData('home', async () => {
     const [projects, technologies, articles, uses] = await Promise.all([
       queryCollection('projects').all(),
-      queryCollection('technologies').where('home', 'IS NOT NULL').order('order', 'ASC').order('name', 'ASC').all(),
+      queryCollection('technologies').where('home', '=', true).order('order', 'ASC').all(),
       queryCollection('articles').order('date', 'DESC').limit(3).all(),
       queryCollection('uses').all()
     ]);
@@ -30,15 +32,10 @@
   // Live from GitHub; falls back to the maintained and created projects alone.
   const { highlights: openSource } = await useOpenSource();
 
-  const stackRows = computed(() => {
-    const stack = data.value?.stack ?? [];
-
-    return [
-      { label: 'Every day', items: stack.filter(tech => tech.home === 'Every day'), strong: true },
-      { label: 'Back end', items: stack.filter(tech => tech.home === 'Back end') },
-      { label: 'Shipping', items: stack.filter(tech => tech.home === 'Shipping') }
-    ];
-  });
+  // The same groups as the About page, with a few tools from each.
+  const stackRows = computed(() => skillGroups
+    .map(group => ({ group, items: data.value?.stack.filter(tech => tech.group === group) ?? [] }))
+    .filter(row => row.items.length));
 </script>
 
 <template>
@@ -164,31 +161,9 @@
         Skills &amp; stack
       </SectionTitle>
       <dl class="flex flex-col gap-3.5 text-[15px] leading-relaxed">
-        <div v-for="row in stackRows.slice(0, 2)" :key="row.label" class="flex flex-wrap gap-x-6 gap-y-1.5">
+        <div v-for="row in stackRows" :key="row.group" class="flex flex-wrap gap-x-6 gap-y-1.5">
           <dt class="flex-[0_0_120px] font-mono text-xs leading-7 text-faint">
-            {{ row.label }}
-          </dt>
-          <dd class="flex flex-[1_1_360px] flex-wrap gap-1.5">
-            <TechChip
-              v-for="tech in row.items"
-              :key="tech.id"
-              :label="tech.name"
-              :icon="tech.icon"
-              :strong="row.strong"
-            />
-          </dd>
-        </div>
-        <div class="flex flex-wrap gap-x-6 gap-y-0.5">
-          <dt class="flex-[0_0_120px] font-mono text-xs leading-6 text-faint">
-            Practice
-          </dt>
-          <dd class="flex-[1_1_360px] text-soft">
-            Domain-Driven Design, TDD with PHPUnit &amp; Pest, clean architecture
-          </dd>
-        </div>
-        <div v-for="row in stackRows.slice(2)" :key="row.label" class="flex flex-wrap gap-x-6 gap-y-1.5">
-          <dt class="flex-[0_0_120px] font-mono text-xs leading-7 text-faint">
-            {{ row.label }}
+            {{ row.group }}
           </dt>
           <dd class="flex flex-[1_1_360px] flex-wrap gap-1.5">
             <TechChip

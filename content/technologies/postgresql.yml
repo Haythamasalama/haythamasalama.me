@@ -3,4 +3,4 @@ icon: simple-icons:postgresql
 url: https://www.postgresql.org/
 group: Data
 order: 3
-home: Back end
+home: true

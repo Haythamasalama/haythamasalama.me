@@ -3,4 +3,4 @@ icon: simple-icons:mysql
 url: https://www.mysql.com/
 group: Data
 order: 2
-home: Back end
+home: true

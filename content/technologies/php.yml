@@ -3,4 +3,4 @@ icon: simple-icons:php
 url: https://php.net/
 group: Languages
 order: 1
-home: Back end
+home: true

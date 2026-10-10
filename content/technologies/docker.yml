@@ -3,4 +3,4 @@ icon: simple-icons:docker
 url: https://www.docker.com/
 group: DevOps
 order: 4
-home: Shipping
+home: true
