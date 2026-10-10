@@ -22,8 +22,12 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
   - `assets/icons/`: local icon collection, used as `brand:<name>`
   - `utils/`: signature stroke data, the logo registry (`logos.ts`) and date helpers
   - `composables/usePageSeo.ts`: title and description, mirrored to Open Graph and Twitter
+  - `composables/useOpenSource.ts`: live GitHub activity merged with `content/contributions`, for Home and `/open-source`
   - `app.config.ts`: site name, URL, navigation and social links
-- `shared/types/`: types used by both the app and content schemas
+- `server/api/`: `snippets.get.ts` (public gists, cached 1 hour) and `open-source.get.ts` (merged pull requests, issues and contributor rank, cached 6 hours); `server/utils/github.ts` is the shared GitHub client
+- `shared/tool-categories.ts`: the Tools page's areas (filter chips) and categories (section headings)
+- `shared/code-theme.ts`: the brand Shiki themes for articles and gists
+- `shared/types/`: types used by the app, the server and content schemas
 - `content/`: everything the site displays; schemas in `content.config.ts`
 - `public/brand-kit/`: the downloadable brand files linked from `/brand`
 - `public/logos/`, `public/avatars/`: company logos (one-colour masks) and GitHub avatars
@@ -34,10 +38,13 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 - Components are auto-imported by file name (`LogoTile.vue` is `<LogoTile>`, `brand/BrandSwatch.vue` is `<BrandSwatch>`).
 - Read content through `queryCollection` and add new front matter fields to the collection schema in `content.config.ts`.
 - Most content is data: add a YAML file to `content/projects`, `tools`, `uses`, `technologies`, `experience` or `contributions` rather than editing a page.
+- A tool's `category` must be a name from `shared/tool-categories.ts`; add a category there (one line) rather than reusing a vague one.
+- Snippets are the owner's public GitHub gists and contributions come from GitHub search; never copy them into `content/`. `content/contributions` only holds what GitHub cannot provide: maintainer roles, discussions and projects he started.
 - Give every `useAsyncData` call a unique key. Nuxt 4 shares state between calls with the same key.
 - Set page metadata with `usePageSeo({ title, description })`.
 - Format dates with the helpers in `app/utils/date.ts` (fixed locale and UTC) so server and client render the same text.
-- Every page is prerendered and links are crawled at build time; a new page only needs to be linked from somewhere.
+- Pages are prerendered and links are crawled at build time; a new page only needs to be linked from somewhere. The exceptions read GitHub at request time with ISR: `/` and `/open-source` (6 hours) and `/snippets` (1 hour). Such pages must still render when GitHub fails, but with a 503: Vercel then keeps serving the last good copy and retries, so an outage is never cached.
+- The GitHub routes run without a token, but `NUXT_GITHUB_TOKEN` (no scopes) avoids the anonymous limit of 60 requests an hour. `NUXT_GITHUB_API_BASE` points them at a mock for offline work.
 
 ## Design rules
 
@@ -48,6 +55,7 @@ Dark by default with an optional light theme (`@nuxtjs/color-mode`, stored as `t
 - The signature is the logo. It is white on dark and black on light, takes the gradient only on hover/focus, and is drawn stroke by stroke by `SignatureMark`. Do not redraw or recolour it.
 - Company logos are one-colour masks (`BrandLogo` / `LogoTile` with `logo:`) so they follow the theme; register new ones in `app/utils/logos.ts`.
 - Icons come from `@nuxt/icon` with the local `lucide` and `simple-icons` collections; LinkedIn is `brand:linkedin`.
+- Code is highlighted with the brand themes in `shared/code-theme.ts` (Iris keywords, Azure strings and values, grey punctuation). Adjust those palettes instead of switching to a stock Shiki theme.
 - Type: Geist for text, Geist Mono for labels, dates and code, Instrument Serif italic for one human phrase per page (all self-hosted via Fontsource).
 - The page column is 880px (1040px on `/brand` via `definePageMeta({ wide: true })`); paragraphs are capped at 70ch by a base rule in `main.css`, and articles read in a 720px column. Tap targets are at least 44px.
 - Respect `prefers-reduced-motion` for any new animation.
@@ -66,7 +74,8 @@ Skills for this stack are pinned in `skills-lock.json` and are not committed: `n
 
 ## Dependency notes
 
-- Nuxt Content uses Node's built-in SQLite (`experimental.sqliteConnector: 'native'`), so there is no native `better-sqlite3` build.
+- Nuxt Content uses Node's built-in SQLite (`experimental.sqliteConnector: 'native'`), so there is no native `better-sqlite3` build. On Vercel it restores the database to `/tmp` for the ISR pages.
+- `@nuxtjs/mdc`, `shiki` and `minimark` are direct dependencies because `server/api/snippets.get.ts` imports them; keep their ranges in step with what `@nuxt/content` uses.
 - TypeScript stays on 6.x: `typescript-eslint` and `vue-tsc` do not support the TypeScript 7 native compiler yet, so Dependabot ignores TypeScript major updates.
 - `overrides` in `package.json` exist only to clear security advisories:
   - `@nuxt/devtools` is forced to `4.0.0-beta.4` (npm's `latest` tag) because DevTools 3.x depends on a vulnerable `simple-git`. Nuxt 4.6 still asks for `^3.4.2`; drop the override once Nuxt depends on DevTools 4.
