@@ -197,6 +197,11 @@
   }
 }
 
+/* Photos of logos (GitHub avatars) in greyscale, so they match the one-colour marks. */
+@utility avatar-mono {
+  filter: grayscale(1);
+}
+
 @utility text-gradient {
   color: transparent;
   background-image: var(--gradient);

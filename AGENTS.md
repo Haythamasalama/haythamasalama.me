@@ -53,7 +53,7 @@ Dark by default with an optional light theme (`@nuxtjs/color-mode`, stored as `t
 - Use the semantic colour tokens from `main.css`, never raw hex in pages: `bg`, `surface` (tiles, hover), `raised` (cards, code), `line` (borders), `edge` (tile borders), `chip`, `fg`, `soft`, `muted`, `faint`, `mark` (icons), `accent` / `accent-2`. They switch with the theme.
 - Iris (`iris-500` `#7F7CF2`) and Azure (`azure-500` `#4F9BFF`) are for small details only: hover, focus, badges, the live dot, one gradient word per page. Never more than about 5% of a screen.
 - The signature is the logo. It is white on dark and black on light, takes the gradient only on hover/focus, and is drawn stroke by stroke by `SignatureMark`. Do not redraw or recolour it.
-- Company logos are one-colour masks (`BrandLogo` / `LogoTile` with `logo:`) so they follow the theme; register new ones in `app/utils/logos.ts`.
+- Company logos are one-colour masks (`BrandLogo` / `LogoTile` with `logo:`) so they follow the theme; register new ones in `app/utils/logos.ts`. GitHub avatars and other logo photos get the `avatar-mono` utility (greyscale), so nothing on the site shows a logo in its own colours.
 - Icons come from `@nuxt/icon` with the local `lucide` and `simple-icons` collections; LinkedIn is `brand:linkedin`.
 - Code is highlighted with the brand themes in `shared/code-theme.ts` (Iris keywords, Azure strings and values, grey punctuation). Adjust those palettes instead of switching to a stock Shiki theme.
 - Type: Geist for text, Geist Mono for labels, dates and code, Instrument Serif italic for one human phrase per page (all self-hosted via Fontsource).

@@ -198,7 +198,7 @@
             width="26"
             height="26"
             loading="lazy"
-            class="size-[26px] shrink-0 rounded-[7px]"
+            class="avatar-mono size-[26px] shrink-0 rounded-[7px]"
           >
           <span class="flex min-w-0 flex-auto flex-wrap items-center justify-between gap-x-4">
             <NuxtLink :to="repo.url" class="link inline-flex min-h-12 items-center font-mono text-sm">
@@ -222,7 +222,7 @@
                 width="32"
                 height="32"
                 loading="lazy"
-                class="size-8 rounded-lg border border-line"
+                class="avatar-mono size-8 rounded-lg border border-line"
               >
             </NuxtLink>
           </li>

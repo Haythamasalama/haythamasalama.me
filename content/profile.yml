@@ -28,7 +28,7 @@ pinned:
     description: Nuxt's official UI library. I was a maintainer for two months and still contribute.
     url: https://github.com/nuxt/ui
     mark:
-      image: /avatars/nuxt.png
+      icon: simple-icons:nuxt
   - title: aug-projects
     label: Organization
     description: A GitHub organization I started to collect the projects of Al-Azhar engineering students.

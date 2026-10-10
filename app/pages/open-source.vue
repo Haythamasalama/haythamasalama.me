@@ -61,7 +61,7 @@
           alt=""
           width="44"
           height="44"
-          class="size-11 shrink-0 rounded-[11px]"
+          class="avatar-mono size-11 shrink-0 rounded-[11px]"
         >
         <div class="flex min-w-0 flex-auto flex-col gap-2">
           <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -175,7 +175,7 @@
             width="32"
             height="32"
             loading="lazy"
-            class="size-8 shrink-0 rounded-lg"
+            class="avatar-mono size-8 shrink-0 rounded-lg"
           >
           <span class="flex min-w-0 flex-auto flex-wrap items-center justify-between gap-x-4">
             <NuxtLink :to="entry.url" class="link inline-flex min-h-12 items-center font-mono text-sm">
