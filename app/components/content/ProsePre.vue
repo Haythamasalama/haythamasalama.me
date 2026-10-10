@@ -22,7 +22,8 @@
     yaml: 'YAML'
   };
 
-  const languageLabel = computed(() => language ? (languageLabels[language] ?? language) : '');
+  // Plain-text fences have nothing worth labelling.
+  const languageLabel = computed(() => language && language !== 'text' ? (languageLabels[language] ?? language) : '');
 </script>
 
 <template>

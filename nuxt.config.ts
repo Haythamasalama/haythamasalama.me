@@ -1,4 +1,5 @@
 import tailwindcss from '@tailwindcss/vite';
+import { codeThemeDark, codeThemeLight } from './shared/code-theme';
 
 export default defineNuxtConfig({
   modules: [
@@ -41,12 +42,23 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         highlight: {
-          theme: { default: 'github-dark-default', light: 'github-light-default' },
-          langs: ['bash', 'css', 'dotenv', 'html', 'javascript', 'json', 'php', 'python', 'sql', 'typescript', 'vue', 'yaml']
+          // Brand themes from shared/code-theme.ts, also used for gists on /snippets.
+          theme: { default: codeThemeDark, light: codeThemeLight },
+          langs: ['bash', 'css', 'dotenv', 'html', 'javascript', 'json', 'markdown', 'php', 'python', 'sql', 'typescript', 'vue', 'yaml']
         }
       }
     },
     experimental: { sqliteConnector: 'native' }
+  },
+
+  runtimeConfig: {
+    // Where /snippets reads gists from. Set NUXT_GITHUB_TOKEN (a token with no
+    // scopes is enough) to lift GitHub's anonymous limit of 60 requests an hour.
+    github: {
+      token: '',
+      gistsUser: 'Haythamasalama',
+      apiBase: 'https://api.github.com'
+    }
   },
 
   routeRules: {
@@ -62,7 +74,10 @@ export default defineNuxtConfig({
     '/work': { prerender: true },
     '/open-source': { prerender: true },
     '/articles/**': { prerender: true },
-    '/snippets': { prerender: true },
+    // Gists are fetched at request time and cached for an hour, so new ones
+    // show up without a redeploy.
+    '/snippets': { isr: 3600, prerender: false },
+    '/api/snippets': { isr: 3600 },
     '/tools': { prerender: true },
     '/uses': { prerender: true },
     '/about': { prerender: true },

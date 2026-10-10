@@ -29,17 +29,6 @@ export default defineContentConfig({
       })
     }),
 
-    snippets: defineCollection({
-      type: 'page',
-      source: 'snippets/*.md',
-      schema: z.object({
-        category: z.string(),
-        icon: z.string().optional(),
-        order: z.number(),
-        article: link.optional()
-      })
-    }),
-
     experience: defineCollection({
       type: 'data',
       source: 'experience/*.yml',
