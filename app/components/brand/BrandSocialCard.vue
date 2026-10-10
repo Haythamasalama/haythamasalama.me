@@ -25,7 +25,7 @@
           Haytham A. Salama
         </span>
         <span class="text-[length:2.67cqw] text-[#A1A1AA]">
-          Creative developer · full-stack engineer
+          Senior software engineer · SaaS, AI, FinTech &amp; Logistics
         </span>
         <span class="font-mono text-[length:2.33cqw] text-[#85858F]">
           haythamasalama.me

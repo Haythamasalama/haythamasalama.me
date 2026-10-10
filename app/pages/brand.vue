@@ -110,7 +110,7 @@
       note: '— labels, dates, repositories and code.'
     },
     {
-      sample: 'creative developer',
+      sample: 'software engineer',
       sampleClass: 'font-serif text-[40px] leading-[1.1] italic',
       font: 'Instrument Serif',
       url: 'https://fonts.google.com/specimen/Instrument+Serif',
@@ -133,7 +133,7 @@
   const identity = [
     { term: 'Full name', value: 'Haytham A. Salama', note: '— spelled Haytham, never Haitham.' },
     { term: 'Short', value: 'Haytham' },
-    { term: 'Title', value: 'Creative developer · Full-stack engineer' },
+    { term: 'Title', value: 'Senior Software Engineer · SaaS, AI, FinTech & Logistics' },
     { term: 'Handle', value: '@haythamasalama', valueClass: 'font-mono text-sm leading-[1.7]' },
     { term: 'Voice', value: 'Plain words over jargon. Show the work before the title. Warm, never loud.', valueClass: 'text-[15px] leading-[1.6] text-soft' }
   ];
@@ -143,13 +143,13 @@
       id: 'short',
       label: 'SHORT BIO · 40 WORDS',
       copyLabel: 'short bio',
-      text: 'Haytham A. Salama is a creative developer and full-stack engineer who builds logistics and fintech platforms with Laravel, Vue and Nuxt. He contributes to Nuxt UI, writes about shipping software, and works every day alongside AI coding agents.'
+      text: 'Haytham A. Salama is a senior software engineer who builds SaaS, logistics and fintech platforms. He contributes to Nuxt UI, writes about shipping software, and works every day alongside AI coding agents.'
     },
     {
       id: 'long',
       label: 'LONG BIO · 90 WORDS',
       copyLabel: 'long bio',
-      text: 'Haytham A. Salama is a senior full-stack engineer who has built logistics and fintech platforms since 2019 — today at WINCH. He designs systems around the domain, tests them from day one, and leads front-end, back-end and mobile teams to ship them. Before code, he repaired electronics and worked as a designer and video editor, which still shapes how his software feels. He has contributed to Laravel, Nuxt and Nuxt UI, works every day alongside AI coding agents, and is building Runarks, a SaaS of his own.'
+      text: 'Haytham A. Salama is a senior software engineer who has built logistics and fintech platforms since 2019 — today at WINCH. He designs systems around the domain, tests them from day one, and leads front-end, back-end and mobile teams to ship them. Before code, he repaired electronics and worked as a designer and video editor, which still shapes how his software feels. He has contributed to Laravel, Nuxt and Nuxt UI, works every day alongside AI coding agents, and is building Runarks, a SaaS of his own.'
     }
   ];
 
@@ -296,8 +296,8 @@
 
       <p class="mt-8 text-[17px] leading-[1.7] text-soft">
         This is the visual identity of Haytham A. Salama —
-        <span class="text-gradient pr-0.5 font-serif text-[22px] italic">creative developer</span>
-        and full-stack engineer. It's a small, personal system: one handwritten signature, black and white doing most
+        <span class="text-gradient pr-0.5 font-serif text-[22px] italic">software engineer</span>.
+        It's a small, personal system: one handwritten signature, black and white doing most
         of the work, and two colours saved for the moments that matter.
       </p>
       <p class="mt-4 text-[15px] leading-[1.7] text-muted">
@@ -600,9 +600,9 @@
         </li>
         <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
           <span class="flex gap-3.5 text-[13px] text-muted">
-            <span>Work</span>
-            <span class="pb-[5px] text-fg [background:var(--gradient)_no-repeat_0_100%/100%_1.5px]">Writing</span>
             <span>About</span>
+            <span class="pb-[5px] text-fg [background:var(--gradient)_no-repeat_0_100%/100%_1.5px]">Projects</span>
+            <span>Blog</span>
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Active underline</span> — 1.5 px</span>
         </li>

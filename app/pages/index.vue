@@ -65,7 +65,7 @@
 
       <p class="mt-8 animate-rise text-[17px] leading-[1.7] text-soft [animation-delay:.15s]">
         I'm a
-        <span class="text-gradient pr-0.5 font-serif text-[22px] italic">creative developer</span>
+        <span class="text-gradient pr-0.5 font-serif text-[22px] italic">software engineer</span>
         who turns messy business problems into calm, durable software. Since 2019 I've built logistics and fintech
         platforms — designed around the domain, tested from day one, and fast where it matters.
       </p>
@@ -82,7 +82,7 @@
           aria-hidden="true"
         />
         <span>
-          <span class="text-fg">Now</span> — full-stack engineer at
+          <span class="text-fg">Now</span> — senior software engineer at
           <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink>, remote from Cairo
         </span>
       </p>
@@ -108,7 +108,7 @@
         <NuxtLink
           v-for="project in data?.work"
           :key="project.id"
-          to="/work"
+          to="/projects"
           class="-mx-3 flex items-start gap-3.5 rounded-[10px] p-3 transition-colors hover:bg-surface"
         >
           <LogoTile :mark="project.mark" :size="36" />
@@ -121,7 +121,7 @@
           </span>
         </NuxtLink>
       </div>
-      <GoLink to="/work" class="mt-1">
+      <GoLink to="/projects" class="mt-1">
         All work
       </GoLink>
     </section>
@@ -207,7 +207,7 @@
 
     <section aria-labelledby="writing" class="pt-16">
       <SectionTitle id="writing" class="mb-3">
-        Writing
+        Blog
       </SectionTitle>
       <div class="flex flex-col">
         <NuxtLink

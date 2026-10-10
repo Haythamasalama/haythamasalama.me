@@ -19,7 +19,7 @@
     ogImage: `${site.url}/og.png`,
     ogImageWidth: 1200,
     ogImageHeight: 630,
-    ogImageAlt: 'Haytham A. Salama — creative developer and full-stack engineer',
+    ogImageAlt: 'Haytham A. Salama — software engineer for SaaS, AI, fintech and logistics',
     twitterCard: 'summary_large_image',
     twitterImage: `${site.url}/og.png`,
     twitterSite: '@haythamasalama',

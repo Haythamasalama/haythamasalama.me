@@ -54,7 +54,7 @@
   <article v-if="article" class="max-w-[720px]">
     <header class="pt-16 md:pt-[72px]">
       <NuxtLink to="/articles" class="go link-muted -ml-0.5 inline-flex min-h-11 items-center text-sm">
-        <span class="mr-1.5" aria-hidden="true">←</span> Writing
+        <span class="mr-1.5" aria-hidden="true">←</span> Blog
       </NuxtLink>
       <h1 class="mt-4 text-[28px] leading-tight font-semibold tracking-[-0.02em] text-balance md:text-[32px]">
         {{ article.title }}

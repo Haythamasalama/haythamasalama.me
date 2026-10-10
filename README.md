@@ -5,10 +5,10 @@
 </p>
 
 <p align="center">
-  Personal website of Haytham A. Salama — creative developer and full-stack engineer.
+  Personal website of Haytham A. Salama — senior software engineer for SaaS, AI, fintech and logistics.
   <br><br>
   <samp>
-    <a href="https://haythamasalama.me/work">work</a> ·
+    <a href="https://haythamasalama.me/projects">projects</a> ·
     <a href="https://haythamasalama.me/open-source">open source</a> ·
     <a href="https://haythamasalama.me/articles">writing</a> ·
     <a href="https://haythamasalama.me/snippets">snippets</a> ·

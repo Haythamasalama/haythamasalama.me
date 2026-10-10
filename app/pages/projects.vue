@@ -1,6 +1,6 @@
 <script setup lang="ts">
   usePageSeo({
-    title: 'Work',
+    title: 'Projects',
     description: 'Where Haytham A. Salama has worked and what he has shipped — from a physics app in high school to fintech platforms today.'
   });
 
@@ -24,7 +24,7 @@
 
 <template>
   <div>
-    <PageHeader title="Work">
+    <PageHeader title="Projects">
       <p>Where I've worked and what I've shipped — from a physics app in high school to fintech platforms today.</p>
     </PageHeader>
 
