@@ -6,15 +6,11 @@
 
 <template>
   <footer class="mt-24 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-line pt-7 pb-10">
-    <div class="flex items-center gap-3.5">
-      <NuxtLink to="/" class="signature-link inline-flex min-h-11 items-center" aria-label="Home">
-        <SignatureMark :width="56" :animated="false" />
+    <div class="flex flex-wrap items-center gap-x-5 text-[13px] text-faint">
+      <p>© {{ site.since }}–{{ year }} {{ site.name }}</p>
+      <NuxtLink to="/brand" class="link-muted inline-flex min-h-11 items-center">
+        Brand
       </NuxtLink>
-      <p class="text-[13px] leading-normal text-faint">
-        Designed &amp; built by {{ site.name }} · <span class="whitespace-nowrap">© {{ site.since }}–{{ year }}</span> · <NuxtLink to="/brand" class="link-muted">
-          Brand guidelines
-        </NuxtLink>
-      </p>
     </div>
 
     <div class="-mr-3 flex items-center">
