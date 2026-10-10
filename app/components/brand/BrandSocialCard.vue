@@ -37,7 +37,7 @@
         width="156"
         height="79"
         loading="lazy"
-        class="absolute right-[-3%] bottom-[24%] block h-auto w-[39%] opacity-90"
+        class="absolute top-[6%] right-[5%] block h-auto w-[30%] opacity-90"
       >
     </div>
   </div>
