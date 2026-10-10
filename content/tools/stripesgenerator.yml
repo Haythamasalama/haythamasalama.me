@@ -1,10 +1,6 @@
 name: Stripes Generator
-description: A tool for generating custom stripe patterns with various settings and preview mode.
-icon: https://stripesgenerator.com/favicon-stripes.png
-website: https://stripesgenerator.com/
-category: css generator
-tags:
-  - Stripe patterns
-  - Customizable
-  - Preview mode
-  - Open-source
+category: Backgrounds & CSS generators
+kind: Web
+description: Striped backgrounds as CSS or images.
+url: https://stripesgenerator.com/
+icon: lucide:paintbrush

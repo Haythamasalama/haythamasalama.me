@@ -1,0 +1,5 @@
+name: Arduino
+icon: simple-icons:arduino
+url: https://www.arduino.cc/
+group: Hardware
+order: 2

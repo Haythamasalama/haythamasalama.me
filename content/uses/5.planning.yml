@@ -1,0 +1,20 @@
+title: Planning
+order: 5
+items:
+- name: Notion
+  note: Notes & docs
+  mark:
+    icon: simple-icons:notion
+  desk: 6
+- name: Google Docs
+  note: Shared writing
+  mark:
+    icon: simple-icons:googledocs
+- name: Notability
+  note: Handwritten notes
+  mark:
+    icon: lucide:pen-line
+- name: Excalidraw
+  note: Sketches & diagrams
+  mark:
+    icon: simple-icons:excalidraw

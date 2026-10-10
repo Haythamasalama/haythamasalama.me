@@ -1,7 +1,5 @@
 name: Java
-description: Programming Language
-icon: '/icons/java.svg'
-website: https://www.java.com/en/
-order: 1
-category:
-  - programming language
+icon: simple-icons:openjdk
+url: https://www.java.com/en/
+group: Languages
+order: 2

@@ -1,5 +1,7 @@
 name: Iconfinder
-description: A search engine for finding free and premium icons in various styles and formats.
-icon: https://www.iconfinder.com/favicon.ico
-website: https://www.iconfinder.com/free_icons
-category: icons
+category: Icons & emoji
+kind: Web
+description: A search engine for free and premium icons.
+url: https://www.iconfinder.com/free_icons
+icon: simple-icons:iconfinder
+featured: true

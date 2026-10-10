@@ -1,5 +1,7 @@
 name: Fake Filler
-description: A form filler extension that automatically fills forms with random data to speed up testing and registration.
-icon: https://lh3.googleusercontent.com/FZ2jI6qDtyrJ-VuB6b36-KiEnN7TMEzGP17AL-BuRwb_AZBRfk0UiIGE3SfK6FDLrlDP2xOic2MmaYpGt7EJ-P_YqI8=w128-h128-e365-rj-sc0x00ffffff
-website: https://chrome.google.com/webstore/detail/fake-filler/bnjjngeaknajbdcgpfkgnonkmififhfo
-category: chrome extension
+category: Web development
+kind: Extension
+description: Fills forms with random data so testing goes faster.
+url: https://chromewebstore.google.com/detail/fake-filler/bnjjngeaknajbdcgpfkgnonkmififhfo
+icon: lucide:clipboard-list
+featured: true

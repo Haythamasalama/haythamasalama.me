@@ -1,0 +1,10 @@
+repo: github/community
+url: https://github.com/orgs/community/discussions
+avatar: /avatars/community.png
+kind: discussion
+links:
+- label: '#69527'
+  to: https://github.com/orgs/community/discussions/69527
+- label: '#69586'
+  to: https://github.com/orgs/community/discussions/69586
+order: 2

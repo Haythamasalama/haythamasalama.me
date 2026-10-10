@@ -1,0 +1,34 @@
+title: Editors & terminal
+order: 2
+items:
+- name: PhpStorm
+  note: Laravel & PHP
+  mark:
+    icon: simple-icons:phpstorm
+  desk: 2
+- name: Cursor
+  note: AI-first editing
+  mark:
+    icon: simple-icons:cursor
+  desk: 3
+- name: VS Code
+  note: Front end & quick edits
+  mark:
+    icon: lucide:code-xml
+- name: IntelliJ IDEA
+  note: Java
+  mark:
+    icon: simple-icons:intellijidea
+- name: PyCharm
+  note: Python
+  mark:
+    icon: simple-icons:pycharm
+- name: iTerm2
+  note: Terminal
+  mark:
+    icon: simple-icons:iterm2
+  desk: 4
+- name: Oh My Zsh
+  note: Shell
+  mark:
+    icon: simple-icons:zsh

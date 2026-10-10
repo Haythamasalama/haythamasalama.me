@@ -1,6 +1,5 @@
 name: jQuery
-description: JavaScript Library
-icon: '/icons/jquery.svg'
-website: https://jquery.com/
-category:
-  - front end
+icon: simple-icons:jquery
+url: https://jquery.com/
+group: Front end
+order: 4

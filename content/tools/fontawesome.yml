@@ -1,5 +1,7 @@
 name: Font Awesome
-description: A popular and versatile icon toolkit offering thousands of vector icons and social logos.
-icon: https://fontawesome.com/favicon.ico
-website: https://fontawesome.com/icons
-category: icons
+category: Icons & emoji
+kind: Web
+description: Thousands of icons and social logos.
+url: https://fontawesome.com/icons
+icon: simple-icons:fontawesome
+featured: true

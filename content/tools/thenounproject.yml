@@ -1,5 +1,6 @@
-name: The Noun Project
-description: A platform offering a vast collection of icons and symbols created by a global community.
-icon: https://thenounproject.com/favicon.ico
-website: https://thenounproject.com/
-category: icons
+name: Noun Project
+category: Icons & emoji
+kind: Web
+description: Icons for almost any idea, from a global community.
+url: https://thenounproject.com/
+icon: lucide:shapes

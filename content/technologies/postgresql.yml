@@ -1,6 +1,6 @@
 name: PostgreSQL
-description: Relational Database
-icon: '/icons/postgresql.svg'
-website: https://www.postgresql.org/
-category:
-  - back end
+icon: simple-icons:postgresql
+url: https://www.postgresql.org/
+group: Back end
+order: 4
+home: true

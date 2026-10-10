@@ -1,6 +1,5 @@
 name: Sass
-description: CSS Preprocessor
-icon: '/icons/sass.svg'
-website: https://sass-lang.com/
-category:
-  - front end
+icon: simple-icons:sass
+url: https://sass-lang.com/
+group: Front end
+order: 2

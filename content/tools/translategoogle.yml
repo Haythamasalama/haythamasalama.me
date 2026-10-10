@@ -1,5 +1,6 @@
 name: Google Translate
-description: An official Google extension that allows you to quickly translate selected text or entire webpages.
-icon: https://translate.google.com/favicon.ico
-website: https://translate.google.com/
-category: chrome extension
+category: Translation & pronunciation
+kind: Extension
+description: Translate the selected text on any page.
+url: https://translate.google.com/
+icon: simple-icons:googletranslate

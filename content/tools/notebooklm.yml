@@ -1,0 +1,6 @@
+name: NotebookLM
+category: AI assistants
+kind: Web
+description: Ask questions about your own documents and notes.
+url: https://notebooklm.google.com/
+icon: simple-icons:notebooklm

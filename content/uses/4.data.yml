@@ -1,0 +1,20 @@
+title: Databases & browsers
+order: 4
+items:
+- name: Sequel Ace
+  note: MySQL client
+  mark:
+    icon: lucide:database
+- name: MySQL Workbench
+  note: Modelling & admin
+  mark:
+    icon: simple-icons:mysql
+- name: Chrome
+  note: Development
+  mark:
+    icon: simple-icons:googlechrome
+  desk: 8
+- name: Safari
+  note: Everyday browsing
+  mark:
+    icon: simple-icons:safari

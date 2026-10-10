@@ -1,5 +1,7 @@
 name: Heroicons
-description: A set of beautifully designed, customizable, and accessible SVG icons.
-icon: https://heroicons.com/favicon.ico
-website: https://heroicons.com/
-category: icons
+category: Icons & emoji
+kind: Web
+description: Clean, accessible SVG icons from the Tailwind team.
+url: https://heroicons.com/
+icon: lucide:shapes
+featured: true

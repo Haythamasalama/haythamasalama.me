@@ -1,0 +1,6 @@
+name: GitHub Copilot
+category: AI for code
+kind: Editor
+description: Code suggestions and chat inside your editor.
+url: https://github.com/features/copilot
+icon: simple-icons:githubcopilot

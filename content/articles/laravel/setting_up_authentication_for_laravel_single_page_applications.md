@@ -1,11 +1,10 @@
 ---
-title: Setting Up Authentication for Laravel Single Page Applications (SPA)
-description: 'Configure CORS, session domain and Sanctum stateful domains to authenticate a Laravel SPA running on a separate frontend.'
-author: 
-  username: 'haythamasalama'
-  platform: 'twitter'
+title: 'Setting up authentication for Laravel single-page apps'
+description: 'The three settings — CORS origins, session domain and Sanctum stateful domains — that make a separate SPA front end log in cleanly.'
 date: '2022-10-11'
-readTime: '2 min'
+category: 'Laravel'
+icon: 'simple-icons:laravel'
+readingTime: '2 min read'
 ---
 
 Suppose you have two websites that require authentication:
@@ -27,7 +26,7 @@ Suppose you have two websites that require authentication:
 
 ### 1. Update `config/cors.php`
 
-```php
+```php [config/cors.php]
 return [
   'paths' => ['api/*', 'sanctum/csrf-cookie'],
   'allowed_methods' => ['*'],
@@ -44,7 +43,7 @@ In allowed_origins, add the `FRONTEND_URL` in the format `scheme://hostname`, su
 
 ### 2. Update `config/session.php`
 
-```php
+```php [config/session.php]
 'domain' => env('SESSION_DOMAIN', null),
 ```
 
@@ -52,7 +51,7 @@ Set the `SESSION_DOMAIN` to the main host, e.g., localhost.
 
 ### 3. Update `config/sanctum.php`
 
-```php
+```php [config/sanctum.php]
 'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
     '%s%s',
     'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1',
@@ -64,7 +63,7 @@ Add `SANCTUM_STATEFUL_DOMAINS` only for the main host, e.g., localhost.
 
 Update the `.env` file:
 
-```md
+```dotenv [.env]
 APP_NAME=
 APP_ENV=local
 APP_KEY=

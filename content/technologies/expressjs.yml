@@ -1,6 +1,5 @@
-name: Express.js
-description: Node.js Web Framework
-icon: '/icons/expressjs.svg'
-website: https://expressjs.com/
-category:
-  - back end
+name: Express
+icon: simple-icons:express
+url: https://expressjs.com/
+group: Back end
+order: 2

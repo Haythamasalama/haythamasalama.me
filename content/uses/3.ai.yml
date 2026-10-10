@@ -1,0 +1,16 @@
+title: AI
+order: 3
+items:
+- name: Claude
+  note: Thinking, writing & code
+  mark:
+    icon: simple-icons:claude
+  desk: 7
+- name: Claude Design
+  note: Prototypes & visuals
+  mark:
+    icon: simple-icons:anthropic
+- name: Gemini
+  note: Research & Google apps
+  mark:
+    icon: simple-icons:googlegemini

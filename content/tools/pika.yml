@@ -1,5 +1,6 @@
-name: Pika Style Wallpapers
-description: A collection of high-quality and unique wallpapers for desktop and mobile devices, with new wallpapers added regularly.
-icon: https://pika.style/icons/favicon.ico
-website: https://pika.style/wallpapers
-category: images
+name: Pika
+category: Images & screenshots
+kind: Web
+description: Polished screenshots and device mockups in the browser.
+url: https://pika.style/
+icon: lucide:frame

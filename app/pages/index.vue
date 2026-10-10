@@ -1,109 +1,271 @@
-<script lang="ts" setup>
-  import { technologyCategories } from '@/types';
+<script setup lang="ts">
+  const { site, socials } = useAppConfig();
 
-  const selectedTechnology = ref(technologyCategories[0]);
+  usePageSeo({
+    title: site.name,
+    description: site.description
+  });
 
-  const { data: technologies } = await useAsyncData(
-    'home-technologies',
-    () => queryCollection('technologies')
-      .where('category', 'LIKE', `%${selectedTechnology.value}%`)
-      .all(),
-    {
-      watch: [selectedTechnology]
-    }
-  );
+  const { data } = await useAsyncData('home', async () => {
+    const [projects, technologies, articles, uses] = await Promise.all([
+      queryCollection('projects').all(),
+      queryCollection('technologies').where('home', '=', true).order('order', 'ASC').all(),
+      queryCollection('articles').order('date', 'DESC').limit(3).all(),
+      queryCollection('uses').all()
+    ]);
 
-  const { data: articles } = await useAsyncData(
-    'home-latest-articles',
-    () => queryCollection('articles')
-      .order('date', 'DESC')
-      .limit(3)
-      .all()
-  );
+    return {
+      work: projects
+        .filter(project => project.highlight)
+        .sort((a, b) => a.highlight!.order - b.highlight!.order),
+      stack: technologies,
+      articles,
+      desk: uses
+        .flatMap(section => section.items)
+        .filter(item => item.desk)
+        .sort((a, b) => a.desk! - b.desk!)
+    };
+  });
+
+  // Live from GitHub; falls back to the maintained and created projects alone.
+  const { highlights: openSource } = await useOpenSource();
+
+  const stackRows = computed(() => {
+    const stack = data.value?.stack ?? [];
+
+    return [
+      { label: 'Every day', items: stack.filter(tech => tech.group === 'Main stack'), strong: true },
+      { label: 'Back end', items: stack.filter(tech => tech.group === 'Back end') },
+      { label: 'Shipping', items: stack.filter(tech => tech.group === 'Deployment') }
+    ];
+  });
 </script>
 
 <template>
-  <section class="flex flex-col lg:flex-row justify-center items-center w-full mb-4">
-    <div>
-      <img
-        class="lg:mt-4 rounded-full w-[180px] h-[180px]"
-        src="https://avatars.githubusercontent.com/u/37311945?v=4"
-        alt="Haytham A. Salama"
-        width="180"
-        height="180"
-        fetchpriority="high"
-      >
-    </div>
-
-    <div class="flex flex-col mt-4 lg:ml-10 lg:w-2/5 text-center">
-      <h1 class="text-2xl md:text-4xl xl:text-5xl font-bold text-primary-gradient lg:text-left">
-        Haytham A. Salama
-      </h1>
-      <p class="text-white text-xl mt-2 lg:text-left">
-        Software Engineer
-      </p>
-      <p class="text-gray-100 mt-4 lg:text-justify">
-        Full-stack software engineer with 5+ years of experience building scalable logistics and fintech platforms. Specialized in Domain-Driven Design (DDD) and modern stacks (Laravel, Vue.js, Nuxt.js, TypeScript). Experienced in leading cross-functional teams and delivering high-performance systems. Passionate about open-source contributions and applying clean architecture to complex business challenges.
-      </p>
-      <NuxtLink
-        class="flex justify-center items-center lg:justify-start text-primary gap-x-0.5 my-6"
-        to="/about"
-      >
-        About <IconArrowRight />
-      </NuxtLink>
-    </div>
-  </section>
-
-  <div class="flex flex-col items-center w-full border-b-2 mt-2 py-10">
-    <h3 class="title-heading-primary text-center mb-8">
-      What I Use To Build Great Applications
-    </h3>
-
-    <ul class="grid grid-cols-1 md:grid-cols-3 lg:grid-flow-col gap-x-10 gap-y-4 text-gray-400 capitalize mb-8">
-      <li
-        v-for="category in technologyCategories"
-        :key="category"
-      >
-        <button
-          type="button"
-          class="hover:text-white transition-primary cursor-pointer text-center capitalize w-full"
-          :class="{ 'text-white rounded': selectedTechnology === category }"
-          :aria-pressed="selectedTechnology === category"
-          @click="selectedTechnology = category"
+  <div>
+    <section aria-labelledby="intro" class="pt-16 md:pt-20">
+      <div class="flex animate-rise items-center gap-4 [animation-delay:.05s]">
+        <img
+          class="photo size-[60px] shrink-0 rounded-full object-cover"
+          src="/images/haytham.jpg"
+          alt="Portrait of Haytham A. Salama"
+          width="60"
+          height="60"
+          fetchpriority="high"
         >
-          {{ category }}
-        </button>
-      </li>
-    </ul>
+        <div>
+          <h1 id="intro" class="text-[28px] leading-tight font-semibold tracking-[-0.02em]">
+            {{ site.name }}
+          </h1>
+          <p class="mt-1 font-mono text-[13px] text-faint">
+            {{ site.role }}
+          </p>
+        </div>
+      </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-      <Card
-        v-for="technology in technologies"
-        :key="technology.name"
-        target="_blank"
-        :to="technology.website"
-        :capitalize="false"
-        :title="technology.name"
-        :icon="{ path: technology.icon }"
-        :description="technology.description"
-      />
-    </div>
-  </div>
+      <p class="mt-8 animate-rise text-[17px] leading-[1.7] text-soft [animation-delay:.15s]">
+        I'm a
+        <span class="text-gradient pr-0.5 font-serif text-[22px] italic">creative developer</span>
+        who turns messy business problems into calm, durable software. For 5+ years I've built logistics and fintech
+        platforms — designed around the domain, tested from day one, and fast where it matters.
+      </p>
+      <p class="mt-[18px] animate-rise text-[17px] leading-[1.7] text-soft [animation-delay:.25s]">
+        Before code, I repaired radios, wired Arduinos and designed in Photoshop and After Effects. I still work that
+        way: curious about how things are made, and picky about how they feel.
+      </p>
 
-  <div class="flex flex-col items-center w-full mt-2 pt-10 pb-2">
-    <h3 class="title-heading-primary text-center mb-8">
-      Articles
-    </h3>
+      <p
+        class="mt-6 flex animate-rise items-start gap-2.5 text-sm leading-[1.55] text-muted [animation-delay:.35s] md:mt-7 md:inline-flex md:items-center md:gap-3 md:rounded-full md:border md:border-line md:py-2 md:pr-3.5 md:pl-3"
+      >
+        <span
+          class="mt-[7px] inline-block size-2 shrink-0 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500 md:mt-0"
+          aria-hidden="true"
+        />
+        <span>
+          <span class="text-fg">Now</span> — full-stack engineer at
+          <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink> and
+          <NuxtLink to="https://investsanad.sa/" class="link-underline">Sanad</NuxtLink>, remote
+        </span>
+      </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 gap-4 w-full">
-      <Card
-        v-for="post in articles"
-        :key="post.path"
-        class="flex flex-col justify-start"
-        :to="post.path"
-        :title="post.title"
-        :date="post.date"
-      />
-    </div>
+      <div class="mt-3.5 flex animate-rise flex-wrap gap-x-[22px] text-sm [animation-delay:.45s]">
+        <NuxtLink
+          v-for="social in socials"
+          :key="social.label"
+          :to="social.to"
+          class="link-muted inline-flex min-h-11 items-center gap-2"
+        >
+          <Icon :name="social.icon" class="size-4 text-mark" />
+          {{ social.label }}
+        </NuxtLink>
+      </div>
+    </section>
+
+    <section aria-labelledby="work" class="animate-rise pt-[72px] [animation-delay:.55s]">
+      <SectionTitle id="work" class="mb-3">
+        Selected work
+      </SectionTitle>
+      <div class="flex flex-col">
+        <NuxtLink
+          v-for="project in data?.work"
+          :key="project.id"
+          to="/work"
+          class="-mx-3 flex items-start gap-3.5 rounded-[10px] p-3 transition-colors hover:bg-surface"
+        >
+          <LogoTile :mark="project.mark" :size="36" />
+          <span class="flex min-w-0 flex-auto flex-col gap-1">
+            <span class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+              <span class="text-[15px] font-medium">{{ project.highlight!.title }}</span>
+              <span class="font-mono text-xs text-faint">{{ project.highlight!.period }}</span>
+            </span>
+            <span class="text-sm leading-[1.55] text-muted">{{ project.highlight!.description }}</span>
+          </span>
+        </NuxtLink>
+      </div>
+      <GoLink to="/work" class="mt-1">
+        All work
+      </GoLink>
+    </section>
+
+    <section aria-labelledby="oss" class="pt-16">
+      <SectionTitle id="oss" class="mb-3">
+        Open source
+      </SectionTitle>
+      <p class="mb-3 text-[15px] leading-[1.65] text-muted">
+        I like fixing the tools I depend on.
+      </p>
+      <div class="flex flex-col">
+        <NuxtLink
+          v-for="item in openSource"
+          :key="item.key"
+          :to="item.url"
+          class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
+        >
+          <img
+            :src="item.avatar"
+            alt=""
+            width="22"
+            height="22"
+            loading="lazy"
+            class="size-[22px] shrink-0 rounded-md"
+          >
+          <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+            <span class="font-mono text-sm">{{ item.name }}</span>
+            <span class="text-[13px] text-faint">{{ item.note }}</span>
+          </span>
+        </NuxtLink>
+      </div>
+      <GoLink to="/open-source" class="mt-1">
+        All contributions
+      </GoLink>
+    </section>
+
+    <section aria-labelledby="stack" class="pt-16">
+      <SectionTitle id="stack" class="mb-5">
+        Skills &amp; stack
+      </SectionTitle>
+      <dl class="flex flex-col gap-3.5 text-[15px] leading-relaxed">
+        <div v-for="row in stackRows.slice(0, 2)" :key="row.label" class="flex flex-wrap gap-x-6 gap-y-1.5">
+          <dt class="flex-[0_0_120px] font-mono text-xs leading-7 text-faint">
+            {{ row.label }}
+          </dt>
+          <dd class="flex flex-[1_1_360px] flex-wrap gap-1.5">
+            <TechChip
+              v-for="tech in row.items"
+              :key="tech.id"
+              :label="tech.name"
+              :icon="tech.icon"
+              :strong="row.strong"
+            />
+          </dd>
+        </div>
+        <div class="flex flex-wrap gap-x-6 gap-y-0.5">
+          <dt class="flex-[0_0_120px] font-mono text-xs leading-6 text-faint">
+            Practice
+          </dt>
+          <dd class="flex-[1_1_360px] text-soft">
+            Domain-Driven Design, TDD with PHPUnit &amp; Pest, clean architecture
+          </dd>
+        </div>
+        <div v-for="row in stackRows.slice(2)" :key="row.label" class="flex flex-wrap gap-x-6 gap-y-1.5">
+          <dt class="flex-[0_0_120px] font-mono text-xs leading-7 text-faint">
+            {{ row.label }}
+          </dt>
+          <dd class="flex flex-[1_1_360px] flex-wrap gap-1.5">
+            <TechChip
+              v-for="tech in row.items"
+              :key="tech.id"
+              :label="tech.name"
+              :icon="tech.icon"
+            />
+          </dd>
+        </div>
+      </dl>
+      <GoLink to="/about" class="mt-2">
+        Skills in depth
+      </GoLink>
+    </section>
+
+    <section aria-labelledby="writing" class="pt-16">
+      <SectionTitle id="writing" class="mb-3">
+        Writing
+      </SectionTitle>
+      <div class="flex flex-col">
+        <NuxtLink
+          v-for="article in data?.articles"
+          :key="article.path"
+          :to="article.path"
+          class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
+        >
+          <Icon :name="article.icon" class="size-4 shrink-0 text-mark" />
+          <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+            <span class="text-[15px]">{{ article.title }}</span>
+            <time :datetime="article.date" class="font-mono text-xs text-faint">{{ formatMonth(article.date) }}</time>
+          </span>
+        </NuxtLink>
+      </div>
+      <div class="mt-1 flex flex-wrap gap-x-[22px]">
+        <GoLink to="/articles">
+          All posts
+        </GoLink>
+        <GoLink to="/snippets">
+          Code snippets
+        </GoLink>
+      </div>
+    </section>
+
+    <section aria-labelledby="vision" class="pt-16">
+      <SectionTitle id="vision" class="mb-4">
+        Where I'm headed
+      </SectionTitle>
+      <p class="text-[17px] leading-[1.7] text-soft">
+        Next comes a master's in <span class="text-fg">machine learning</span> — and, further out, becoming an
+        associate professor in the field. Until then I'll keep shipping domain-driven systems and giving back to the
+        open-source tools I build on.
+      </p>
+      <GoLink to="/about" class="mt-2">
+        My story
+      </GoLink>
+    </section>
+
+    <section aria-labelledby="desk" class="pt-16">
+      <SectionTitle id="desk" class="mb-4">
+        On my desk
+      </SectionTitle>
+      <ul aria-label="Daily tools" class="flex flex-wrap gap-2">
+        <li v-for="item in data?.desk" :key="item.name" :title="item.name">
+          <LogoTile :mark="item.mark" :size="44" />
+          <span class="sr-only">{{ item.name }}</span>
+        </li>
+      </ul>
+      <div class="mt-2 flex flex-wrap gap-x-[22px]">
+        <GoLink to="/uses">
+          Everything I use
+        </GoLink>
+        <GoLink to="/tools">
+          Tools I recommend
+        </GoLink>
+      </div>
+    </section>
   </div>
 </template>

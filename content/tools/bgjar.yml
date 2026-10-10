@@ -1,10 +1,6 @@
 name: BGJar
-description: A tool for generating customizable SVG background patterns with a live preview.
-icon:
-website: https://bgjar.com/
-category: css generator
-tags:
-  - SVG background patterns
-  - Customizable
-  - Live preview
-  - Open-source
+category: Backgrounds & CSS generators
+kind: Web
+description: Free SVG backgrounds with a live editor.
+url: https://bgjar.com/
+icon: lucide:paintbrush

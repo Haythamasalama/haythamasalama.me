@@ -1,16 +1,15 @@
 ---
-title: Configuring Prettier pre-commit hook
-description: 'Set up Prettier with Husky and lint-staged so staged files are formatted automatically on every commit.'
-author: 
-  username: 'haythamasalama'
-  platform: 'twitter'
+title: 'Configuring a Prettier pre-commit hook'
+description: 'Prettier, Husky and lint-staged in four steps, so unformatted code never reaches a commit.'
 date: '2023-01-16'
-readTime: '1 min'
+category: 'Front end'
+icon: 'simple-icons:javascript'
+readingTime: '1 min read'
 ---
 
 ### 1. Install Prettier
 
-```bash
+```bash [terminal]
 npm install --save-dev --save-exact prettier
 ```
 
@@ -18,7 +17,7 @@ npm install --save-dev --save-exact prettier
 
 Create a `.prettierrc` file and paste your configuration into it. For more options, refer to the [Prettier documentation](https://prettier.io/docs/en/options.html).
 
-```json
+```json [.prettierrc]
 {
   "arrowParens": "avoid",
   "singleQuote": true,
@@ -37,7 +36,7 @@ Create a `.prettierrc` file and paste your configuration into it. For more optio
 
 ### 3. Set Up Pre-commit Hook
 
-```bash
+```bash [terminal]
 npm install --save-dev husky lint-staged
 npx husky install
 npm pkg set scripts.prepare="husky install"
@@ -46,7 +45,7 @@ npx husky add .husky/pre-commit "lint-staged"
 
 ### 4. Update `package.json` with lint-staged Configuration
 
-```json
+```json [package.json]
  "lint-staged": {
     "*.js": "eslint --fix",
     "{**/*,*}.{js,vue,html,css}": "prettier --write"

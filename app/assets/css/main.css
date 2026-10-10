@@ -1,66 +1,316 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-@config "../../../tailwind.config.js";
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import '@fontsource/instrument-serif/latin-400-italic.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+/* Brand scales — Iris + Azure, used in the details only */
 @theme {
-  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
 
-  --color-primary: #5194FF;
-  --color-secondary: #7981E6;
+  --color-ink: #0b0b0c;
+  --color-paper: #ffffff;
 
-  --color-gray-100: #d9d9d9ee;
-  --color-gray-200: #E4E4E7;
-  --color-gray-300: #999999;
-  --color-gray-400: #888888;
-  --color-gray-500: #24292F;
-  --color-gray-600: #1B1F24;
-  --color-gray-700: #0F1114;
-  --color-gray-800: #0F1114;
-  --color-gray-900: #111111;
+  --color-iris-50: #f5f6fe;
+  --color-iris-100: #e9ebfe;
+  --color-iris-200: #d4d7fe;
+  --color-iris-300: #babefe;
+  --color-iris-400: #9d9ffe;
+  --color-iris-500: #7f7cf2;
+  --color-iris-600: #6762d3;
+  --color-iris-700: #534daf;
+  --color-iris-800: #3f3b87;
+  --color-iris-900: #2c2a62;
+  --color-iris-950: #1d1b45;
 
-  --shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --color-azure-50: #f2f7fe;
+  --color-azure-100: #e2eeff;
+  --color-azure-200: #c5ddfe;
+  --color-azure-300: #9ec7fe;
+  --color-azure-400: #70adff;
+  --color-azure-500: #4f9bff;
+  --color-azure-600: #2873d1;
+  --color-azure-700: #195cae;
+  --color-azure-800: #134686;
+  --color-azure-900: #0d3261;
+  --color-azure-950: #052144;
 
-  /* Keep Tailwind v3 ring defaults. */
-  --default-ring-width: 3px;
-  --default-ring-color: rgb(59 130 246 / 0.5);
+  --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-live: live 2.2s ease-out infinite;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes live {
+    0% {
+      box-shadow: 0 0 0 0 rgb(127 124 242 / 0.6);
+    }
+
+    70% {
+      box-shadow: 0 0 0 9px rgb(127 124 242 / 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgb(127 124 242 / 0);
+    }
+  }
 }
 
-/* Tailwind v4 compatibility: keep the v3 defaults the design was built on. */
+/* Semantic tokens that switch with the theme */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-edge: var(--edge);
+  --color-chip: var(--chip);
+  --color-fg: var(--fg);
+  --color-soft: var(--soft);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-mark: var(--mark);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+}
+
+:root,
+.dark {
+  --bg: #0b0b0c;
+  --surface: #131316;
+  --raised: #0f0f11;
+  --line: #1f1f23;
+  --edge: #232328;
+  --chip: #2a2a30;
+  --fg: #ededef;
+  --soft: #c4c4cc;
+  --muted: #a1a1aa;
+  --faint: #85858f;
+  --mark: #d4d4d8;
+  --underline: #3f3f46;
+  --accent: var(--color-azure-500);
+  --accent-2: var(--color-iris-500);
+  --gradient: linear-gradient(90deg, var(--color-iris-500), var(--color-azure-500));
+  --gradient-signature: linear-gradient(90deg, #7f7cf2, #6c8cf9, #4f9bff);
+
+  color-scheme: dark;
+}
+
+.light {
+  --bg: #ffffff;
+  --surface: #f4f4f5;
+  --raised: #fafafa;
+  --line: #e4e4e7;
+  --edge: #e4e4e7;
+  --chip: #d4d4d8;
+  --fg: #0b0b0c;
+  --soft: #3f3f46;
+  --muted: #52525b;
+  --faint: #6b6b74;
+  --mark: #27272a;
+  --underline: #d4d4d8;
+  --accent: var(--color-azure-600);
+  --accent-2: var(--color-iris-600);
+  --gradient: linear-gradient(90deg, var(--color-iris-600), var(--color-azure-600));
+  --gradient-signature: linear-gradient(90deg, #6762d3, #4f6ad2, #2873d1);
+
+  color-scheme: light;
+}
+
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-500, currentcolor);
+  html {
+    background-color: var(--bg);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
-  button:not(:disabled),
-  [role="button"]:not(:disabled) {
-    cursor: pointer;
+  body {
+    @apply bg-bg font-sans text-fg;
+  }
+
+  ::selection {
+    background: rgb(127 124 242 / 0.35);
+  }
+
+  /* Keep running text at a readable line length, however wide the page is. */
+  :where(main p) {
+    max-width: 70ch;
+  }
+
+  a {
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  :where(a, button, summary):focus-visible {
+    outline: 2px solid var(--accent-2);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
-/* Inter variable font: declare the full weight range so browsers use real weights instead of synthesizing bold. */
-@font-face {
-  font-family: "Inter";
-  font-weight: 100 900;
-  font-display: swap;
-  src: local("Inter"), url(~/assets/fonts/Inter.woff2) format("woff2");
+/* Links: plain, underlined and muted (gradient on hover) */
+@utility link {
+  color: var(--fg);
+
+  &:hover {
+    color: var(--accent);
+  }
 }
 
-@utility bg-primary-gradient {
-  @apply bg-linear-to-r/srgb from-secondary to-primary;
+@utility link-underline {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--underline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+
+  &:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent-2);
+  }
 }
 
-@utility transition-primary {
-  @apply transition-all duration-300 ease-in-out;
+@utility link-muted {
+  color: var(--muted);
+
+  &:hover,
+  &.router-link-exact-active:hover {
+    color: transparent;
+    background-image: var(--gradient);
+    background-clip: text;
+  }
 }
 
-@utility text-primary-gradient {
-  @apply text-transparent bg-clip-text bg-primary-gradient;
+@utility text-gradient {
+  color: transparent;
+  background-image: var(--gradient);
+  background-clip: text;
 }
 
-@utility title-heading-primary {
-  @apply text-4xl font-bold text-primary-gradient capitalize;
+@utility border-gradient {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    var(--gradient) border-box;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* Arrow that nudges on hover — used by "All work →" style links */
+.go .arrow {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 0.2s ease;
+}
+
+.go:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Signature draw animation */
+.signature path {
+  stroke: var(--fg);
+  animation-name: draw;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.35, 1);
+  animation-fill-mode: forwards;
+}
+
+.signature-link:hover .signature path,
+.signature-link:focus-visible .signature path {
+  stroke: var(--signature-gradient);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.photo {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo:hover {
+  transform: rotate(-3deg) scale(1.04);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--accent-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signature path {
+    animation: none;
+    stroke-dashoffset: 0 !important;
+  }
+
+  .animate-live,
+  .animate-rise {
+    animation: none;
+  }
+
+  .photo:hover,
+  .go:hover .arrow {
+    transform: none;
+  }
+}
+
+/* Long-form writing */
+@utility prose-site {
+  --tw-prose-body: var(--soft);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-lead: var(--soft);
+  --tw-prose-links: var(--fg);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-counters: var(--faint);
+  --tw-prose-bullets: var(--chip);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--soft);
+  --tw-prose-quote-borders: var(--accent-2);
+  --tw-prose-captions: var(--faint);
+  --tw-prose-code: var(--fg);
+  --tw-prose-pre-code: var(--fg);
+  --tw-prose-pre-bg: var(--raised);
+  --tw-prose-th-borders: var(--line);
+  --tw-prose-td-borders: var(--line);
+
+  & :where(h2, h3, h4) a {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+  }
+
+  & :where(h2, h3, h4) a:hover {
+    color: var(--accent);
+  }
+
+  & :where(a):not(:where(h2, h3, h4) a) {
+    text-decoration-color: var(--underline);
+    text-decoration-thickness: 1px;
+  }
+
+  & :where(a):not(:where(h2, h3, h4) a):hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent-2);
+  }
 }

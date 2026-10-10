@@ -1,8 +1,6 @@
 name: TypeScript
-description: Typed Superset of JavaScript
-icon: '/icons/typescript.svg'
-website: https://www.typescriptlang.org/
-order: 5
-category:
-  - front end
-  - programming language
+icon: simple-icons:typescript
+url: https://www.typescriptlang.org/
+group: Main stack
+order: 4
+home: true

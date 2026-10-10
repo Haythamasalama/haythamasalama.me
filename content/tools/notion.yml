@@ -1,5 +1,7 @@
 name: Notion
-description: An all-in-one workspace for notes, tasks, wikis, and databases, making it easy to organize and collaborate on projects.
-icon: https://www.notion.so/front-static/favicon.ico
-website: https://www.notion.so/
-category: productivity
+category: Notes & time tracking
+kind: App
+description: Notes, tasks and docs in one workspace.
+url: https://www.notion.so/
+icon: simple-icons:notion
+featured: true

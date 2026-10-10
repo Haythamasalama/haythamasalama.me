@@ -1,5 +1,7 @@
 name: Keybr
-description: A touch typing trainer that uses adaptive lessons to help you learn and practice your typing skills.
-icon: https://www.keybr.com/favicon.ico
-website: https://www.keybr.com/
-category: website online
+category: Typing practice
+kind: Web
+description: Adaptive lessons for learning to touch-type.
+url: https://www.keybr.com/
+icon: lucide:keyboard
+featured: true

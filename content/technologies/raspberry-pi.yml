@@ -1,0 +1,5 @@
+name: Raspberry Pi
+icon: simple-icons:raspberrypi
+url: https://www.raspberrypi.com/
+group: Hardware
+order: 1

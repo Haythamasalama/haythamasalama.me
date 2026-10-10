@@ -1,0 +1,6 @@
+name: Cursor
+category: AI for code
+kind: Editor
+description: A code editor built around AI.
+url: https://cursor.com/
+icon: simple-icons:cursor

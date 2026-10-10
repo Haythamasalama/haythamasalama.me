@@ -1,18 +1,15 @@
 ---
-title: How to Contribute to Open-Source Projects?
-description: 'Practical ways to contribute to open-source projects, from features and docs to bug fixes, with real examples.'
-author: 
-  username: 'haythamasalama'
-  platform: 'twitter'
+title: 'How to contribute to open-source projects'
+description: 'What I learned contributing to six projects in one year, with real examples of each way to help.'
 date: '2023-07-21'
-readTime: '2 min'
+category: 'Software engineering'
+icon: 'simple-icons:github'
+readingTime: '2 min read'
 ---
 
-![how_to_contribute_to_open_source_projects](/articles/how_to_contribute_to_open_source_projects.png)
+![Ways to contribute to open-source projects](/articles/how_to_contribute_to_open_source_projects.png)
 
 Contributing to open-source projects is a fantastic way to give back and grow as a developer. Drawing from my experiences with six projects in 2023, let’s explore valuable ways to contribute, with examples.
-
-# How to Contribute to Open-Source Projects?
 
 ## 1. Finding a Project:
 Start by finding an open-source project that aligns with your interests and skills. GitHub, GitLab, and other code hosting platforms are excellent places to discover active projects.

@@ -1,5 +1,6 @@
-name: QuillBot Grammar Check
-description: A free grammar checker and paraphrasing tool to help improve your writing.
-icon: https://quillbot.com/favicon.png
-website: https://quillbot.com/grammar-check
-category: english
+name: QuillBot
+category: Writing & grammar
+kind: Web
+description: Paraphrasing and grammar checks.
+url: https://quillbot.com/grammar-check
+icon: lucide:feather

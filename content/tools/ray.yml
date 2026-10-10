@@ -1,9 +1,7 @@
 name: Ray.so
-description: Easily create and share beautiful code snippets with customizable options, themes, and settings.
-icon: https://ray.so/favicon.png
-website: https://ray.so/
-category: code screenshots
-tags:
-  - Code screenshots
-  - Customizable
-  - Shareable
+category: Code screenshots
+kind: Web
+description: Polished code images with great themes, by Raycast.
+url: https://ray.so/
+icon: simple-icons:raycast
+featured: true
