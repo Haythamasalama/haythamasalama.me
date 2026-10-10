@@ -86,16 +86,7 @@ export default defineNuxtConfig({
     '/api/snippets': { isr: 3600 },
     '/tools': { prerender: true },
     '/uses': { prerender: true },
-    '/brand': { prerender: true },
-
-    // Old URLs from the previous version of the site
-    '/work': { redirect: { to: '/projects', statusCode: 301 } },
-    '/projects/:slug': { redirect: { to: '/projects', statusCode: 301 } },
-    '/videos': { redirect: { to: '/articles', statusCode: 301 } },
-    '/videos/**': { redirect: { to: '/articles', statusCode: 301 } },
-    '/articles/laravel': { redirect: { to: '/articles', statusCode: 301 } },
-    '/articles/front-end': { redirect: { to: '/articles', statusCode: 301 } },
-    '/articles/software-engineering': { redirect: { to: '/articles', statusCode: 301 } }
+    '/brand': { prerender: true }
   },
 
   compatibilityDate: '2026-10-01',
