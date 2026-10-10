@@ -208,6 +208,7 @@
               v-for="tool in section.tools"
               :key="tool.id"
               :to="tool.url"
+              target="_blank"
               class="flex flex-col gap-3 rounded-xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface"
             >
               <span class="flex items-start justify-between gap-3">
@@ -225,6 +226,7 @@
             <li v-for="tool in section.tools" :key="tool.id" class="border-b border-line">
               <NuxtLink
                 :to="tool.url"
+                target="_blank"
                 class="-mx-3 flex items-center gap-3.5 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
               >
                 <LogoTile :mark="{ icon: tool.icon }" :size="32" :icon-size="16" />
