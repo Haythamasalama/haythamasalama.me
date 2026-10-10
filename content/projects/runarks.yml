@@ -1,6 +1,7 @@
-title: Runarks — governed database access
+title: Runarks · governed database access
 year: 2026
-description: 'My own SaaS for governed access to production databases: SQL runs only after a mandatory approval, with guardrails, masking of personal data, an append-only audit log, and teams, roles and plans for each organization.'
+context: Founder · Aug 2026 – now
+description: 'A SaaS for governed access to production databases. Developers run queries through a mandatory approval cycle: reads take one approval and writes take two, and nobody approves their own request. Every statement is read for what it does before it runs, sensitive fields are masked on the way out, and everything lands in an append-only log. Nobody holds a production password.'
 mark:
   logo: runarks
 tags:
@@ -8,6 +9,8 @@ tags:
   icon: simple-icons:laravel
 - label: Vue
   icon: simple-icons:vuedotjs
+- label: Inertia.js
+  icon: simple-icons:inertia
 - label: DDD
 - label: Security
 links:
@@ -15,7 +18,7 @@ links:
   to: https://runarks.com/
 order: 1
 highlight:
-  title: Runarks — my product
+  title: Runarks · governed database access
   description: Governed access to production databases. Every SQL query runs only after approval, with guardrails, data masking and an audit log.
-  period: 2026 — now
+  period: 2026 – now
   order: 2

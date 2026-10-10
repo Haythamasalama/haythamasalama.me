@@ -1,0 +1,14 @@
+title: Rotex · WINCH as a SaaS
+year: 2026
+context: WINCH · in progress
+description: Helping turn WINCH's platform into a SaaS that other logistics companies can run as their own.
+mark:
+  logo: winch
+tags:
+- label: Laravel
+  icon: simple-icons:laravel
+- label: Vue
+  icon: simple-icons:vuedotjs
+- label: Inertia.js
+  icon: simple-icons:inertia
+order: 2

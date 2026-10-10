@@ -1,7 +1,7 @@
 title: Bulk card charging
 year: 2022
-context: Faris · Oct — Dec 2022
-description: Processes bulk card transactions in background queues and posts them to the financial system. Built test-first with PHPUnit.
+context: Faris Petrol · Oct – Dec 2022
+description: A test-driven card-charging system that processes bulk transactions in background queues and posts them to the financial system.
 mark:
   icon: lucide:credit-card
-order: 4
+order: 2

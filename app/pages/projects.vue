@@ -39,8 +39,10 @@
           <article v-for="project in group.projects" :key="project.id" class="flex gap-3.5">
             <LogoTile :mark="project.mark" :size="32" :icon-size="16" />
             <div class="flex min-w-0 flex-auto flex-col gap-1.5">
-              <h4 class="text-base leading-8 font-medium">
-                {{ project.title }}
+              <h4 :id="slugify(project.title)" class="text-base leading-8 font-medium">
+                <AnchorLink :target="slugify(project.title)">
+                  {{ project.title }}
+                </AnchorLink>
               </h4>
               <p v-if="project.context" class="-mt-1.5 font-mono text-xs text-faint">
                 {{ project.context }}

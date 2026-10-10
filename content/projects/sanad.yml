@@ -1,5 +1,6 @@
-title: Sanad — real-estate financing
+title: Sanad · real-estate financing
 year: 2024
+context: Full-stack engineer · May 2024 – May 2025
 description: 'An investment platform for real-estate financing and its admin dashboard: investor wallets and transactions, profit distribution, and identity verification through Absher, designed with Domain-Driven Design so every financial transaction stays reliable.'
 mark:
   logo: sanad
@@ -15,7 +16,7 @@ links:
   to: https://investsanad.sa/
 order: 1
 highlight:
-  title: Sanad — real-estate financing
+  title: Sanad · real-estate financing
   description: 'Investment platform for real-estate financing: investor wallets, profit distribution and identity verification through Absher.'
-  period: 2024 — 2025
+  period: 2024 – 2025
   order: 3

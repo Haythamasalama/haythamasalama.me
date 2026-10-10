@@ -1,10 +1,10 @@
-title: Wash-pump reservations
+title: IoT wash stations
 year: 2022
-context: Faris · Dec 2022 — Jan 2023
-description: A web reservation system for vehicle wash pumps, driving electronic circuits on Raspberry Pi at several locations, built with Laravel, Vue and Python.
+context: Faris Petrol · Dec 2022 – Jan 2023
+description: Raspberry Pi control for vehicle wash pumps at several stations, with web reservations that switch the pumps on and off, built with Laravel, Vue and Python.
 mark:
   icon: simple-icons:raspberrypi
-order: 3
+order: 1
 highlight:
   title: IoT wash stations
   description: Raspberry Pi control for vehicle wash pumps, automating reservations across several stations.
