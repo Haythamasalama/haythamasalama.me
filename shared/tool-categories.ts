@@ -39,7 +39,7 @@ export const toolCategories = [
   { name: 'Typing practice', group: 'productivity', description: 'Type faster and more accurately.' },
   { name: 'Desktop utilities', group: 'productivity', description: 'Small upgrades for your computer.' },
   { name: 'Images & screenshots', group: 'media', description: 'Capture, compress and polish images.' },
-  { name: 'Video & YouTube', group: 'media', description: 'Download, watch and grow on YouTube.' },
+  { name: 'Video & YouTube', group: 'media', description: 'Watch faster and grow a YouTube channel.' },
   { name: 'PDF tools', group: 'documents', description: 'Merge, split, compress and edit PDFs.' },
   { name: 'QR codes', group: 'documents', description: 'QR codes with your colours and logo.' },
   { name: 'Presentations', group: 'documents', description: 'Slide templates for talks and lessons.' },
