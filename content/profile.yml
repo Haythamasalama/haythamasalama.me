@@ -7,7 +7,7 @@ careerStart: 2019-11
 about:
   - I'm a senior full-stack engineer at WINCH, building the business and owner platforms behind a logistics company in Saudi Arabia — payments, government integrations like Elm, and the domain models that keep it all consistent. I work remotely from Cairo.
   - Over the years I've shipped logistics, fintech and operations software, from IoT wash-pump stations and test-driven payment systems at Faris Petrol to a collective real-estate investment platform at Sanad. Most of it I design with Domain-Driven Design and build test-first.
-  - These days much of my work happens alongside AI. Coding agents like Claude Code and Cursor are part of how I plan, write and review software every day. Outside WINCH, I'm building Runarks, a SaaS of my own, and contributing to the Nuxt ecosystem.
+  - These days much of my work happens alongside AI. Coding agents like Claude Code and Cursor are part of how I plan, write and review software every day. Outside WINCH, I'm building Runarks, my own SaaS for governed, approval-based access to production databases, and contributing to the Nuxt ecosystem.
 pinned:
   - title: WINCH platforms
     label: Work · now
@@ -18,10 +18,10 @@ pinned:
   - title: Runarks
     label: My product
     status: Building
-    description: A SaaS I own and am building right now. More about it soon.
+    description: Governed access to production — run SQL behind a mandatory approval cycle, with guardrails, masking and an audit log.
     url: https://runarks.com/
     mark:
-      text: R
+      logo: runarks
   - title: nuxt/ui
     label: Open source
     repo: nuxt/ui
