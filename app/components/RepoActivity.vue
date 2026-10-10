@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <li class="border-t border-line py-3.5">
+  <li class="py-3">
     <div class="flex items-center gap-3.5">
       <span
         v-if="position"

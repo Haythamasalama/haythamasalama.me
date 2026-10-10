@@ -130,7 +130,7 @@
         </SectionTitle>
         <span class="font-mono text-xs text-faint">by repository</span>
       </div>
-      <ol class="border-b border-line">
+      <ol class="flex flex-col">
         <RepoActivity
           v-for="(repo, index) in withPullRequests"
           :key="repo.name"
@@ -147,7 +147,7 @@
       <SectionTitle id="issues" class="mb-1">
         Issues
       </SectionTitle>
-      <ul class="border-b border-line">
+      <ul class="flex flex-col">
         <RepoActivity
           v-for="repo in withIssues"
           :key="repo.name"
@@ -163,11 +163,11 @@
       <SectionTitle id="elsewhere" class="mb-1">
         Discussions &amp; projects I started
       </SectionTitle>
-      <ul class="border-b border-line">
+      <ul class="flex flex-col">
         <li
           v-for="entry in [...discussions, ...created]"
           :key="entry.id"
-          class="flex items-center gap-3.5 border-t border-line"
+          class="flex items-center gap-3.5"
         >
           <img
             :src="entry.avatar"
