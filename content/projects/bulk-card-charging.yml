@@ -5,8 +5,3 @@ description: Processes bulk card transactions in background queues and posts the
 mark:
   icon: lucide:credit-card
 order: 4
-highlight:
-  title: Bulk card charging
-  description: Test-driven system that processes bulk card transactions in background queues and syncs with finance.
-  period: '2022'
-  order: 4

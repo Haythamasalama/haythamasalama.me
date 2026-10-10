@@ -10,8 +10,3 @@ links:
 - label: taqweem.clever.ps
   to: https://taqweem.clever.ps/
 order: 5
-highlight:
-  title: Games for live events
-  description: Interactive event games people play from their phones — Laravel, Nuxt and Tailwind CSS.
-  period: '2021'
-  order: 5

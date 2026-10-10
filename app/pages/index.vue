@@ -121,7 +121,7 @@
         </NuxtLink>
       </div>
       <GoLink to="/projects" class="mt-1">
-        All work
+        All projects
       </GoLink>
     </section>
 

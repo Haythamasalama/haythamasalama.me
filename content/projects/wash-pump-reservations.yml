@@ -1,12 +1,12 @@
 title: Wash-pump reservations
 year: 2022
 context: Faris · Dec 2022 — Jan 2023
-description: A web reservation system for vehicle wash pumps, driving electronic circuits on Raspberry Pi at several locations — Laravel, Vue and Python.
+description: A web reservation system for vehicle wash pumps, driving electronic circuits on Raspberry Pi at several locations, built with Laravel, Vue and Python.
 mark:
   icon: simple-icons:raspberrypi
 order: 3
 highlight:
-  title: Wash-pump reservations
-  description: Book-a-pump system running on Raspberry Pi circuits across several stations — Laravel, Vue and Python.
+  title: IoT wash stations
+  description: Raspberry Pi control for vehicle wash pumps, automating reservations across several stations.
   period: '2022'
-  order: 3
+  order: 5

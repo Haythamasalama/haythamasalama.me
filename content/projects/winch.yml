@@ -1,21 +1,21 @@
-title: WINCH — business & owner platforms
+title: WINCH — logistics platform
 year: 2023
-description: Migrated a legacy MVC codebase to a domain-driven monolith, integrated payments and Elm, and made it faster with a database redesign, queues and rate limiting.
+description: 'The APIs behind the business and carrier apps and dashboards; the security, notification and integration components every product relies on; and the Domain-Driven Design structure the back end follows.'
 mark:
   logo: winch
 tags:
 - label: Laravel
   icon: simple-icons:laravel
-- label: Nuxt
-  icon: simple-icons:nuxt
+- label: Vue
+  icon: simple-icons:vuedotjs
 - label: DDD
-- label: Queues
+- label: Integrations
 links:
 - label: winch.sa
   to: https://winch.sa/
 order: 2
 highlight:
-  title: WINCH — business platforms
-  description: Moved a legacy MVC codebase to a domain-driven monolith, then tuned it with a database redesign, queues and rate limiting.
+  title: WINCH — logistics platform
+  description: The APIs behind the business and carrier apps and dashboards, plus the security, notification and integration components every product relies on.
   period: 2023 — now
-  order: 2
+  order: 1
