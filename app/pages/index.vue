@@ -1,9 +1,9 @@
 <script setup lang="ts">
   const { site, socials } = useAppConfig();
 
-  useSeoMeta({
+  usePageSeo({
     title: site.name,
-    ogTitle: site.title
+    description: site.description
   });
 
   const { data } = await useAsyncData('home', async () => {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  useSeoMeta({
+  usePageSeo({
     title: 'Uses',
     description: 'The hardware and software Haytham A. Salama uses every day — editors, terminal, databases, planning and design tools.'
   });

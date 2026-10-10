@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  useSeoMeta({
+  usePageSeo({
     title: 'Open source',
     description: 'Pull requests, issues and discussions Haytham A. Salama has contributed to open-source projects like Nuxt UI and Laravel.'
   });

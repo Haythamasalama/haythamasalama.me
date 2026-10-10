@@ -14,13 +14,13 @@ Suppose you have two websites that require authentication:
 
 ### Configuration Steps:
 
-1. Allow origins for `https://localhost:3000/`
-2. Set the session domain to `http://localhost`
-3. Configure Sanctum stateful domains for `http://localhost:3000`
+1. Allow origins for `https://localhost:3000`
+2. Set the session domain to `localhost`
+3. Configure Sanctum stateful domains for `localhost:3000`
 
 | Setting                  | Value                    | Format                                                 |
 | ------------------------ | ------------------------ | ------------------------------------------------------ |
-| FRONTEND_URL             | `https://localhost:3000` | `schema://host:port` without `/` at the end of the URL |
+| FRONTEND_URL             | `https://localhost:3000` | `scheme://host:port` without `/` at the end of the URL |
 | SESSION_DOMAIN           | `localhost`              | `host`                                                 |
 | SANCTUM_STATEFUL_DOMAINS | `localhost:3000`         | `host:port`                                            |
 
@@ -39,17 +39,17 @@ return [
 ];
 ```
 
-In allowed_origins, add the `FRONTEND_URL` in the format `schema://hostname`, such as `https://localhost:3000`.
+In allowed_origins, add the `FRONTEND_URL` in the format `scheme://hostname`, such as `https://localhost:3000`.
 
-### 2. Update config/session.php
+### 2. Update `config/session.php`
 
 ```php [config/session.php]
 'domain' => env('SESSION_DOMAIN', null),
 ```
 
-Set the SESSION_DOMAIN to the main host, e.g., localhost.
+Set the `SESSION_DOMAIN` to the main host, e.g., localhost.
 
-### 3. Update config/sanctum.php
+### 3. Update `config/sanctum.php`
 
 ```php [config/sanctum.php]
 'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
@@ -61,7 +61,7 @@ Set the SESSION_DOMAIN to the main host, e.g., localhost.
 
 Add `SANCTUM_STATEFUL_DOMAINS` only for the main host, e.g., localhost.
 
-Update .env file
+Update the `.env` file:
 
 ```dotenv [.env]
 APP_NAME=

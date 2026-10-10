@@ -50,6 +50,14 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    '/**': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'SAMEORIGIN',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+      }
+    },
     '/': { prerender: true },
     '/work': { prerender: true },
     '/open-source': { prerender: true },
@@ -90,7 +98,8 @@ export default defineNuxtConfig({
         semi: true,
         quotes: 'single',
         commaDangle: 'never',
-        braceStyle: '1tbs'
+        braceStyle: 'stroustrup',
+        arrowParens: false
       }
     }
   },

@@ -13,13 +13,14 @@
   const copied = ref(false);
   let timer: ReturnType<typeof setTimeout> | undefined;
 
-  async function copy() {
+  async function copy () {
     try {
       await navigator.clipboard.writeText(hex);
       copied.value = true;
       clearTimeout(timer);
       timer = setTimeout(() => (copied.value = false), 1600);
-    } catch {
+    }
+    catch {
       // Clipboard access can be blocked (e.g. insecure context); fail quietly.
     }
   }

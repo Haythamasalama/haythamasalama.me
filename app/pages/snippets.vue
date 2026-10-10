@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  useSeoMeta({
+  usePageSeo({
     title: 'Snippets',
     description: 'Small pieces of config and code Haytham A. Salama reaches for again and again — Laravel, Prettier, Husky and more.'
   });

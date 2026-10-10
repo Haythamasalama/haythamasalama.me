@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  useSeoMeta({
+  usePageSeo({
     title: 'Writing',
     description: 'Short, practical notes on Laravel, Vue and shipping software by Haytham A. Salama.'
   });

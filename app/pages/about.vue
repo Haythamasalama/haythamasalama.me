@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  useSeoMeta({
+  usePageSeo({
     title: 'About',
     description: 'Haytham A. Salama — a full-stack engineer who started out taking radios apart. His story, skills, how he works and where he is headed.'
   });

@@ -3,7 +3,7 @@
 
   definePageMeta({ wide: true });
 
-  useSeoMeta({
+  usePageSeo({
     title: 'Brand guidelines',
     description: 'The visual identity of Haytham A. Salama — the handwritten signature, colour, type and voice, plus a brand kit to download.'
   });

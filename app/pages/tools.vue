@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  useSeoMeta({
+  usePageSeo({
     title: 'Tools',
     description: 'Small, mostly free tools Haytham A. Salama recommends for code, design, focus and writing.'
   });

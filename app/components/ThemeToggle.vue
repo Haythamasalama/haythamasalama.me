@@ -12,7 +12,7 @@
   const isDark = computed(() => !mounted.value || colorMode.value !== 'light');
   const label = computed(() => isDark.value ? 'Switch to light theme' : 'Switch to dark theme');
 
-  function toggle() {
+  function toggle () {
     colorMode.preference = isDark.value ? 'light' : 'dark';
   }
 </script>

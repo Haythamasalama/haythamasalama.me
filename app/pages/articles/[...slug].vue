@@ -18,13 +18,35 @@
       .all()
   );
 
-  useSeoMeta({
+  const { site } = useAppConfig();
+
+  usePageSeo({
     title: article.value.title,
     description: article.value.description,
-    ogType: 'article',
+    type: 'article'
+  });
+
+  useSeoMeta({
     articlePublishedTime: article.value.date,
-    articleAuthor: ['Haytham A. Salama'],
+    articleAuthor: [site.name],
     articleSection: article.value.category
+  });
+
+  useHead({
+    script: [{
+      type: 'application/ld+json',
+      // Escape "<" so article text can never close the script tag.
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        'headline': article.value.title,
+        'description': article.value.description,
+        'datePublished': article.value.date,
+        'url': `${site.url}${route.path}`,
+        'image': `${site.url}/og.png`,
+        'author': { '@type': 'Person', 'name': site.name, 'url': site.url }
+      }).replace(/</g, '\\u003c')
+    }]
   });
 </script>
 

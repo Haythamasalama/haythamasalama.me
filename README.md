@@ -18,6 +18,8 @@
   </samp>
 </p>
 
+![Home page of haythamasalama.me](.github/assets/home.webp)
+
 ## Stack
 
 | | |
@@ -50,11 +52,20 @@ content.config.ts       Collection schemas
 public/brand-kit/       The downloadable brand kit
 ```
 
-Most edits never touch code: add a YAML file to `content/projects`, `content/tools` or `content/uses`, or a Markdown file to `content/articles`, and the page picks it up.
+## Adding content
+
+Most edits never touch code. Add a file and the page picks it up; the fields are validated by the schemas in `content.config.ts`.
+
+- **Article**: `content/articles/<category>/<slug>.md` with `title`, `description`, `date` (`YYYY-MM-DD`), `category`, `icon` and `readingTime`.
+- **Snippet**: `content/snippets/<n>.<slug>.md` with a fenced code block such as ` ```php [config/cors.php] `.
+- **Project**: `content/projects/<slug>.yml`; add `highlight` to show it under "Selected work" on the home page.
+- **Job, school or contribution**: a YAML file in `content/experience/`, `content/education/` or `content/contributions/`.
+- **Technology, tool or something you use**: a YAML file in `content/technologies/`, `content/tools/` or `content/uses/`.
+- **Company logo**: a one-colour PNG or SVG in `public/logos/`, registered in `app/utils/logos.ts`.
 
 ## Develop
 
-Requires Node.js 22.22 or newer.
+Requires Node.js `22.22+` or `24.15+` (see `.nvmrc`).
 
 ```bash
 git clone https://github.com/haythamasalama/haythamasalama.me.git
@@ -71,6 +82,8 @@ npm run dev         # http://localhost:3000
 | `npm run preview` | Preview the production build |
 | `npm run lint` / `lint:fix` | ESLint |
 | `npm run typecheck` | Type-check with `vue-tsc` |
+
+CI runs lint, typecheck and build on every pull request. Project conventions for contributors and coding agents are in [AGENTS.md](AGENTS.md).
 
 ## Brand
 

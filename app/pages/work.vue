@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  useSeoMeta({
+  usePageSeo({
     title: 'Work',
     description: 'Where Haytham A. Salama has worked and what he has shipped — from a physics app in high school to fintech platforms today.'
   });

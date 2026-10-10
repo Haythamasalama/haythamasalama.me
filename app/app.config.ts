@@ -1,6 +1,7 @@
 export default defineAppConfig({
   site: {
     name: 'Haytham A. Salama',
+    url: 'https://haythamasalama.me',
     title: 'Haytham A. Salama — creative developer',
     role: 'Full-stack engineer · Laravel, Vue & Nuxt',
     description: 'Haytham A. Salama is a creative developer and full-stack engineer building domain-driven logistics and fintech platforms with Laravel, Vue and Nuxt.',
