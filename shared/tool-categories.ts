@@ -45,7 +45,7 @@ export const toolCategories = [
   { name: 'Presentations', group: 'documents', description: 'Slide templates for talks and lessons.' },
   { name: 'Privacy & ad blocking', group: 'browser', description: 'Fewer ads and trackers while you browse.' },
   { name: 'Dark mode', group: 'browser', description: 'Dark themes for sites that lack one.' },
-  { name: 'Shopping', group: 'browser', description: 'Price history and deals.' }
+  { name: 'Shopping', group: 'browser', description: 'Price history before you buy.' }
 ] as const satisfies readonly ToolCategory[];
 
 export type ToolCategoryName = typeof toolCategories[number]['name'];
