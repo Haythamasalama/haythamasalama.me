@@ -118,7 +118,7 @@
       <SectionTitle id="experience" class="mb-2">
         Experience
       </SectionTitle>
-      <ol class="flex flex-col border-b border-line">
+      <ol class="flex flex-col">
         <TimelineItem
           v-for="job in data?.experience"
           :key="job.id"
@@ -141,25 +141,28 @@
       <SectionTitle id="open-source" class="mb-2">
         Open source
       </SectionTitle>
-      <ul v-if="topRepos.length" class="border-b border-line">
-        <li v-for="repo in topRepos" :key="repo.name" class="flex items-center gap-3 border-t border-line">
-          <img
-            :src="repo.avatar"
-            alt=""
-            width="26"
-            height="26"
-            loading="lazy"
-            class="avatar-mono size-[26px] shrink-0 rounded-[7px]"
+      <ul v-if="topRepos.length" class="flex flex-col">
+        <li v-for="repo in topRepos" :key="repo.name">
+          <NuxtLink
+            :to="repo.url"
+            class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
           >
-          <span class="flex min-w-0 flex-auto flex-wrap items-center justify-between gap-x-4">
-            <NuxtLink :to="repo.url" class="link inline-flex min-h-12 items-center font-mono text-sm">
-              {{ repo.name }}
-            </NuxtLink>
-            <span class="font-mono text-[13px] text-faint">
-              <template v-if="repo.rank">#{{ repo.rank }} contributor · </template>
-              {{ plural(repo.pullRequests.length, 'merged PR') }}
+            <img
+              :src="repo.avatar"
+              alt=""
+              width="22"
+              height="22"
+              loading="lazy"
+              class="avatar-mono size-[22px] shrink-0 rounded-md"
+            >
+            <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+              <span class="font-mono text-sm">{{ repo.name }}</span>
+              <span class="text-[13px] text-faint">
+                <template v-if="repo.rank">#{{ repo.rank }} contributor · </template>
+                {{ plural(repo.pullRequests.length, 'merged PR') }}
+              </span>
             </span>
-          </span>
+          </NuxtLink>
         </li>
       </ul>
       <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -210,7 +213,7 @@
       <SectionTitle id="education" class="mb-2">
         Education &amp; awards
       </SectionTitle>
-      <ol class="flex flex-col border-b border-line">
+      <ol class="flex flex-col">
         <TimelineItem
           v-for="school in data?.education"
           :key="school.id"

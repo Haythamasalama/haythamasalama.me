@@ -22,7 +22,7 @@
 </script>
 
 <template>
-  <li class="flex items-start gap-4 border-t border-line py-[18px]">
+  <li class="flex items-start gap-4 py-4">
     <LogoTile :mark="mark" :size="44" />
     <span class="flex min-w-0 flex-auto flex-col gap-1">
       <span class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
