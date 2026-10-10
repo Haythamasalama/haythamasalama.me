@@ -29,8 +29,14 @@
   function closeOnEscape (event: KeyboardEvent) {
     if (event.key === 'Escape') {
       openGroup.value = null;
+      menuOpen.value = false;
     }
   }
+
+  // The mobile menu covers the page, so the page behind it must not scroll.
+  watch(menuOpen, (open) => {
+    document.documentElement.classList.toggle('overflow-hidden', open);
+  });
 
   onMounted(() => {
     document.addEventListener('click', closeOnOutside);
@@ -40,12 +46,13 @@
   onBeforeUnmount(() => {
     document.removeEventListener('click', closeOnOutside);
     document.removeEventListener('keydown', closeOnEscape);
+    document.documentElement.classList.remove('overflow-hidden');
   });
 </script>
 
 <template>
   <header>
-    <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 pt-4 md:pt-7">
+    <div class="relative z-50 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 pt-4 md:pt-7">
       <NuxtLink
         to="/"
         class="signature-link inline-flex min-h-11 items-center"
@@ -127,37 +134,52 @@
       </div>
     </div>
 
-    <nav
-      v-if="menuOpen"
-      id="mobile-menu"
-      aria-label="Primary"
-      class="mt-2 flex flex-col border-y border-line py-2 text-[22px] font-medium tracking-[-0.01em] md:hidden"
+    <Transition
+      enter-active-class="transition-opacity duration-150"
+      enter-from-class="opacity-0"
+      leave-active-class="transition-opacity duration-100"
+      leave-to-class="opacity-0"
     >
-      <template v-for="item in nav" :key="item.label">
-        <template v-if="item.children">
-          <span class="eyebrow mt-4 mb-1">{{ item.label }}</span>
-          <NuxtLink
-            v-for="child in item.children"
-            :key="child.to"
-            :to="child.to"
-            class="link-muted flex min-h-13 items-center"
-            active-class="!text-fg"
-          >
-            {{ child.label }}
-          </NuxtLink>
-        </template>
-        <NuxtLink
-          v-else
-          :to="item.to"
-          class="link-muted flex min-h-13 items-center"
-          active-class="!text-fg"
+      <div v-if="menuOpen" class="fixed inset-0 z-40 overflow-y-auto bg-bg md:hidden">
+        <nav
+          id="mobile-menu"
+          aria-label="Primary"
+          class="mx-auto flex max-w-[880px] flex-col px-6 pt-20 pb-10 text-lg font-medium tracking-[-0.01em]"
         >
-          {{ item.label }}
-        </NuxtLink>
-      </template>
-      <NuxtLink :to="contact.to" class="link mt-2 flex min-h-13 items-center border-t border-line pt-2">
-        {{ contact.label }} →
-      </NuxtLink>
-    </nav>
+          <template v-for="item in nav" :key="item.label">
+            <template v-if="item.children">
+              <span class="eyebrow mt-6 mb-1">{{ item.label }}</span>
+              <NuxtLink
+                v-for="child in item.children"
+                :key="child.to"
+                :to="child.to"
+                class="link-muted flex min-h-11 items-center"
+                active-class="!text-fg"
+                @click="menuOpen = false"
+              >
+                {{ child.label }}
+              </NuxtLink>
+            </template>
+            <NuxtLink
+              v-else
+              :to="item.to"
+              class="link-muted flex min-h-11 items-center"
+              active-class="!text-fg"
+              @click="menuOpen = false"
+            >
+              {{ item.label }}
+            </NuxtLink>
+          </template>
+          <NuxtLink
+            :to="contact.to"
+            class="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-chip text-[15px] text-fg transition-colors hover:bg-surface"
+            @click="menuOpen = false"
+          >
+            <Icon name="lucide:mail" class="size-4" />
+            {{ contact.label }}
+          </NuxtLink>
+        </nav>
+      </div>
+    </Transition>
   </header>
 </template>
