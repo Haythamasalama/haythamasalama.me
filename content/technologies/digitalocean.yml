@@ -3,3 +3,4 @@ icon: simple-icons:digitalocean
 url: https://www.digitalocean.com/
 group: DevOps
 order: 2
+home: true
