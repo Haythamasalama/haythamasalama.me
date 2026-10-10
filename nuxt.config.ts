@@ -90,7 +90,7 @@ export default defineNuxtConfig({
 
     // Old URLs from the previous version of the site
     '/work': { redirect: { to: '/projects', statusCode: 301 } },
-    '/projects/*': { redirect: { to: '/projects', statusCode: 301 } },
+    '/projects/:slug': { redirect: { to: '/projects', statusCode: 301 } },
     '/videos': { redirect: { to: '/articles', statusCode: 301 } },
     '/videos/**': { redirect: { to: '/articles', statusCode: 301 } },
     '/articles/laravel': { redirect: { to: '/articles', statusCode: 301 } },
