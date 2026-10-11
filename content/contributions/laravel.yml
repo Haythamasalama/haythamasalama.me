@@ -1,0 +1,9 @@
+repo: laravel/framework
+name: Laravel
+url: https://github.com/laravel/framework
+avatar: /avatars/laravel.png
+kind: contributor
+featured: true
+description: The PHP framework for web applications.
+pullRequests: [46405, 42261]
+order: 3

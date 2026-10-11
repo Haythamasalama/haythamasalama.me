@@ -1,14 +1,22 @@
 repo: nuxt/ui
+name: Nuxt UI
 url: https://github.com/nuxt/ui
 avatar: /avatars/nuxt.png
 kind: maintainer
+featured: true
+badge: Nuxt UI team
 role: Maintainer · 2 months
-note: A maintainer of Nuxt's official UI library for two months, reviewing, fixing and shaping components the Vue community builds on.
+note: I review pull requests, fix components and shape their APIs.
+stats:
+  - label: As maintainer
+    value: 2 months
+  - label: On Nuxters
+    value: '#114'
 links:
-- label: My commits
-  to: https://github.com/nuxt/ui/commits?author=Haythamasalama
-- label: Nuxt UI team
-  to: https://ui.nuxt.com/team
-- label: Nuxters profile
-  to: https://nuxters.nuxt.com/Haythamasalama
+  - label: Nuxt UI team page
+    to: https://ui.nuxt.com/team
+  - label: Nuxters profile
+    to: https://nuxters.nuxt.com/Haythamasalama
+  - label: My commits
+    to: https://github.com/nuxt/ui/commits?author=Haythamasalama
 order: 1

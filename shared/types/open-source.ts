@@ -1,10 +1,12 @@
-/** A merged pull request or an opened issue. */
+/** A pull request or an opened issue. */
 export interface OpenSourceItem {
   number: number;
   title: string;
   url: string;
-  /** Merged date for pull requests, opened date for issues. */
+  /** Merged date for merged pull requests, opened date for everything else. */
   date: string;
+  /** Only on pull requests GitHub doesn't count as merged. */
+  state?: 'open' | 'closed';
 }
 
 /** Everything I have done in one repository, straight from GitHub. */
@@ -17,6 +19,11 @@ export interface OpenSourceRepo {
   stars: number;
   /** Merged pull requests, newest first. */
   pullRequests: OpenSourceItem[];
+  /**
+   * Pull requests pinned in `content/contributions` that aren't merged: still
+   * open, or closed by maintainers who landed the change another way.
+   */
+  otherPullRequests: OpenSourceItem[];
   /** Issues I opened, newest first. */
   issues: OpenSourceItem[];
   /** My merged pull requests and issues in this repository on github.com. */
