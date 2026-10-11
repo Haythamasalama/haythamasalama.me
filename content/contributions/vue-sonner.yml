@@ -1,0 +1,7 @@
+repo: xiaoluoboding/vue-sonner
+name: Vue Sonner
+url: https://github.com/xiaoluoboding/vue-sonner
+kind: contributor
+description: Toast notifications for Vue.
+pullRequests: [12]
+order: 6

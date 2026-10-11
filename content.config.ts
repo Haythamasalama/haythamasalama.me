@@ -123,12 +123,28 @@ export default defineContentConfig({
       source: 'contributions/*.yml',
       schema: z.object({
         repo: z.string(),
+        /** Display name, e.g. "Uptime Kuma"; the repository name otherwise. */
+        name: z.string().optional(),
         url: z.string().url(),
-        avatar: z.string(),
-        kind: z.enum(['maintainer', 'discussion', 'created']),
+        avatar: z.string().optional(),
+        /** Iconify name, used instead of the avatar. */
+        icon: z.string().optional(),
+        kind: z.enum(['maintainer', 'contributor', 'discussion', 'created']),
+        /** Listed under "Contributed to" at the top of /open-source. */
+        featured: z.boolean().default(false),
+        /** What the project is, in one line. */
+        description: z.string().optional(),
+        /**
+         * Pull requests read from GitHub one by one, so they show even when
+         * GitHub doesn't count them as merged.
+         */
+        pullRequests: z.array(z.number().int()).default([]),
         /** Short role line, e.g. "Maintainer · 2 months". */
         role: z.string().optional(),
+        badge: z.string().optional(),
         note: z.string().optional(),
+        /** Figures GitHub can't tell, shown beside the live ones. */
+        stats: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
         links: z.array(link).default([]),
         order: z.number()
       })

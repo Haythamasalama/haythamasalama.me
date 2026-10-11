@@ -1,0 +1,7 @@
+repo: Vuepic/vue-datepicker
+name: Vue Datepicker
+url: https://github.com/Vuepic/vue-datepicker
+kind: contributor
+description: A datepicker component for Vue 3.
+pullRequests: [488]
+order: 7

@@ -1,10 +1,12 @@
 repo: github/community
+name: GitHub Community
 url: https://github.com/orgs/community/discussions
 avatar: /avatars/community.png
 kind: discussion
+featured: true
 links:
-- label: '#69527'
-  to: https://github.com/orgs/community/discussions/69527
-- label: '#69586'
-  to: https://github.com/orgs/community/discussions/69586
-order: 2
+  - label: '#69527'
+    to: https://github.com/orgs/community/discussions/69527
+  - label: '#69586'
+    to: https://github.com/orgs/community/discussions/69586
+order: 5

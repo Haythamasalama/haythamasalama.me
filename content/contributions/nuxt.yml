@@ -1,0 +1,9 @@
+repo: nuxt/framework
+name: Nuxt
+url: https://github.com/nuxt/nuxt
+avatar: /avatars/nuxt.png
+kind: contributor
+featured: true
+description: The Vue framework for full-stack web apps.
+pullRequests: [6394]
+order: 2
