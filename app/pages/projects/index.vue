@@ -197,6 +197,17 @@
             <p class="mt-1 text-sm leading-[1.6] text-muted">
               {{ project.description }}
             </p>
+            <div v-if="project.links.length" class="flex flex-wrap gap-x-5">
+              <NuxtLink
+                v-for="link in project.links"
+                :key="link.to"
+                :to="link.to"
+                class="link-muted inline-flex min-h-11 items-center gap-1.5 text-[13px]"
+              >
+                {{ link.label }}
+                <Icon name="lucide:arrow-up-right" class="size-3.5" />
+              </NuxtLink>
+            </div>
           </div>
         </li>
       </ul>
