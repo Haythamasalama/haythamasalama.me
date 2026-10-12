@@ -197,7 +197,7 @@
             <p class="mt-1 text-sm leading-[1.6] text-muted">
               {{ project.description }}
             </p>
-            <div v-if="project.links.length" class="flex flex-wrap gap-x-5">
+            <div v-if="project.links?.length" class="flex flex-wrap gap-x-5">
               <NuxtLink
                 v-for="link in project.links"
                 :key="link.to"
