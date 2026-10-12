@@ -10,18 +10,13 @@
 
 <template>
   <span
-    class="brand-hover inline-flex items-center rounded-full border text-[13px] leading-[18px]"
+    class="inline-flex items-center rounded-full border text-[13px] leading-[18px]"
     :class="[
       strong ? 'border-chip text-fg' : 'border-line text-soft',
       size === 'md' ? 'gap-[7px] py-[5px] pr-[11px] pl-[9px]' : 'gap-1.5 py-1 pr-2.5 pl-2'
     ]"
   >
-    <Icon
-      v-if="icon"
-      :name="icon"
-      class="brand-icon size-3.5 text-mark"
-      :style="brandStyle(icon)"
-    />
+    <Icon v-if="icon" :name="icon" class="size-3.5 text-mark" />
     {{ label }}
   </span>
 </template>

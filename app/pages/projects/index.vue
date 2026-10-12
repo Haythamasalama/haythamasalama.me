@@ -4,7 +4,7 @@
     description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today.'
   });
 
-  const { data: projects } = await useAsyncData('projects', async () => {
+  const { data } = await useAsyncData('projects', async () => {
     const [list, pages] = await Promise.all([
       queryCollection('projects').all(),
       queryCollection('projectPages').select('path').all()
@@ -15,37 +15,198 @@
     // content/projects holds a .md with its file name.
     return list
       .sort((a, b) => b.year - a.year || a.order - b.order)
-      .map(project => ({ ...project, page: paths.has(`/${project.stem}`) ? `/${project.stem}` : undefined }));
+      .map(project => ({
+        ...project,
+        anchor: slugify(project.title.split(' · ')[0]!),
+        page: paths.has(`/${project.stem}`) ? `/${project.stem}` : undefined
+      }));
+  });
+
+  const projects = computed(() => data.value ?? []);
+  const caseStudies = computed(() => projects.value.filter(project => project.page));
+  const earlier = computed(() => projects.value.filter(project => !project.page));
+
+  /** What I'm building now: the newest project still running, shown on its own. */
+  const spotlight = computed(() => caseStudies.value.find(project => project.context?.includes('now')));
+  const listed = computed(() => caseStudies.value.filter(project => project !== spotlight.value));
+
+  /** One chip per company or product with a logo, linking to its project below. */
+  const builtAt = computed(() => {
+    const seen = new Set<string>();
+
+    return caseStudies.value
+      .filter(project => project.mark.logo && !seen.has(project.mark.logo) && seen.add(project.mark.logo))
+      .map(project => ({ anchor: project.anchor, mark: project.mark, name: project.title.split(' · ')[0] }));
+  });
+
+  const stats = computed(() => {
+    const first = Math.min(...projects.value.map(project => project.year));
+
+    return [
+      { value: `${projects.value.length}`, label: 'projects' },
+      { value: `${caseStudies.value.length}`, label: 'case studies with diagrams' },
+      { value: `${new Date().getUTCFullYear() - first}+`, label: `years building, since ${first}` },
+      { value: `${builtAt.value.length}`, label: 'companies and products' }
+    ];
   });
 </script>
 
 <template>
   <div>
-    <PageHeader title="Projects">
-      <p>What I've built and shipped, from a physics app in high school to fintech and logistics platforms today.</p>
-    </PageHeader>
+    <section aria-labelledby="title" class="pt-16 md:pt-[88px]">
+      <p class="eyebrow">
+        Projects
+      </p>
+      <h1
+        id="title"
+        class="mt-4 max-w-[720px] text-[34px] leading-[1.08] font-semibold tracking-[-0.03em] md:text-[46px] md:leading-[1.06]"
+      >
+        Systems I’ve <span class="text-gradient">built</span> for the teams that run on them.
+      </h1>
+      <p class="mt-5 text-base leading-[1.7] text-soft md:text-[17px]">
+        From a physics app in high school to the fintech and logistics platforms I work on today, each with what I did
+        and how it is built.
+      </p>
 
-    <section aria-label="Projects" class="pt-12">
-      <ul class="flex flex-col">
-        <li v-for="project in projects" :key="project.id">
-          <component
-            :is="project.page ? resolveComponent('NuxtLink') : 'div'"
-            :to="project.page"
-            class="group -mx-3 flex items-start gap-3.5 rounded-[10px] p-3"
-            :class="project.page && 'transition-colors hover:bg-surface'"
+      <div v-if="builtAt.length" class="mt-8 flex flex-wrap items-center gap-2.5">
+        <span class="eyebrow mr-1 w-full sm:w-auto">Built at</span>
+        <NuxtLink
+          v-for="item in builtAt"
+          :key="item.anchor"
+          :to="{ hash: `#${item.anchor}` }"
+          class="inline-flex min-h-11 items-center gap-2.5 rounded-full border border-edge py-1.5 pr-4 pl-1.5 text-sm transition-colors hover:bg-surface"
+        >
+          <LogoTile :mark="item.mark" :size="30" />
+          {{ item.name }}
+        </NuxtLink>
+      </div>
+
+      <dl class="mt-12 grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4">
+        <div v-for="stat in stats" :key="stat.label" class="flex flex-col-reverse justify-end gap-1">
+          <dt class="text-[13px] leading-snug text-faint">
+            {{ stat.label }}
+          </dt>
+          <dd class="font-mono text-2xl font-medium md:text-[30px]">
+            {{ stat.value }}
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section v-if="spotlight" aria-labelledby="spotlight" class="pt-14 md:pt-20">
+      <SectionTitle id="spotlight" class="mb-4">
+        Building now
+      </SectionTitle>
+      <article
+        :id="spotlight.anchor"
+        class="flex flex-col gap-4 rounded-2xl border border-line bg-raised p-4 md:p-5"
+      >
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <LogoTile :mark="spotlight.mark" :size="40" />
+            <div class="flex flex-col gap-0.5">
+              <h2 class="text-base font-semibold tracking-[-0.01em] md:text-[17px]">
+                <NuxtLink :to="spotlight.page" class="link">
+                  {{ spotlight.title }}
+                </NuxtLink>
+              </h2>
+              <span class="font-mono text-xs text-faint">{{ spotlight.context }}</span>
+            </div>
+          </div>
+          <span
+            class="border-gradient inline-flex h-6 items-center gap-1.5 rounded-full px-2.5 font-mono text-[10px] font-medium tracking-[0.1em] uppercase"
           >
-            <LogoTile :mark="project.mark" :size="36" />
-            <span class="flex min-w-0 flex-auto flex-col gap-1">
-              <span class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-                <span class="text-[15px] font-medium">
-                  {{ project.title }}
-                  <span v-if="project.page" class="ml-1 inline-block text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-fg motion-reduce:transition-none" aria-hidden="true">→</span>
-                </span>
-                <span class="font-mono text-xs text-faint">{{ project.year }}</span>
-              </span>
-              <span class="text-sm leading-[1.55] text-muted">{{ project.description }}</span>
-            </span>
-          </component>
+            <span class="size-1.5 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500" aria-hidden="true" />
+            Now
+          </span>
+        </div>
+        <p class="text-sm leading-[1.65] text-soft">
+          {{ spotlight.description }}
+        </p>
+        <div class="-mt-1 -mb-2 flex flex-wrap gap-x-5">
+          <GoLink :to="spotlight.page!" class="text-[13px] text-fg">
+            About the project
+          </GoLink>
+          <NuxtLink
+            v-for="link in spotlight.links"
+            :key="link.to"
+            :to="link.to"
+            class="link-muted inline-flex min-h-11 items-center gap-1.5 text-[13px]"
+          >
+            {{ link.label }}
+            <Icon name="lucide:arrow-up-right" class="size-3.5" />
+          </NuxtLink>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="case-studies" class="pt-14 md:pt-20">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <SectionTitle id="case-studies">
+          Case studies
+        </SectionTitle>
+        <span class="font-mono text-xs text-faint">newest first</span>
+      </div>
+      <ol class="mt-3 flex flex-col">
+        <li
+          v-for="project in listed"
+          :id="project.anchor"
+          :key="project.id"
+          class="flex items-start gap-4 py-3.5"
+        >
+          <LogoTile :mark="project.mark" :size="40" />
+          <div class="flex min-w-0 flex-auto flex-col gap-0.5">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+              <NuxtLink :to="project.page" class="link text-base font-semibold">
+                {{ project.title }}
+              </NuxtLink>
+              <span class="font-mono text-[13px] text-faint">{{ project.year }}</span>
+            </div>
+            <span class="font-mono text-xs text-faint">{{ project.context }}</span>
+            <p class="mt-1 text-sm leading-[1.6] text-muted">
+              {{ project.description }}
+            </p>
+            <div class="flex flex-wrap gap-x-5">
+              <GoLink :to="project.page!" class="text-[13px]">
+                About the project
+              </GoLink>
+              <NuxtLink
+                v-for="link in project.links"
+                :key="link.to"
+                :to="link.to"
+                class="link-muted inline-flex min-h-11 items-center gap-1.5 text-[13px]"
+              >
+                {{ link.label }}
+                <Icon name="lucide:arrow-up-right" class="size-3.5" />
+              </NuxtLink>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section v-if="earlier.length" aria-labelledby="earlier" class="pt-14 md:pt-[72px]">
+      <SectionTitle id="earlier" class="mb-2">
+        Earlier &amp; smaller projects
+      </SectionTitle>
+      <ul class="flex flex-col">
+        <li
+          v-for="project in earlier"
+          :id="project.anchor"
+          :key="project.id"
+          class="flex items-start gap-4 py-3"
+        >
+          <LogoTile :mark="project.mark" :size="32" :icon-size="16" />
+          <div class="flex min-w-0 flex-auto flex-col gap-0.5">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+              <span class="text-[15px] font-medium">{{ project.title }}</span>
+              <span class="font-mono text-[13px] text-faint">{{ project.year }}</span>
+            </div>
+            <span v-if="project.context" class="font-mono text-xs text-faint">{{ project.context }}</span>
+            <p class="mt-1 text-sm leading-[1.6] text-muted">
+              {{ project.description }}
+            </p>
+          </div>
         </li>
       </ul>
     </section>

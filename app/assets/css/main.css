@@ -216,67 +216,9 @@
   }
 }
 
-/* Photos of logos (GitHub avatars) in greyscale, so they match the one-colour marks; colour on hover. */
+/* Photos of logos (GitHub avatars) in greyscale, so they match the one-colour marks. */
 @utility avatar-mono {
   filter: grayscale(1);
-  transition: filter 0.2s var(--ease-out-soft);
-}
-
-/*
- * Brand colours. Logos and tool icons are one colour (`mark`) in both themes, and show their own
- * colours on hover or keyboard focus. `brandStyle()` sets --brand (and --brand-dark when the colour
- * reads on dark); `.brand-logo-*` swap a company logo's one-colour mask for its colour file (`BrandLogo`).
- */
-.brand-icon {
-  transition: color 0.2s var(--ease-out-soft);
-}
-
-.brand-logo-color {
-  display: none;
-}
-
-:is(a, button):focus-visible .brand-icon {
-  color: var(--brand, var(--mark));
-}
-
-.dark :is(a, button):focus-visible .brand-icon {
-  color: var(--brand-dark, var(--fg));
-}
-
-:is(a, button):focus-visible .avatar-mono {
-  filter: none;
-}
-
-:is(a, button):focus-visible .brand-logo-color {
-  display: block;
-}
-
-:is(a, button):focus-visible .brand-logo-mask {
-  display: none;
-}
-
-@media (hover: hover) {
-  :is(a, button, li, .brand-hover):hover .brand-icon,
-  .brand-icon:hover {
-    color: var(--brand, var(--mark));
-  }
-
-  .dark :is(a, button, li, .brand-hover):hover .brand-icon,
-  .dark .brand-icon:hover {
-    color: var(--brand-dark, var(--fg));
-  }
-
-  :is(a, button, li, .brand-hover):hover .avatar-mono {
-    filter: none;
-  }
-
-  :is(a, button, li, .brand-hover):hover .brand-logo-color {
-    display: block;
-  }
-
-  :is(a, button, li, .brand-hover):hover .brand-logo-mask {
-    display: none;
-  }
 }
 
 @utility text-gradient {

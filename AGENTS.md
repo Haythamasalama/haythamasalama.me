@@ -33,7 +33,7 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 - `shared/types/`: types used by the app, the server and content schemas
 - `content/`: everything the site displays; schemas in `content.config.ts`
 - `public/brand-kit/`: the downloadable brand files linked from `/brand`
-- `public/logos/`, `public/avatars/`: company logos (one-colour masks and their colour originals) and GitHub avatars
+- `public/logos/`, `public/avatars/`: company logos (one-colour masks) and GitHub avatars
 
 ## Code conventions
 
@@ -58,7 +58,7 @@ Dark by default with an optional light theme (`@nuxtjs/color-mode`, stored as `t
 - Use the semantic colour tokens from `main.css`, never raw hex in pages: `bg`, `surface` (tiles, hover), `raised` (cards, code), `line` (borders), `edge` (tile borders), `chip`, `fg`, `soft`, `muted`, `faint`, `mark` (icons), `accent` / `accent-2`. They switch with the theme.
 - Iris (`iris-500` `#7F7CF2`) and Azure (`azure-500` `#4F9BFF`) are for small details only: focus rings, badges, the live dot, one gradient word per page. Never more than about 5% of a screen. Links and icons hover to a brighter neutral (`fg`), and selected states (the current page, an active filter chip) are neutral too; nothing takes the gradient on hover, the signature included.
 - The signature is the logo. It is white on dark and black on light, keeps that one colour on hover too (the gradient version is for artwork only), and is drawn stroke by stroke by `SignatureMark`. Do not redraw or recolour it.
-- Logos and tool icons are one colour (`mark`) in both themes, and show their own colours only on hover or keyboard focus (owner's choice, 2026-10-12, after trying full colour: it looked uneven and broke the 5% accent rule). Company logos (`BrandLogo` / `LogoTile` with `logo:`) have a one-colour mask plus a colour original from the company's website, both registered in `app/utils/logos.ts` (`color.fill` for app icons that cover their tile). `simple-icons:` icons take their official colour from `shared/brand-colors.ts`; regenerate it with `npm i --no-save simple-icons && node scripts/brand-colors.mjs` after adding one. GitHub avatars and logo photos use `avatar-mono` (greyscale until hovered). Black brand colours hover to `fg` in dark mode. Figures and the signature stay one colour.
+- Logos and icons are one colour on the site, in both themes, hover included. Company logos are one-colour masks (`BrandLogo` / `LogoTile` with `logo:`) so they follow the theme; register new ones in `app/utils/logos.ts`. GitHub avatars and other logo photos get `avatar-mono` (greyscale). Colour by default and colour on hover were both tried on 2026-10-12 and dropped: many icons have no brand colour, the mix looked uneven, and it broke the 5% accent rule.
 - Icons come from `@nuxt/icon` with the local `lucide` and `simple-icons` collections; LinkedIn is `brand:linkedin`.
 - Code is highlighted with the brand themes in `shared/code-theme.ts` (Iris keywords, Azure strings and values, grey punctuation). Adjust those palettes instead of switching to a stock Shiki theme.
 - Type: Geist for text, Geist Mono for labels, dates and code, Instrument Serif italic for one human phrase per page (all self-hosted via Fontsource).

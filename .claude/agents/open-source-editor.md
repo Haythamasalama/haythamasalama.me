@@ -15,7 +15,7 @@ Before anything else, read these files in full and follow them:
 Then:
 
 1. Check the facts on GitHub with `gh` or the public API: the repository, his role, pull request numbers, and dates. Never copy pull requests or issues into `content/`; GitHub is their source of truth.
-2. Add or edit the `content/contributions/<repo>.yml` entry. Put an avatar in `public/avatars/` when needed; it shows greyscale until hovered.
+2. Add or edit the `content/contributions/<repo>.yml` entry. Put an avatar in `public/avatars/` when needed; it is shown greyscale.
 3. If a page or the composable has to change, follow the code conventions in `AGENTS.md`. Keep the page working when GitHub fails: it should still render, as a 503.
 4. Verify: run `npm run lint && npm run build`, then check `/open-source`, the Home teaser and the About section at desktop and 375px, in both themes.
 

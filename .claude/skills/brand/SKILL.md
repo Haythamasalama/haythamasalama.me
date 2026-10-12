@@ -29,7 +29,7 @@ The canonical guide is the `/brand` page (`app/pages/brand.vue`). The design rul
 
 ## Logos, avatars and icons
 
-- **Logos are one colour, in both themes,** and show their own colours only on hover or keyboard focus. Full colour was tried and dropped: it looked uneven and broke the 5% accent rule. Company logos have a one-colour mask and a colour original (from the company's website) in `app/utils/logos.ts`; `simple-icons:` icons get their official colour from `shared/brand-colors.ts` (`node scripts/brand-colors.mjs`). Avatars use `avatar-mono`, greyscale until hovered. Logos inside figures stay one colour.
+- **Logos and icons are one colour,** in both themes and on hover. Company logos are one-colour masks (`BrandLogo`, or `LogoTile` with `logo:`) registered in `app/utils/logos.ts`; avatars and logo photos use `avatar-mono` (greyscale). Logos inside figures are one colour too. Colour by default and colour on hover were tried and dropped (2026-10-12): many icons have no brand colour, and the mix looked uneven.
 - **Icons come from `@nuxt/icon`** with the local `lucide` and `simple-icons` collections. LinkedIn is `brand:linkedin`.
 - **Tech chips with framework icons are not used on project cards or pages.**
 

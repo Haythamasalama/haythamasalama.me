@@ -28,7 +28,7 @@ Review the diff (`git diff` and `git status`, plus any new files). Check:
 4. **Brand.**
    - Tokens are used, not raw hex.
    - Iris and Azure stay rare.
-   - Logos and icons are one colour, with their own colours only on hover or focus.
+   - Logos and icons are one colour, hover included, and avatars greyscale.
    - Fonts are used as the brand skill says.
    - Tap targets are at least 44px.
    - Motion respects reduced motion.

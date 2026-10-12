@@ -644,8 +644,8 @@
       </SectionTitle>
       <p class="mb-5 text-[15px] leading-[1.7] text-muted">
         Tools, technologies and companies are shown in one soft colour on a Surface tile, so they sit quietly together and
-        never compete with the signature. Each one shows its own colours on hover. Open-source projects keep their GitHub
-        avatars, which follow the same rule.
+        never compete with the signature. Open-source projects keep their GitHub avatars, shown in greyscale so they sit
+        with everything else.
       </p>
       <ul aria-label="Logos and icons" class="flex flex-wrap gap-2">
         <li v-for="item in marks" :key="item.name" :title="item.name">

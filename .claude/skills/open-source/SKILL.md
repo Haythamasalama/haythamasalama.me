@@ -21,7 +21,7 @@ Never copy pull requests or issues into `content/`. GitHub is the source of trut
 repo: nuxt/ui                 # owner/name on GitHub; the rank and numbers are looked up from it
 name: Nuxt UI                 # display name, if not the repo name
 url: https://github.com/nuxt/ui
-avatar: /avatars/nuxt.png     # in public/avatars, greyscale until hovered (or icon: simple-icons:…, or a logo file in public/logos)
+avatar: /avatars/nuxt.png     # in public/avatars, shown greyscale (or icon: simple-icons:…, or a logo file in public/logos)
 kind: maintainer              # maintainer | contributor | discussion | created
 featured: true                # listed under "Contributed to" at the top of /open-source
 description: The UI library for Nuxt   # one line, for created and contributor entries
@@ -52,7 +52,7 @@ order: 1
 
 - Keep the copy factual: roles, dates and links that can be checked.
 - No inflated wording: "contributor", not "core contributor", unless the project says so.
-- Avatars follow the logo rule: greyscale until hovered (see `brand`).
+- Avatars are greyscale, like every logo on the site (see `brand`).
 - **To work offline or with a mock,** set `NUXT_GITHUB_API_BASE`. **To avoid the anonymous limit** of 60 requests an hour, set `NUXT_GITHUB_TOKEN` (no scopes needed).
 
 ## Before you finish

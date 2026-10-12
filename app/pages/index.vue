@@ -114,7 +114,7 @@
           :title="social.label"
           class="link-muted inline-flex size-11 items-center justify-center"
         >
-          <Icon :name="social.icon" class="brand-icon text-mark" :style="{ width: `${social.size}px`, height: `${social.size}px`, ...brandStyle(social.icon) }" />
+          <Icon :name="social.icon" class="text-mark" :style="{ width: `${social.size}px`, height: `${social.size}px` }" />
         </NuxtLink>
       </div>
     </section>
