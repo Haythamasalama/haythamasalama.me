@@ -8,8 +8,9 @@
   <footer class="mt-24 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-line pt-7 pb-10">
     <div class="flex flex-wrap items-center gap-x-5 text-[13px] text-faint">
       <p>© {{ site.since }}–{{ year }} {{ site.name }}</p>
-      <NuxtLink to="/brand" class="link-underline inline-flex min-h-11 items-center">
-        Brand →
+      <NuxtLink to="/brand" class="link-muted inline-flex min-h-11 items-center gap-1.5">
+        Brand
+        <Icon name="lucide:arrow-up-right" class="size-3.5" />
       </NuxtLink>
     </div>
 
