@@ -4,19 +4,21 @@
    * matching the site's theme is shown (lazy loading keeps the other from
    * downloading); `single` takes one image as it is.
    */
-  const { single = false } = defineProps<{
+  const { single = false, bare = false } = defineProps<{
     /** Themed: path without the suffix ("/projects/runarks/activity-log" for -dark.webp and -light.webp). Single: the full path. */
     src: string;
     alt: string;
     width: number;
     height: number;
     single?: boolean;
+    /** No card around the image, for transparent mockups that sit on the page itself. */
+    bare?: boolean;
   }>();
 </script>
 
 <template>
   <figure class="not-prose my-10">
-    <div class="overflow-hidden rounded-xl border border-line bg-raised">
+    <div :class="!bare && 'overflow-hidden rounded-xl border border-line bg-raised'">
       <img
         v-if="single"
         :src="src"

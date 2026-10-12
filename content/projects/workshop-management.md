@@ -6,8 +6,8 @@ description: 'The system Faris Petrol’s workshops run on, which I designed and
 
 Faris Oil Center is Faris Petrol's chain of workshops for oil changes, filters and car checks, across several branches. Every car that comes in gets an inspection, and I designed and built the system each one runs through, from the bay app technicians use to the dashboards managers read.
 
-::project-shot{src="/projects/workshop-management/apps" alt="Four screens of the system. In front, the bay app's checklist, with the day's open checks along the top and services grouped into oils, filters, radiator and care, each with its condition and action. Behind it on the left, the dashboard with counters and charts; on the right, the checks list with its filters. In front at the bottom right, a customer's account with the results of their last check." width="1760" height="880"}
-The bay app's checklist in front, with the dashboard, the checks list and a customer's last visit around it.
+::project-shot{src="/projects/workshop-management/apps.webp" single bare alt="Three screens of the system. In front, the bay app's checklist, with the day's open checks along the top and services grouped into oils, filters, radiator and care, each with its condition and action. Tilted behind it, the dashboard's counters and charts on the left and the checks list with its filters on the right." width="1760" height="660"}
+The bay app's checklist in front, with the dashboard and the checks list beside it.
 ::
 
 ## The problem
@@ -40,8 +40,8 @@ Four tools that each kept part of a visit became one record per visit, filled in
 Six areas, from the bay to the reports.
 ::
 
-::project-shot{src="/projects/workshop-management/screens" alt="Five dashboard screens fanned out, labelled Checks, Cars, Services, Bays in each branch, and Roles and permissions." width="1760" height="860"}
-Each part of the system has its own screen in the dashboard.
+::project-shot{src="/projects/workshop-management/screens.webp" single bare alt="Three dashboard screens. In front, roles and permissions, with groups for accounts, cars, checks, checklist templates, services, branches and bays. Tilted behind it, the cars list on the left and the bays in each branch on the right." width="1760" height="660"}
+Roles and permissions in front, with the cars and the bays in each branch beside it.
 ::
 
 ## System design

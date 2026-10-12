@@ -106,6 +106,12 @@ Everything under "Employers and clients" in the `content` skill applies, in part
   - **Other employers' screenshots:** blur personal data before export (names, phone numbers, plates, emails, card and ID numbers), unless the owner says otherwise. Crop away whole areas that are mostly personal data, such as lists of customers.
   - Leave screenshots off employer pages he hasn't asked for.
 - **Blurring:** with sharp, `extract` each region, `blur(18)` it and `composite` it back, then resize and save as WebP.
+- **Mockups (several screens together):**
+  - Write a spec in `scripts/mockups/<slug>/<name>.json`, then run `node scripts/mockups/render.mjs <slug>`. Install the tools first with `npm i --no-save playwright sharp`; package.json doesn't change.
+  - The output is one transparent `public/projects/<slug>/<name>.webp` that works in both themes. Embed it with `::project-shot{src="/projects/<slug>/<name>.webp" single bare …}`; `bare` drops the card around the image.
+  - The layout the owner liked: three whole screens. The middle one is in front and larger; the side ones sit behind it, tilted back with `tilt: 24` on the left and `tilt: -24` on the right. Crop each screenshot to its screen's proportions so it shows whole.
+  - Don't cut wide screens into narrow slices, don't let cards run off the edge, and don't put labels or a background in the image. Name the screens in the caption instead.
+  - The header of `render.mjs` documents the spec. `scripts/mockups/workshop-management/` has examples.
 - **Checking:** look at every exported image before you publish it.
 - **Resizing:** `sips` can't write WebP. Install `sharp` in a scratch folder (`npm install sharp`), then for example:
 
