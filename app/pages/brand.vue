@@ -582,13 +582,13 @@
         Where the colour goes
       </h3>
       <ul class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] gap-3">
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="self-start rounded-md border-gradient px-[7px] py-0.5 font-mono text-[10.5px] tracking-[0.1em]">
             <span class="text-gradient">PRO</span>
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Badges</span> · PRO, LIVE, NEW</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="inline-flex items-center gap-2 text-[13px] text-fg">
             <span
               class="size-2 shrink-0 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500"
@@ -598,7 +598,7 @@
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Status dot</span> · with a soft pulse</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="flex gap-3.5 text-[13px] text-muted">
             <span>About</span>
             <span class="text-fg">Projects</span>
@@ -606,7 +606,7 @@
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Current page</span> · white, never coloured</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="flex flex-col gap-2">
             <span class="text-xs text-muted">Lesson 4 of 6</span>
             <span class="h-1 overflow-hidden rounded-xs bg-line">
@@ -615,7 +615,7 @@
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Progress</span> · a thin bar, never a block</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="flex items-center gap-3">
             <span
               class="inline-flex min-h-[30px] items-center rounded-lg px-3 text-[13px] outline-2 outline-offset-2 outline-iris-400 light:outline-iris-600"
@@ -625,7 +625,7 @@
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Focus</span> · 400s on dark; hover stays neutral</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="text-[15px] text-soft">
             a <span class="text-gradient pr-0.5 font-serif text-xl italic">creative</span> word
           </span>

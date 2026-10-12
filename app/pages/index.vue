@@ -27,8 +27,9 @@
         .map(project => ({ ...project, to: paths.has(`/${project.stem}`) ? `/${project.stem}` : '/projects' })),
       stack: technologies,
       articles,
+      // Each links to its section on /uses, where the name and note are written out.
       desk: uses
-        .flatMap(section => section.items)
+        .flatMap(section => section.items.map(item => ({ ...item, to: `/uses#${slugify(section.title)}` })))
         .filter(item => item.desk)
         .sort((a, b) => a.desk! - b.desk!)
     };
@@ -83,9 +84,12 @@
         AI is part of how I work every day. I plan, write and review code with agents like Claude Code and Cursor, and
         at WINCH I write the agents and skills our engineers code with.
       </p>
+      <GoLink to="/about" class="mt-1 animate-rise [animation-delay:.3s]">
+        More about me
+      </GoLink>
 
       <p
-        class="mt-6 flex animate-rise items-start gap-2.5 text-sm leading-[1.55] text-muted [animation-delay:.35s] md:mt-7 md:inline-flex md:items-center md:gap-3 md:rounded-full md:border md:border-line md:py-2 md:pr-3.5 md:pl-3"
+        class="mt-4 flex animate-rise items-start gap-2.5 text-sm leading-[1.55] text-muted [animation-delay:.35s] md:mt-3 md:inline-flex md:items-center md:gap-3 md:rounded-full md:border md:border-line md:py-2 md:pr-3.5 md:pl-3"
       >
         <span
           class="mt-[7px] inline-block size-2 shrink-0 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500 md:mt-0"
@@ -236,28 +240,23 @@
       </div>
     </section>
 
-    <section aria-labelledby="vision" class="pt-16">
-      <SectionTitle id="vision" class="mb-4">
-        Where I'm headed
-      </SectionTitle>
-      <p class="text-[17px] leading-[1.7] text-soft">
-        For years I've built platforms that move money and deliveries. My next step is
-        <span class="text-fg">a master's degree in artificial intelligence</span>, to build systems that learn from the
-        data these platforms already hold. Along the way, I'll keep giving back to the open-source tools I build on.
-      </p>
-      <GoLink to="/about" class="mt-2">
-        My story
-      </GoLink>
-    </section>
-
     <section aria-labelledby="desk" class="pt-16">
       <SectionTitle id="desk" class="mb-4">
         On my desk
       </SectionTitle>
       <ul aria-label="Daily tools" class="flex flex-wrap gap-2">
-        <li v-for="item in data?.desk" :key="item.name" :title="item.name">
-          <LogoTile :mark="item.mark" :size="44" />
-          <span class="sr-only">{{ item.name }}</span>
+        <li v-for="(item, index) in data?.desk" :key="item.name">
+          <NuxtLink :to="item.to" class="group/desk relative block rounded-[11px]">
+            <LogoTile :mark="item.mark" :size="44" />
+            <!-- A tooltip with the name, on hover and keyboard focus; the ends align to the edge so it never leaves the page. -->
+            <span
+              class="pointer-events-none absolute bottom-full z-10 mb-2 translate-y-1 rounded-md border border-line bg-raised px-2.5 py-1.5 text-xs whitespace-nowrap opacity-0 shadow-sm transition-[opacity,translate] group-hover/desk:translate-y-0 group-hover/desk:opacity-100 group-focus-visible/desk:translate-y-0 group-focus-visible/desk:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none"
+              :class="index === 0 ? 'left-0' : index === data!.desk.length - 1 ? 'right-0' : 'left-1/2 -translate-x-1/2'"
+            >
+              <span class="text-fg">{{ item.name }}</span>
+              <span class="text-faint"> · {{ item.note }}</span>
+            </span>
+          </NuxtLink>
         </li>
       </ul>
       <div class="mt-2 flex flex-wrap gap-x-[22px]">

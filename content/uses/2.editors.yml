@@ -12,15 +12,17 @@ items:
   mark:
     icon: simple-icons:visualstudiocode
   theme: One Dark Pro Night Flat
+  desk: 3
 - name: IntelliJ IDEA
   note: Java
   mark:
     icon: simple-icons:intellijidea
+  desk: 4
 - name: iTerm2
   note: Terminal
   mark:
     icon: simple-icons:iterm2
-  desk: 4
+  desk: 5
 - name: Oh My Zsh
   note: Shell
   mark:

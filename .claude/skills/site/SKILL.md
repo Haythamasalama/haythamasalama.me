@@ -23,7 +23,7 @@ The personal site of Haytham A. Salama. It runs on Nuxt 4, Nuxt Content 3 and Ta
 
 | Route | File | Data | Sections (`SectionTitle` ids) |
 |---|---|---|---|
-| `/` | `app/pages/index.vue` | `site` in `app/app.config.ts`, `projects` (cards with a `highlight`), `projectPages`, `technologies` (`home: true`), latest 3 `articles`, `uses` (items with `desk`), `useOpenSource()` | `work`, `open-source`, `skills`, `blog`, `vision`, `desk` |
+| `/` | `app/pages/index.vue` | `site` in `app/app.config.ts`, `projects` (cards with a `highlight`), `projectPages`, `technologies` (`home: true`), latest 3 `articles`, `uses` (items with `desk`), `useOpenSource()` | `work`, `open-source`, `skills`, `blog`, `desk` |
 | `/about` | `app/pages/about.vue` | `profile.yml`, `experience/*.yml`, `education/*.yml`, `technologies`, `useOpenSource()` | `about`, `experience`, `open-source`, `skills`, `education`, `vision`, `hello` |
 | `/projects` | `app/pages/projects/index.vue` | `projects/*.yml`, plus `projectPages` to know which have a page | `projects` |
 | `/projects/<slug>` | `app/pages/projects/[slug].vue` | `projects/<slug>.md` for the story, `projects/<slug>.yml` for title, period and links | headings in the Markdown |
