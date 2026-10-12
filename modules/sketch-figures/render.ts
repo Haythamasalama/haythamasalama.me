@@ -327,15 +327,21 @@ function image (element: SketchElement, scene: SketchScene): string {
   }
 
   if (file.mimeType !== 'image/svg+xml') {
-    return `<image href="${file.dataURL}" width="${element.width}" height="${element.height}"/>`;
+    return `<image href="${escapeXml(file.dataURL)}" width="${element.width}" height="${element.height}"/>`;
   }
 
   const [meta, data = ''] = file.dataURL.split(',');
   const source = meta?.includes(';base64') ? Buffer.from(data, 'base64').toString('utf8') : decodeURIComponent(data);
 
+  // Icons are inlined as markup, so refuse anything that could run instead of trying to clean it.
+  const lower = source.toLowerCase();
+
+  if (lower.includes('<script') || lower.includes('<foreignobject') || lower.includes('javascript:') || /\son[a-z]+\s*=/.test(lower)) {
+    throw new Error(`Icon "${element.fileId}" contains scripts or event handlers`);
+  }
+
   return source
     .replace(/^[\s\S]*?(?=<svg)/, '')
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
     .replace(/<svg([^>]*)>/, (_, attributes: string) => {
       const kept = attributes.replace(/\s(width|height|x|y|style)="[^"]*"/g, '');
 
