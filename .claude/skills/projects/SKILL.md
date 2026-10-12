@@ -29,13 +29,13 @@ Most visitors don't read long text (owner's feedback, 2026-10-12). Keep a page t
 | `public/projects/<slug>/*.webp` | screenshots |
 | `claudedocs/projects/<slug>/` | the LinkedIn draft and figure exports; local only, never committed |
 
-The `.yml` and `.md` share a file name. The page exists once the `.md` exists; the list and the home page then link to it ("About the project →").
+The `.yml` and `.md` share a file name. The page exists once the `.md` exists. /projects then shows the project as a card under "Case studies", and the whole card links to its page. Projects without a page are listed under "More projects". The home page links to the page from "Selected work".
 
 ## The card
 
 ```yaml
 title: 'WINCH · Saudi logistics platform'   # "Name · what it is"
-year: 2023                                  # start year; the list is grouped by it, newest first
+year: 2023                                  # start year; /projects sorts newest first, then by order
 context: Senior Software Engineer · Feb 2023 – now   # role (or company) · period
 description: 'More than 50 domains behind a Saudi logistics platform, and the integration engine I built to connect it to government services, payment gateways and AI models.'
 mark:
