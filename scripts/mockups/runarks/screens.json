@@ -1,0 +1,29 @@
+{
+  "width": 880,
+  "height": 330,
+  "cards": [
+    {
+      "src": "../../../public/projects/runarks/activity-log-light.webp",
+      "x": 36,
+      "y": 46,
+      "w": 400,
+      "z": 1,
+      "tilt": 24
+    },
+    {
+      "src": "../../../public/projects/runarks/sql-guardrails-light.webp",
+      "x": 444,
+      "y": 46,
+      "w": 400,
+      "z": 1,
+      "tilt": -24
+    },
+    {
+      "src": "../../../public/projects/runarks/approval-workflow-light.webp",
+      "x": 170,
+      "y": 30,
+      "w": 540,
+      "z": 3
+    }
+  ]
+}

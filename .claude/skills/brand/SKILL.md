@@ -20,7 +20,7 @@ The canonical guide is the `/brand` page (`app/pages/brand.vue`). The design rul
   - **Iris** `#7F7CF2` is "the creative"; **Azure** `#4F9BFF` is "the engineer".
   - They go on focus rings, badges, the live dot, and one gradient word per page.
 - **Hover and selected states are neutral.** Links and icons hover to `fg`. The current page and an active filter chip are neutral too.
-- **Only the signature takes the gradient,** and only on hover or focus.
+- **The signature stays one colour on the site,** hover included (owner's choice, 2026-10-12). Its gradient version is for artwork such as covers.
 
 ## Signature
 

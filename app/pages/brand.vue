@@ -366,30 +366,16 @@
       </div>
 
       <div class="mt-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-4">
-        <BrandFigure title="On touch." caption="Hover and focus fill it with Iris → Azure.">
-          <div
-            tabindex="0"
-            role="img"
-            aria-label="Signature that fills with Iris to Azure on hover and focus"
-            class="group flex h-[150px] flex-col items-center justify-center gap-3 rounded-2xl border border-[#1F1F23] bg-[#0F0F11] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-2"
-          >
-            <img
-              src="/brand-kit/haytham-signature-white-small.svg"
-              alt="Signature at rest"
-              width="110"
-              height="56"
-              loading="lazy"
-              class="block h-14 w-[110px] group-hover:hidden group-focus-visible:hidden"
-            >
+        <BrandFigure title="Gradient version." caption="For artwork such as covers; on the site it stays one colour.">
+          <div class="flex h-[150px] items-center justify-center rounded-2xl border border-[#1F1F23] bg-[#0F0F11]">
             <img
               src="/brand-kit/haytham-signature-gradient-small.svg"
-              alt="Signature on hover"
+              alt="Signature in the Iris to Azure gradient"
               width="110"
               height="56"
               loading="lazy"
-              class="hidden h-14 w-[110px] group-hover:block group-focus-visible:block"
+              class="block h-14 w-[110px]"
             >
-            <span class="font-mono text-[11px] text-[#85858F]">hover me</span>
           </div>
         </BrandFigure>
         <BrandFigure title="Clear space." caption="Keep ¼ of its width empty on every side.">

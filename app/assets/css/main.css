@@ -329,11 +329,6 @@
   animation-fill-mode: forwards;
 }
 
-.signature-link:hover .signature path,
-.signature-link:focus-visible .signature path {
-  stroke: var(--signature-gradient);
-}
-
 @keyframes draw {
   to {
     stroke-dashoffset: 0;
