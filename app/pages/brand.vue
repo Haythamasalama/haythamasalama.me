@@ -657,9 +657,9 @@
         05 · Icons &amp; the people I've worked with
       </SectionTitle>
       <p class="mb-5 text-[15px] leading-[1.7] text-muted">
-        Tools, technologies and companies are shown in one soft white on a Surface tile, so they sit quietly together
-        and never compete with the signature. Open-source projects keep their GitHub avatars, shown in greyscale so they
-        sit with everything else.
+        Tools, technologies and companies sit on a Surface tile in their own colours in light mode. In dark mode they are
+        one soft white, so they never compete with the signature, and take their colours on hover. Open-source projects
+        keep their GitHub avatars, which follow the same rule.
       </p>
       <ul aria-label="Logos and icons" class="flex flex-wrap gap-2">
         <li v-for="item in marks" :key="item.name" :title="item.name">

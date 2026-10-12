@@ -97,23 +97,24 @@
         />
         <span>
           <span class="text-fg">Now</span> · at
-          <!-- Each logo sits on the text's baseline, and stays on the same line as its name. -->
-          <span class="whitespace-nowrap"><span class="mr-2 ml-1 inline-block align-[-1px] text-mark"><BrandLogo name="winch" :scale="0.6" /></span><NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink></span>,
+          <!-- Each logo is centred on the text, and stays on the same line as its name. -->
+          <span class="whitespace-nowrap"><span class="mr-2 ml-1 inline-block -translate-y-px align-middle text-mark"><BrandLogo name="winch" :scale="0.6" /></span><NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink></span>,
           remote from Cairo, and building
-          <span class="whitespace-nowrap"><span class="mr-2 ml-1 inline-block align-[-1px] text-mark"><BrandLogo name="runarks" :scale="0.55" /></span><NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink></span>
+          <span class="whitespace-nowrap"><span class="mr-2 ml-1 inline-block -translate-y-px align-middle text-mark"><BrandLogo name="runarks" :scale="0.55" /></span><NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink></span>
           on the side
         </span>
       </p>
 
-      <div class="mt-3.5 flex animate-rise flex-wrap gap-x-[22px] text-sm [animation-delay:.45s]">
+      <div class="mt-2 -ml-3 flex animate-rise flex-wrap [animation-delay:.45s]">
         <NuxtLink
           v-for="social in socials"
           :key="social.label"
           :to="social.to"
-          class="link-muted inline-flex min-h-11 items-center gap-2"
+          :aria-label="social.label"
+          :title="social.label"
+          class="link-muted inline-flex size-11 items-center justify-center"
         >
-          <Icon :name="social.icon" class="size-4 text-mark" />
-          {{ social.label }}
+          <Icon :name="social.icon" class="brand-icon text-mark" :style="{ width: `${social.size}px`, height: `${social.size}px`, ...brandStyle(social.icon) }" />
         </NuxtLink>
       </div>
     </section>

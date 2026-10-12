@@ -22,7 +22,7 @@
         class="inline-flex size-11 items-center justify-center rounded-lg text-mark transition-colors hover:bg-surface hover:text-fg"
         external
       >
-        <Icon :name="social.icon" :style="{ width: `${social.size}px`, height: `${social.size}px` }" />
+        <Icon :name="social.icon" class="brand-icon" :style="{ width: `${social.size}px`, height: `${social.size}px`, ...brandStyle(social.icon) }" />
       </NuxtLink>
       <span class="mx-1.5 h-5 w-px bg-line" aria-hidden="true" />
       <ThemeToggle />

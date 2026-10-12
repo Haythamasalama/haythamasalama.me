@@ -216,9 +216,58 @@
   }
 }
 
-/* Photos of logos (GitHub avatars) in greyscale, so they match the one-colour marks. */
+/* Photos of logos (GitHub avatars): in colour in light mode; greyscale in dark mode until hovered. */
 @utility avatar-mono {
   filter: grayscale(1);
+  transition: filter 0.2s var(--ease-out-soft);
+}
+
+/*
+ * Brand colours. Logos and tool icons show their own colours in light mode, and on hover in dark
+ * mode; otherwise they are one colour (`mark`). `brandStyle()` sets --brand and --brand-dark, and
+ * `.brand-logo-*` swap a company logo's one-colour mask for its colour file (`BrandLogo`).
+ */
+.brand-icon {
+  transition: color 0.2s var(--ease-out-soft);
+}
+
+.light .brand-icon {
+  color: var(--brand, var(--mark));
+}
+
+.light .avatar-mono {
+  filter: none;
+}
+
+.brand-logo-color {
+  display: none;
+}
+
+.light .brand-logo-color {
+  display: block;
+}
+
+.light .brand-logo-mask {
+  display: none;
+}
+
+@media (hover: hover) {
+  .dark :is(a, button, li, .brand-hover):hover .brand-icon,
+  .dark .brand-icon:hover {
+    color: var(--brand-dark, var(--fg));
+  }
+
+  .dark :is(a, button, li, .brand-hover):hover .avatar-mono {
+    filter: none;
+  }
+
+  .dark :is(a, button, li, .brand-hover):hover .brand-logo-color {
+    display: block;
+  }
+
+  .dark :is(a, button, li, .brand-hover):hover .brand-logo-mask {
+    display: none;
+  }
 }
 
 @utility text-gradient {

@@ -3,7 +3,7 @@ year: 2021
 context: Faris Petrol · May 2021 – Dec 2022
 description: 'The system Faris Petrol’s workshops run on: a bay app for technicians, a checklist the workshop edits itself and dashboards for every branch, for thousands of checks a month.'
 mark:
-  icon: lucide:wrench
+  logo: faris-oil-center
 order: 1
 highlight:
   title: 'Vehicle inspection & maintenance system'

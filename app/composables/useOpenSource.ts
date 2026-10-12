@@ -126,14 +126,19 @@ export async function useOpenSource () {
         ? repos.value
             .filter(repo => !maintainedNames.includes(repo.name.toLowerCase()) && repo.pullRequests.length)
             .slice(0, 4)
-            .map(repo => ({
-              key: repo.name,
-              name: repo.name,
-              avatar: repo.avatar as string | undefined,
-              icon: undefined as string | undefined,
-              url: repo.pullRequestsUrl,
-              note: plural(repo.pullRequests.length, 'pull request')
-            }))
+            .map((repo) => {
+              // A curated entry's own logo or icon wins over the owner's GitHub avatar.
+              const entry = (curated.value ?? []).find(item => item.repo.toLowerCase() === repo.name.toLowerCase());
+
+              return {
+                key: repo.name,
+                name: repo.name,
+                avatar: (entry?.avatar ?? repo.avatar) as string | undefined,
+                icon: entry?.icon,
+                url: repo.pullRequestsUrl,
+                note: plural(repo.pullRequests.length, 'pull request')
+              };
+            })
         : contributors.value
             .filter(entry => entry.featured)
             .map(entry => ({
