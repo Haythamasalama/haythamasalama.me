@@ -327,20 +327,115 @@ function image (element: SketchElement, scene: SketchScene): string {
   }
 
   if (file.mimeType !== 'image/svg+xml') {
+    if (!/^data:image\/(png|jpeg|webp|gif);base64,[a-z0-9+/=]+$/i.test(file.dataURL)) {
+      throw new Error(`Image "${element.fileId}" is not an embedded PNG, JPEG, WebP or GIF`);
+    }
+
     return `<image href="${file.dataURL}" width="${element.width}" height="${element.height}"/>`;
   }
 
   const [meta, data = ''] = file.dataURL.split(',');
   const source = meta?.includes(';base64') ? Buffer.from(data, 'base64').toString('utf8') : decodeURIComponent(data);
 
-  return source
-    .replace(/^[\s\S]*?(?=<svg)/, '')
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
-    .replace(/<svg([^>]*)>/, (_, attributes: string) => {
-      const kept = attributes.replace(/\s(width|height|x|y|style)="[^"]*"/g, '');
+  return iconMarkup(source, element);
+}
 
-      return `<svg${kept} width="${element.width}" height="${element.height}" style="color:${paint(element.strokeColor)}">`;
-    });
+// Icons are inlined as markup, so they are rebuilt from a short list of shape elements and
+// presentation attributes. Anything else, or anything that does not parse, fails the build.
+const iconTags = new Set(['g', 'path', 'circle', 'ellipse', 'line', 'polyline', 'polygon', 'rect']);
+const iconAttributes = new Set([
+  'viewBox', 'd', 'cx', 'cy', 'r', 'rx', 'ry', 'x', 'y', 'x1', 'y1', 'x2', 'y2', 'width', 'height', 'points',
+  'fill', 'fill-rule', 'fill-opacity', 'clip-rule', 'stroke', 'stroke-width', 'stroke-linecap',
+  'stroke-linejoin', 'stroke-miterlimit', 'stroke-opacity', 'opacity', 'transform'
+]);
+
+function iconMarkup (source: string, element: SketchElement): string {
+  const fail = (reason: string): never => {
+    throw new Error(`Icon "${element.fileId}" was refused: ${reason}`);
+  };
+  const tokens = source.slice(source.indexOf('<svg')).split(/(<[^>]*>)/).filter(token => token.trim());
+
+  if (tokens[0]?.startsWith('<svg') !== true || tokens.at(-1) !== '</svg>') {
+    fail('it is not a single <svg> element');
+  }
+
+  return tokens.map((token, index) => {
+    const match = /^<(\/?)([a-zA-Z]+)((?:\s+[a-zA-Z-]+="[^"]*")*)\s*(\/?)>$/.exec(token);
+
+    if (!match) {
+      return fail(`unexpected content ${JSON.stringify(token.slice(0, 40))}`);
+    }
+
+    const [, closing, tag = '', attributes = '', selfClosing] = match;
+    const outer = index === 0 || index === tokens.length - 1;
+
+    if (outer ? tag !== 'svg' : !iconTags.has(tag)) {
+      fail(`<${tag}> is not allowed`);
+    }
+
+    if (closing) {
+      return attributes ? fail(`</${tag}> has attributes`) : `</${tag}>`;
+    }
+
+    const kept = [...attributes.matchAll(/\s+([a-zA-Z-]+)="([^"]*)"/g)]
+      .filter(([, name]) => !(index === 0 && ['xmlns', 'width', 'height', 'x', 'y'].includes(name!)))
+      .map(([, name = '', value = '']) => {
+        if (!iconAttributes.has(name)) {
+          fail(`the ${name} attribute is not allowed`);
+        }
+
+        if (!/^[\w\s.,#%()+-]*$/.test(value) || /url\s*\(/i.test(value)) {
+          fail(`the ${name} attribute has an unexpected value`);
+        }
+
+        return ` ${name}="${value}"`;
+      })
+      .join('');
+
+    if (index === 0) {
+      return `<svg xmlns="http://www.w3.org/2000/svg"${kept} width="${element.width}" height="${element.height}" style="color:${paint(element.strokeColor)}">`;
+    }
+
+    return `<${tag}${kept}${selfClosing ? '/' : ''}>`;
+  }).join('');
+}
+
+const colour = /^(transparent|#[0-9a-f]{3,8})$/i;
+const numbers = ['x', 'y', 'width', 'height', 'strokeWidth', 'roughness', 'opacity', 'seed'] as const;
+const optionalNumbers = ['angle', 'fontSize', 'fontFamily', 'lineHeight'] as const;
+const choices: Partial<Record<keyof SketchElement, string[]>> = {
+  fillStyle: ['hachure', 'cross-hatch', 'solid', 'zigzag'],
+  strokeStyle: ['solid', 'dashed', 'dotted'],
+  textAlign: ['left', 'center', 'right']
+};
+
+/** Rejects values that would land in the SVG as anything but a number, a colour or a known keyword. */
+function checkElement (element: SketchElement): void {
+  const fail = (field: string): never => {
+    throw new Error(`Element "${element.id}" has an invalid ${field}`);
+  };
+  const finite = (value: unknown) => typeof value === 'number' && Number.isFinite(value);
+
+  numbers.filter(field => !finite(element[field])).forEach(fail);
+  optionalNumbers.filter(field => element[field] !== undefined && !finite(element[field])).forEach(fail);
+
+  if (element.points?.some(point => !Array.isArray(point) || !finite(point[0]) || !finite(point[1]))) {
+    fail('points');
+  }
+
+  if (element.roundness?.value !== undefined && !finite(element.roundness.value)) {
+    fail('roundness');
+  }
+
+  (['strokeColor', 'backgroundColor'] as const).filter(field => !colour.test(element[field] ?? '')).forEach(fail);
+
+  for (const [field, allowed] of Object.entries(choices)) {
+    const value = element[field as keyof SketchElement];
+
+    if (value !== undefined && !allowed.includes(value as string)) {
+      fail(field);
+    }
+  }
 }
 
 function bounds (element: SketchElement): [number, number, number, number] {
@@ -390,6 +485,9 @@ function renderElement (element: SketchElement, scene: SketchScene, generator: R
 export function renderSketch (scene: SketchScene): string {
   const generator = rough.generator();
   const elements = scene.elements.filter(element => !element.isDeleted);
+
+  elements.forEach(checkElement);
+
   const frame = elements.find(element => element.type === 'frame');
   const margin = frame ? 0 : 16;
   const [minX, minY, maxX, maxY] = (frame ? [frame] : elements)
