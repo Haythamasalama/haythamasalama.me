@@ -49,7 +49,7 @@ s.text({ x: 296, y: 294, text: 'HR', size: 16, color: C.muted });
   });
 });
 
-s.iconBox({ x: 280, y: 428, w: 440, h: 50, icon: 'bell', label: 'Notifications: in-app and Telegram', size: 16 });
+s.iconBox({ x: 280, y: 428, w: 440, h: 50, icon: 'bell', label: 'Notifications: in the system and team chat', size: 16 });
 
 // Outside systems
 const outside = [

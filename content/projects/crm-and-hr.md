@@ -4,115 +4,76 @@ description: 'The CRM I built with one other developer for Faris Petrol’s cust
 
 ## Overview
 
-Faris Petrol issues Faris electronic cards and runs Clever, a loyalty app with partner stores. Its customer service team answers card holders, Clever customers and partner stores, and a field team visits those stores. I joined Faris Petrol as a full-stack developer in 2019, and from September 2020 I built the system these teams work in, together with one other developer: contacts, calls, tickets, visits and messages in one place, linked to the phone system and to Clever. The same system holds HR: employees, contracts, shifts and leave, with attendance read from the company’s access-control devices.
+Faris Petrol issues Faris electronic cards and runs Clever, a loyalty app with partner stores. I joined in 2019 as a full-stack developer, and from September 2020 I built, with one other developer, the system its customer service, field and HR teams work in. One side is a CRM linked to the phone system and Clever; the other is HR, with attendance read from the company’s access-control devices.
+
+::project-shot{src="/projects/crm-and-hr/screens.webp" single bare alt="Three screens of the Arabic interface. In front, the monthly calendar of store visits, with planned visits in yellow and completed ones in green. Tilted behind it, the weekly attendance sheet on the left and the employees list on the right." width="1760" height="660"}
+The month's store visits in front, with the attendance sheet and the employees beside it.
+::
 
 ## The problem
 
 The teams needed one place for their daily work, and HR needed attendance it could rely on.
 
-- **Calls without context.** A call reached an agent as a phone number. Who was calling, and what they had asked before, had to be looked up somewhere else.
-- **Requests without an owner.** Complaints and requests from customers and stores needed someone responsible, a priority and a follow-up until they were closed.
-- **Partner stores in another system.** The stores that accept Clever, their branches and their balances lived in Clever, and the field team’s visits to them needed a plan and a record.
-- **Messages to many people.** Notices went to long lists of customers by SMS and WhatsApp, which needed templates and sending in bulk.
-- **Punches, not shifts.** The access-control devices record punches. HR needed the shifts people actually worked, including 24-hour shifts that cross midnight, and a way to repair the record after a power or network outage.
+- **Calls without context.** A call reached an agent as a bare phone number.
+- **Work spread across systems.** Requests had no owner, store visits had no plan, and partner stores lived in Clever.
+- **Punches, not shifts.** The devices recorded punches, but HR needed shifts, including 24-hour shifts across midnight.
 
 ## The solution
 
-::sketch-figure{name="crm-and-hr/before-after" alt="Before: a person moves between four separate places: the phone system, which shows only a number; an old CRM with contacts; Clever, with stores and balances; and the access-control devices, with raw punches. Each answer meant another system, and punches were not yet shifts. Now: one system with a CRM side (contacts, calls, tickets, visits, stores and messages) and an HR side (employees, shifts, leave and attendance), linked both ways to the phone system, Clever, SMS, WhatsApp and Telegram, and the access-control devices."}
+::sketch-figure{name="crm-and-hr/before-after" alt="Before: a person switches between the phone system, which shows only a number, an old CRM with contacts, Clever with stores and balances, and devices with raw punches. Now: one system with a CRM side and an HR side, linked both ways to the phone system, Clever, SMS and messaging apps, and the access-control devices."}
 One record per customer and per employee, fed by the systems around it.
 ::
 
-**The caller on screen.** The CRM is linked to the phone system. When a call comes in, the agent sees who is calling and opens their record, and every call is logged on it.
+**The caller on screen.** The phone system asks the CRM who is calling, and every call is logged on the caller’s record.
 
-**Tickets with an owner.** Every request becomes a ticket with a priority, a status, a responsible person and a group. Comments and attachments stay on the ticket, and tickets left open too long send reminders.
+**One place for the daily work.** Tickets have an owner, partner stores sync from Clever, and every store gets a monthly visit.
 
-**Stores and visits from Clever.** Partner stores, their branches and their cashiers are synced from Clever on a schedule, and the team is told when a store’s balance runs low. Each month the system plans a visit to every active store, spread over the month by area.
-
-**Messages in bulk.** SMS go out from templates, and WhatsApp messages are sent in bulk from a spreadsheet, queued and spaced out.
-
-**Shifts from punches.** Punches are imported from the devices, and one rule pairs each employee’s punches into the shift they work, on the same day or the next. HR can fix a missed punch or re-run a day after an outage.
+**Shifts from punches.** One rule pairs punches into shifts, and HR can fix a missed punch or re-run a day.
 
 ## What I did
 
-I set up the project and built it with one other developer, releasing it a module at a time from a feature plan for each release.
-
-- Built the HR side: employees and contracts, with import from spreadsheets; shifts, holidays and leave; and attendance from the access-control devices, including the rule that pairs punches into shifts and the tools HR uses to correct them.
+- Set up the project and built it with one other developer, releasing it a module at a time.
+- Built the HR side: employees, contracts, shifts, leave and attendance from the access-control devices.
 - Built the phone-system integration that shows the caller and logs every call.
-- Built SMS sending with templates, and the monthly plan of store visits with its reminders.
-- Built the scheduled jobs that sync stores from Clever and warn the team when a balance runs low.
-- Built contacts, tickets, visits, the connection to Clever, and WhatsApp and Telegram messaging together with the other developer.
-- Set up the roles and permissions that decide what each person sees, from station supervisors to the field team and HR.
+- Built SMS templates, the monthly visit plans, and the scheduled Clever sync with low-balance alerts.
+- Built contacts, tickets, visits and messaging with the other developer, and set up roles and permissions.
 
 ## What it offers
 
-::feature-grid
----
-items:
-  - icon: lucide:phone-incoming
-    title: The caller, before you answer
-    text: When a call comes in, the agent sees who is calling and opens their record, and every call is logged.
-  - icon: lucide:contact
-    title: One record per customer
-    text: A contact holds their Faris cards, notes, tickets and calls, and can be looked up in Clever by phone number.
-  - icon: lucide:ticket
-    title: Tickets with an owner
-    text: Priorities, statuses, a responsible person and group, comments and attachments, and reminders for tickets left open.
-  - icon: lucide:map-pin
-    title: Planned field visits
-    text: A monthly plan visits every partner store, and each visit records where it took place.
-  - icon: lucide:store
-    title: Partner stores from Clever
-    text: Stores, branches and cashiers are synced from Clever, with a notice when a store’s balance runs low.
-  - icon: lucide:send
-    title: Messages in bulk
-    text: SMS from templates, and WhatsApp messages sent to a list from a spreadsheet.
-  - icon: lucide:bell
-    title: Alerts where people are
-    text: Ticket events, reminders and the day’s visits reach the team in the system and on Telegram.
-  - icon: lucide:calendar-check
-    title: Attendance from the devices
-    text: Punches from the access-control devices become shifts, next to leave, holidays and contracts.
----
+::sketch-figure{name="crm-and-hr/feature-map" alt="Everything in the system. CRM, for customer service and the field team: contacts, calls, tickets, partner stores synced from Clever, monthly visit plans and messages. HR, for HR and managers: employees, contracts, shifts, leave and holidays, attendance from the access-control devices, and reports. Both sides share notifications and roles."}
+The CRM and HR sides, and what they share.
 ::
 
 ## System design
 
-::sketch-figure{name="crm-and-hr/architecture" alt="Architecture: agents, the field team, HR and managers use one web system, where roles decide who sees what. It has a CRM side (contacts, calls, tickets, visits, stores and messages), an HR side (employees, contracts, shifts, leave, holidays and attendance) and notifications in the system and on Telegram. It talks both ways to the phone system, which shows the caller and logs every call; to Clever, for partner stores, branches, balances and customers; to SMS, WhatsApp and Telegram; and to the access-control devices, for the people on each device and their punches. Behind it sit the database and the queues and schedules that sync Clever, send messages, and import and pair punches."}
+::sketch-figure{name="crm-and-hr/architecture" alt="Agents, the field team, HR and managers use one web system, where roles decide who sees what, with a CRM side, an HR side and notifications. It talks both ways to the phone system, Clever, messaging apps and the access-control devices. Behind it sit the database, and queues and schedules for the slow work."}
 One system for every team, with the outside systems feeding it.
 ::
 
-One web system serves every team, and roles decide what each person sees. The CRM and HR sides share the same users, branches and notifications. Queued and scheduled jobs do the slow work, such as syncing Clever, sending messages and importing punches, so nobody waits for them on screen.
+Roles decide what each person sees, from station supervisors to the field team and HR. Queues and schedules do the slow work, so nobody waits on screen for a sync or a message to send.
 
 ### Calls and contacts
 
-::sketch-figure{name="crm-and-hr/incoming-call" alt="When a call comes in: a customer calls, the phone system asks the CRM who the number belongs to, and if the number is known the agent opens the caller’s record and past calls; if not, the number is kept so it can be linked to a contact later. When the call ends: the phone system reports it, the call log records whether it was incoming, outgoing or missed, and the call is logged on the contact with the agent and the times."}
-The agent knows who is calling before answering, and every call ends up on the caller’s record.
+::sketch-figure{name="crm-and-hr/incoming-call" alt="When a call comes in, the phone system asks the CRM who is calling: a known caller’s record opens for the agent, and an unknown number is kept for later. When the call ends, it is logged on the contact as in, out or missed, with the agent and times."}
+The agent knows who is calling before answering.
 ::
 
-The phone system asks the CRM who is calling, so the agent can open the caller’s record, with their cards, notes, tickets and past calls, before answering. A number the CRM doesn’t know is kept, and an agent can link it to a contact later. When the call ends, the phone system reports it, and it is logged on the contact with its direction, the agent and its times.
-
-### Tickets
-
-**From whom, about whom.** A ticket records who raised it and who it is about, and each can be a contact, a store or an employee, so every complaint is followed up the same way.
-
-**Follow-up.** The responsible person and group are notified in the system and on Telegram when a ticket is created, updated, commented on or closed, and a ticket left open too long sends a reminder.
-
-### Partner stores and visits
-
-**Synced from Clever.** Stores, branches and cashiers come from Clever on a schedule, with each branch’s balance, and the team is told on Telegram when a balance runs low.
-
-**Visit plans.** Each month the system spreads a visit to every active store over the month, grouped by area and assigned to the person who covers it, and the field team gets the day’s visits on Telegram.
-
-**Where it happened.** Ending a visit records the visitor’s location from the browser and saves it on the store, so the store’s location stays current.
-
-### Messages
-
-SMS go out from templates to a contact or a Clever customer. WhatsApp messages can be sent to a list in a spreadsheet; each one is queued, with a short pause between them.
+An unknown number is kept, so an agent can link it to a contact later.
 
 ### From punches to shifts
 
-::sketch-figure{name="crm-and-hr/attendance" alt="From punches to shifts: the people on each access-control device are linked to employees; their punches are imported for a period and kept raw; one rule pairs them into shifts, using each employee’s shift to know when it starts, when it ends and on which day; HR fixes a missed punch, or re-runs a day after an outage, in the attendance records; and reports show hours worked, leave and holidays. Below, two timelines over two days: a day shift is a check-in and a check-out on the same day, and a 24-hour shift is a check-in on day 1 and a check-out on day 2, across midnight. Both are one shift under the same rule."}
+::sketch-figure{name="crm-and-hr/attendance" alt="Punches from the access-control devices are imported and kept raw, paired into shifts by one rule, corrected by HR and summed up in reports. Two timelines show a day shift and a 24-hour shift across midnight, each made one shift by the same rule."}
 A day shift and a 24-hour shift go through the same rule.
 ::
 
-Punches are imported from the devices for a period and kept as they were recorded. Each employee’s shift says when it starts, when it ends and whether it ends the next day, and one rule pairs the punches against it. HR can add or fix a punch, remove a wrong record and re-run a period after a power or network outage, and leave and holidays sit next to the attendance they explain.
+Each employee’s shift tells the rule when it starts and on which day it ends. After a power or network outage, HR re-runs the period.
+
+## In the product
+
+::project-shot{src="/projects/crm-and-hr/visit-plan.webp" single alt="The visit calendar for a month: planned visits in yellow and completed ones in green on each day, next to the month’s totals and today’s visits." width="1760" height="852"}
+The monthly visit plan, with completed visits in green.
+::
+
+::project-shot{src="/projects/crm-and-hr/attendance-sheet.webp" single alt="A week of attendance: one row per employee, with check-in and check-out times for each day and missing punches in red." width="1760" height="799"}
+A week of attendance, with missing punches in red for HR to fix.
+::

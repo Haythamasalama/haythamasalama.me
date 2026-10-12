@@ -51,7 +51,7 @@ s.text({ x: 750, y: 184, text: 'HR', size: 15, color: C.iris });
 const around = [
   ['Phone system', 168],
   ['Clever', 228],
-  ['SMS, WhatsApp\n& Telegram', 288],
+  ['SMS and\nmessaging apps', 288],
   ['Access-control\ndevices', 358]
 ];
 
