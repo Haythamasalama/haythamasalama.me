@@ -4,23 +4,18 @@
     description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today.'
   });
 
-  const { data } = await useAsyncData('projects', async () => {
-    const [projects, pages] = await Promise.all([
+  const { data: projects } = await useAsyncData('projects', async () => {
+    const [list, pages] = await Promise.all([
       queryCollection('projects').all(),
       queryCollection('projectPages').select('path').all()
     ]);
     const paths = new Set(pages.map(page => page.path));
 
-    // Newest first; within a year, by the card's order.
-    const sorted = projects
+    // Newest first; within a year, by the card's order. A project has a page when
+    // content/projects holds a .md with its file name.
+    return list
       .sort((a, b) => b.year - a.year || a.order - b.order)
-      // A project has a page when content/projects holds a .md with its file name.
       .map(project => ({ ...project, page: paths.has(`/${project.stem}`) ? `/${project.stem}` : undefined }));
-
-    return {
-      caseStudies: sorted.filter(project => project.page),
-      others: sorted.filter(project => !project.page)
-    };
   });
 </script>
 
@@ -30,73 +25,27 @@
       <p>What I've built and shipped, from a physics app in high school to fintech and logistics platforms today.</p>
     </PageHeader>
 
-    <section aria-labelledby="case-studies" class="pt-14">
-      <SectionTitle id="case-studies" class="mb-5">
-        Case studies
-      </SectionTitle>
-      <ul class="grid gap-4 md:grid-cols-2">
-        <li
-          v-for="project in data?.caseStudies"
-          :key="project.id"
-          class="brand-hover group/card relative flex flex-col rounded-2xl border border-line p-5 transition-colors hover:border-chip hover:bg-surface"
-        >
-          <div class="flex items-start justify-between gap-4">
-            <LogoTile :mark="project.mark" :size="40" />
-            <span class="font-mono text-xs leading-6 text-faint">{{ project.year }}</span>
-          </div>
-          <h3 :id="slugify(project.title)" class="mt-4 text-[17px] leading-snug font-medium text-balance">
-            <!-- The title's link covers the whole card; the website link sits above it. -->
-            <NuxtLink :to="project.page" class="after:absolute after:inset-0 after:rounded-2xl">
-              {{ project.title }}
-            </NuxtLink>
-          </h3>
-          <p v-if="project.context" class="mt-1.5 font-mono text-xs text-faint">
-            {{ project.context }}
-          </p>
-          <p class="mt-3 flex-auto text-sm leading-[1.6] text-muted">
-            {{ project.description }}
-          </p>
-          <div class="mt-4 flex flex-wrap items-center gap-x-5">
-            <span class="go inline-flex min-h-11 items-center text-[13px] text-soft group-hover/card:text-fg">
-              About the project<span class="arrow" aria-hidden="true">→</span>
-            </span>
-            <NuxtLink
-              v-for="link in project.links"
-              :key="link.to"
-              :to="link.to"
-              class="link-underline relative z-10 inline-flex min-h-11 items-center text-[13px]"
-            >
-              {{ link.label }} ↗
-            </NuxtLink>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section v-if="data?.others.length" aria-labelledby="more-projects" class="pt-16">
-      <SectionTitle id="more-projects" class="mb-2">
-        More projects
-      </SectionTitle>
+    <section aria-label="Projects" class="pt-12">
       <ul class="flex flex-col">
-        <li
-          v-for="project in data.others"
-          :key="project.id"
-          class="flex gap-3.5 border-t border-line py-5 first:border-t-0"
-        >
-          <LogoTile :mark="project.mark" :size="32" :icon-size="16" />
-          <div class="flex min-w-0 flex-auto flex-col gap-1">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-              <h3 :id="slugify(project.title)" class="text-[15px] font-medium">
-                <AnchorLink :target="slugify(project.title)">
+        <li v-for="project in projects" :key="project.id">
+          <component
+            :is="project.page ? resolveComponent('NuxtLink') : 'div'"
+            :to="project.page"
+            class="group -mx-3 flex items-start gap-3.5 rounded-[10px] p-3"
+            :class="project.page && 'transition-colors hover:bg-surface'"
+          >
+            <LogoTile :mark="project.mark" :size="36" />
+            <span class="flex min-w-0 flex-auto flex-col gap-1">
+              <span class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+                <span class="text-[15px] font-medium">
                   {{ project.title }}
-                </AnchorLink>
-              </h3>
-              <span class="font-mono text-xs text-faint">{{ project.context }}</span>
-            </div>
-            <p class="text-sm leading-[1.6] text-muted">
-              {{ project.description }}
-            </p>
-          </div>
+                  <span v-if="project.page" class="ml-1 inline-block text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-fg motion-reduce:transition-none" aria-hidden="true">→</span>
+                </span>
+                <span class="font-mono text-xs text-faint">{{ project.year }}</span>
+              </span>
+              <span class="text-sm leading-[1.55] text-muted">{{ project.description }}</span>
+            </span>
+          </component>
         </li>
       </ul>
     </section>

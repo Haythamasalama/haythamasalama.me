@@ -29,7 +29,7 @@ Most visitors don't read long text (owner's feedback, 2026-10-12). Keep a page t
 | `public/projects/<slug>/*.webp` | screenshots |
 | `claudedocs/projects/<slug>/` | the LinkedIn draft and figure exports; local only, never committed |
 
-The `.yml` and `.md` share a file name. The page exists once the `.md` exists. /projects then shows the project as a card under "Case studies", and the whole card links to its page. Projects without a page are listed under "More projects". The home page links to the page from "Selected work".
+The `.yml` and `.md` share a file name. The page exists once the `.md` exists. /projects is one simple list, newest first: logo, title, year and the one-line description. Rows with a page link to it and show an arrow; the website links live on the page itself. The home page links to the page from "Selected work".
 
 ## The card
 
