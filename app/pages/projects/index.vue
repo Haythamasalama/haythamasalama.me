@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { logos } from '~/utils/logos';
+
   usePageSeo({
     title: 'Projects',
     description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today.'
@@ -30,24 +32,24 @@
   const spotlight = computed(() => caseStudies.value.find(project => project.context?.includes('now')));
   const listed = computed(() => caseStudies.value.filter(project => project !== spotlight.value));
 
-  /** One chip per company or product with a logo, linking to its project below. */
+  /**
+   * One chip per company or product with a logo, linking to its first project below. A card whose
+   * context starts with a company that has a logo ("Faris Petrol · …") counts under that company.
+   */
   const builtAt = computed(() => {
-    const seen = new Set<string>();
+    const chips = new Map<string, { anchor: string; mark: typeof caseStudies.value[number]['mark']; name: string }>();
 
-    return caseStudies.value
-      .filter(project => project.mark.logo && !seen.has(project.mark.logo) && seen.add(project.mark.logo))
-      .map(project => ({ anchor: project.anchor, mark: project.mark, name: project.title.split(' · ')[0] }));
-  });
+    for (const project of caseStudies.value) {
+      const company = project.context?.split(' · ')[0];
+      const logo = company && Object.entries(logos).find(([, asset]) => asset.name.startsWith(company));
+      const chip = logo
+        ? { name: company, mark: { logo: logo[0] } }
+        : project.mark.logo ? { name: project.title.split(' · ')[0]!, mark: project.mark } : undefined;
 
-  const stats = computed(() => {
-    const first = Math.min(...projects.value.map(project => project.year));
+      if (chip && !chips.has(chip.name)) chips.set(chip.name, { ...chip, anchor: project.anchor });
+    }
 
-    return [
-      { value: `${projects.value.length}`, label: 'projects' },
-      { value: `${caseStudies.value.length}`, label: 'case studies with diagrams' },
-      { value: `${new Date().getUTCFullYear() - first}+`, label: `years building, since ${first}` },
-      { value: `${builtAt.value.length}`, label: 'companies and products' }
-    ];
+    return [...chips.values()];
   });
 </script>
 
@@ -80,17 +82,6 @@
           {{ item.name }}
         </NuxtLink>
       </div>
-
-      <dl class="mt-12 grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4">
-        <div v-for="stat in stats" :key="stat.label" class="flex flex-col-reverse justify-end gap-1">
-          <dt class="text-[13px] leading-snug text-faint">
-            {{ stat.label }}
-          </dt>
-          <dd class="font-mono text-2xl font-medium md:text-[30px]">
-            {{ stat.value }}
-          </dd>
-        </div>
-      </dl>
     </section>
 
     <section v-if="spotlight" aria-labelledby="spotlight" class="pt-14 md:pt-20">

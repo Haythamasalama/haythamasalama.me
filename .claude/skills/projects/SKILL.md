@@ -29,7 +29,7 @@ Most visitors don't read long text (owner's feedback, 2026-10-12). Keep a page t
 | `public/projects/<slug>/*.webp` | screenshots |
 | `claudedocs/projects/<slug>/` | the LinkedIn draft and figure exports; local only, never committed |
 
-The `.yml` and `.md` share a file name. The page exists once the `.md` exists. /projects follows the Open Source page's layout. It opens with a headline, chips for the companies and products built at, and a row of stats. Then come "Building now" (the newest project still running), "Case studies" (projects with a page: title, year, context, description, "About the project" and website links) and "Earlier & smaller projects" (cards without a page). The home page links to the page from "Selected work".
+The `.yml` and `.md` share a file name. The page exists once the `.md` exists. /projects follows the Open Source page's layout. It opens with a headline and chips for the companies and products built at (a Faris card counts under "Faris Petrol"). Then come "Building now" (the newest project still running), "Case studies" (projects with a page: title, year, context, description, "About the project" and website links) and "Earlier & smaller projects" (cards without a page). The home page links to the page from "Selected work".
 
 ## The card
 
