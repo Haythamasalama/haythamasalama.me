@@ -25,7 +25,7 @@ s.iconBox({ x: 280, y: 146, w: 200, h: 50, icon: 'layout-dashboard', label: 'Das
 s.iconBox({ x: 500, y: 146, w: 200, h: 50, icon: 'shield-user', label: 'Back office', size: 18 });
 
 s.rect({ x: 280, y: 214, w: 420, h: 126, stroke: C.muted, dashed: true });
-s.text({ x: 296, y: 222, text: '19 domains, each behind a contract', size: 16, color: C.muted });
+s.text({ x: 296, y: 222, text: 'domains, each behind a contract', size: 16, color: C.muted });
 
 const rows = [
   ['Requests', 'Approvals', 'Access', 'Masking'],
