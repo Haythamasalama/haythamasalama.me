@@ -1,10 +1,10 @@
 ---
-description: 'A web system I built for Qur’an memorization circles: teachers record each student’s week and tests, and every student sees their memorization, review, attendance and rank in the circle.'
+description: 'A web system I designed and built for Qur’an memorization circles: teachers record each student’s week and tests, and students and parents follow memorization, attendance and rank.'
 ---
 
 ## Overview
 
-A web system for Qur'an memorization circles. Teachers record what each student memorized and reviewed every week, their attendance and their tests, and each student signs in to a dashboard of their own progress and rank in the circle. I built it in 2016.
+A web system for Qur'an memorization circles. Teachers record what each student memorized and reviewed every week, their attendance and their tests. Students sign in to a dashboard of their own progress and rank in the circle, and parents follow their child's progress and test scores. I designed and built it on my own in 2016.
 
 ## The problem
 
@@ -12,7 +12,7 @@ A memorization circle has a lot to follow for every student, every week.
 
 - **Memorization and review.** How many pages each student memorized and reviewed, and from which surah to which.
 - **Attendance and tests.** The days each student came, and the grade for each part (juz') tested.
-- **Where each student stands.** A rank in the circle that the student can see, not only the teacher.
+- **Where each student stands.** A rank in the circle that students and parents can see, not only the teacher.
 
 ## The solution
 
@@ -26,7 +26,7 @@ The teacher's weekly records become each student's progress and rank.
 
 ## What I did
 
-- Built the system: the teacher and student accounts, the weekly records, tests, ranking and export.
+- Designed and built the whole system on my own: the teacher, student and parent views, the weekly records, tests, ranking and export.
 
 ## What it offers
 
@@ -51,6 +51,9 @@ items:
   - icon: lucide:trophy
     title: A rank in the circle
     text: Every student sees their score and their place among the circle.
+  - icon: lucide:house
+    title: A view for parents
+    text: Parents follow their child's memorization progress and test scores.
   - icon: lucide:download
     title: Export
     text: Memorization and test data can be exported.
