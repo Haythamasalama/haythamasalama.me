@@ -3,5 +3,5 @@ year: 2022
 context: Faris Petrol · Oct – Dec 2022
 description: 'Charges many Clever cards at once from a spreadsheet: checked, approved, then sent card by card with a clear result for each. Built test-first.'
 mark:
-  icon: lucide:credit-card
+  logo: clever
 order: 2

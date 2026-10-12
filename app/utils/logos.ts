@@ -13,6 +13,7 @@ export const logos: Record<string, LogoAsset> = {
   'faris': { src: '/logos/faris.png', width: 23, height: 29, name: 'Faris Petrol Company' },
   'patric': { src: '/logos/patric.png', width: 22, height: 22, name: 'Patric Technology' },
   'al-azhar': { src: '/logos/al-azhar.svg', width: 32, height: 32, name: 'Al Azhar University' },
+  'clever': { src: '/logos/clever.png', width: 22, height: 25, name: 'Clever' },
   'faris-oil-center': { src: '/logos/faris-oil-center.svg', width: 30, height: 23, name: 'Faris Oil Center' },
   'runarks': { src: '/logos/runarks.svg', width: 14, height: 22, name: 'Runarks' }
 };

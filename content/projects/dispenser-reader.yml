@@ -1,7 +1,0 @@
-title: 'Fuel dispenser reader'
-year: 2022
-context: Faris Petrol · Sep 2022 · design and sample
-description: 'A design and a working sample for reading sales and totals straight from a fuel station’s pumps, instead of copying them by hand.'
-mark:
-  icon: lucide:fuel
-order: 3
