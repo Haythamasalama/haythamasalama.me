@@ -35,7 +35,7 @@ const head = `<!doctype html>
   @font-face { font-family: 'Excalifont'; src: url(data:font/woff2;base64,${font}) format('woff2'); }
   body { margin: 0; font-family: system-ui, sans-serif; }
   .sketch { --font-sketch: 'Excalifont', sans-serif; --font-sans: system-ui, sans-serif; --font-mono: ui-monospace, monospace; }
-  .sketch svg { display: block; width: 100%; height: auto; }
+  .sketch > svg { display: block; width: 100%; height: auto; }
   .dark { --bg: #0b0b0c; --surface: #131316; --raised: #0f0f11; --line: #1f1f23; --chip: #2a2a30; --fg: #ededef; --soft: #c4c4cc; --muted: #a1a1aa; --accent: #4f9bff; --accent-2: #7f7cf2; }
   .light { --bg: #ffffff; --surface: #f4f4f5; --raised: #fafafa; --line: #e4e4e7; --chip: #d4d4d8; --fg: #0b0b0c; --soft: #3f3f46; --muted: #52525b; --accent: #2873d1; --accent-2: #6762d3; }
   .dark .sketch, .light .sketch {
