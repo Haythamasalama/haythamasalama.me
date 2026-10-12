@@ -79,6 +79,7 @@ export default defineNuxtConfig({
     '/open-source': { isr: 6 * 60 * 60, prerender: false },
     '/api/open-source': { isr: 6 * 60 * 60 },
     '/projects': { prerender: true },
+    '/projects/**': { prerender: true },
     '/articles/**': { prerender: true },
     // Gists are fetched at request time and cached for an hour, so new ones
     // show up without a redeploy.

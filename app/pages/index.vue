@@ -9,17 +9,22 @@
   });
 
   const { data } = await useAsyncData('home', async () => {
-    const [projects, technologies, articles, uses] = await Promise.all([
+    const [projects, pages, technologies, articles, uses] = await Promise.all([
       queryCollection('projects').all(),
+      queryCollection('projectPages').select('path').all(),
       queryCollection('technologies').where('home', '=', true).order('order', 'ASC').all(),
       queryCollection('articles').order('date', 'DESC').limit(3).all(),
       queryCollection('uses').all()
     ]);
 
+    const paths = new Set(pages.map(page => page.path));
+
     return {
+      // Each links to its own page when it has one, otherwise to the list.
       work: projects
         .filter(project => project.highlight)
-        .sort((a, b) => a.highlight!.order - b.highlight!.order),
+        .sort((a, b) => a.highlight!.order - b.highlight!.order)
+        .map(project => ({ ...project, to: paths.has(`/${project.stem}`) ? `/${project.stem}` : '/projects' })),
       stack: technologies,
       articles,
       desk: uses
@@ -107,7 +112,7 @@
         <NuxtLink
           v-for="project in data?.work"
           :key="project.id"
-          to="/projects"
+          :to="project.to"
           class="-mx-3 flex items-start gap-3.5 rounded-[10px] p-3 transition-colors hover:bg-surface"
         >
           <LogoTile :mark="project.mark" :size="36" />

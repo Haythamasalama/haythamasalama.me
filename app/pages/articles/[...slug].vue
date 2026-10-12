@@ -66,10 +66,7 @@
       </p>
     </header>
 
-    <ContentRenderer
-      :value="article"
-      class="prose-site prose mt-10 max-w-none text-[16px] leading-[1.75] prose-headings:font-semibold prose-headings:tracking-[-0.01em] prose-h2:text-xl prose-h3:text-lg prose-a:font-normal prose-a:underline-offset-4 prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-img:rounded-xl prose-img:border prose-img:border-line"
-    />
+    <ProseBody :value="article" class="mt-10" />
 
     <footer v-if="more?.length" class="mt-16 border-t border-line pt-8">
       <SectionTitle class="mb-3">

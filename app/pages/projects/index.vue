@@ -5,13 +5,27 @@
   });
 
   const { data } = await useAsyncData('projects', async () => {
-    const projects = await queryCollection('projects').order('order', 'ASC').all();
+    const [projects, pages] = await Promise.all([
+      queryCollection('projects').order('order', 'ASC').all(),
+      queryCollection('projectPages').select('path').all()
+    ]);
+    const paths = new Set(pages.map(page => page.path));
 
     // Group projects by year, newest first.
     const years = [...new Set(projects.map(project => project.year))].sort((a, b) => b - a);
 
     return {
-      projectsByYear: years.map(year => ({ year, projects: projects.filter(project => project.year === year) }))
+      projectsByYear: years.map(year => ({
+        year,
+        projects: projects
+          .filter(project => project.year === year)
+          .map((project) => {
+            // A project has a page when content/projects holds a .md with its file name.
+            const path = `/${project.stem}`;
+
+            return { ...project, page: paths.has(path) ? path : undefined };
+          })
+      }))
     };
   });
 </script>
@@ -40,7 +54,10 @@
             <LogoTile :mark="project.mark" :size="32" :icon-size="16" />
             <div class="flex min-w-0 flex-auto flex-col gap-1.5">
               <h4 :id="slugify(project.title)" class="text-base leading-8 font-medium">
-                <AnchorLink :target="slugify(project.title)">
+                <NuxtLink v-if="project.page" :to="project.page" class="hover:underline hover:decoration-(--underline) hover:underline-offset-4">
+                  {{ project.title }}
+                </NuxtLink>
+                <AnchorLink v-else :target="slugify(project.title)">
                   {{ project.title }}
                 </AnchorLink>
               </h4>
@@ -50,23 +67,19 @@
               <p class="text-[15px] leading-[1.65] text-muted">
                 {{ project.description }}
               </p>
-              <ul v-if="project.tags?.length" class="mt-1 flex flex-wrap gap-1.5" aria-label="Built with">
-                <li
-                  v-for="tag in project.tags"
-                  :key="tag.label"
-                  class="inline-flex items-center gap-1.5 rounded-full border border-line py-[3px] pr-[9px] font-mono text-[11.5px] leading-[18px] text-muted"
-                  :class="tag.icon ? 'pl-[7px]' : 'pl-[9px]'"
+              <div v-if="project.page || project.links.length" class="mt-1.5 flex flex-wrap items-center gap-x-5 gap-y-1">
+                <NuxtLink
+                  v-if="project.page"
+                  :to="project.page"
+                  class="go inline-flex min-h-11 items-center rounded-full border border-chip px-4 text-sm text-fg transition-colors hover:bg-surface"
                 >
-                  <Icon v-if="tag.icon" :name="tag.icon" class="size-3 text-mark" />
-                  {{ tag.label }}
-                </li>
-              </ul>
-              <div v-if="project.links?.length" class="flex flex-wrap gap-x-[18px]">
+                  About the project<span class="arrow" aria-hidden="true">→</span>
+                </NuxtLink>
                 <NuxtLink
                   v-for="link in project.links"
                   :key="link.to"
                   :to="link.to"
-                  class="link-underline inline-flex min-h-9 items-center text-sm"
+                  class="link-underline inline-flex min-h-11 items-center text-sm"
                 >
                   {{ link.label }} ↗
                 </NuxtLink>
