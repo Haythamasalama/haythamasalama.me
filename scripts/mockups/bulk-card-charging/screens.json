@@ -1,0 +1,47 @@
+{
+  "width": 880,
+  "height": 330,
+  "cards": [
+    {
+      "src": "~/Desktop/projects/web/cleverChargingSys/images/merchants.png",
+      "crop": [
+        0,
+        0,
+        1920,
+        872
+      ],
+      "x": 36,
+      "y": 66,
+      "w": 400,
+      "z": 1,
+      "tilt": 24
+    },
+    {
+      "src": "~/Desktop/projects/web/cleverChargingSys/images/transactions.png",
+      "crop": [
+        0,
+        0,
+        1920,
+        929
+      ],
+      "x": 444,
+      "y": 66,
+      "w": 400,
+      "z": 1,
+      "tilt": -24
+    },
+    {
+      "src": "~/Desktop/projects/web/cleverChargingSys/images/transactions-details.png",
+      "crop": [
+        0,
+        0,
+        1920,
+        872
+      ],
+      "x": 170,
+      "y": 30,
+      "w": 540,
+      "z": 3
+    }
+  ]
+}

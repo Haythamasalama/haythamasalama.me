@@ -11,26 +11,29 @@ s.squiggle({ x: 34, y: 70, w: 500 });
 
 s.line({ points: [[548, 108], [548, 428]], color: C.line, dashed: true });
 
-// Before: a list, charged by hand, with no clear answer
-s.text({ x: 40, y: 108, text: 'Before', size: 22, color: C.muted });
+// Without it: a list goes straight to the platform, with nothing in between
+s.text({ x: 40, y: 108, text: 'Without it', size: 22, color: C.muted });
 
 s.iconBox({ x: 44, y: 150, w: 200, h: 58, icon: 'sheet', label: 'cards and\namounts', size: 17, stroke: C.muted, labelColor: C.soft, iconColor: C.soft, dashed: true });
-s.arrow({ points: [[248, 179], [292, 179]], color: C.muted });
-s.person({ x: 300, y: 150, size: 44 });
-s.text({ x: 322, y: 200, text: 'card by card', size: 16, color: C.soft, align: 'center' });
-s.arrow({ points: [[352, 179], [430, 179]], color: C.muted });
+s.arrow({ points: [[248, 179], [430, 179]], color: C.muted, dashed: true });
+s.icon({ x: 326, y: 148, size: 24, name: 'circle-question-mark', color: C.soft });
 s.icon({ x: 444, y: 152, size: 52, name: 'server', color: C.soft });
 s.text({ x: 470, y: 210, text: 'card platform', size: 16, color: C.muted, align: 'center' });
 
-s.icon({ x: 44, y: 264, size: 22, name: 'circle-question-mark', color: C.soft });
-s.text({ x: 76, y: 264, text: 'no answer in time: was the card charged?', size: 17, color: C.soft });
-s.icon({ x: 44, y: 306, size: 22, name: 'repeat', color: C.soft });
-s.text({ x: 76, y: 306, text: 'send it again, and it may be charged twice', size: 17, color: C.soft });
+const risks = [
+  ['calculator', 'nobody checks that the totals add up'],
+  ['user-x', 'nobody approves the list first'],
+  ['circle-question-mark', 'no answer in time: was the card charged?'],
+  ['repeat', 'send it again, and it may be charged twice']
+];
 
-s.text({ x: 44, y: 370, text: 'nobody checked the totals,\nnobody approved the list', size: 17, color: C.muted });
+risks.forEach(([icon, label], i) => {
+  s.icon({ x: 44, y: 258 + i * 42, size: 22, name: icon, color: C.soft });
+  s.text({ x: 76, y: 258 + i * 42, text: label, size: 17, color: C.soft });
+});
 
-// Now: a batch that is checked, approved and sent card by card
-s.text({ x: 588, y: 108, text: 'Now', size: 22, color: C.iris });
+// With it: a batch that is checked, approved and sent card by card
+s.text({ x: 588, y: 108, text: 'With it', size: 22, color: C.iris });
 
 const steps = [
   ['file-spreadsheet', 'upload\n+ totals'],
