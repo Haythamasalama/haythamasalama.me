@@ -35,7 +35,14 @@
   });
 
   // Live from GitHub; falls back to the maintained and created projects alone.
-  const { highlights: openSource } = await useOpenSource();
+  const { highlights: openSource, summary: openSourceSummary, activity: openSourceActivity, reach: openSourceReach } = await useOpenSource();
+
+  /** A few live numbers under the summary, when GitHub answered. */
+  const openSourceStats = computed(() => [
+    openSourceActivity.value && { value: `${openSourceActivity.value.totals.pullRequests}`, label: 'merged pull requests' },
+    openSourceActivity.value && { value: `${openSourceActivity.value.totals.repositories}`, label: 'repositories' },
+    openSourceReach.value && { value: formatCount(openSourceReach.value), label: 'stars on those projects' }
+  ].filter(stat => !!stat));
 
   // The same groups as the About page, with a few tools from each.
   const stackRows = computed(() => skillGroups
@@ -134,10 +141,20 @@
       <SectionTitle id="open-source" class="mb-3">
         Open source
       </SectionTitle>
-      <p class="mb-3 text-[15px] leading-[1.65] text-muted">
-        I like fixing the tools I depend on.
+      <p class="text-[15px] leading-[1.65] text-muted">
+        {{ openSourceSummary || 'I like fixing the tools I depend on.' }}
       </p>
-      <div class="flex flex-col">
+      <dl v-if="openSourceStats.length" class="mt-4 flex flex-wrap gap-x-8 gap-y-3">
+        <div v-for="stat in openSourceStats" :key="stat.label" class="flex flex-col-reverse gap-0.5">
+          <dt class="text-xs text-faint">
+            {{ stat.label }}
+          </dt>
+          <dd class="font-mono text-lg font-medium">
+            {{ stat.value }}
+          </dd>
+        </div>
+      </dl>
+      <div class="mt-3 flex flex-col">
         <NuxtLink
           v-for="item in openSource"
           :key="item.key"
@@ -145,6 +162,7 @@
           class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
         >
           <img
+            v-if="!item.icon && item.avatar"
             :src="item.avatar"
             alt=""
             width="22"
@@ -152,6 +170,9 @@
             loading="lazy"
             class="avatar-mono size-[22px] shrink-0 rounded-md"
           >
+          <span v-else class="flex size-[22px] shrink-0 items-center justify-center rounded-md bg-line text-mark">
+            <Icon :name="item.icon ?? 'lucide:git-pull-request'" class="size-3.5" />
+          </span>
           <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
             <span class="font-mono text-sm">{{ item.name }}</span>
             <span class="text-[13px] text-faint">{{ item.note }}</span>

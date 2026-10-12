@@ -51,6 +51,10 @@
   --color-azure-900: #0d3261;
   --color-azure-950: #052144;
 
+  /* Every transition-* utility: quick to start, soft to settle (the same curve as --ease-out-soft). */
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+
   --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-live: live 2.2s ease-out infinite;
 
@@ -96,6 +100,11 @@
   --color-mark: var(--mark);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
+}
+
+/* Motion curve for hand-written transitions; defined outside @theme so Tailwind always emits it. */
+:root {
+  --ease-out-soft: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 :root,
@@ -165,7 +174,7 @@
   }
 
   a {
-    transition: color 0.15s ease, background-color 0.15s ease;
+    transition: color 0.2s var(--ease-out-soft), background-color 0.2s var(--ease-out-soft);
   }
 
   :where(a, button, summary):focus-visible {
@@ -238,11 +247,29 @@
 .go .arrow {
   display: inline-block;
   margin-left: 6px;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s var(--ease-out-soft);
 }
 
 .go:hover .arrow {
   transform: translateX(3px);
+}
+
+/* Mobile menu: links settle in one after another (delay set per item with --i). */
+.menu-item {
+  animation: menu-in 0.32s var(--ease-out-soft) both;
+  animation-delay: calc(var(--i, 0) * 28ms + 40ms);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Signature draw animation */
@@ -280,7 +307,8 @@
   }
 
   .animate-live,
-  .animate-rise {
+  .animate-rise,
+  .menu-item {
     animation: none;
   }
 

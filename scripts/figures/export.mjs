@@ -3,7 +3,8 @@
 //   export.html   every figure on a white card with the site address, for
 //                 LinkedIn, Medium and X; screenshot each `.shot` to get a PNG
 // Usage: npm run figures:export            (all figures)
-//        npm run figures:export -- winch   (only figures whose path contains "winch")
+//        npm run figures:export -- winch   (only figures whose path contains "winch",
+//                                           written as preview-winch.html and export-winch.html)
 import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { renderSketch } from '../../modules/sketch-figures/render.ts';
@@ -63,9 +64,12 @@ const preview = rendered.map(({ file, svg }) => ['dark', 'light'].map(theme => `
 
 const shots = rendered.map(({ id, svg }) => `<div class="shot sketch" id="${id}">${svg}<p class="site">haythamasalama.me</p></div>`).join('\n');
 
-mkdirSync(out, { recursive: true });
-writeFileSync(join(out, 'preview.html'), `${head}\n${preview}\n`);
-writeFileSync(join(out, 'export.html'), `${head}\n<div style="padding: 40px; background: #e5e5e5; display: flex; flex-direction: column; gap: 40px; align-items: flex-start">\n${shots}\n</div>\n`);
+// A filtered run gets its own files, so several can run side by side.
+const suffix = only ? `-${only.replace(/[^a-z0-9-]+/gi, '-')}` : '';
 
-console.log(`${rendered.length} figure(s) → ${join(out, 'preview.html')} and export.html`);
+mkdirSync(out, { recursive: true });
+writeFileSync(join(out, `preview${suffix}.html`), `${head}\n${preview}\n`);
+writeFileSync(join(out, `export${suffix}.html`), `${head}\n<div style="padding: 40px; background: #e5e5e5; display: flex; flex-direction: column; gap: 40px; align-items: flex-start">\n${shots}\n</div>\n`);
+
+console.log(`${rendered.length} figure(s) → ${join(out, `preview${suffix}.html`)} and export${suffix}.html`);
 console.log(`ids for screenshots: ${rendered.map(({ id }) => `#${id}`).join(' ')}`);

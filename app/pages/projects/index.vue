@@ -68,12 +68,11 @@
                 {{ project.description }}
               </p>
               <div v-if="project.page || project.links.length" class="mt-1.5 flex flex-wrap items-center gap-x-5 gap-y-1">
-                <NuxtLink
-                  v-if="project.page"
-                  :to="project.page"
-                  class="go inline-flex min-h-11 items-center rounded-full border border-chip px-4 text-sm text-fg transition-colors hover:bg-surface"
-                >
-                  About the project<span class="arrow" aria-hidden="true">→</span>
+                <!-- A small pill inside a 44px-tall link, so the tap target stays large. -->
+                <NuxtLink v-if="project.page" :to="project.page" class="go group/more inline-flex min-h-11 items-center">
+                  <span class="inline-flex items-center rounded-full border border-line px-3 py-1 text-[13px] text-muted transition-colors group-hover/more:border-chip group-hover/more:text-fg">
+                    About the project<span class="arrow" aria-hidden="true">→</span>
+                  </span>
                 </NuxtLink>
                 <NuxtLink
                   v-for="link in project.links"

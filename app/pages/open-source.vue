@@ -107,45 +107,45 @@
       <SectionTitle id="spotlight" class="mb-4">
         Spotlight
       </SectionTitle>
-      <article class="flex flex-col gap-6 rounded-[18px] border border-line bg-raised p-5 md:p-7">
-        <div class="flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-4">
+      <article class="flex flex-col gap-4 rounded-2xl border border-line bg-raised p-4 md:p-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
             <img
               v-if="spotlight.avatar"
               :src="spotlight.avatar"
               alt=""
-              width="52"
-              height="52"
-              class="avatar-mono size-[46px] rounded-xl md:size-[52px] md:rounded-[13px]"
+              width="40"
+              height="40"
+              class="avatar-mono size-9 rounded-lg md:size-10 md:rounded-[10px]"
             >
             <div class="flex flex-col gap-0.5">
-              <h3 class="text-xl font-semibold tracking-[-0.01em] md:text-[22px]">
+              <h3 class="text-base font-semibold tracking-[-0.01em] md:text-[17px]">
                 <NuxtLink :to="spotlight.url" class="link">
                   {{ spotlight.name ?? spotlight.repo }}
                 </NuxtLink>
               </h3>
-              <span class="font-mono text-[13px] text-faint">{{ spotlight.repo }}</span>
+              <span class="font-mono text-xs text-faint">{{ spotlight.repo }}</span>
             </div>
           </div>
           <span
             v-if="spotlight.badge"
-            class="border-gradient inline-flex h-[30px] items-center gap-2 rounded-full px-3 font-mono text-[11px] font-medium tracking-[0.1em] uppercase"
+            class="border-gradient inline-flex h-6 items-center gap-1.5 rounded-full px-2.5 font-mono text-[10px] font-medium tracking-[0.1em] uppercase"
           >
-            <span class="size-[7px] rounded-full bg-linear-135 from-iris-500 to-azure-500" aria-hidden="true" />
+            <span class="size-1.5 rounded-full bg-linear-135 from-iris-500 to-azure-500" aria-hidden="true" />
             {{ spotlight.badge }}
           </span>
         </div>
 
-        <p v-if="spotlight.note" class="text-[15px] leading-[1.7] text-soft md:text-base">
+        <p v-if="spotlight.note" class="text-sm leading-[1.65] text-soft">
           {{ spotlight.note }}
         </p>
 
-        <dl v-if="spotlightStats.length" class="grid grid-cols-2 gap-5 md:grid-cols-4">
+        <dl v-if="spotlightStats.length" class="grid grid-cols-2 gap-x-5 gap-y-3 md:grid-cols-4">
           <div v-for="stat in spotlightStats" :key="stat.label" class="flex flex-col-reverse justify-end gap-0.5">
             <dt class="font-mono text-[11px] tracking-[0.06em] text-faint uppercase">
               {{ stat.label }}
             </dt>
-            <dd class="font-mono text-[22px] font-medium md:text-2xl">
+            <dd class="font-mono text-lg font-medium">
               {{ stat.value }}
             </dd>
           </div>
@@ -157,9 +157,9 @@
             v-for="pr in latest"
             :key="pr.url"
             :to="pr.url"
-            class="link-muted flex min-h-10 items-baseline gap-3 py-1.5 text-sm"
+            class="link-muted flex min-h-9 items-baseline gap-3 py-1 text-[13px]"
           >
-            <Icon name="lucide:git-merge" class="relative top-0.5 size-[15px] shrink-0" />
+            <Icon name="lucide:git-merge" class="relative top-0.5 size-3.5 shrink-0" />
             <span class="shrink-0 font-mono text-xs text-faint">#{{ pr.number }}</span>
             <span class="min-w-0 flex-auto">{{ pr.title }}</span>
             <time :datetime="pr.date" class="hidden shrink-0 font-mono text-xs text-faint sm:block">
@@ -168,12 +168,12 @@
           </NuxtLink>
         </div>
 
-        <div v-if="spotlight.links?.length" class="flex flex-wrap gap-x-[22px]">
+        <div v-if="spotlight.links?.length" class="-mt-1 -mb-2 flex flex-wrap gap-x-5">
           <NuxtLink
             v-for="link in spotlight.links"
             :key="link.to"
             :to="link.to"
-            class="link-muted inline-flex min-h-11 items-center gap-1.5 text-sm first:text-fg"
+            class="link-muted inline-flex min-h-11 items-center gap-1.5 text-[13px] first:text-fg"
           >
             {{ link.label }}
             <Icon name="lucide:arrow-up-right" class="size-3.5" />

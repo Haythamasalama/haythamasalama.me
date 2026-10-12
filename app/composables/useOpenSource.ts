@@ -116,28 +116,58 @@ export async function useOpenSource () {
         key: entry.id,
         name: entry.repo,
         avatar: entry.avatar,
+        icon: entry.icon,
         url: entry.github?.pullRequestsUrl ?? entry.url,
         // The role says how long, e.g. "Maintainer · 2 months".
         note: [entry.role ?? 'Maintainer', entry.github?.rank && `#${entry.github.rank} contributor`].filter(Boolean).join(' · ')
       })),
-      ...repos.value
-        .filter(repo => !maintainedNames.includes(repo.name.toLowerCase()) && repo.pullRequests.length)
-        .slice(0, 4)
-        .map(repo => ({
-          key: repo.name,
-          name: repo.name,
-          avatar: repo.avatar,
-          url: repo.pullRequestsUrl,
-          note: plural(repo.pullRequests.length, 'pull request')
-        })),
+      // Live: my busiest repositories. Without GitHub: the featured ones, so the list never runs dry.
+      ...(repos.value.length
+        ? repos.value
+            .filter(repo => !maintainedNames.includes(repo.name.toLowerCase()) && repo.pullRequests.length)
+            .slice(0, 4)
+            .map(repo => ({
+              key: repo.name,
+              name: repo.name,
+              avatar: repo.avatar as string | undefined,
+              icon: undefined as string | undefined,
+              url: repo.pullRequestsUrl,
+              note: plural(repo.pullRequests.length, 'pull request')
+            }))
+        : contributors.value
+            .filter(entry => entry.featured)
+            .map(entry => ({
+              key: entry.id,
+              name: entry.repo,
+              avatar: entry.avatar,
+              icon: entry.icon,
+              url: entry.url,
+              note: 'Contributor'
+            }))),
       ...created.value.map(entry => ({
         key: entry.id,
         name: entry.repo,
         avatar: entry.avatar,
+        icon: entry.icon,
         url: entry.url,
         note: 'Creator'
       }))
     ];
+  });
+
+  /** One line for the home page: the role first, then the projects I've sent pull requests to. */
+  const summary = computed(() => {
+    const lead = maintained.value[0];
+    const rank = lead?.github?.rank;
+    const others = contributors.value.filter(entry => entry.featured).map(entry => entry.name ?? entry.repo);
+    const role = lead && `On the ${lead.name ?? lead.repo} team${rank ? ` as its #${rank} contributor` : ''}`;
+    const list = others.length > 1 ? `${others.slice(0, -1).join(', ')} and ${others.at(-1)}` : others[0];
+
+    if (role && list) {
+      return `${role}, with pull requests to ${list}.`;
+    }
+
+    return role ? `${role}.` : list ? `Pull requests to ${list}.` : '';
   });
 
   return {
@@ -152,6 +182,7 @@ export async function useOpenSource () {
     issueRepos,
     discussions,
     created,
-    highlights
+    highlights,
+    summary
   };
 }

@@ -75,13 +75,13 @@ Icons are Lucide names, or `simple-icons:<name>` for product logos. A missing na
 
 ```bash
 npm run figures -- <name>          # rebuild matching figures from their scripts
-npm run figures:export -- <name>   # write .cache/figures/preview.html and export.html
+npm run figures:export -- <name>   # write .cache/figures/preview-<name>.html and export-<name>.html
 npm run figures:serve              # serve them on http://localhost:4321 (or the "figures" launch config)
 ```
 
-1. Open `http://localhost:4321/preview.html`. Check the figure in both themes for overlaps, cut-off labels and crossing arrows, and iterate.
+1. Open `http://localhost:4321/preview-<name>.html` (or `preview.html` for all figures). Check the figure in both themes for overlaps, cut-off labels and crossing arrows, and iterate.
 2. Run `npm run build`, then look at it on the real page, at desktop and 375px. On a phone it scrolls sideways inside its card.
 3. Export images for social posts:
-   - Open `http://localhost:4321/export.html` at a 1400px-wide viewport and wait for `document.fonts.ready`.
+   - Open `http://localhost:4321/export-<name>.html` at a 1400px-wide viewport and wait for `document.fonts.ready`.
    - Screenshot the element `#<project>--<name>` at device scale as **WebP**.
    - Save it to `claudedocs/projects/<slug>/<name>.webp`. Playwright blocks `file://`, so always go through the server.
