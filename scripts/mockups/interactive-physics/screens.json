@@ -1,0 +1,29 @@
+{
+  "width": 880,
+  "height": 330,
+  "cards": [
+    {
+      "src": "../../../public/projects/interactive-physics/unit.webp",
+      "x": 40,
+      "y": 60,
+      "w": 380,
+      "z": 1,
+      "tilt": 24
+    },
+    {
+      "src": "../../../public/projects/interactive-physics/test.webp",
+      "x": 460,
+      "y": 60,
+      "w": 380,
+      "z": 1,
+      "tilt": -24
+    },
+    {
+      "src": "../../../public/projects/interactive-physics/law-solver.webp",
+      "x": 200,
+      "y": 30,
+      "w": 480,
+      "z": 3
+    }
+  ]
+}

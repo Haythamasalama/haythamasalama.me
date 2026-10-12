@@ -370,7 +370,8 @@
   --sk-azure-tint: color-mix(in oklab, var(--color-azure-500) 14%, transparent);
   --sk-on-accent: #ffffff;
 
-  & svg {
+  /* Only the drawing itself: icons are nested SVGs with their own size. */
+  & > div > svg {
     display: block;
     width: 100%;
     height: auto;
