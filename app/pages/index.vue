@@ -89,16 +89,22 @@
       </GoLink>
 
       <p
-        class="mt-4 flex animate-rise items-start gap-2.5 text-sm leading-[1.55] text-muted [animation-delay:.35s] md:mt-3 md:inline-flex md:items-center md:gap-3 md:rounded-full md:border md:border-line md:py-2 md:pr-3.5 md:pl-3"
+        class="mt-4 flex w-fit animate-rise items-start gap-2.5 rounded-2xl border border-line py-2 pr-3.5 pl-3 text-sm leading-[1.55] text-muted [animation-delay:.35s] sm:items-center sm:gap-3 sm:rounded-full md:mt-3"
       >
         <span
-          class="mt-[7px] inline-block size-2 shrink-0 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500 md:mt-0"
+          class="mt-[7px] inline-block size-2 shrink-0 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500 sm:mt-0"
           aria-hidden="true"
         />
         <span>
           <span class="text-fg">Now</span> · at
-          <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink>, remote from Cairo, and building
-          <NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink> on the side
+          <span class="inline-flex items-center gap-1.5">
+            <BrandLogo name="winch" :scale="0.6" class="text-mark" />
+            <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink></span>, remote from Cairo, and building
+          <span class="inline-flex items-center gap-1.5">
+            <BrandLogo name="runarks" :scale="0.6" class="text-mark" />
+            <NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink>
+          </span>
+          on the side
         </span>
       </p>
 
