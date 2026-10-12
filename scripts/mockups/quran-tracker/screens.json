@@ -1,0 +1,41 @@
+{
+  "width": 880,
+  "height": 330,
+  "cards": [
+    {
+      "src": "../../../public/projects/quran-tracker/weekly-record.webp",
+      "crop": [
+        400,
+        0,
+        1360,
+        618
+      ],
+      "x": 36,
+      "y": 66,
+      "w": 400,
+      "z": 1,
+      "tilt": 24
+    },
+    {
+      "src": "../../../public/projects/quran-tracker/test-entry.webp",
+      "crop": [
+        400,
+        0,
+        1360,
+        618
+      ],
+      "x": 444,
+      "y": 66,
+      "w": 400,
+      "z": 1,
+      "tilt": -24
+    },
+    {
+      "src": "../../../public/projects/quran-tracker/dashboard.webp",
+      "x": 170,
+      "y": 30,
+      "w": 540,
+      "z": 3
+    }
+  ]
+}
