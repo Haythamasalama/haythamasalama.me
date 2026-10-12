@@ -98,9 +98,9 @@
         <span>
           <span class="text-fg">Now</span> · at
           <!-- Each logo sits on the text's baseline, and stays on the same line as its name. -->
-          <span class="whitespace-nowrap"><span class="mr-1.5 inline-block align-[-1px] text-mark"><BrandLogo name="winch" :scale="0.6" /></span><NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink></span>,
+          <span class="whitespace-nowrap"><span class="mr-2 ml-1 inline-block align-[-1px] text-mark"><BrandLogo name="winch" :scale="0.6" /></span><NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink></span>,
           remote from Cairo, and building
-          <span class="whitespace-nowrap"><span class="mr-1.5 inline-block align-[-1px] text-mark"><BrandLogo name="runarks" :scale="0.55" /></span><NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink></span>
+          <span class="whitespace-nowrap"><span class="mr-2 ml-1 inline-block align-[-1px] text-mark"><BrandLogo name="runarks" :scale="0.55" /></span><NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink></span>
           on the side
         </span>
       </p>
