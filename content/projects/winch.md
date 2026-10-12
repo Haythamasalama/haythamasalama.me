@@ -4,16 +4,16 @@ description: 'How I set up WINCH’s business and carrier platforms, moved its b
 
 ## Overview
 
-WINCH is a logistics platform in Saudi Arabia. Businesses use it to move dry, refrigerated and palletised goods and vehicles, to rent trucks with or without a driver and to store goods; carriers use it to run their fleets, trips and deliveries. It reaches people through a business app and dashboard, a carrier app and dashboard, a driver app and a control panel for WINCH's own teams, all served by one back end. I joined in 2023 as a senior software engineer.
+WINCH is a Saudi logistics platform for moving goods and vehicles, renting trucks and storing goods. Businesses, carriers, drivers and WINCH's own teams each have an app or dashboard, all served by one back end. I joined in 2023 as a senior software engineer.
 
 ## The problem
 
-When I joined, the back end already ran WINCH's own operations, but four things were missing.
+When I joined, the back end ran WINCH's own operations, but four things were missing.
 
-- **No business or carrier platform.** Businesses and carriers had no apps or dashboards of their own. They needed their own APIs, permissions and screens on top of the same orders, documents and money.
-- **A structure that could grow.** Most of the code lived in one folder with blurred boundaries, so every change touched more than it should. It had to move into domains, and stay clean as the team and the product grew.
-- **Core features solved again and again.** Notifications, exports and security were handled inside each feature, each in its own way, instead of by one engine everything could use.
-- **No common way to integrate.** WINCH talks to many outside platforms: government services, payment gateways, messaging providers and AI models. Each was wired in differently, with no shared configuration and no record of what was sent and received.
+- **No business or carrier platform.** Neither had apps, dashboards or APIs of their own.
+- **No structure that could grow.** Most code lived in one folder, so every change touched too much.
+- **Core features solved again and again.** Each feature handled notifications, exports and security its own way.
+- **No common way to integrate.** Each outside platform was wired in differently, with no record of the calls.
 
 ## The solution
 
@@ -21,22 +21,21 @@ When I joined, the back end already ran WINCH's own operations, but four things 
 Features stopped talking to vendors directly; shared components do it for them.
 ::
 
-**The business and carrier platforms.** I set up the APIs behind the business app and dashboard and the carrier app and dashboard, and built the business dashboard itself, so businesses order and follow their shipments and carriers run their trips, drivers and earnings in tools made for them.
+**The business and carrier platforms.** Businesses and carriers now have their own APIs, apps and dashboards on the same back end.
 
-**Domains that stay clean.** Together with the team I moved the back end into more than 50 domains, each with a contract the others call, and I keep the structure consistent through the rules everyone follows and the reviews that check them.
+**Domains that stay clean.** The team and I moved the back end into more than 50 domains, each behind a contract.
 
-**Core features as generic engines.** Notifications, exports and security each became one engine that every feature uses, so a new message, a new export or a new kind of user is a small addition instead of new plumbing.
+**Core features as generic engines.** Notifications, exports and security are each one engine that every feature uses.
 
-**One engine for every integration.** Every outside platform is now an *app*: configured in one place, called through one pipeline and recorded call by call. The integrations themselves are written by the team; the engine makes each one small, predictable and safe to add.
+**One engine for every integration.** Every outside platform is an app, configured in one place and recorded call by call.
 
 ## What I did
 
-- Set up the business and carrier platforms: their APIs, and the business dashboard, which I set up in 2023 and have written most of since.
-- Designed and built the notification system, the security domain and the foundation of the export system.
-- Designed and built the integration engine and moved the existing integrations onto it, so the team now adds a platform by writing an app.
-- Evolved the Domain-Driven Design structure the back end follows, with typed DTOs, contracts, services and actions, a panel per app and a shared kernel, and led the move of the legacy code into it, mentoring engineers along the way.
+- Set up the business and carrier platforms and their APIs, and have written most of the business dashboard.
+- Designed and built the notification system, the security domain, the integration engine and the foundation of the export system.
+- Evolved the Domain-Driven Design structure and led the move of the legacy code into it, mentoring the team along the way.
 - Proposed the shared UI package both dashboards use, led its extraction and maintain it.
-- Set up the team's AI-assisted workflow: the rules coding agents follow, the agents that scaffold, review and refactor, and the engineering handbook that teaches the same rules to people.
+- Set up the team's AI-assisted workflow: the rules, agents and skills that AI coding agents follow.
 - Lead small teams that take features to production, and review the pull requests that keep the structure consistent.
 
 ## What it offers
@@ -46,28 +45,22 @@ Features stopped talking to vendors directly; shared components do it for them.
 items:
   - icon: lucide:package
     title: Orders from request to delivery
-    text: Businesses create orders one by one or in bulk from a spreadsheet, and follow each one in real time.
+    text: Create orders one by one or from a spreadsheet, and follow each in real time.
   - icon: lucide:receipt
     title: Clear pricing
-    text: Quotations or fixed prices, with the cost of every trip broken down.
-  - icon: lucide:folder-open
-    title: Documents in one place
-    text: Contracts, invoices, delivery notes and proofs of delivery, attached to the order they belong to.
+    text: Quotations or fixed prices, with every trip's cost broken down.
   - icon: lucide:landmark
     title: Government paperwork built in
-    text: Electronic waybills and driving authorisations issued from the dashboard, and e-invoices to ZATCA's standard.
+    text: Electronic waybills, driving authorisations and e-invoices to ZATCA's standard.
   - icon: lucide:truck
     title: Carrier operations
-    text: Carriers assign drivers and vehicles to orders and follow every trip's route, load and status.
+    text: Carriers assign drivers and vehicles and follow every trip.
   - icon: lucide:wallet
     title: Earnings and finance
     text: Statements, compensation requests, and wallet top-ups and withdrawals.
   - icon: lucide:plug
     title: An API for businesses
-    text: Companies connect their own ERP and systems to WINCH through an API.
-  - icon: lucide:key-round
-    title: Team access
-    text: Several users per company, each with the permissions of their role.
+    text: Companies connect their ERP and other systems to WINCH.
 ---
 ::
 
@@ -77,7 +70,7 @@ items:
 Every app talks to one back end, and only the integration engine talks to the outside world.
 ::
 
-One back end serves every app, with an API for each. Underneath are the domains and the four shared components. Queues carry the work nobody should wait for (notifications, exports and other heavy jobs), a scheduler runs the recurring tasks, and live tracking runs on its own real-time server.
+One back end serves every app through its own API, on top of the domains and four shared components. Queues and a scheduler run the heavy and recurring work.
 
 ### The business and carrier platforms
 
@@ -85,7 +78,7 @@ One back end serves every app, with an API for each. Underneath are the domains 
 One codebase, two products, and a shared component library underneath.
 ::
 
-Each platform has its own API and permissions on top of the same domains. The two dashboards share one front-end codebase and a shared UI package, so a fix or a new component reaches both products at once, and an open tab picks up a new release cleanly.
+Both dashboards share one codebase and UI package, so a fix or a new component reaches both products at once.
 
 ### Moving to Domain-Driven Design
 
@@ -93,15 +86,11 @@ Each platform has its own API and permissions on top of the same domains. The tw
 The legacy folder emptied while the product kept shipping.
 ::
 
-Every domain has the same layers and a contract as its only public door, so one team can change a domain without breaking another. When I joined, only a few domains existed; the team moved the legacy code domain by domain without pausing the product, and the same rules keep new code in its place.
+Every domain has the same layers and a contract as its only public door, so one team can change a domain without breaking another. The team moved the legacy code domain by domain without pausing the product.
 
 ### Notifications, exports and security
 
-**Notifications.** One call sends a message on any channel (push, in-app, email, SMS, WhatsApp or Telegram), in the user's language and by their preferences, and a broken message is stopped before it goes out. A new message is now a template, not new code.
-
-**Exports.** Any list can be exported to Excel, PDF or ZIP in the background, and a new export only describes its columns. I built the foundation, and the team has grown it across the platform.
-
-**Security.** One security domain serves every kind of user: login in steps with one-time codes, limits on sensitive actions, sessions that can be revoked, and support access that needs a code of its own.
+Each is one engine that every feature uses: a new message is a template, a new export only describes its columns, and every kind of user signs in through the same security domain.
 
 ### The integration engine
 
@@ -109,7 +98,7 @@ Every domain has the same layers and a contract as its only public door, so one 
 Every platform WINCH talks to is an app in one engine, and every call it makes is recorded.
 ::
 
-Every outside platform is an app in one engine, with its own settings, limits and a record of every call. For the team, adding a platform means writing a small, predictable app instead of new plumbing. For operations, every call can be traced, and an app can be switched off or limited without changing code.
+The team writes each integration, such as ZATCA, as a small app with its own settings and limits. Every call is recorded, and an app can be switched off without changing code.
 
 ## AI in the engineering workflow
 
@@ -117,11 +106,10 @@ Every outside platform is an app in one engine, with its own settings, limits an
 Agents follow the same rules as the engineers, and load only the ones a task needs.
 ::
 
-My goal was to let the whole team work with AI coding agents without losing the structure we had built. I wrote the rules the agents follow, arranged so an agent reads only what a task needs, and set up agents that scaffold features, review changes and refactor code against those rules. The engineering handbook teaches the same rules to people.
+I set up the rules, agents and skills so the whole team can work with AI coding agents without losing the structure we built.
 
 **What it changed**
 
-- New features start in the right shape, because the scaffold follows the same structure the team reviews against.
-- Reviews can focus on design and behaviour, because structure and formatting are checked before a change is opened.
-- New engineers learn the codebase from the same rules the agents use, so everyone works the same way from their first week.
-- Moving legacy code into the domain structure became routine, repeatable work instead of a project of its own.
+- New features start in the right shape, because the scaffold follows the structure the team reviews against.
+- Reviews focus on design and behaviour, because structure and formatting are checked first.
+- New engineers learn the codebase from the same rules the agents follow.

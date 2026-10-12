@@ -1,9 +1,11 @@
 <script setup lang="ts">
+  definePageMeta({ wide: true });
+
   const route = useRoute();
   const path = route.path.replace(/\/$/, '');
 
   // The page body comes from content/projects/<slug>.md, the title, period and
-  // tags from the card with the same file name (content/projects/<slug>.yml).
+  // links from the card with the same file name (content/projects/<slug>.yml).
   const { data } = await useAsyncData(`project:${path}`, async () => {
     const [page, project] = await Promise.all([
       queryCollection('projectPages').path(path).first(),
@@ -28,13 +30,44 @@
       .filter(project => paths.has(`/${project.stem}`))
       .sort((a, b) => b.year - a.year || a.order - b.order)
       .slice(0, 3)
-      .map(project => ({ path: `/${project.stem}`, title: project.title, mark: project.mark, year: project.year }));
+      .map(project => ({ path: `/${project.stem}`, title: project.title, description: project.description, mark: project.mark, year: project.year }));
   });
 
   usePageSeo({
     title: data.value.project.title,
     description: data.value.page.description,
     type: 'article'
+  });
+
+  /** The card's context ("Faris Petrol · May 2021 – Dec 2022") as facts with an icon each. */
+  const facts = computed(() => (data.value?.project.context ?? '')
+    .split(' · ')
+    .filter(Boolean)
+    .map(text => ({ text, icon: /\d|now/.test(text) ? 'lucide:calendar' : 'lucide:briefcase-business' })));
+
+  /** The page's sections, for the list beside the text on wide screens. */
+  const sections = computed(() => (data.value?.page.body?.toc?.links ?? [])
+    .filter(link => link.depth === 2)
+    .map(link => ({ id: link.id, text: link.text })));
+
+  // Highlight the section being read: the last heading that has scrolled past the top third.
+  const active = ref(sections.value[0]?.id);
+
+  onMounted(() => {
+    const headings = sections.value
+      .map(section => document.getElementById(section.id))
+      .filter((heading): heading is HTMLElement => !!heading);
+
+    const update = () => {
+      const line = window.innerHeight / 3;
+      const passed = headings.filter(heading => heading.getBoundingClientRect().top <= line);
+
+      active.value = (passed.at(-1) ?? headings[0])?.id;
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    onBeforeUnmount(() => window.removeEventListener('scroll', update));
   });
 </script>
 
@@ -44,53 +77,82 @@
       <NuxtLink to="/projects" class="go link-muted -ml-0.5 inline-flex min-h-11 items-center text-sm">
         <span class="mr-1.5" aria-hidden="true">←</span> Projects
       </NuxtLink>
-      <div class="mt-4 flex items-start gap-4">
-        <LogoTile :mark="data.project.mark" :size="44" class="mt-0.5" />
-        <div class="min-w-0">
-          <h1 class="text-[28px] leading-tight font-semibold tracking-[-0.02em] text-balance md:text-[32px]">
-            {{ data.project.title }}
-          </h1>
-          <p v-if="data.project.context" class="mt-2 font-mono text-xs text-faint">
-            {{ data.project.context }}
-          </p>
-        </div>
+      <div class="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <LogoTile :mark="data.project.mark" :size="52" />
+        <h1 class="min-w-0 text-[28px] leading-tight font-semibold tracking-[-0.02em] text-balance md:text-[36px]">
+          {{ data.project.title }}
+        </h1>
       </div>
-      <p class="mt-6 text-[17px] leading-[1.7] text-soft">
+      <p class="mt-6 max-w-[62ch] text-[17px] leading-[1.7] text-soft md:text-lg">
         {{ data.project.description }}
       </p>
-      <div v-if="data.project.links.length" class="mt-3 flex flex-wrap gap-x-[18px]">
-        <NuxtLink
-          v-for="link in data.project.links"
-          :key="link.to"
-          :to="link.to"
-          class="link-underline inline-flex min-h-11 items-center text-sm"
+      <ul class="mt-6 flex flex-wrap items-center gap-2" aria-label="About this project">
+        <li
+          v-for="fact in facts"
+          :key="fact.text"
+          class="inline-flex min-h-8 items-center gap-2 rounded-full border border-line px-3 font-mono text-xs text-muted"
         >
-          {{ link.label }} ↗
-        </NuxtLink>
-      </div>
+          <Icon :name="fact.icon" class="size-3.5 text-mark" aria-hidden="true" />
+          {{ fact.text }}
+        </li>
+        <li v-for="link in data.project.links" :key="link.to">
+          <NuxtLink
+            :to="link.to"
+            class="inline-flex min-h-8 items-center gap-2 rounded-full border border-line px-3 font-mono text-xs text-soft transition-colors hover:border-chip hover:text-fg"
+          >
+            <Icon name="lucide:globe" class="size-3.5 text-mark" aria-hidden="true" />
+            {{ link.label }}
+            <span aria-hidden="true">↗</span>
+          </NuxtLink>
+        </li>
+      </ul>
     </header>
 
-    <ProseBody :value="data.page" class="mt-12" />
+    <div class="mt-12 border-t border-line pt-4 lg:grid lg:grid-cols-[176px_minmax(0,1fr)] lg:gap-14">
+      <!-- On wide screens, the sections stay beside the text and mark the one being read. -->
+      <nav v-if="sections.length" aria-label="On this page" class="hidden lg:block">
+        <div class="sticky top-10 pt-8">
+          <p class="eyebrow mb-3">
+            On this page
+          </p>
+          <ul class="flex flex-col border-l border-line">
+            <li v-for="section in sections" :key="section.id">
+              <a
+                :href="`#${section.id}`"
+                class="-ml-px flex min-h-9 items-center border-l py-1 pl-3.5 text-[13px] transition-colors"
+                :class="active === section.id ? 'border-fg text-fg' : 'border-transparent text-muted hover:text-fg'"
+                :aria-current="active === section.id ? 'location' : undefined"
+              >
+                {{ section.text }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-    <footer v-if="more?.length" class="mt-16 border-t border-line pt-8">
-      <SectionTitle class="mb-3">
+      <ProseBody :value="data.page" class="project-body min-w-0" />
+    </div>
+
+    <footer v-if="more?.length" class="mt-20 border-t border-line pt-10">
+      <SectionTitle class="mb-5">
         More projects
       </SectionTitle>
-      <div class="flex flex-col">
+      <div class="grid gap-3 sm:grid-cols-3">
         <NuxtLink
           v-for="item in more"
           :key="item.path"
           :to="item.path"
-          class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
+          class="flex flex-col gap-3 rounded-xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface"
         >
-          <LogoTile :mark="item.mark" :size="28" :icon-size="14" />
-          <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-            <span class="text-[15px]">{{ item.title }}</span>
+          <span class="flex items-center justify-between">
+            <LogoTile :mark="item.mark" :size="32" :icon-size="16" />
             <span class="font-mono text-xs text-faint">{{ item.year }}</span>
           </span>
+          <span class="text-[15px] leading-snug font-medium">{{ item.title }}</span>
+          <span class="line-clamp-3 text-[13px] leading-[1.55] text-muted">{{ item.description }}</span>
         </NuxtLink>
       </div>
-      <GoLink to="/projects" class="mt-1">
+      <GoLink to="/projects" class="mt-2">
         All projects
       </GoLink>
     </footer>

@@ -430,3 +430,18 @@
     height: auto;
   }
 }
+
+/* Project pages: each section starts below a thin rule, with room to breathe. */
+.project-body :where(h2) {
+  margin-top: 3.5rem;
+  padding-top: 2.75rem;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 1.5rem;
+}
+
+.project-body > :where(h2:first-child),
+.project-body :where(h2):first-of-type {
+  margin-top: 2rem;
+  padding-top: 0;
+  border-top: 0;
+}
