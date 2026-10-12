@@ -8,6 +8,7 @@ Personal website of Haytham A. Salama, built with Nuxt 4, Nuxt Content 3 and Tai
 - `npm run lint` / `npm run lint:fix`: ESLint 10 flat config (`@nuxt/eslint`)
 - `npm run typecheck`: `vue-tsc` through `nuxt typecheck`
 - `npm run build` / `npm run preview`: production build and preview
+- `npm run figures` / `figures:export` / `figures:serve`: rebuild the Excalidraw figures from `scripts/figures`, write previews to `.cache/figures`, and serve them on `http://localhost:4321`
 
 Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm run lint && npm run typecheck && npm run build`; CI runs the same three steps.
 
@@ -16,14 +17,16 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 - `app/`: Nuxt 4 source directory
   - `pages/`: one file per route; `articles/[...slug].vue` renders every article
   - `components/`: layout (`AppHeader`, `AppFooter`, `SignatureMark`) and small UI pieces (`LogoTile`, `TechChip`, `FilterChips`, `GoLink`, …)
-  - `components/content/`: components used from Markdown (`ProsePre` code blocks, `::alert-info`)
+  - `components/content/`: components used from Markdown (`ProsePre` code blocks, `::alert-info`, `::sketch-figure`, `::project-shot`)
   - `components/brand/`: pieces of the brand guidelines page
   - `assets/css/main.css`: theme tokens, utilities and animations
   - `assets/icons/`: local icon collection, used as `brand:<name>`
+  - `assets/figures/`: diagrams as `.excalidraw` files, one folder per project; `assets/fonts/excalifont/` is the hand-drawn face their labels use
   - `utils/`: signature stroke data, the logo registry (`logos.ts`) and date helpers
   - `composables/usePageSeo.ts`: title and description, mirrored to Open Graph and Twitter
   - `composables/useOpenSource.ts`: live GitHub activity merged with `content/contributions`, for Home and `/open-source`
   - `app.config.ts`: site name, URL, navigation and social links
+- `modules/sketch-figures/`: a local module that renders `.excalidraw` files to SVG at build time with rough.js, the way Excalidraw draws them
 - `server/api/`: `snippets.get.ts` (public gists, cached 1 hour) and `open-source.get.ts` (merged pull requests, issues and contributor rank, cached 6 hours); `server/utils/github.ts` is the shared GitHub client
 - `shared/tool-categories.ts`: the Tools page's areas (filter chips) and categories (section headings)
 - `shared/code-theme.ts`: the brand Shiki themes for articles and gists
@@ -38,6 +41,7 @@ Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm
 - Components are auto-imported by file name (`LogoTile.vue` is `<LogoTile>`, `brand/BrandSwatch.vue` is `<BrandSwatch>`).
 - Read content through `queryCollection` and add new front matter fields to the collection schema in `content.config.ts`.
 - Most content is data: add a YAML file to `content/projects`, `tools`, `uses`, `technologies`, `experience` or `contributions` rather than editing a page. The About page's headline, bio, organizations, awards and vision live in `content/profile.yml`.
+- A project gets its own page at `/projects/<file>` when `content/projects/<file>.md` sits next to its YAML card: the card gives the title, period and tags, the Markdown the story. Draw figures in Excalidraw and save them to `app/assets/figures/<project>/`; embed one with `::sketch-figure{name="<project>/<file>" alt="…"}`. Use Excalidraw's black `#1e1e1e` and greys (`#495057`, `#868e96`), Iris `#7f7cf2`, Azure `#4f9bff` and their tints (`#e9ebfe`, `#e2eeff`): the renderer maps them to theme tokens, so figures follow light and dark. Product screenshots go in `public/projects/<project>/` as `<name>-dark.webp` and `<name>-light.webp` for `::project-shot`; show demo data only.
 - A tool's `category` must be a name from `shared/tool-categories.ts`; add a category there (one line) rather than reusing a vague one.
 - Snippets are the owner's public GitHub gists and contributions come from GitHub search; never copy them into `content/`. `content/contributions` only holds what GitHub cannot provide: maintainer roles, discussions and projects he started.
 - Give every `useAsyncData` call a unique key. Nuxt 4 shares state between calls with the same key.
@@ -62,7 +66,24 @@ Dark by default with an optional light theme (`@nuxtjs/color-mode`, stored as `t
 - Respect `prefers-reduced-motion` for any new animation.
 - Verify UI changes visually at desktop and phone widths, in both themes, before and after the change.
 
-## Agent skills
+## Project skills and agents
+
+This repo's own skills (`.claude/skills/`) and agents (`.claude/agents/`) hold the rules for each part of the site. Load the skill before changing that part, or hand the task to its agent.
+
+| Skill | Covers |
+|---|---|
+| `site` | every page, its data and sections, building blocks, commands and how to verify |
+| `projects` | project cards and pages: the fixed structure, what to write and never write, screenshots, LinkedIn drafts |
+| `figures` | the Excalidraw-style figures: helpers, palette, layout, preview and WebP export |
+| `articles` | blog posts and their Medium, X and LinkedIn versions |
+| `open-source` | contributions and the open-source sections |
+| `tools` | the Tools page and its categories |
+| `brand` | the visual identity |
+| `content` | voice, honesty, attribution and what is safe to publish about employers |
+
+Agents: `project-writer`, `article-writer`, `open-source-editor`, `tools-editor`, `page-editor` (any other page) and `site-reviewer` (read-only review before shipping). Drafts and exports for LinkedIn, Medium and X go in `claudedocs/`, which is not committed.
+
+## Third-party agent skills
 
 Skills for this stack are pinned in `skills-lock.json` and are not committed: `nuxt`, `nuxt-content`, `nitro`, `vue`, `vue-best-practices`, `vue-debug-guides` (from `onmax/nuxt-skills`) and `web-design-guidelines` (from `vercel-labs/agent-skills`).
 

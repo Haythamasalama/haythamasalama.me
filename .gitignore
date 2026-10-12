@@ -15,6 +15,9 @@ logs
 
 # Misc
 .agents
+.claude/settings.local.json
+.claude/worktrees
+claudedocs
 .DS_Store
 .fleet
 .idea
