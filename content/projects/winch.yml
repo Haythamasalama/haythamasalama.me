@@ -1,23 +1,15 @@
-title: 'WINCH · Business and carrier platforms'
+title: 'WINCH · Saudi logistics platform'
 year: 2023
 context: Senior Software Engineer · Feb 2023 – now
-description: 'APIs for WINCH''s business app and Business Sector dashboard, and for its carriers app and Carriers dashboard. Behind them sit the components every product shares: security, notifications, and an integration engine for government platforms such as Tamm, Yaqeen and ZATCA, payment gateways and AI models. The back end follows a Domain-Driven Design structure, and the AI agents and skills the engineers code with keep new work inside it.'
+description: 'The back end of a Saudi logistics platform for businesses and carriers: more than 50 domains, and the integration engine I built for government services, payments and AI.'
 mark:
   logo: winch
-tags:
-- label: Laravel
-  icon: simple-icons:laravel
-- label: Vue
-  icon: simple-icons:vuedotjs
-- label: DDD
-- label: Integrations
-- label: AI agents
 links:
 - label: winch.sa
   to: https://winch.sa/
 order: 1
 highlight:
-  title: WINCH · Business and carrier platforms
-  description: The APIs behind the business and carrier apps and dashboards, plus the security, notification and integration components every product relies on.
+  title: 'WINCH · Saudi logistics platform'
+  description: 'The back end behind every app, and the integration engine I built to connect it to government services, payment gateways and AI models.'
   period: 2023 – now
   order: 1

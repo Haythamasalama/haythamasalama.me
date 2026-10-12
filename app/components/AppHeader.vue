@@ -10,6 +10,11 @@
   const isCurrentGroup = (item: (typeof nav)[number]) =>
     !!item.children?.some(child => route.path.startsWith(child.to));
 
+  /** The mobile menu as one flat list, so each row can settle in just after the one above it. */
+  const menuRows = computed(() => nav.flatMap(item => item.children
+    ? [{ group: true, label: item.label, to: '' }, ...item.children.map(child => ({ group: false, label: child.label, to: child.to }))]
+    : [{ group: false, label: item.label, to: 'to' in item ? item.to : '' }]));
+
   function toggleGroup (label: string) {
     openGroup.value = openGroup.value === label ? null : label;
   }
@@ -129,50 +134,50 @@
           aria-controls="mobile-menu"
           @click="menuOpen = !menuOpen"
         >
-          <Icon :name="menuOpen ? 'lucide:x' : 'lucide:equal'" class="size-5" />
+          <!-- Two lines that turn into a cross when the menu opens. -->
+          <span class="relative block h-3 w-[18px]" aria-hidden="true">
+            <span
+              class="absolute top-0.5 left-0 h-[1.5px] w-full rounded-full bg-current transition-[translate,rotate] duration-300 motion-reduce:transition-none"
+              :class="menuOpen && 'translate-y-[3.25px] rotate-45'"
+            />
+            <span
+              class="absolute right-0 bottom-0.5 h-[1.5px] rounded-full bg-current transition-[translate,rotate,width] duration-300 motion-reduce:transition-none"
+              :class="menuOpen ? 'w-full -translate-y-[3.25px] -rotate-45' : 'w-[11px]'"
+            />
+          </span>
         </button>
       </div>
     </div>
 
     <Transition
-      enter-active-class="transition-opacity duration-150"
+      enter-active-class="transition-opacity duration-200 motion-reduce:transition-none"
       enter-from-class="opacity-0"
-      leave-active-class="transition-opacity duration-100"
+      leave-active-class="transition-opacity duration-150 motion-reduce:transition-none"
       leave-to-class="opacity-0"
     >
       <div v-if="menuOpen" class="fixed inset-0 z-40 overflow-y-auto bg-bg md:hidden">
         <nav
           id="mobile-menu"
           aria-label="Primary"
-          class="mx-auto flex max-w-[880px] flex-col px-6 pt-20 pb-10 text-lg font-medium tracking-[-0.01em]"
+          class="mx-auto flex max-w-[880px] flex-col px-6 pt-20 pb-10 text-base tracking-[-0.01em]"
         >
-          <template v-for="item in nav" :key="item.label">
-            <template v-if="item.children">
-              <span class="eyebrow mt-6 mb-1">{{ item.label }}</span>
-              <NuxtLink
-                v-for="child in item.children"
-                :key="child.to"
-                :to="child.to"
-                class="link-muted flex min-h-11 items-center"
-                active-class="!text-fg"
-                @click="menuOpen = false"
-              >
-                {{ child.label }}
-              </NuxtLink>
-            </template>
+          <template v-for="(row, index) in menuRows" :key="row.label">
+            <span v-if="row.group" class="menu-item eyebrow mt-6 mb-1" :style="{ '--i': index }">{{ row.label }}</span>
             <NuxtLink
               v-else
-              :to="item.to"
-              class="link-muted flex min-h-11 items-center"
+              :to="row.to"
+              class="menu-item link-muted flex min-h-11 items-center"
+              :style="{ '--i': index }"
               active-class="!text-fg"
               @click="menuOpen = false"
             >
-              {{ item.label }}
+              {{ row.label }}
             </NuxtLink>
           </template>
           <NuxtLink
             :to="contact.to"
-            class="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-chip text-[15px] text-fg transition-colors hover:bg-surface"
+            class="menu-item mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-chip text-sm text-fg transition-colors hover:bg-surface"
+            :style="{ '--i': menuRows.length }"
             @click="menuOpen = false"
           >
             <Icon name="lucide:mail" class="size-4" />

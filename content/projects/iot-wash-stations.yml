@@ -1,0 +1,12 @@
+title: 'IoT car-wash stations'
+year: 2022
+context: Faris Petrol · Dec 2022 – Jan 2023
+description: 'Car-wash bays that start when a Faris card holder scans their card: a Raspberry Pi at every bay, driven by one server I built.'
+mark:
+  icon: simple-icons:raspberrypi
+order: 1
+highlight:
+  title: 'IoT car-wash stations'
+  description: 'A Raspberry Pi at every wash bay, driven by one server that checks the Faris card and runs the pump for the time left.'
+  period: '2022'
+  order: 5

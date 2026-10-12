@@ -366,30 +366,16 @@
       </div>
 
       <div class="mt-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-4">
-        <BrandFigure title="On touch." caption="Hover and focus fill it with Iris → Azure.">
-          <div
-            tabindex="0"
-            role="img"
-            aria-label="Signature that fills with Iris to Azure on hover and focus"
-            class="group flex h-[150px] flex-col items-center justify-center gap-3 rounded-2xl border border-[#1F1F23] bg-[#0F0F11] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-2"
-          >
-            <img
-              src="/brand-kit/haytham-signature-white-small.svg"
-              alt="Signature at rest"
-              width="110"
-              height="56"
-              loading="lazy"
-              class="block h-14 w-[110px] group-hover:hidden group-focus-visible:hidden"
-            >
+        <BrandFigure title="Gradient version." caption="For artwork such as covers; on the site it stays one colour.">
+          <div class="flex h-[150px] items-center justify-center rounded-2xl border border-[#1F1F23] bg-[#0F0F11]">
             <img
               src="/brand-kit/haytham-signature-gradient-small.svg"
-              alt="Signature on hover"
+              alt="Signature in the Iris to Azure gradient"
               width="110"
               height="56"
               loading="lazy"
-              class="hidden h-14 w-[110px] group-hover:block group-focus-visible:block"
+              class="block h-14 w-[110px]"
             >
-            <span class="font-mono text-[11px] text-[#85858F]">hover me</span>
           </div>
         </BrandFigure>
         <BrandFigure title="Clear space." caption="Keep ¼ of its width empty on every side.">
@@ -582,13 +568,13 @@
         Where the colour goes
       </h3>
       <ul class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] gap-3">
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="self-start rounded-md border-gradient px-[7px] py-0.5 font-mono text-[10.5px] tracking-[0.1em]">
             <span class="text-gradient">PRO</span>
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Badges</span> · PRO, LIVE, NEW</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="inline-flex items-center gap-2 text-[13px] text-fg">
             <span
               class="size-2 shrink-0 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500"
@@ -598,7 +584,7 @@
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Status dot</span> · with a soft pulse</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="flex gap-3.5 text-[13px] text-muted">
             <span>About</span>
             <span class="text-fg">Projects</span>
@@ -606,7 +592,7 @@
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Current page</span> · white, never coloured</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="flex flex-col gap-2">
             <span class="text-xs text-muted">Lesson 4 of 6</span>
             <span class="h-1 overflow-hidden rounded-xs bg-line">
@@ -615,7 +601,7 @@
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Progress</span> · a thin bar, never a block</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="flex items-center gap-3">
             <span
               class="inline-flex min-h-[30px] items-center rounded-lg px-3 text-[13px] outline-2 outline-offset-2 outline-iris-400 light:outline-iris-600"
@@ -625,7 +611,7 @@
           </span>
           <span class="text-[13px] text-muted"><span class="text-fg">Focus</span> · 400s on dark; hover stays neutral</span>
         </li>
-        <li class="flex h-[108px] flex-col justify-between rounded-[14px] border border-line p-[18px]">
+        <li class="flex min-h-[108px] flex-col justify-between gap-4 rounded-[14px] border border-line p-[18px]">
           <span class="text-[15px] text-soft">
             a <span class="text-gradient pr-0.5 font-serif text-xl italic">creative</span> word
           </span>
@@ -657,9 +643,9 @@
         05 · Icons &amp; the people I've worked with
       </SectionTitle>
       <p class="mb-5 text-[15px] leading-[1.7] text-muted">
-        Tools, technologies and companies are shown in one soft white on a Surface tile, so they sit quietly together
-        and never compete with the signature. Open-source projects keep their GitHub avatars, shown in greyscale so they
-        sit with everything else.
+        Tools, technologies and companies are shown in one soft colour on a Surface tile, so they sit quietly together and
+        never compete with the signature. Open-source projects keep their GitHub avatars, shown in greyscale so they sit
+        with everything else.
       </p>
       <ul aria-label="Logos and icons" class="flex flex-wrap gap-2">
         <li v-for="item in marks" :key="item.name" :title="item.name">

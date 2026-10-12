@@ -101,7 +101,6 @@ export default defineContentConfig({
         context: z.string().optional(),
         description: z.string(),
         mark,
-        tags: z.array(z.object({ label: z.string(), icon: z.string().optional() })).default([]),
         links: z.array(link).default([]),
         order: z.number(),
         /** Shown in "Selected work" on the home page when set. */
@@ -111,6 +110,21 @@ export default defineContentConfig({
           period: z.string(),
           order: z.number()
         }).optional()
+      })
+    }),
+
+    /**
+     * A project's own page at /projects/<file>: the story and figures behind
+     * the card in `projects`, which shares its file name and gives the title,
+     * period and tags.
+     */
+    projectPages: defineCollection({
+      type: 'page',
+      source: 'projects/*.md',
+      schema: z.object({
+        /** For search results and link previews; the card's description is usually too long. */
+        description: z.string(),
+        sitemap: defineSitemapSchema({ z })
       })
     }),
 

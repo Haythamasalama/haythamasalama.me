@@ -1,7 +1,7 @@
 repo: louislam/uptime-kuma
 name: Uptime Kuma
 url: https://github.com/louislam/uptime-kuma
-icon: simple-icons:uptimekuma
+avatar: /logos/uptime-kuma.svg
 kind: contributor
 featured: true
 description: A self-hosted monitoring tool.

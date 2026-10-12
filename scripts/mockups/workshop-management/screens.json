@@ -1,0 +1,47 @@
+{
+  "width": 880,
+  "height": 330,
+  "cards": [
+    {
+      "src": "~/Desktop/projects/web/farisOilCenterSys/images/Dashboard/cars.png",
+      "crop": [
+        0,
+        0,
+        1920,
+        904
+      ],
+      "x": 36,
+      "y": 66,
+      "w": 400,
+      "z": 1,
+      "tilt": 24
+    },
+    {
+      "src": "~/Desktop/projects/web/farisOilCenterSys/images/Dashboard/places.png",
+      "crop": [
+        0,
+        0,
+        1920,
+        904
+      ],
+      "x": 444,
+      "y": 66,
+      "w": 400,
+      "z": 1,
+      "tilt": -24
+    },
+    {
+      "src": "~/Desktop/projects/web/farisOilCenterSys/images/Dashboard/premissions.png",
+      "crop": [
+        0,
+        0,
+        1920,
+        961
+      ],
+      "x": 170,
+      "y": 30,
+      "w": 540,
+      "z": 3
+    }
+  ]
+}

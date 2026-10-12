@@ -9,28 +9,41 @@
   });
 
   const { data } = await useAsyncData('home', async () => {
-    const [projects, technologies, articles, uses] = await Promise.all([
+    const [projects, pages, technologies, articles, uses] = await Promise.all([
       queryCollection('projects').all(),
+      queryCollection('projectPages').select('path').all(),
       queryCollection('technologies').where('home', '=', true).order('order', 'ASC').all(),
       queryCollection('articles').order('date', 'DESC').limit(3).all(),
       queryCollection('uses').all()
     ]);
 
+    const paths = new Set(pages.map(page => page.path));
+
     return {
+      // Each links to its own page when it has one, otherwise to the list.
       work: projects
         .filter(project => project.highlight)
-        .sort((a, b) => a.highlight!.order - b.highlight!.order),
+        .sort((a, b) => a.highlight!.order - b.highlight!.order)
+        .map(project => ({ ...project, to: paths.has(`/${project.stem}`) ? `/${project.stem}` : '/projects' })),
       stack: technologies,
       articles,
+      // Each links to its section on /uses, where the name and note are written out.
       desk: uses
-        .flatMap(section => section.items)
+        .flatMap(section => section.items.map(item => ({ ...item, to: `/uses#${slugify(section.title)}` })))
         .filter(item => item.desk)
         .sort((a, b) => a.desk! - b.desk!)
     };
   });
 
   // Live from GitHub; falls back to the maintained and created projects alone.
-  const { highlights: openSource } = await useOpenSource();
+  const { highlights: openSource, summary: openSourceSummary, activity: openSourceActivity, reach: openSourceReach } = await useOpenSource();
+
+  /** A few live numbers under the summary, when GitHub answered. */
+  const openSourceStats = computed(() => [
+    openSourceActivity.value && { value: `${openSourceActivity.value.totals.pullRequests}`, label: 'merged pull requests' },
+    openSourceActivity.value && { value: `${openSourceActivity.value.totals.repositories}`, label: 'repositories' },
+    openSourceReach.value && { value: formatCount(openSourceReach.value), label: 'stars on those projects' }
+  ].filter(stat => !!stat));
 
   // The same groups as the About page, with a few tools from each.
   const stackRows = computed(() => skillGroups
@@ -71,30 +84,37 @@
         AI is part of how I work every day. I plan, write and review code with agents like Claude Code and Cursor, and
         at WINCH I write the agents and skills our engineers code with.
       </p>
+      <GoLink to="/about" class="mt-1 animate-rise [animation-delay:.3s]">
+        More about me
+      </GoLink>
 
       <p
-        class="mt-6 flex animate-rise items-start gap-2.5 text-sm leading-[1.55] text-muted [animation-delay:.35s] md:mt-7 md:inline-flex md:items-center md:gap-3 md:rounded-full md:border md:border-line md:py-2 md:pr-3.5 md:pl-3"
+        class="mt-4 flex w-fit animate-rise items-start gap-2.5 rounded-2xl border border-line py-2 pr-3.5 pl-3 text-sm leading-[1.55] text-muted [animation-delay:.35s] sm:items-center sm:gap-3 sm:rounded-full md:mt-3"
       >
         <span
-          class="mt-[7px] inline-block size-2 shrink-0 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500 md:mt-0"
+          class="mt-[7px] inline-block size-2 shrink-0 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500 sm:mt-0"
           aria-hidden="true"
         />
         <span>
           <span class="text-fg">Now</span> · at
-          <NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink>, remote from Cairo, and building
-          <NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink> on the side
+          <!-- Each logo is centred on the text, and stays on the same line as its name. -->
+          <span class="whitespace-nowrap"><span class="mr-2 ml-1 inline-block -translate-y-px align-middle text-mark"><BrandLogo name="winch" :scale="0.6" /></span><NuxtLink to="https://winch.sa/" class="link-underline">WINCH</NuxtLink></span>,
+          remote from Cairo, and building
+          <span class="whitespace-nowrap"><span class="mr-2 ml-1 inline-block -translate-y-px align-middle text-mark"><BrandLogo name="runarks" :scale="0.55" /></span><NuxtLink to="https://runarks.com/" class="link-underline">Runarks</NuxtLink></span>
+          on the side
         </span>
       </p>
 
-      <div class="mt-3.5 flex animate-rise flex-wrap gap-x-[22px] text-sm [animation-delay:.45s]">
+      <div class="mt-2 -ml-3 flex animate-rise flex-wrap [animation-delay:.45s]">
         <NuxtLink
           v-for="social in socials"
           :key="social.label"
           :to="social.to"
-          class="link-muted inline-flex min-h-11 items-center gap-2"
+          :aria-label="social.label"
+          :title="social.label"
+          class="link-muted inline-flex size-11 items-center justify-center"
         >
-          <Icon :name="social.icon" class="size-4 text-mark" />
-          {{ social.label }}
+          <Icon :name="social.icon" class="text-mark" :style="{ width: `${social.size}px`, height: `${social.size}px` }" />
         </NuxtLink>
       </div>
     </section>
@@ -107,7 +127,7 @@
         <NuxtLink
           v-for="project in data?.work"
           :key="project.id"
-          to="/projects"
+          :to="project.to"
           class="-mx-3 flex items-start gap-3.5 rounded-[10px] p-3 transition-colors hover:bg-surface"
         >
           <LogoTile :mark="project.mark" :size="36" />
@@ -129,10 +149,20 @@
       <SectionTitle id="open-source" class="mb-3">
         Open source
       </SectionTitle>
-      <p class="mb-3 text-[15px] leading-[1.65] text-muted">
-        I like fixing the tools I depend on.
+      <p class="text-[15px] leading-[1.65] text-muted">
+        {{ openSourceSummary || 'I like fixing the tools I depend on.' }}
       </p>
-      <div class="flex flex-col">
+      <dl v-if="openSourceStats.length" class="mt-4 flex flex-wrap gap-x-8 gap-y-3">
+        <div v-for="stat in openSourceStats" :key="stat.label" class="flex flex-col-reverse gap-0.5">
+          <dt class="text-xs text-faint">
+            {{ stat.label }}
+          </dt>
+          <dd class="font-mono text-lg font-medium">
+            {{ stat.value }}
+          </dd>
+        </div>
+      </dl>
+      <div class="mt-3 flex flex-col">
         <NuxtLink
           v-for="item in openSource"
           :key="item.key"
@@ -140,6 +170,7 @@
           class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
         >
           <img
+            v-if="!item.icon && item.avatar"
             :src="item.avatar"
             alt=""
             width="22"
@@ -147,6 +178,9 @@
             loading="lazy"
             class="avatar-mono size-[22px] shrink-0 rounded-md"
           >
+          <span v-else class="flex size-[22px] shrink-0 items-center justify-center rounded-md bg-line text-mark">
+            <Icon :name="item.icon ?? 'lucide:git-pull-request'" class="size-3.5" />
+          </span>
           <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
             <span class="font-mono text-sm">{{ item.name }}</span>
             <span class="text-[13px] text-faint">{{ item.note }}</span>
@@ -210,28 +244,23 @@
       </div>
     </section>
 
-    <section aria-labelledby="vision" class="pt-16">
-      <SectionTitle id="vision" class="mb-4">
-        Where I'm headed
-      </SectionTitle>
-      <p class="text-[17px] leading-[1.7] text-soft">
-        For years I've built platforms that move money and deliveries. My next step is
-        <span class="text-fg">a master's degree in artificial intelligence</span>, to build systems that learn from the
-        data these platforms already hold. Along the way, I'll keep giving back to the open-source tools I build on.
-      </p>
-      <GoLink to="/about" class="mt-2">
-        My story
-      </GoLink>
-    </section>
-
     <section aria-labelledby="desk" class="pt-16">
       <SectionTitle id="desk" class="mb-4">
         On my desk
       </SectionTitle>
       <ul aria-label="Daily tools" class="flex flex-wrap gap-2">
-        <li v-for="item in data?.desk" :key="item.name" :title="item.name">
-          <LogoTile :mark="item.mark" :size="44" />
-          <span class="sr-only">{{ item.name }}</span>
+        <li v-for="(item, index) in data?.desk" :key="item.name">
+          <NuxtLink :to="item.to" class="group/desk relative block rounded-[11px]">
+            <LogoTile :mark="item.mark" :size="44" />
+            <!-- A tooltip with the name, on hover and keyboard focus; the ends align to the edge so it never leaves the page. -->
+            <span
+              class="pointer-events-none absolute bottom-full z-10 mb-2 translate-y-1 rounded-md border border-line bg-raised px-2.5 py-1.5 text-xs whitespace-nowrap opacity-0 shadow-sm transition-[opacity,translate] group-hover/desk:translate-y-0 group-hover/desk:opacity-100 group-focus-visible/desk:translate-y-0 group-focus-visible/desk:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none"
+              :class="index === 0 ? 'left-0' : index === data!.desk.length - 1 ? 'right-0' : 'left-1/2 -translate-x-1/2'"
+            >
+              <span class="text-fg">{{ item.name }}</span>
+              <span class="text-faint"> · {{ item.note }}</span>
+            </span>
+          </NuxtLink>
         </li>
       </ul>
       <div class="mt-2 flex flex-wrap gap-x-[22px]">

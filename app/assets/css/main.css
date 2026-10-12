@@ -5,6 +5,16 @@
 @import '@fontsource-variable/geist-mono';
 @import '@fontsource/instrument-serif/latin-400-italic.css';
 
+/* Excalidraw's hand-drawn face, for the labels in figures only (Latin subset) */
+@font-face {
+  font-family: 'Excalifont';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/excalifont/Excalifont-Regular-latin.woff2') format('woff2');
+  unicode-range: U+20-7E, U+A0-A3, U+A5-A6, U+A8-AB, U+AD-B1, U+B4, U+B6-B8, U+BA-FF, U+131, U+152-153, U+2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+2013-2014, U+2018-201A, U+201C-201E, U+2020, U+2022, U+2024-2026, U+2030, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant light (&:where(.light, .light *));
 
@@ -40,6 +50,10 @@
   --color-azure-800: #134686;
   --color-azure-900: #0d3261;
   --color-azure-950: #052144;
+
+  /* Every transition-* utility: quick to start, soft to settle (the same curve as --ease-out-soft). */
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 
   --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-live: live 2.2s ease-out infinite;
@@ -86,6 +100,11 @@
   --color-mark: var(--mark);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
+}
+
+/* Motion curve for hand-written transitions; defined outside @theme so Tailwind always emits it. */
+:root {
+  --ease-out-soft: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 :root,
@@ -155,7 +174,7 @@
   }
 
   a {
-    transition: color 0.15s ease, background-color 0.15s ease;
+    transition: color 0.2s var(--ease-out-soft), background-color 0.2s var(--ease-out-soft);
   }
 
   :where(a, button, summary):focus-visible {
@@ -228,11 +247,29 @@
 .go .arrow {
   display: inline-block;
   margin-left: 6px;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s var(--ease-out-soft);
 }
 
 .go:hover .arrow {
   transform: translateX(3px);
+}
+
+/* Mobile menu: links settle in one after another (delay set per item with --i). */
+.menu-item {
+  animation: menu-in 0.32s var(--ease-out-soft) both;
+  animation-delay: calc(var(--i, 0) * 28ms + 40ms);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Signature draw animation */
@@ -241,11 +278,6 @@
   animation-name: draw;
   animation-timing-function: cubic-bezier(0.55, 0, 0.35, 1);
   animation-fill-mode: forwards;
-}
-
-.signature-link:hover .signature path,
-.signature-link:focus-visible .signature path {
-  stroke: var(--signature-gradient);
 }
 
 @keyframes draw {
@@ -270,7 +302,8 @@
   }
 
   .animate-live,
-  .animate-rise {
+  .animate-rise,
+  .menu-item {
     animation: none;
   }
 
@@ -318,4 +351,43 @@
   & :where(a):not(:where(h2, h3, h4) a):hover {
     text-decoration-color: var(--fg);
   }
+}
+
+/* Figures drawn from .excalidraw files (SketchFigure). The renderer maps
+   Excalidraw's colours to these, so a figure follows the theme. */
+.sketch {
+  --font-sketch: 'Excalifont', var(--font-sans);
+  --sk-ink: var(--fg);
+  --sk-soft: var(--soft);
+  --sk-muted: var(--muted);
+  --sk-line: var(--chip);
+  --sk-paper: var(--bg);
+  --sk-raised: var(--surface);
+  --sk-chip: var(--chip);
+  --sk-iris: var(--accent-2);
+  --sk-azure: var(--accent);
+  --sk-iris-tint: color-mix(in oklab, var(--color-iris-500) 16%, transparent);
+  --sk-azure-tint: color-mix(in oklab, var(--color-azure-500) 14%, transparent);
+  --sk-on-accent: #ffffff;
+
+  & svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Project pages: each section starts below a thin rule, with room to breathe. */
+.project-body :where(h2) {
+  margin-top: 3.5rem;
+  padding-top: 2.75rem;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 1.5rem;
+}
+
+.project-body > :where(h2:first-child),
+.project-body :where(h2):first-of-type {
+  margin-top: 2rem;
+  padding-top: 0;
+  border-top: 0;
 }

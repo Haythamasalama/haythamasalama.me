@@ -1,0 +1,20 @@
+title: 'Websites'
+year: 2016
+context: Freelance and Patric Technology · 2016 – 2023
+description: 'More than 16 freelance sites, Taemoq (an online magazine I co-founded), and company, store and loyalty-campaign sites at Patric Technology.'
+mark:
+  icon: lucide:globe
+links:
+- label: speedocloud.com
+  to: https://speedocloud.com/
+- label: mcm.sa
+  to: https://mcm.sa/
+- label: clever.ps
+  to: https://clever.ps/
+- label: support.clever.ps
+  to: https://support.clever.ps/
+- label: fpco.co
+  to: https://fpco.co/
+- label: wepatric.com
+  to: https://wepatric.com/
+order: 3
