@@ -216,56 +216,65 @@
   }
 }
 
-/* Photos of logos (GitHub avatars): in colour in light mode; greyscale in dark mode until hovered. */
+/* Photos of logos (GitHub avatars) in greyscale, so they match the one-colour marks; colour on hover. */
 @utility avatar-mono {
   filter: grayscale(1);
   transition: filter 0.2s var(--ease-out-soft);
 }
 
 /*
- * Brand colours. Logos and tool icons show their own colours in light mode, and on hover in dark
- * mode; otherwise they are one colour (`mark`). `brandStyle()` sets --brand and --brand-dark, and
- * `.brand-logo-*` swap a company logo's one-colour mask for its colour file (`BrandLogo`).
+ * Brand colours. Logos and tool icons are one colour (`mark`) in both themes, and show their own
+ * colours on hover or keyboard focus. `brandStyle()` sets --brand (and --brand-dark when the colour
+ * reads on dark); `.brand-logo-*` swap a company logo's one-colour mask for its colour file (`BrandLogo`).
  */
 .brand-icon {
   transition: color 0.2s var(--ease-out-soft);
-}
-
-.light .brand-icon {
-  color: var(--brand, var(--mark));
-}
-
-.light .avatar-mono {
-  filter: none;
 }
 
 .brand-logo-color {
   display: none;
 }
 
-.light .brand-logo-color {
+:is(a, button):focus-visible .brand-icon {
+  color: var(--brand, var(--mark));
+}
+
+.dark :is(a, button):focus-visible .brand-icon {
+  color: var(--brand-dark, var(--fg));
+}
+
+:is(a, button):focus-visible .avatar-mono {
+  filter: none;
+}
+
+:is(a, button):focus-visible .brand-logo-color {
   display: block;
 }
 
-.light .brand-logo-mask {
+:is(a, button):focus-visible .brand-logo-mask {
   display: none;
 }
 
 @media (hover: hover) {
+  :is(a, button, li, .brand-hover):hover .brand-icon,
+  .brand-icon:hover {
+    color: var(--brand, var(--mark));
+  }
+
   .dark :is(a, button, li, .brand-hover):hover .brand-icon,
   .dark .brand-icon:hover {
     color: var(--brand-dark, var(--fg));
   }
 
-  .dark :is(a, button, li, .brand-hover):hover .avatar-mono {
+  :is(a, button, li, .brand-hover):hover .avatar-mono {
     filter: none;
   }
 
-  .dark :is(a, button, li, .brand-hover):hover .brand-logo-color {
+  :is(a, button, li, .brand-hover):hover .brand-logo-color {
     display: block;
   }
 
-  .dark :is(a, button, li, .brand-hover):hover .brand-logo-mask {
+  :is(a, button, li, .brand-hover):hover .brand-logo-mask {
     display: none;
   }
 }

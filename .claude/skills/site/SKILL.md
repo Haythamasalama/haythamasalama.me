@@ -39,7 +39,7 @@ Navigation, the contact link and the social links live in `app/app.config.ts`. C
 ## Building blocks
 
 - **Page layout:** `PageHeader` (title and intro), `SectionTitle` (a section with a shareable `#id`), `AnchorLink`, `GoLink` (a muted "→" link), `ProseBody` (Markdown in the reading style).
-- **Marks:** `LogoTile` and `BrandLogo` show a `mark`: `logo` (a one-colour mask plus its colour original, registered in `app/utils/logos.ts`), `icon` (Iconify name), `image` (a photo in `public/`, greyscale in dark mode until hovered) or `text` (a monogram).
+- **Marks:** `LogoTile` and `BrandLogo` show a `mark`: `logo` (a one-colour mask plus its colour original, registered in `app/utils/logos.ts`), `icon` (Iconify name), `image` (a photo in `public/`, greyscale until hovered) or `text` (a monogram).
 - **Markdown components** (`app/components/content/`):
   - `::sketch-figure{name="<project>/<file>" alt="…"}`: an Excalidraw figure (see the `figures` skill).
   - `::project-shot{src="…" alt="…" width height}`: a screenshot in both themes, or add `single` for one image.
