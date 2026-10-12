@@ -1,7 +1,7 @@
 title: 'Runarks · Governed access to production databases'
 year: 2026
 context: Founder · Aug 2026 – now
-description: 'Every query against a production database is reviewed, run once and logged, and nobody is shown a password.'
+description: 'My own product: every query against a production database is reviewed, approved, run once and logged, and nobody sees a password.'
 mark:
   logo: runarks
 links:
@@ -9,7 +9,7 @@ links:
   to: https://runarks.com/
 order: 1
 highlight:
-  title: Runarks · Governed database access
-  description: Every query against production is reviewed, approved, run once and logged, with sensitive fields masked and no shared passwords.
+  title: 'Runarks · Governed database access'
+  description: 'My own product: every query against production is reviewed, approved, run once and logged, with sensitive fields masked.'
   period: 2026 – now
   order: 2

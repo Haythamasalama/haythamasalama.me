@@ -37,7 +37,6 @@ Features stopped talking to vendors directly; shared components do it for them.
 - Evolved the Domain-Driven Design structure the back end follows, with typed DTOs, contracts, services and actions, a panel per app and a shared kernel, and led the move of the legacy code into it, mentoring engineers along the way.
 - Proposed the shared UI package both dashboards use, led its extraction and maintain it.
 - Set up the team's AI-assisted workflow: the rules coding agents follow, the agents that scaffold, review and refactor, and the engineering handbook that teaches the same rules to people.
-- Design the app catalogue and integrations for Rotex, the SaaS edition of WINCH.
 - Lead small teams that take features to production, and review the pull requests that keep the structure consistent.
 
 ## What it offers

@@ -1,7 +1,7 @@
-title: 'Bulk card charging'
+title: 'Bulk card charging for Clever'
 year: 2022
 context: Faris Petrol · Oct – Dec 2022
-description: 'Tops up Clever cards in bulk from a spreadsheet, with approval, one queued job per card and a clear outcome for each. Built test-first.'
+description: 'Charges many Clever cards at once from a spreadsheet: checked, approved, then sent card by card with a clear result for each. Built test-first.'
 mark:
   icon: lucide:credit-card
 order: 2

@@ -1,7 +1,7 @@
 title: 'WINCH · Saudi logistics platform'
 year: 2023
 context: Senior Software Engineer · Feb 2023 – now
-description: 'More than 50 domains behind a Saudi logistics platform, and the integration engine I built to connect it to government services, payment gateways and AI models.'
+description: 'The back end of a Saudi logistics platform for businesses and carriers: more than 50 domains, and the integration engine I built for government services, payments and AI.'
 mark:
   logo: winch
 links:
@@ -9,7 +9,7 @@ links:
   to: https://winch.sa/
 order: 1
 highlight:
-  title: WINCH · Saudi logistics platform
-  description: The back end behind every app, and the integration engine I built to connect it to government services, payment gateways and AI models.
+  title: 'WINCH · Saudi logistics platform'
+  description: 'The back end behind every app, and the integration engine I built to connect it to government services, payment gateways and AI models.'
   period: 2023 – now
   order: 1

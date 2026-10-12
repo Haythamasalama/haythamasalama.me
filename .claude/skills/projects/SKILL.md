@@ -11,6 +11,14 @@ Load `content` (the writing rules) and `figures` (diagrams) alongside this skill
 
 A project page shows **the goal, the owner's role, what he did, how it helped the team, and the results**. It does not teach how something is built. Keep each technical part to one short paragraph, about what it is and what it made possible. The mechanics (configuration steps, request flows, field types, pipelines step by step) belong in an article (see `articles`), which can link back to the page. If a paragraph reads like a tutorial, cut it down to its outcome.
 
+## Show more, write less
+
+Most visitors don't read long text (owner's feedback, 2026-10-12). Keep a page to roughly 700 to 1,000 words, and let pictures carry the detail:
+
+- Lead every section with a picture: a figure, a product screenshot, or a real photo or drawing of the hardware.
+- Show how big a system is with a feature map: a figure that lists every module and what it does. Back it up with screenshots, instead of paragraphs.
+- Keep paragraphs to two or three sentences, and bullets to one line.
+
 ## Files
 
 | File | Holds |
@@ -60,7 +68,9 @@ The front matter is only `description`, 150 to 220 characters, for search and li
 4. **`## What I did`.** Bullets with precise attribution (see `content`): built, designed, led, proposed, maintain, "the team wrote X; I built the Y it runs on". Include leadership and reviews.
 5. **`## What it offers`.** A `::feature-grid` of six to eight product capabilities. Use the company's public site as the source when it has one.
 6. **`## System design`.** An architecture figure and one paragraph, then `###` subsections in the same order as the problems. Each subsection gets a figure, or two or three short paragraphs with bold lead-ins. Say what each part does and what it made possible for the team or the product. The figure carries the detail; the text stays short.
-7. **`## In the product`** is optional. Use `::project-shot` screenshots only for the owner's own products, with demo data. Leave product screenshots off employer and client projects unless the owner asks for them.
+7. **`## In the product`** holds `::project-shot` screenshots and real photos.
+   - **Where it applies:** the owner's own products, and employer projects where he asked for screenshots. So far that is the Faris projects (vehicle inspection, wash stations). Leave it off WINCH and other employer pages unless he asks.
+   - **Privacy:** blur anything that identifies a customer or employee (see Screenshots).
 8. Optional extra `##` sections, for example "AI in the engineering workflow". Use a figure, one paragraph on the goal and what the owner set up, then "What it changed" bullets.
 
 Aim for three to six figures on a full page. Each figure's title matches its section heading, and each has a full `alt` and a one-sentence caption.
@@ -90,7 +100,13 @@ Everything under "Employers and clients" in the `content` skill applies, in part
 - **Size and format:** WebP, 1760px wide.
 - **Themed pair:** `public/projects/<slug>/<name>-dark.webp` and `<name>-light.webp`, used as `::project-shot{src="/projects/<slug>/<name>" …}`.
 - **Single image:** `::project-shot{src="/projects/<slug>/<name>.webp" single …}`.
-- **Data:** demo data only. For employer and client projects, leave screenshots out unless the owner asks; the figures explain the work.
+- **Data:**
+  - Use demo data where you can.
+  - **Faris screenshots** (vehicle inspection, wash stations): the owner said not to blur them, so use them as they are.
+  - **Other employers' screenshots:** blur personal data before export (names, phone numbers, plates, emails, card and ID numbers), unless the owner says otherwise. Crop away whole areas that are mostly personal data, such as lists of customers.
+  - Leave screenshots off employer pages he hasn't asked for.
+- **Blurring:** with sharp, `extract` each region, `blur(18)` it and `composite` it back, then resize and save as WebP.
+- **Checking:** look at every exported image before you publish it.
 - **Resizing:** `sips` can't write WebP. Install `sharp` in a scratch folder (`npm install sharp`), then for example:
 
 ```js
