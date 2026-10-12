@@ -1,14 +1,7 @@
 title: 'Rotex · WINCH as a SaaS'
 year: 2026
 context: WINCH · in progress
-description: 'A SaaS edition of WINCH''s logistics platform, so other logistics companies can run the same system as their own.'
+description: 'WINCH''s logistics platform as a SaaS, so other logistics companies can run it as their own.'
 mark:
   logo: winch
-tags:
-- label: Laravel
-  icon: simple-icons:laravel
-- label: Vue
-  icon: simple-icons:vuedotjs
-- label: Inertia.js
-  icon: simple-icons:inertia
 order: 2

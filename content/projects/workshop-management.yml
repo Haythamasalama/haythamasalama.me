@@ -1,7 +1,7 @@
 title: 'Vehicle inspection & maintenance'
 year: 2021
 context: Faris Petrol · May 2021 – Dec 2022
-description: 'The inspection and maintenance system for the company''s workshops. Technicians record every check, from oils and filters to battery and tyres, and supervisors follow each branch and technician on one dashboard. It handled thousands of inspections a month across several branches.'
+description: 'The inspection and maintenance system behind thousands of vehicle checks a month in Faris Petrol''s workshops.'
 mark:
   icon: lucide:wrench
 order: 1
