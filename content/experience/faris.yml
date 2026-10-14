@@ -11,7 +11,7 @@ end: May 2023
 summary: The company's internal systems, from its maintenance workshops to its wash stations.
 highlights:
 - Built the vehicle inspection and maintenance system for the company's workshops, handling thousands of inspections a month across several branches, with a dashboard for every branch, technician and supervisor.
-- Built the company's CRM and HR systems.
-- Built IoT control for the company's wash stations with Raspberry Pi and Laravel, automating pump reservations.
-- Built a test-driven card-charging system that processes bulk transactions in queues.
+- Built the CRM and HR systems with one other developer: calls, tickets and store visits in one place, and attendance turned into shifts.
+- Built IoT control for the company's car-wash stations: a Raspberry Pi at every bay, driven by one server that checks the customer's card.
+- Built a test-driven system that charges Clever cards in bulk, one queued job per card.
 order: 3
