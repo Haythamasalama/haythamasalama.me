@@ -107,8 +107,13 @@
       <SectionTitle id="about" class="mb-4">
         About
       </SectionTitle>
+      <!-- The first paragraph leads; the rest read at body size. -->
       <div class="flex flex-col gap-4 text-[16px] leading-[1.75] text-soft">
-        <p v-for="paragraph in profile.about" :key="paragraph">
+        <p
+          v-for="(paragraph, index) in profile.about"
+          :key="paragraph"
+          :class="index === 0 && 'text-[17px] leading-[1.7] text-fg md:text-lg'"
+        >
           {{ paragraph }}
         </p>
       </div>

@@ -22,7 +22,8 @@
 </script>
 
 <template>
-  <li class="flex items-start gap-4 py-4">
+  <!-- A thin rail joins each logo to the next one, so the list reads as a timeline. -->
+  <li class="relative flex items-start gap-4 py-5 before:absolute before:top-[72px] before:bottom-[-4px] before:left-[21.5px] before:w-px before:bg-line last:before:hidden">
     <LogoTile :mark="mark" :size="44" />
     <span class="flex min-w-0 flex-auto flex-col gap-1">
       <span class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
@@ -35,12 +36,12 @@
       </span>
       <span class="text-sm text-soft">{{ subtitle }}</span>
       <span v-if="metaLine" class="font-mono text-xs text-faint">{{ metaLine }}</span>
-      <span v-if="summary" class="text-sm leading-relaxed text-muted">{{ summary }}</span>
-      <ul v-if="highlights?.length" class="mt-1.5 flex flex-col gap-1.5">
+      <span v-if="summary" class="mt-0.5 text-sm leading-relaxed text-muted">{{ summary }}</span>
+      <ul v-if="highlights?.length" class="mt-2 flex flex-col gap-2">
         <li
           v-for="highlight in highlights"
           :key="highlight"
-          class="relative pl-4 text-sm leading-relaxed text-muted before:absolute before:top-[0.6em] before:left-0.5 before:size-1 before:rounded-full before:bg-chip"
+          class="relative pl-[18px] text-sm leading-relaxed text-soft before:absolute before:top-[0.62em] before:left-[3px] before:size-[5px] before:rounded-full before:bg-muted"
         >
           {{ highlight }}
         </li>
