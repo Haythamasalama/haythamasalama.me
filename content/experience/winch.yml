@@ -10,9 +10,10 @@ start: Feb 2023
 end: now
 summary: A logistics platform in Saudi Arabia.
 highlights:
-- Build the APIs behind the business app and Business Sector dashboard, and the carriers app and Carriers dashboard.
-- 'Built the platform''s core components: security, notifications, and the integration engine that connects WINCH to government platforms like Tamm, Yaqeen and ZATCA, payment gateways and AI models.'
+- Set up the business and carrier platforms, and build the APIs behind their apps and dashboards.
+- 'Built the platform''s core components: security, notifications, exports, and the integration engine that connects WINCH to government platforms like Tamm, Yaqeen and ZATCA, payment gateways and AI models.'
 - Shaped the Domain-Driven Design structure the back end follows, keep evolving it, helped the teams move the legacy code onto it, and review pull requests to keep it consistent.
 - 'Write the AI agents and skills our engineers code with: they teach coding agents our Domain-Driven Design rules, scaffold new features in that structure, and review changes against it.'
+- Proposed the shared UI package both dashboards use, led its build and maintain it.
 - Lead small teams that take features to production.
 order: 1
