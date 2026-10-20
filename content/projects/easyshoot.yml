@@ -1,0 +1,10 @@
+title: 'EasyShoot · Screenshot app for macOS'
+year: 2026
+context: Creator · Oct 2026 – now
+description: 'My open-source Mac app for capturing, marking up and framing screenshots, with scrolling capture and Arabic right-to-left text.'
+mark:
+  logo: easyshoot
+links:
+- label: GitHub
+  to: https://github.com/Haythamasalama/easyshoot
+order: 2
