@@ -40,11 +40,11 @@
     "@nuxt/eslint": "^1.17.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "eslint": "^10.12.0",
+    "eslint": "^10.13.0",
     "roughjs": "^4.6.6",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
-    "vue-tsc": "^3.3.12"
+    "vue-tsc": "^3.3.13"
   },
   "overrides": {
     "@nuxt/devtools": "4.0.0-beta.4",
