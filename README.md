@@ -77,7 +77,7 @@ Most edits never touch code. Add a file and the page picks it up; the fields are
 
 ## Develop
 
-Requires Node.js `22.22+` or `24.15+` (see `.nvmrc`).
+Requires Node.js `22.22.3+` or `24.15+` (see `.nvmrc`).
 
 ```bash
 git clone https://github.com/haythamasalama/haythamasalama.me.git

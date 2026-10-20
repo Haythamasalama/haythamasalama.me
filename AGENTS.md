@@ -10,7 +10,7 @@ Personal website of Haytham A. Salama, built with Nuxt 4, Nuxt Content 3 and Tai
 - `npm run build` / `npm run preview`: production build and preview
 - `npm run figures` / `figures:export` / `figures:serve`: rebuild the Excalidraw figures from `scripts/figures`, write previews to `.cache/figures`, and serve them on `http://localhost:4321`
 
-Node.js `22.22+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm run lint && npm run typecheck && npm run build`; CI runs the same three steps.
+Node.js `22.22.3+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `npm run lint && npm run typecheck && npm run build`; CI runs the same three steps.
 
 ## Layout
 
