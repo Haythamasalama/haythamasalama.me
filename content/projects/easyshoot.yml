@@ -5,6 +5,6 @@ description: 'My open-source Mac app for capturing, marking up and framing scree
 mark:
   logo: easyshoot
 links:
-- label: GitHub
+- label: github.com/Haythamasalama/easyshoot
   to: https://github.com/Haythamasalama/easyshoot
 order: 2
