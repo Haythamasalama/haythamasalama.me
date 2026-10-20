@@ -15,5 +15,6 @@ export const logos: Record<string, LogoAsset> = {
   'al-azhar': { src: '/logos/al-azhar.svg', width: 32, height: 32, name: 'Al Azhar University' },
   'clever': { src: '/logos/clever.png', width: 22, height: 25, name: 'Clever' },
   'faris-oil-center': { src: '/logos/faris-oil-center.svg', width: 30, height: 23, name: 'Faris Oil Center' },
-  'runarks': { src: '/logos/runarks.svg', width: 14, height: 22, name: 'Runarks' }
+  'runarks': { src: '/logos/runarks.svg', width: 14, height: 22, name: 'Runarks' },
+  'easyshoot': { src: '/logos/easyshoot.svg', width: 22, height: 22, name: 'EasyShoot' }
 };
