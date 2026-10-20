@@ -1,0 +1,8 @@
+title: Screenshots
+order: 6
+items:
+- name: EasyShoot
+  note: My own screenshot app
+  mark:
+    logo: easyshoot
+  desk: 10
