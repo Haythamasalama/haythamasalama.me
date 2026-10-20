@@ -19,3 +19,8 @@ items:
   mark:
     icon: simple-icons:excalidraw
   desk: 7
+- name: EasyShoot
+  note: Clear, annotated screenshots
+  mark:
+    logo: easyshoot
+  desk: 10
