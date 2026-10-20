@@ -26,6 +26,8 @@ export default defineContentConfig({
         category: z.string(),
         icon: z.string(),
         readingTime: z.string(),
+        /** The file as written, for the article's Markdown version (`<path>.md`). */
+        rawbody: z.string(),
         sitemap: defineSitemapSchema({ z })
       })
     }),
@@ -124,6 +126,8 @@ export default defineContentConfig({
       schema: z.object({
         /** For search results and link previews; the card's description is usually too long. */
         description: z.string(),
+        /** The file as written, for the page's Markdown version (`<path>.md`). */
+        rawbody: z.string(),
         sitemap: defineSitemapSchema({ z })
       })
     }),

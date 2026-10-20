@@ -23,30 +23,23 @@
   usePageSeo({
     title: article.value.title,
     description: article.value.description,
-    type: 'article'
+    type: 'article',
+    entity: {
+      '@type': 'BlogPosting',
+      'headline': article.value.title,
+      'description': article.value.description,
+      'datePublished': article.value.date,
+      'articleSection': article.value.category,
+      'url': `${site.url}${route.path}`,
+      'image': `${site.url}/og.png`,
+      'author': { '@id': useSchemaIds().person }
+    }
   });
 
   useSeoMeta({
     articlePublishedTime: article.value.date,
     articleAuthor: [site.name],
     articleSection: article.value.category
-  });
-
-  useHead({
-    script: [{
-      type: 'application/ld+json',
-      // Escape "<" so article text can never close the script tag.
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        'headline': article.value.title,
-        'description': article.value.description,
-        'datePublished': article.value.date,
-        'url': `${site.url}${route.path}`,
-        'image': `${site.url}/og.png`,
-        'author': { '@type': 'Person', 'name': site.name, 'url': site.url }
-      }).replace(/</g, '\\u003c')
-    }]
   });
 </script>
 

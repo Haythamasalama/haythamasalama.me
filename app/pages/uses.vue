@@ -1,7 +1,8 @@
 <script setup lang="ts">
   usePageSeo({
     title: 'Uses',
-    description: 'The hardware and software Haytham A. Salama uses every day: editors, terminal, databases, planning and design tools.'
+    description: 'The hardware and software Haytham A. Salama uses every day: editors, terminal, databases, planning and design tools.',
+    schema: 'CollectionPage'
   });
 
   const { data: sections } = await useAsyncData('uses', () =>

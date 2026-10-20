@@ -36,7 +36,15 @@
   usePageSeo({
     title: data.value.project.title,
     description: data.value.page.description,
-    type: 'article'
+    type: 'article',
+    entity: {
+      '@type': 'CreativeWork',
+      'name': data.value.project.title,
+      'description': data.value.project.description,
+      'dateCreated': String(data.value.project.year),
+      'creator': { '@id': useSchemaIds().person },
+      ...data.value.project.links?.length ? { sameAs: data.value.project.links.map(link => link.to) } : {}
+    }
   });
 
   /** The card's context ("Faris Petrol · May 2021 – Dec 2022") as facts with an icon each. */

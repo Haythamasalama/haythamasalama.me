@@ -27,6 +27,7 @@ Node.js `22.22.3+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `n
   - `composables/useOpenSource.ts`: live GitHub activity merged with `content/contributions`, for Home and `/open-source`
   - `app.config.ts`: site name, URL, navigation and social links
 - `modules/sketch-figures/`: a local module that renders `.excalidraw` files to SVG at build time with rough.js, the way Excalidraw draws them
+- `server/utils/markdown.ts`: every page as Markdown for LLMs and agents, served at the page's path plus `.md` by `server/middleware/markdown.ts`; `server/routes/llms.txt.ts` and `llms-full.txt.ts` list and join them
 - `server/api/`: `snippets.get.ts` (public gists, cached 1 hour) and `open-source.get.ts` (merged pull requests, issues and contributor rank, cached 6 hours); `server/utils/github.ts` is the shared GitHub client
 - `shared/tool-categories.ts`: the Tools page's areas (filter chips) and categories (section headings)
 - `shared/code-theme.ts`: the brand Shiki themes for articles and gists
@@ -45,7 +46,8 @@ Node.js `22.22.3+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `n
 - A tool's `category` must be a name from `shared/tool-categories.ts`; add a category there (one line) rather than reusing a vague one.
 - Snippets are the owner's public GitHub gists and contributions come from GitHub search; never copy them into `content/`. `content/contributions` only holds what GitHub cannot provide: maintainer roles, discussions and projects he started.
 - Give every `useAsyncData` call a unique key. Nuxt 4 shares state between calls with the same key.
-- Set page metadata with `usePageSeo({ title, description })`.
+- Set page metadata with `usePageSeo({ title, description })`. It also writes the page's schema.org data (breadcrumbs, and `schema` / `entity` for what the page is about: a `BlogPosting`, a `CreativeWork`, an `ItemList`) and links the page's Markdown version. `app.vue` describes the site and its owner (`WebSite`, `Person`) once for every page.
+- Every page has a Markdown version for LLMs and agents (`/about.md`, `/index.md` for Home, `/projects/<slug>.md`), listed in `/llms.txt` and joined in `/llms-full.txt`. A new page needs a case in `pageMarkdown()` (`server/utils/markdown.ts`) and, if prerendered, its `.md` route in `markdownRoutes` (`nuxt.config.ts`): the link crawler skips `.md`. Project pages and articles are picked up on their own. A new Markdown component needs a case in `plainMarkdown()`.
 - Give each section a `<SectionTitle id="…">` (or wrap a heading's text in `<AnchorLink>`): the title becomes a shareable link like `/about#experience`, and links to a section scroll to it smoothly unless the visitor prefers reduced motion (`app/plugins/smooth-scroll.client.ts`). Use readable ids; `slugify()` makes them from titles.
 - Format dates with the helpers in `app/utils/date.ts` (fixed locale and UTC) so server and client render the same text.
 - Pages are prerendered and links are crawled at build time; a new page only needs to be linked from somewhere. The exceptions read GitHub at request time with ISR: `/`, `/about` and `/open-source` (6 hours) and `/snippets` (1 hour). Such pages must still render when GitHub fails, but with a 503: Vercel then keeps serving the last good copy and retries, so an outage is never cached.

@@ -1,7 +1,8 @@
 <script setup lang="ts">
   usePageSeo({
     title: 'Snippets',
-    description: 'Small pieces of config and code Haytham A. Salama reaches for again and again, straight from his GitHub Gists.'
+    description: 'Small pieces of config and code Haytham A. Salama reaches for again and again, straight from his GitHub Gists.',
+    schema: 'CollectionPage'
   });
 
   const gistsUrl = 'https://gist.github.com/Haythamasalama';
