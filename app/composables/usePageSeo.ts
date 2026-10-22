@@ -8,6 +8,8 @@ interface PageSeo {
   entity?: Record<string, unknown>;
   /** The small label above the title on the share image: "Project", "Article · Laravel". */
   eyebrow?: string;
+  /** A share image drawn at build time, for pages rendered on request (`shared/live-pages.ts`). */
+  image?: string;
 }
 
 /** schema.org ids of the nodes `app.vue` describes on every page. */
@@ -25,8 +27,9 @@ export const jsonLd = (data: Record<string, unknown>) => JSON.stringify(data).re
  * Twitter tags so shared links show the same text as search results. Also
  * describes the page for search engines and agents: schema.org data with
  * breadcrumbs, and a link to its Markdown version (`server/middleware/markdown.ts`).
- * Prerendered pages get their own share image (`components/OgImage/Page.takumi.vue`);
- * pages rendered on request keep `public/og.png` from `app.vue`.
+ * Every page gets its own share image (`components/OgImage/Page.takumi.vue`):
+ * drawn while the page is prerendered, or for pages rendered on request, ahead
+ * of time by `server/routes/og/[...image].ts` and passed as `image`.
  */
 export function usePageSeo (seo: PageSeo) {
   const { site, nav } = useAppConfig();
@@ -47,11 +50,25 @@ export function usePageSeo (seo: PageSeo) {
     twitterDescription: seo.description
   });
 
-  defineOgImage('Page', {
-    title: seo.title,
-    description: seo.description,
-    eyebrow: seo.eyebrow ?? site.name
-  }, { alt: `${seo.title}: ${seo.description}` });
+  const alt = `${seo.title}: ${seo.description}`;
+
+  if (seo.image) {
+    useSeoMeta({
+      ogImage: `${site.url}${seo.image}`,
+      ogImageWidth: 1200,
+      ogImageHeight: 630,
+      ogImageAlt: alt,
+      twitterImage: `${site.url}${seo.image}`,
+      twitterImageAlt: alt
+    });
+  }
+  else {
+    defineOgImage('Page', {
+      title: seo.title,
+      description: seo.description,
+      eyebrow: seo.eyebrow ?? site.name
+    }, { alt });
+  }
 
   // Home, then the section (Projects, Blog), then the page.
   const section = path.split('/').length > 2

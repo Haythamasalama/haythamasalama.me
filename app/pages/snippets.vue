@@ -1,7 +1,9 @@
 <script setup lang="ts">
+  import { liveImagePath, livePages } from '#shared/live-pages';
+
   usePageSeo({
-    title: 'Snippets',
-    description: 'Small pieces of config and code Haytham A. Salama reaches for again and again, straight from his GitHub Gists.',
+    ...livePages.snippets,
+    image: liveImagePath('snippets'),
     schema: 'CollectionPage'
   });
 

@@ -1,5 +1,6 @@
 import type { H3Event } from 'h3';
 import { queryCollection } from '@nuxt/content/server';
+import { livePages as liveSeo } from '#shared/live-pages';
 import { skillGroups } from '#shared/skill-groups';
 import { toolCategories } from '#shared/tool-categories';
 import type { OpenSourceActivity } from '#shared/types/open-source';
@@ -383,7 +384,7 @@ async function openSource (event: H3Event) {
     page: document({
       path: '/open-source',
       title: 'Open source',
-      description: 'Code Haytham A. Salama has shipped to open-source projects: on the Nuxt UI team, with pull requests to Laravel, Nuxt, Uptime Kuma and the Vue ecosystem, synced from GitHub.'
+      description: liveSeo['open-source'].description
     }, [
       totals,
       '## Maintainer roles',
@@ -406,7 +407,7 @@ async function snippets (event: H3Event) {
     page: document({
       path: '/snippets',
       title: 'Snippets',
-      description: 'Small pieces of config and code Haytham A. Salama reaches for again and again, straight from his GitHub Gists.'
+      description: liveSeo.snippets.description
     }, [
       (list ?? []).map(gist => link(gist.title, gist.url, `${gist.kind}; files: ${gist.files.join(', ')}; updated ${gist.updatedAt.slice(0, 10)}`)).join('\n')
     ])

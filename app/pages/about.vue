@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { liveImagePath, livePages } from '#shared/live-pages';
   import { skillGroups } from '#shared/skill-groups';
 
   const { site, socials } = useAppConfig();
@@ -17,8 +18,8 @@
   const current = data.value?.experience.find(job => job.end === 'now');
 
   usePageSeo({
-    title: 'About',
-    description: 'Haytham A. Salama, senior software engineer at WINCH. Experience, products, open source, skills and where his work with AI agents is going.',
+    ...livePages.about,
+    image: liveImagePath('about'),
     schema: 'ProfilePage',
     // The same person app.vue describes, with what only this page knows.
     entity: {

@@ -63,7 +63,7 @@ Code uses the brand Shiki themes in `shared/code-theme.ts`: Iris keywords, Azure
 
 ## Share images
 
-Each prerendered page gets a 1200×630 share image from `app/components/OgImage/Page.takumi.vue`, in the style of `public/og.png`: Ink background, the white signature top right, one Iris to Azure hairline along the top, a Geist Mono label, the title in Geist 600 and the description in Muted. Its colours are fixed hex because a share image has no theme.
+Every page gets a 1200×630 share image from `app/components/OgImage/Page.takumi.vue`, in the style of `public/og.png`: Ink background, the white signature top right, one Iris to Azure hairline along the top, a Geist Mono label, the title in Geist 600 and the description in Muted. Its colours are fixed hex because a share image has no theme.
 
 ## Brand kit
 

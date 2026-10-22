@@ -1,6 +1,7 @@
 import { readdirSync } from 'node:fs';
 import tailwindcss from '@tailwindcss/vite';
 import { codeThemeDark, codeThemeLight } from './shared/code-theme';
+import { liveImagePath, liveImages } from './shared/live-pages';
 
 /**
  * The Markdown version of every page that doesn't read GitHub (see
@@ -116,7 +117,7 @@ export default defineNuxtConfig({
     prerender: {
       // Follow links from the prerendered pages so every article is generated too.
       crawlLinks: true,
-      routes: ['/articles', '/sitemap.xml', '/llms.txt', '/llms-full.txt', ...markdownRoutes]
+      routes: ['/articles', '/sitemap.xml', '/llms.txt', '/llms-full.txt', ...markdownRoutes, ...liveImages.map(liveImagePath)]
     }
   },
 
@@ -157,7 +158,8 @@ export default defineNuxtConfig({
 
   ogImage: {
     // Every share image is drawn at build time (app/components/OgImage), so
-    // nothing renders on Vercel. Pages rendered on request keep public/og.png.
+    // nothing renders on Vercel. Pages rendered on request get theirs from
+    // server/routes/og/[...image].ts, also at build time.
     zeroRuntime: true,
     defaults: { width: 1200, height: 630 }
   },
