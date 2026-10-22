@@ -37,6 +37,7 @@
     title: data.value.project.title,
     description: data.value.page.description,
     type: 'article',
+    eyebrow: 'Project',
     entity: {
       '@type': 'CreativeWork',
       'name': data.value.project.title,

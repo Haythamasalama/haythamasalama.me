@@ -21,7 +21,9 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/color-mode',
     '@nuxtjs/robots',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxt/fonts',
+    'nuxt-og-image'
   ],
 
   devtools: { enabled: true },
@@ -134,6 +136,16 @@ export default defineNuxtConfig({
     }
   },
 
+  fonts: {
+    // Only for the share images: the site loads its own fonts from Fontsource
+    // in main.css, so nothing is fetched from a font service.
+    providers: { google: false, googleicons: false, bunny: false, fontshare: false, fontsource: false, adobe: false },
+    families: [
+      { name: 'Geist Variable', provider: 'npm', weights: [400, 600], global: true },
+      { name: 'Geist Mono Variable', provider: 'npm', weights: [400], global: true }
+    ]
+  },
+
   icon: {
     mode: 'svg',
     customCollections: [
@@ -141,6 +153,13 @@ export default defineNuxtConfig({
     ],
     serverBundle: { collections: ['lucide', 'simple-icons'] },
     clientBundle: { scan: true, sizeLimitKb: 256 }
+  },
+
+  ogImage: {
+    // Every share image is drawn at build time (app/components/OgImage), so
+    // nothing renders on Vercel. Pages rendered on request keep public/og.png.
+    zeroRuntime: true,
+    defaults: { width: 1200, height: 630 }
   },
 
   robots: {

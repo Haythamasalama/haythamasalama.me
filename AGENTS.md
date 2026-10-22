@@ -17,6 +17,7 @@ Node.js `22.22.3+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `n
 - `app/`: Nuxt 4 source directory
   - `pages/`: one file per route; `articles/[...slug].vue` renders every article
   - `components/`: layout (`AppHeader`, `AppFooter`, `SignatureMark`) and small UI pieces (`LogoTile`, `TechChip`, `FilterChips`, `GoLink`, …)
+  - `components/OgImage/Page.takumi.vue`: the share image of every prerendered page, drawn at build time by `nuxt-og-image`
   - `components/content/`: components used from Markdown (`ProsePre` code blocks, `::alert-info`, `::sketch-figure`, `::project-shot`)
   - `components/brand/`: pieces of the brand guidelines page
   - `assets/css/main.css`: theme tokens, utilities and animations
@@ -46,7 +47,7 @@ Node.js `22.22.3+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `n
 - A tool's `category` must be a name from `shared/tool-categories.ts`; add a category there (one line) rather than reusing a vague one.
 - Snippets are the owner's public GitHub gists and contributions come from GitHub search; never copy them into `content/`. `content/contributions` only holds what GitHub cannot provide: maintainer roles, discussions and projects he started.
 - Give every `useAsyncData` call a unique key. Nuxt 4 shares state between calls with the same key.
-- Set page metadata with `usePageSeo({ title, description })`. It also writes the page's schema.org data (breadcrumbs, and `schema` / `entity` for what the page is about: a `BlogPosting`, a `CreativeWork`, an `ItemList`) and links the page's Markdown version. `app.vue` describes the site and its owner (`WebSite`, `Person`) once for every page.
+- Set page metadata with `usePageSeo({ title, description })`. It also writes the page's schema.org data (breadcrumbs, and `schema` / `entity` for what the page is about: a `BlogPosting`, a `CreativeWork`, an `ItemList`) links the page's Markdown version, and gives prerendered pages their own share image (pass `eyebrow` for the label above the title). The pages rendered on request (`/`, `/about`, `/open-source`, `/snippets`) keep `public/og.png`. `app.vue` describes the site and its owner (`WebSite`, `Person`) once for every page.
 - Every page has a Markdown version for LLMs and agents (`/about.md`, `/index.md` for Home, `/projects/<slug>.md`), listed in `/llms.txt` and joined in `/llms-full.txt`. A new page needs a case in `pageMarkdown()` (`server/utils/markdown.ts`) and, if prerendered, its `.md` route in `markdownRoutes` (`nuxt.config.ts`): the link crawler skips `.md`. Project pages and articles are picked up on their own. A new Markdown component needs a case in `plainMarkdown()`.
 - Give each section a `<SectionTitle id="…">` (or wrap a heading's text in `<AnchorLink>`): the title becomes a shareable link like `/about#experience`, and links to a section scroll to it smoothly unless the visitor prefers reduced motion (`app/plugins/smooth-scroll.client.ts`). Use readable ids; `slugify()` makes them from titles.
 - Format dates with the helpers in `app/utils/date.ts` (fixed locale and UTC) so server and client render the same text.
@@ -100,6 +101,7 @@ Skills for this stack are pinned in `skills-lock.json` and are not committed: `n
 
 - Nuxt Content uses Node's built-in SQLite (`experimental.sqliteConnector: 'native'`), so there is no native `better-sqlite3` build. On Vercel it restores the database to `/tmp` for the ISR pages.
 - `@nuxtjs/mdc`, `shiki` and `minimark` are direct dependencies because `server/api/snippets.get.ts` imports them; keep their ranges in step with what `@nuxt/content` uses.
+- Share images are drawn at build time (`ogImage.zeroRuntime`), so nothing renders on Vercel and no `NUXT_APP_SECRET` is needed. `@nuxt/fonts` is there only to hand Geist to the image renderer (`@takumi-rs/core`): every remote provider is off and it reads the Fontsource packages already installed. It now writes the Geist `@font-face` rules into the page head instead of `main.css`, with the same files and subsets.
 - TypeScript stays on 6.x: `typescript-eslint` and `vue-tsc` do not support the TypeScript 7 native compiler yet, so Dependabot ignores TypeScript major updates.
 - `overrides` in `package.json` exist only to clear security advisories:
   - `@nuxt/devtools` is forced to `4.0.0-beta.4` (npm's `latest` tag) because DevTools 3.x depends on a vulnerable `simple-git`. Nuxt 4.6 still asks for `^3.4.2`; drop the override once Nuxt depends on DevTools 4.

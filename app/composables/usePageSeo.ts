@@ -6,6 +6,8 @@ interface PageSeo {
   schema?: 'WebPage' | 'AboutPage' | 'ProfilePage' | 'CollectionPage';
   /** What the page is about as schema.org data (an article, a project, a list); the owner otherwise. */
   entity?: Record<string, unknown>;
+  /** The small label above the title on the share image: "Project", "Article · Laravel". */
+  eyebrow?: string;
 }
 
 /** schema.org ids of the nodes `app.vue` describes on every page. */
@@ -23,6 +25,8 @@ export const jsonLd = (data: Record<string, unknown>) => JSON.stringify(data).re
  * Twitter tags so shared links show the same text as search results. Also
  * describes the page for search engines and agents: schema.org data with
  * breadcrumbs, and a link to its Markdown version (`server/middleware/markdown.ts`).
+ * Prerendered pages get their own share image (`components/OgImage/Page.takumi.vue`);
+ * pages rendered on request keep `public/og.png` from `app.vue`.
  */
 export function usePageSeo (seo: PageSeo) {
   const { site, nav } = useAppConfig();
@@ -42,6 +46,12 @@ export function usePageSeo (seo: PageSeo) {
     twitterTitle: fullTitle,
     twitterDescription: seo.description
   });
+
+  defineOgImage('Page', {
+    title: seo.title,
+    description: seo.description,
+    eyebrow: seo.eyebrow ?? site.name
+  }, { alt: `${seo.title}: ${seo.description}` });
 
   // Home, then the section (Projects, Blog), then the page.
   const section = path.split('/').length > 2

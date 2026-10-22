@@ -24,6 +24,7 @@
     title: article.value.title,
     description: article.value.description,
     type: 'article',
+    eyebrow: `Article · ${article.value.category}`,
     entity: {
       '@type': 'BlogPosting',
       'headline': article.value.title,
