@@ -1,12 +1,8 @@
 <script setup lang="ts">
+  import { liveImagePath, livePages } from '#shared/live-pages';
   import { skillGroups } from '#shared/skill-groups';
 
   const { site, socials } = useAppConfig();
-
-  usePageSeo({
-    title: 'About',
-    description: 'Haytham A. Salama, senior software engineer at WINCH. Experience, products, open source, skills and where his work with AI agents is going.'
-  });
 
   const { data } = await useAsyncData('about', async () => {
     const [profile, experience, education, technologies] = await Promise.all([
@@ -17,6 +13,25 @@
     ]);
 
     return { profile, experience, education, technologies };
+  });
+
+  const current = data.value?.experience.find(job => job.end === 'now');
+
+  usePageSeo({
+    ...livePages.about,
+    image: liveImagePath('about'),
+    schema: 'ProfilePage',
+    // The same person app.vue describes, with what only this page knows.
+    entity: {
+      '@type': 'Person',
+      '@id': useSchemaIds().person,
+      'name': site.name,
+      'jobTitle': current?.role,
+      'worksFor': current && { '@type': 'Organization', 'name': current.company, 'url': current.url },
+      'alumniOf': data.value?.education.map(school => ({ '@type': 'CollegeOrUniversity', 'name': school.school })),
+      'homeLocation': data.value?.profile?.location && { '@type': 'Place', 'name': data.value.profile.location },
+      'knowsAbout': data.value?.technologies.map(tech => tech.name)
+    }
   });
 
   // Live from GitHub; the page still renders (as a 503) when GitHub is down.

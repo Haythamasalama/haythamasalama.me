@@ -47,6 +47,14 @@ Navigation, the contact link and the social links live in `app/app.config.ts`. C
   - `::alert-info`: a note. Code blocks use the brand Shiki themes.
 - **Icons:** `lucide:*` and `simple-icons:*` from the local collections, `brand:linkedin` for LinkedIn.
 
+## LLMs, agents and search
+
+- Every page has a Markdown twin at its path plus `.md` (`/index.md` for Home), built from the same collections by `server/utils/markdown.ts` and served by `server/middleware/markdown.ts`. `/llms.txt` lists them (https://llmstxt.org) and `/llms-full.txt` joins the ones that don't read GitHub. `/open-source.md` and `/snippets.md` are live, like their pages.
+- Every prerendered page gets its own share image from `app/components/OgImage/Page.takumi.vue` (Ink, the white signature, the Iris to Azure hairline, Geist), drawn at build time; `usePageSeo({ eyebrow })` sets the label above the title. The four pages rendered on request get theirs from `server/routes/og/[...image].ts` (`/og/home.png`, `/og/about.png`, …), also at build time, with their text in `shared/live-pages.ts`. Preview the images in `.output/public/_og/s/` after a build.
+- `usePageSeo` writes each page's schema.org JSON-LD (page type, breadcrumbs, `entity`) and the `<link rel="alternate" type="text/markdown">`; `app.vue` adds the site-wide `WebSite` and `Person`.
+- `robots.txt` (from `@nuxtjs/robots`) allows everything and states `Content-Signal: search=yes, ai-input=yes`.
+- Adding a page: give it a `pageMarkdown()` case and, if prerendered, a `.md` entry in `markdownRoutes` in `nuxt.config.ts`. Adding a Markdown component: teach `plainMarkdown()` to turn it into plain Markdown.
+
 ## Rendering
 
 Most pages are prerendered, and links are crawled at build time, so a new page only needs a link from somewhere. A link to a page that does not exist fails the build. `/`, `/about` and `/open-source` (6 hours) and `/snippets` (1 hour) render at request time with ISR. They must still render when GitHub fails, with a 503.

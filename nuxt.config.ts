@@ -1,5 +1,19 @@
+import { readdirSync } from 'node:fs';
 import tailwindcss from '@tailwindcss/vite';
 import { codeThemeDark, codeThemeLight } from './shared/code-theme';
+import { liveImagePath, liveImages } from './shared/live-pages';
+
+/**
+ * The Markdown version of every page that doesn't read GitHub (see
+ * `server/middleware/markdown.ts`). The crawler skips `.md` links, so they are
+ * listed here: the fixed pages, then one per project page and article.
+ */
+const markdownRoutes = [
+  '/index.md', '/about.md', '/projects.md', '/articles.md', '/tools.md', '/uses.md', '/brand.md',
+  ...readdirSync('content', { recursive: true, encoding: 'utf8' })
+    .filter(file => /^(projects|articles)\/.+\.md$/.test(file.replaceAll('\\', '/')))
+    .map(file => `/${file.replaceAll('\\', '/')}`)
+];
 
 export default defineNuxtConfig({
   modules: [
@@ -8,7 +22,9 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/color-mode',
     '@nuxtjs/robots',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxt/fonts',
+    'nuxt-og-image'
   ],
 
   devtools: { enabled: true },
@@ -87,7 +103,12 @@ export default defineNuxtConfig({
     '/api/snippets': { isr: 3600 },
     '/tools': { prerender: true },
     '/uses': { prerender: true },
-    '/brand': { prerender: true }
+    '/brand': { prerender: true },
+    // The live pages' Markdown versions follow the pages themselves.
+    '/open-source.md': { isr: 6 * 60 * 60, prerender: false },
+    '/snippets.md': { isr: 3600, prerender: false },
+    '/llms.txt': { prerender: true },
+    '/llms-full.txt': { prerender: true }
   },
 
   compatibilityDate: '2026-10-01',
@@ -96,7 +117,7 @@ export default defineNuxtConfig({
     prerender: {
       // Follow links from the prerendered pages so every article is generated too.
       crawlLinks: true,
-      routes: ['/articles', '/sitemap.xml']
+      routes: ['/articles', '/sitemap.xml', '/llms.txt', '/llms-full.txt', ...markdownRoutes, ...liveImages.map(liveImagePath)]
     }
   },
 
@@ -116,6 +137,16 @@ export default defineNuxtConfig({
     }
   },
 
+  fonts: {
+    // Only for the share images: the site loads its own fonts from Fontsource
+    // in main.css, so nothing is fetched from a font service.
+    providers: { google: false, googleicons: false, bunny: false, fontshare: false, fontsource: false, adobe: false },
+    families: [
+      { name: 'Geist Variable', provider: 'npm', weights: [400, 600], global: true },
+      { name: 'Geist Mono Variable', provider: 'npm', weights: [400], global: true }
+    ]
+  },
+
   icon: {
     mode: 'svg',
     customCollections: [
@@ -123,5 +154,19 @@ export default defineNuxtConfig({
     ],
     serverBundle: { collections: ['lucide', 'simple-icons'] },
     clientBundle: { scan: true, sizeLimitKb: 256 }
+  },
+
+  ogImage: {
+    // Every share image is drawn at build time (app/components/OgImage), so
+    // nothing renders on Vercel. Pages rendered on request get theirs from
+    // server/routes/og/[...image].ts, also at build time.
+    zeroRuntime: true,
+    defaults: { width: 1200, height: 630 }
+  },
+
+  robots: {
+    // Search engines and AI assistants may read and quote every page
+    // (https://contentsignals.org); AI training is left unstated.
+    groups: [{ userAgent: '*', allow: '/', contentSignal: { 'search': 'yes', 'ai-input': 'yes' } }]
   }
 });

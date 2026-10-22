@@ -1,7 +1,10 @@
 <script setup lang="ts">
+  import { liveImagePath, livePages } from '#shared/live-pages';
+
   usePageSeo({
-    title: 'Open source',
-    description: 'Code Haytham A. Salama has shipped to open-source projects: on the Nuxt UI team, with pull requests to Laravel, Nuxt, Uptime Kuma and the Vue ecosystem, synced from GitHub.'
+    ...livePages['open-source'],
+    image: liveImagePath('open-source'),
+    schema: 'CollectionPage'
   });
 
   const profileUrl = 'https://github.com/Haythamasalama';

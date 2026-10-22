@@ -1,11 +1,6 @@
 <script setup lang="ts">
   import { logos } from '~/utils/logos';
 
-  usePageSeo({
-    title: 'Projects',
-    description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today.'
-  });
-
   const { data } = await useAsyncData('projects', async () => {
     const [list, pages] = await Promise.all([
       queryCollection('projects').all(),
@@ -22,6 +17,23 @@
         anchor: slugify(project.title.split(' · ')[0]!),
         page: paths.has(`/${project.stem}`) ? `/${project.stem}` : undefined
       }));
+  });
+
+  const { site } = useAppConfig();
+
+  usePageSeo({
+    title: 'Projects',
+    description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today.',
+    schema: 'CollectionPage',
+    entity: {
+      '@type': 'ItemList',
+      'itemListElement': (data.value ?? []).map((project, index) => ({
+        '@type': 'ListItem',
+        'position': index + 1,
+        'name': project.title,
+        'url': `${site.url}${project.page ?? `/projects#${project.anchor}`}`
+      }))
+    }
   });
 
   const projects = computed(() => data.value ?? []);

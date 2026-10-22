@@ -1,15 +1,27 @@
 <script setup lang="ts">
-  usePageSeo({
-    title: 'Blog',
-    description: 'Short, practical notes on Laravel, Vue and shipping software by Haytham A. Salama.'
-  });
-
   const { data: articles } = await useAsyncData('articles', () =>
     queryCollection('articles')
       .select('path', 'title', 'description', 'date', 'category', 'icon', 'readingTime')
       .order('date', 'DESC')
       .all()
   );
+
+  const { site } = useAppConfig();
+
+  usePageSeo({
+    title: 'Blog',
+    description: 'Short, practical notes on Laravel, Vue and shipping software by Haytham A. Salama.',
+    schema: 'CollectionPage',
+    entity: {
+      '@type': 'ItemList',
+      'itemListElement': (articles.value ?? []).map((article, index) => ({
+        '@type': 'ListItem',
+        'position': index + 1,
+        'name': article.title,
+        'url': `${site.url}${article.path}`
+      }))
+    }
+  });
 
   const years = computed(() => {
     const list = articles.value ?? [];

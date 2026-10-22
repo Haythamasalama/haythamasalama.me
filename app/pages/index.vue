@@ -1,11 +1,13 @@
 <script setup lang="ts">
+  import { liveImagePath } from '#shared/live-pages';
   import { skillGroups } from '#shared/skill-groups';
 
   const { site, socials } = useAppConfig();
 
   usePageSeo({
     title: site.name,
-    description: site.description
+    description: site.description,
+    image: liveImagePath('home')
   });
 
   const { data } = await useAsyncData('home', async () => {

@@ -3,7 +3,8 @@
 
   usePageSeo({
     title: 'Tools',
-    description: 'Tools Haytham A. Salama recommends for AI, development, design, writing, productivity, media, documents and the browser.'
+    description: 'Tools Haytham A. Salama recommends for AI, development, design, writing, productivity, media, documents and the browser.',
+    schema: 'CollectionPage'
   });
 
   const { data: tools } = await useAsyncData('tools', () => queryCollection('tools').all());
