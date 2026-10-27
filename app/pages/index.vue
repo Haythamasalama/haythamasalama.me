@@ -155,12 +155,12 @@
         {{ openSourceSummary || 'I like fixing the tools I depend on.' }}
       </p>
       <StatStrip v-if="openSourceStats.length" :stats="openSourceStats" class="mt-4" />
-      <div class="mt-3 flex flex-col">
+      <div class="mt-3 flex flex-col gap-2">
         <NuxtLink
           v-for="item in openSource"
           :key="item.key"
           :to="item.url"
-          class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
+          class="flex items-center gap-3 rounded-xl border border-line px-3.5 py-2.5 transition-colors hover:border-chip hover:bg-surface"
         >
           <img
             v-if="!item.icon && item.avatar"
