@@ -1,5 +1,6 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content';
 import { defineSitemapSchema } from '@nuxtjs/sitemap/content';
+import { patternGroupNames } from './shared/pattern-groups';
 import { skillGroups } from './shared/skill-groups';
 import { toolCategoryNames } from './shared/tool-categories';
 
@@ -127,6 +128,87 @@ export default defineContentConfig({
         /** For search results and link previews; the card's description is usually too long. */
         description: z.string(),
         /** The file as written, for the page's Markdown version (`<path>.md`). */
+        rawbody: z.string(),
+        sitemap: defineSitemapSchema({ z })
+      })
+    }),
+
+    /** Free apps I build and maintain myself, on /apps; client and product work is in `projects`. */
+    apps: defineCollection({
+      type: 'data',
+      source: 'apps/*.yml',
+      schema: z.object({
+        name: z.string(),
+        /** What it is in a few words: "Screenshot app for macOS". */
+        kind: z.string(),
+        description: z.string(),
+        mark,
+        /** Where it runs: macOS, Docker, Web. */
+        platforms: z.array(z.string()).default([]),
+        /** First release, as "Oct 2026". */
+        since: z.string(),
+        license: z.string().optional(),
+        repo: z.string().url(),
+        /** Ways to get it: the website, a download, a live demo. */
+        links: z.array(link).default([]),
+        order: z.number()
+      })
+    }),
+
+    /** An app's own page at /apps/<file>, next to its card in `apps` (like `projectPages`). */
+    appPages: defineCollection({
+      type: 'page',
+      source: 'apps/*.md',
+      schema: z.object({
+        description: z.string(),
+        rawbody: z.string(),
+        sitemap: defineSitemapSchema({ z })
+      })
+    }),
+
+    /** The Vue.js learning path on /learn/vue: stages in order, each with its topics and resources. */
+    vuePath: defineCollection({
+      type: 'data',
+      source: 'learn/vue-path.yml',
+      schema: z.object({
+        description: z.string(),
+        intro: z.string(),
+        source: z.string().url(),
+        before: z.array(z.object({
+          title: z.string(),
+          icon: z.string(),
+          topics: z.array(z.string()).default([]),
+          links: z.array(link).default([])
+        })),
+        steps: z.array(z.object({
+          title: z.string(),
+          /** Iconify name for the stage's tile, e.g. `lucide:zap`. */
+          icon: z.string(),
+          /** A small project to build, instead of a stage to study. */
+          project: z.boolean().default(false),
+          note: z.string().optional(),
+          topics: z.array(z.string()).default([]),
+          links: z.array(link).default([])
+        }))
+      })
+    }),
+
+    /** One design pattern per file, on /learn/design-patterns/<file>, with the Java example from GitHub. */
+    patterns: defineCollection({
+      type: 'page',
+      source: 'learn/design-patterns/*.md',
+      schema: z.object({
+        group: z.enum(patternGroupNames),
+        /** Iconify name for the pattern's tile, e.g. `lucide:bell` for Observer. */
+        icon: z.string(),
+        /** The idea in one sentence, for the cards. */
+        summary: z.string(),
+        description: z.string(),
+        /** What the example models: "A tweet and its followers". */
+        example: z.string(),
+        order: z.number(),
+        /** The pattern's folder in the GitHub repository. */
+        source: z.string().url(),
         rawbody: z.string(),
         sitemap: defineSitemapSchema({ z })
       })

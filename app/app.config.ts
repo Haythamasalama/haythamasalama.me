@@ -10,17 +10,19 @@ export default defineAppConfig({
 
   nav: [
     { label: 'About', to: '/about' },
-    { label: 'Projects', to: '/projects' },
+    // Project and app pages keep their own addresses, under Work.
+    { label: 'Work', to: '/work', includes: ['/projects', '/apps'] },
     { label: 'Open Source', to: '/open-source' },
-    { label: 'Blog', to: '/articles' },
-    {
-      label: 'Resources',
-      children: [
-        { label: 'Snippets', to: '/snippets', description: 'Code I reach for again and again' },
-        { label: 'Tools', to: '/tools', description: 'Small tools that save me time' },
-        { label: 'Uses', to: '/uses', description: 'My own setup' }
-      ]
-    }
+    // Articles, plus the Vue.js path and the design patterns under /learn.
+    { label: 'Blog', to: '/articles', includes: ['/learn'] }
+  ],
+
+  /** Smaller pages, linked from the footer. */
+  footer: [
+    { label: 'Snippets', to: '/snippets' },
+    { label: 'Tools', to: '/tools' },
+    { label: 'Uses', to: '/uses' },
+    { label: 'Brand', to: '/brand' }
   ],
 
   /** The highlighted link at the end of the navigation. */

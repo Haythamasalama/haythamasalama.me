@@ -70,13 +70,13 @@ export function usePageSeo (seo: PageSeo) {
     }, { alt });
   }
 
-  // Home, then the section (Projects, Blog), then the page.
-  const section = path.split('/').length > 2
-    ? nav.find(item => 'to' in item && path.startsWith(`${item.to}/`))
-    : undefined;
+  // Home, then the section (Work, Blog), then the page. A section also covers the
+  // addresses it `includes`: a project at /projects/winch is under Work.
+  const section = nav.find((item: { to: string; includes?: string[] }) =>
+    [item.to, ...item.includes ?? []].some(base => path.startsWith(`${base}/`)));
   const trail = [
     { name: 'Home', url: site.url },
-    ...section && 'to' in section ? [{ name: section.label, url: `${site.url}${section.to}` }] : [],
+    ...section ? [{ name: section.label, url: `${site.url}${section.to}` }] : [],
     ...path === '/' ? [] : [{ name: seo.title, url }]
   ];
 

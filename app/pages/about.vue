@@ -94,16 +94,7 @@
         </div>
       </div>
 
-      <dl class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-4">
-        <div v-for="stat in stats" :key="stat.label" class="flex flex-col gap-0.5 bg-bg px-4 py-3.5">
-          <dt class="order-last text-[13px] leading-snug text-faint">
-            {{ stat.label }}
-          </dt>
-          <dd class="font-mono text-xl font-medium">
-            {{ stat.value }}
-          </dd>
-        </div>
-      </dl>
+      <StatStrip :stats="stats" class="mt-8" />
 
       <div class="mt-3 flex flex-wrap gap-x-[22px] text-sm">
         <NuxtLink
@@ -152,7 +143,7 @@
           :mark="job.mark"
         />
       </ol>
-      <GoLink to="/projects" class="mt-1">
+      <GoLink to="/work" class="mt-1">
         Projects in detail
       </GoLink>
     </section>

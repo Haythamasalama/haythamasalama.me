@@ -12,6 +12,7 @@
   const languageLabels: Record<string, string> = {
     bash: 'bash',
     dotenv: 'dotenv',
+    java: 'Java',
     js: 'JavaScript',
     javascript: 'JavaScript',
     json: 'JSON',

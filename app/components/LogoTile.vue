@@ -15,7 +15,7 @@
 <template>
   <span
     v-if="mark?.image"
-    class="block shrink-0 overflow-hidden"
+    class="box-border block shrink-0 overflow-hidden border border-edge"
     :style="{ width: `${size}px`, height: `${size}px`, borderRadius: `${radius}px` }"
   >
     <img

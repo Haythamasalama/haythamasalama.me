@@ -164,7 +164,7 @@
           >
             <Icon name="lucide:git-merge" class="relative top-0.5 size-3.5 shrink-0" />
             <span class="shrink-0 font-mono text-xs text-faint">#{{ pr.number }}</span>
-            <span class="min-w-0 flex-auto">{{ pr.title }}</span>
+            <span class="min-w-0 flex-auto [overflow-wrap:anywhere]">{{ pr.title }}</span>
             <time :datetime="pr.date" class="hidden shrink-0 font-mono text-xs text-faint sm:block">
               {{ formatMonth(pr.date) }}
             </time>
@@ -224,7 +224,7 @@
               <li v-for="pr in project.pullRequests.slice(0, PREVIEW)" :key="pr.url">
                 <NuxtLink :to="pr.url" class="link-muted flex min-h-9 items-baseline gap-2.5 py-1.5 text-sm">
                   <span class="shrink-0 font-mono text-xs text-faint">#{{ pr.number }}</span>
-                  <span>{{ pr.title || 'Pull request' }}</span>
+                  <span class="min-w-0 [overflow-wrap:anywhere]">{{ pr.title || 'Pull request' }}</span>
                   <span v-if="pr.state" class="shrink-0 font-mono text-[11px] text-faint">{{ pr.state }}</span>
                 </NuxtLink>
               </li>

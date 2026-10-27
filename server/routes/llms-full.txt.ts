@@ -4,9 +4,9 @@
  */
 export default defineEventHandler(async (event) => {
   const { site } = useAppConfig();
-  const { projects, articles } = await contentPages(event);
+  const { projects, apps, articles, patterns } = await contentPages(event);
 
-  const paths = [...staticPages, ...projects.map(page => page.path), ...articles.map(page => page.path)];
+  const paths = [...staticPages, ...[projects, apps, articles, patterns].flat().map(page => page.path)];
   const pages = await Promise.all(paths.map(path => pageMarkdown(event, path)));
 
   const text = [

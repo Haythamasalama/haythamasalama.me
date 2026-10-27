@@ -53,38 +53,13 @@
     .split(' · ')
     .filter(Boolean)
     .map(text => ({ text, icon: /\d|now/.test(text) ? 'lucide:calendar' : 'lucide:briefcase-business' })));
-
-  /** The page's sections, for the list beside the text on wide screens. */
-  const sections = computed(() => (data.value?.page.body?.toc?.links ?? [])
-    .filter(link => link.depth === 2)
-    .map(link => ({ id: link.id, text: link.text })));
-
-  // Highlight the section being read: the last heading that has scrolled past the top third.
-  const active = ref(sections.value[0]?.id);
-
-  onMounted(() => {
-    const headings = sections.value
-      .map(section => document.getElementById(section.id))
-      .filter((heading): heading is HTMLElement => !!heading);
-
-    const update = () => {
-      const line = window.innerHeight / 3;
-      const passed = headings.filter(heading => heading.getBoundingClientRect().top <= line);
-
-      active.value = (passed.at(-1) ?? headings[0])?.id;
-    };
-
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    onBeforeUnmount(() => window.removeEventListener('scroll', update));
-  });
 </script>
 
 <template>
   <article v-if="data">
     <header class="pt-16 md:pt-[72px]">
-      <NuxtLink to="/projects" class="go link-muted -ml-0.5 inline-flex min-h-11 items-center text-sm">
-        <span class="mr-1.5" aria-hidden="true">←</span> Projects
+      <NuxtLink to="/work" class="go link-muted -ml-0.5 inline-flex min-h-11 items-center text-sm">
+        <span class="mr-1.5" aria-hidden="true">←</span> Work
       </NuxtLink>
       <div class="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <LogoTile :mark="data.project.mark" :size="52" />
@@ -117,30 +92,7 @@
       </ul>
     </header>
 
-    <div class="mt-12 border-t border-line pt-4 lg:grid lg:grid-cols-[176px_minmax(0,1fr)] lg:gap-14">
-      <!-- On wide screens, the sections stay beside the text and mark the one being read. -->
-      <nav v-if="sections.length" aria-label="On this page" class="hidden lg:block">
-        <div class="sticky top-10 pt-8">
-          <p class="eyebrow mb-3">
-            On this page
-          </p>
-          <ul class="flex flex-col border-l border-line">
-            <li v-for="section in sections" :key="section.id">
-              <a
-                :href="`#${section.id}`"
-                class="-ml-px flex min-h-9 items-center border-l py-1 pl-3.5 text-[13px] transition-colors"
-                :class="active === section.id ? 'border-fg text-fg' : 'border-transparent text-muted hover:text-fg'"
-                :aria-current="active === section.id ? 'location' : undefined"
-              >
-                {{ section.text }}
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <ProseBody :value="data.page" class="project-body min-w-0" />
-    </div>
+    <ReadingLayout :value="data.page" />
 
     <footer v-if="more?.length" class="mt-20 border-t border-line pt-10">
       <SectionTitle class="mb-5">
@@ -161,8 +113,8 @@
           <span class="line-clamp-3 text-[13px] leading-[1.55] text-muted">{{ item.description }}</span>
         </NuxtLink>
       </div>
-      <GoLink to="/projects" class="mt-2">
-        All projects
+      <GoLink to="/work" class="mt-2">
+        All work
       </GoLink>
     </footer>
   </article>

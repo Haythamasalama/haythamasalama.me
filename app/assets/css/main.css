@@ -216,9 +216,13 @@
   }
 }
 
-/* Photos of logos (GitHub avatars) in greyscale, so they match the one-colour marks. */
+/*
+ * Photos of logos (GitHub avatars) in greyscale, so they match the one-colour marks,
+ * with the same hairline as the other tiles: a dark logo on a dark page keeps its edge.
+ */
 @utility avatar-mono {
   filter: grayscale(1);
+  box-shadow: 0 0 0 1px var(--edge);
 }
 
 @utility text-gradient {

@@ -43,7 +43,7 @@ The canonical guide is the `/brand` page (`app/pages/brand.vue`). The design rul
 ## Layout and motion
 
 - **Widths:**
-  - The page column is 880px; `/brand` is 1040px (`definePageMeta({ wide: true })`).
+  - The page column is 880px; `/brand`, project, app and design pattern pages are 1040px (`definePageMeta({ wide: true })`).
   - Articles read in 720px.
   - Paragraphs are capped at 70ch.
 - **Tap targets** are at least 44px.
