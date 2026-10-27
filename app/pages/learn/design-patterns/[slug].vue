@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import { patternGroups } from '#shared/pattern-groups';
 
+  definePageMeta({ wide: true });
+
   const route = useRoute();
   const path = route.path.replace(/\/$/, '');
 

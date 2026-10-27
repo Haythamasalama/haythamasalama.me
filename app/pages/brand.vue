@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import type { Mark } from '#shared/types/mark';
 
+  definePageMeta({ wide: true });
+
   usePageSeo({
     title: 'Brand guidelines',
     description: 'The visual identity of Haytham A. Salama: the handwritten signature, colour, type and voice, plus a brand kit to download.'
