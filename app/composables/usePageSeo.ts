@@ -70,13 +70,15 @@ export function usePageSeo (seo: PageSeo) {
     }, { alt });
   }
 
-  // Home, then the section (Projects, Blog), then the page.
-  const section = path.split('/').length > 2
-    ? nav.find(item => 'to' in item && path.startsWith(`${item.to}/`))
-    : undefined;
+  // Home, then the section (Projects, Blog, Design patterns), then the page. Sections
+  // can sit inside a menu group, and the most specific one wins.
+  const links = nav.flatMap((item): { label: string; to?: string }[] => 'children' in item && item.children ? item.children : [item]);
+  const section = links
+    .filter(item => item.to && path.startsWith(`${item.to}/`))
+    .sort((a, b) => b.to!.length - a.to!.length)[0];
   const trail = [
     { name: 'Home', url: site.url },
-    ...section && 'to' in section ? [{ name: section.label, url: `${site.url}${section.to}` }] : [],
+    ...section?.to ? [{ name: section.label, url: `${site.url}${section.to}` }] : [],
     ...path === '/' ? [] : [{ name: seo.title, url }]
   ];
 

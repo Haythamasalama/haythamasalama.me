@@ -1,6 +1,7 @@
 import type { H3Event } from 'h3';
 import { queryCollection } from '@nuxt/content/server';
 import { livePages as liveSeo } from '#shared/live-pages';
+import { patternGroups } from '#shared/pattern-groups';
 import { skillGroups } from '#shared/skill-groups';
 import { toolCategories } from '#shared/tool-categories';
 import type { OpenSourceActivity } from '#shared/types/open-source';
@@ -24,7 +25,7 @@ export interface MarkdownPage {
 export const markdownPath = (path: string) => `${path === '/' ? '/index' : path.replace(/\/$/, '')}.md`;
 
 /** Pages built from collections, in the order `llms.txt` and `llms-full.txt` list them. */
-export const staticPages = ['/', '/about', '/projects', '/articles', '/tools', '/uses', '/brand'] as const;
+export const staticPages = ['/', '/about', '/projects', '/apps', '/articles', '/learn', '/learn/vue', '/learn/design-patterns', '/tools', '/uses', '/brand'] as const;
 
 /** Pages that read GitHub at request time, like their HTML versions. */
 export const livePages = ['/open-source', '/snippets'] as const;
@@ -247,6 +248,128 @@ async function project (event: H3Event, path: string) {
   ]);
 }
 
+async function appsWithPages (event: H3Event) {
+  const [apps, pages] = await Promise.all([
+    queryCollection(event, 'apps').order('order', 'ASC').all(),
+    queryCollection(event, 'appPages').select('path').all()
+  ]);
+  const paths = new Set(pages.map(page => page.path));
+
+  return apps.map(app => ({ ...app, page: paths.has(`/${app.stem}`) ? `/${app.stem}` : undefined }));
+}
+
+const appLinks = (app: { links?: { label: string; to: string }[]; repo: string }) =>
+  [...(app.links ?? []).map(item => `${item.label}: ${item.to}`), `Source: ${app.repo}`];
+
+async function apps (event: H3Event) {
+  const list = await appsWithPages(event);
+
+  return document({
+    path: '/apps',
+    title: 'Apps',
+    description: 'Free, open-source apps by Haytham A. Salama: EasyShoot for screenshots on the Mac, a dashboard for WhatsApp Business templates, and more.'
+  }, list.map(app => [
+    `## ${app.name}`,
+    `${app.kind} · ${[...app.platforms ?? [], app.license && `${app.license} licence`].filter(Boolean).join(' · ')} · since ${app.since}`,
+    app.description,
+    [app.page && `About the app: ${markOf(app.page)}`, ...appLinks(app)].filter(Boolean).join('\n')
+  ].join('\n\n')));
+}
+
+async function appPage (event: H3Event, path: string) {
+  const [page, card] = await Promise.all([
+    queryCollection(event, 'appPages').path(path).first(),
+    queryCollection(event, 'apps').where('stem', '=', path.slice(1)).first()
+  ]);
+
+  if (!page || !card) {
+    return null;
+  }
+
+  return document({ path, title: `${card.name} · ${card.kind}`, description: page.description }, [
+    card.description,
+    [[...card.platforms ?? [], `since ${card.since}`, card.license && `${card.license} licence`].filter(Boolean).join(' · '), ...appLinks(card)].join('\n'),
+    plainMarkdown(page.rawbody)
+  ]);
+}
+
+async function learn (event: H3Event) {
+  const articles = await queryCollection(event, 'articles').select('path', 'title', 'description', 'date').order('date', 'DESC').limit(3).all();
+
+  return document({
+    path: '/learn',
+    title: 'Learn',
+    description: 'Learning material by Haytham A. Salama: a step-by-step path to Vue.js, design patterns explained with Java examples, and practical articles.'
+  }, [
+    '## Paths',
+    [
+      link('Vue.js path', markdownPath('/learn/vue'), 'Vue one stage at a time, from your first component to Vue Router and Pinia.'),
+      link('Design patterns', markdownPath('/learn/design-patterns'), 'The classic patterns in plain words, each with a small Java example.')
+    ].join('\n'),
+    '## From the blog',
+    articles.map(article => link(article.title, markdownPath(article.path), article.description)).join('\n')
+  ]);
+}
+
+async function vuePath (event: H3Event) {
+  const path = await queryCollection(event, 'vuePath').first();
+
+  if (!path) {
+    return null;
+  }
+
+  const resources = (links: { label: string; to: string }[]) => links.map(item => `  - [${item.label}](${item.to})`).join('\n');
+  let stage = 0;
+
+  return document({ path: '/learn/vue', title: 'Vue.js path', description: path.description }, [
+    path.intro.replace(/ Tick topics.*$/, ''),
+    `Source: ${path.source}`,
+    '## Before you start',
+    path.before.map(item => [
+      `- **${item.title}**${item.topics?.length ? `: ${item.topics.join(', ')}` : ''}`,
+      resources(item.links ?? [])
+    ].filter(Boolean).join('\n')).join('\n'),
+    '## The path',
+    path.steps.map(step => [
+      `### ${step.project ? 'Project' : `Stage ${++stage}`}: ${step.title}`,
+      step.note ?? '',
+      (step.topics ?? []).map(topic => `- ${topic}`).join('\n'),
+      step.links?.length ? `Resources:\n\n${step.links.map(item => link(item.label, item.to)).join('\n')}` : ''
+    ].filter(Boolean).join('\n\n')).join('\n\n')
+  ]);
+}
+
+async function designPatterns (event: H3Event) {
+  const list = await queryCollection(event, 'patterns').select('path', 'title', 'group', 'summary', 'example', 'order').order('order', 'ASC').all();
+
+  return document({
+    path: '/learn/design-patterns',
+    title: 'Design patterns',
+    description: 'The classic design patterns in plain words: creational, structural and behavioral, each with when to use it, its pros and cons, and a small Java example.'
+  }, patternGroups.map(group => [
+    `## ${group.name}`,
+    group.description,
+    list
+      .filter(pattern => pattern.group === group.name)
+      .map(pattern => link(pattern.title, markdownPath(pattern.path), `${pattern.summary} Example: ${pattern.example}.`))
+      .join('\n')
+  ].join('\n\n')));
+}
+
+async function designPattern (event: H3Event, path: string) {
+  const page = await queryCollection(event, 'patterns').path(path).first();
+
+  if (!page) {
+    return null;
+  }
+
+  return document({ path, title: `${page.title} pattern`, description: page.description }, [
+    `${page.group} design pattern · Example: ${page.example} · Java code: ${page.source}`,
+    page.summary,
+    plainMarkdown(page.rawbody)
+  ]);
+}
+
 async function articles (event: H3Event) {
   const list = await queryCollection(event, 'articles').order('date', 'DESC').all();
 
@@ -426,7 +549,11 @@ export async function pageMarkdown (event: H3Event, path: string): Promise<{ pag
     case '/': return done(await home(event));
     case '/about': return done(await about(event));
     case '/projects': return done(await projects(event));
+    case '/apps': return done(await apps(event));
     case '/articles': return done(await articles(event));
+    case '/learn': return done(await learn(event));
+    case '/learn/vue': return done(await vuePath(event));
+    case '/learn/design-patterns': return done(await designPatterns(event));
     case '/tools': return done(await tools(event));
     case '/uses': return done(await uses(event));
     case '/brand': return done(brand());
@@ -438,22 +565,34 @@ export async function pageMarkdown (event: H3Event, path: string): Promise<{ pag
     return done(await project(event, path));
   }
 
+  if (path.startsWith('/apps/')) {
+    return done(await appPage(event, path));
+  }
+
   if (path.startsWith('/articles/')) {
     return done(await article(event, path));
+  }
+
+  if (path.startsWith('/learn/design-patterns/')) {
+    return done(await designPattern(event, path));
   }
 
   return null;
 }
 
-/** Project and article pages, for `llms.txt` and `llms-full.txt`. */
+/** Project, app, article and design pattern pages, for `llms.txt` and `llms-full.txt`. */
 export async function contentPages (event: H3Event) {
-  const [list, posts] = await Promise.all([
+  const [list, appList, posts, patterns] = await Promise.all([
     projectsWithPages(event),
-    queryCollection(event, 'articles').select('path', 'title', 'description', 'date').order('date', 'DESC').all()
+    appsWithPages(event),
+    queryCollection(event, 'articles').select('path', 'title', 'description', 'date').order('date', 'DESC').all(),
+    queryCollection(event, 'patterns').select('path', 'title', 'summary', 'order').order('order', 'ASC').all()
   ]);
 
   return {
     projects: list.filter(item => item.page).map(item => ({ path: item.page!, title: item.title, description: item.description })),
-    articles: posts.map(post => ({ path: post.path, title: post.title, description: post.description }))
+    apps: appList.filter(item => item.page).map(item => ({ path: item.page!, title: item.name, description: item.description })),
+    articles: posts.map(post => ({ path: post.path, title: post.title, description: post.description })),
+    patterns: patterns.map(pattern => ({ path: pattern.path, title: `${pattern.title} pattern`, description: pattern.summary }))
   };
 }

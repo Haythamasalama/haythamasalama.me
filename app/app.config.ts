@@ -10,14 +10,27 @@ export default defineAppConfig({
 
   nav: [
     { label: 'About', to: '/about' },
-    { label: 'Projects', to: '/projects' },
+    {
+      label: 'Work',
+      children: [
+        { label: 'Projects', to: '/projects', description: 'Platforms and products I’ve built' },
+        { label: 'Apps', to: '/apps', description: 'Free apps I build and maintain' }
+      ]
+    },
     { label: 'Open Source', to: '/open-source' },
-    { label: 'Blog', to: '/articles' },
+    {
+      label: 'Learn',
+      children: [
+        { label: 'Blog', to: '/articles', description: 'Articles and project stories' },
+        { label: 'Vue.js path', to: '/learn/vue', description: 'Learn Vue one stage at a time' },
+        { label: 'Design patterns', to: '/learn/design-patterns', description: '19 patterns with Java examples' }
+      ]
+    },
     {
       label: 'Resources',
       children: [
         { label: 'Snippets', to: '/snippets', description: 'Code I reach for again and again' },
-        { label: 'Tools', to: '/tools', description: 'Small tools that save me time' },
+        { label: 'Tools', to: '/tools', description: 'Tools I use and recommend' },
         { label: 'Uses', to: '/uses', description: 'My own setup' }
       ]
     }

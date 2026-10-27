@@ -6,15 +6,16 @@ import { liveImagePath, liveImages } from './shared/live-pages';
 /**
  * The Markdown version of every page that doesn't read GitHub (see
  * `server/middleware/markdown.ts`). The crawler skips `.md` links, so they are
- * listed here: the fixed pages, then one per project page and article.
+ * listed here: the fixed pages, then one per project, app, article and design pattern.
  * `/index.md` is not, and has no route rule either: Vercel serves any output
  * named `index.*` (a static `index.md`, an ISR function `index.md-isr`) as `/`,
  * ahead of the home page. It is rendered on each request instead.
  */
 const markdownRoutes = [
-  '/about.md', '/projects.md', '/articles.md', '/tools.md', '/uses.md', '/brand.md',
+  '/about.md', '/projects.md', '/apps.md', '/articles.md', '/learn.md', '/learn/vue.md', '/learn/design-patterns.md',
+  '/tools.md', '/uses.md', '/brand.md',
   ...readdirSync('content', { recursive: true, encoding: 'utf8' })
-    .filter(file => /^(projects|articles)\/.+\.md$/.test(file.replaceAll('\\', '/')))
+    .filter(file => /^(projects|apps|articles|learn\/design-patterns)\/.+\.md$/.test(file.replaceAll('\\', '/')))
     .map(file => `/${file.replaceAll('\\', '/')}`)
 ];
 
@@ -63,7 +64,7 @@ export default defineNuxtConfig({
         highlight: {
           // Brand themes from shared/code-theme.ts, also used for gists on /snippets.
           theme: { default: codeThemeDark, light: codeThemeLight },
-          langs: ['bash', 'css', 'dotenv', 'html', 'javascript', 'json', 'markdown', 'php', 'python', 'sql', 'typescript', 'vue', 'yaml']
+          langs: ['bash', 'css', 'dotenv', 'html', 'java', 'javascript', 'json', 'markdown', 'php', 'python', 'sql', 'typescript', 'vue', 'yaml']
         }
       }
     },
@@ -99,6 +100,13 @@ export default defineNuxtConfig({
     '/api/open-source': { isr: 6 * 60 * 60 },
     '/projects': { prerender: true },
     '/projects/**': { prerender: true },
+    // EasyShoot moved from Projects to Apps.
+    '/projects/easyshoot': { redirect: { to: '/apps/easyshoot', statusCode: 301 } },
+    '/projects/easyshoot.md': { redirect: { to: '/apps/easyshoot.md', statusCode: 301 } },
+    '/apps': { prerender: true },
+    '/apps/**': { prerender: true },
+    '/learn': { prerender: true },
+    '/learn/**': { prerender: true },
     '/articles/**': { prerender: true },
     // Gists are fetched at request time and cached for an hour, so new ones
     // show up without a redeploy.

@@ -4,7 +4,7 @@
  */
 export default defineEventHandler(async (event) => {
   const { site } = useAppConfig();
-  const { projects, articles } = await contentPages(event);
+  const { projects, apps, articles, patterns } = await contentPages(event);
 
   const link = (page: { path: string; title: string; description: string }) =>
     `- [${page.title}](${site.url}${markdownPath(page.path)}): ${page.description}`;
@@ -23,8 +23,12 @@ export default defineEventHandler(async (event) => {
     ].join('\n'),
     '## Projects',
     projects.map(link).join('\n'),
+    '## Apps',
+    apps.map(link).join('\n'),
     '## Articles',
     articles.map(link).join('\n'),
+    '## Design patterns',
+    patterns.map(link).join('\n'),
     '## Optional',
     [
       `- [Sitemap](${site.url}/sitemap.xml): Every HTML page, for crawlers.`,

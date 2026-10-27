@@ -1,0 +1,13 @@
+name: WhatsApp Manager Monitoring
+kind: Dashboard for WhatsApp Business
+description: 'Your WhatsApp templates, how they perform and what they cost, on one screen. It runs on your own machine, so your tokens never leave it.'
+mark:
+  logo: whatsapp-manager
+platforms:
+- Docker
+- Node.js
+since: Oct 2026
+license: MIT
+repo: https://github.com/Haythamasalama/whatsapp-manager-monitoring
+links: []
+order: 2

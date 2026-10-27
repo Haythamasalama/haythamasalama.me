@@ -1,0 +1,13 @@
+name: Cipher Tool
+kind: Encryption in the browser
+description: 'Encrypt and decrypt messages with the Hill cipher and DES in CBC mode, both written from scratch without an encryption library.'
+mark:
+  icon: lucide:lock-keyhole
+platforms:
+- Web
+since: Dec 2022
+repo: https://github.com/Haythamasalama/cipherTool
+links:
+- label: Try it
+  to: https://cipher.haythamasalama.me
+order: 3
