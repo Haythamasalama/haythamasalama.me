@@ -1,6 +1,7 @@
 ---
 title: Visitor
 group: Behavioral
+icon: lucide:footprints
 summary: 'Add new operations to a set of classes without changing them, by moving each operation into its own visitor.'
 description: 'The Visitor pattern lets you add new operations to a set of classes without changing them, by moving each operation into a visitor object. Explained with a worked Java example of a payroll.'
 example: 'A payroll for full-time and part-time staff'

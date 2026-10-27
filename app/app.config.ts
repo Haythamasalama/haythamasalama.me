@@ -10,30 +10,18 @@ export default defineAppConfig({
 
   nav: [
     { label: 'About', to: '/about' },
-    {
-      label: 'Work',
-      children: [
-        { label: 'Projects', to: '/projects', description: 'Platforms and products I’ve built' },
-        { label: 'Apps', to: '/apps', description: 'Free apps I build and maintain' }
-      ]
-    },
+    // Project and app pages keep their own addresses, under Work.
+    { label: 'Work', to: '/work', includes: ['/projects', '/apps'] },
     { label: 'Open Source', to: '/open-source' },
-    {
-      label: 'Learn',
-      children: [
-        { label: 'Blog', to: '/articles', description: 'Articles and project stories' },
-        { label: 'Vue.js path', to: '/learn/vue', description: 'Learn Vue one stage at a time' },
-        { label: 'Design patterns', to: '/learn/design-patterns', description: '19 patterns with Java examples' }
-      ]
-    },
-    {
-      label: 'Resources',
-      children: [
-        { label: 'Snippets', to: '/snippets', description: 'Code I reach for again and again' },
-        { label: 'Tools', to: '/tools', description: 'Tools I use and recommend' },
-        { label: 'Uses', to: '/uses', description: 'My own setup' }
-      ]
-    }
+    // Articles, plus the Vue.js path and the design patterns under /learn.
+    { label: 'Blog', to: '/articles', includes: ['/learn'] }
+  ],
+
+  /** Smaller pages, linked from the footer. */
+  footer: [
+    { label: 'Snippets', to: '/snippets' },
+    { label: 'Tools', to: '/tools' },
+    { label: 'Uses', to: '/uses' }
   ],
 
   /** The highlighted link at the end of the navigation. */

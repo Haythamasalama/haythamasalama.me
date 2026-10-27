@@ -25,21 +25,19 @@ The personal site of Haytham A. Salama. It runs on Nuxt 4, Nuxt Content 3 and Ta
 |---|---|---|---|
 | `/` | `app/pages/index.vue` | `site` in `app/app.config.ts`, `projects` (cards with a `highlight`), `projectPages`, `technologies` (`home: true`), latest 3 `articles`, `uses` (items with `desk`), `useOpenSource()` | `work`, `open-source`, `skills`, `blog`, `desk` |
 | `/about` | `app/pages/about.vue` | `profile.yml`, `experience/*.yml`, `education/*.yml`, `technologies`, `useOpenSource()` | `about`, `experience`, `open-source`, `skills`, `education`, `vision`, `hello` |
-| `/projects` | `app/pages/projects/index.vue` | `projects/*.yml`, plus `projectPages` to know which have a page | `projects` |
+| `/work` | `app/pages/work.vue` | `projects/*.yml` and `apps/*.yml`, plus `projectPages` and `appPages` to know which have a page; `/projects` and `/apps` redirect here | `spotlight`, `case-studies`, `apps`, `earlier` |
 | `/projects/<slug>` | `app/pages/projects/[slug].vue` | `projects/<slug>.md` for the story, `projects/<slug>.yml` for title, period and links | headings in the Markdown |
-| `/apps` | `app/pages/apps/index.vue` | `apps/*.yml`, plus `appPages` to know which have a page | `all-apps` |
 | `/apps/<slug>` | `app/pages/apps/[slug].vue` | `apps/<slug>.md` for the story, `apps/<slug>.yml` for name, platforms and links | headings in the Markdown |
-| `/learn` | `app/pages/learn/index.vue` | `vuePath`, `patterns` (counts), latest 3 `articles` | `paths`, `writing` |
 | `/learn/vue` | `app/pages/learn/vue.vue` | `learn/vue-path.yml`; ticked topics stay in the visitor's `localStorage` | `before-you-start`, `the-path`, one id per stage |
 | `/learn/design-patterns`, `/learn/design-patterns/<slug>` | `app/pages/learn/design-patterns/index.vue`, `[slug].vue` | `learn/design-patterns/*.md`, groups in `shared/pattern-groups.ts` | `creational`, `structural`, `behavioral`; headings in the Markdown |
 | `/open-source` | `app/pages/open-source.vue` | `useOpenSource()`: GitHub through `server/api/open-source.get.ts`, merged with `contributions/*.yml` | `spotlight`, `projects`, `elsewhere`, `start` |
-| `/articles`, `/articles/<folder>/<slug>` | `app/pages/articles/index.vue`, `[...slug].vue` | `articles/**/*.md` | headings in the Markdown |
+| `/articles`, `/articles/<folder>/<slug>` | `app/pages/articles/index.vue`, `[...slug].vue` | `articles/**/*.md`; the guides (`vuePath`, `patterns`) above them | `guides`, one per year; headings in the Markdown |
 | `/snippets` | `app/pages/snippets.vue` | public gists through `server/api/snippets.get.ts` | one per gist |
 | `/tools` | `app/pages/tools.vue` | `tools/*.yml`, groups and categories in `shared/tool-categories.ts` | one per category |
 | `/uses` | `app/pages/uses.vue` | `uses/*.yml` (one file per section) | one per file |
 | `/brand` | `app/pages/brand.vue` | data written in the page itself; downloads in `public/brand-kit/` | `principles`, `signature`, `favicon`, `colour`, `typography`, `icons`, `in-the-world`, `voice`, `kit` |
 
-Navigation, the contact link and the social links live in `app/app.config.ts`. The menu is About, Work (Projects, Apps), Open Source, Learn (Blog, Vue.js path, Design patterns) and Resources (Snippets, Tools, Uses). Project, app and design pattern pages share `ReadingLayout` (the text with its sections beside it). Collections and their schemas live in `content.config.ts`: add a field there before using it in a file.
+Navigation, the contact link and the social links live in `app/app.config.ts`. The menu is four plain links, About, Work, Open Source and Blog, with no dropdowns; a link's `includes` marks it current on other addresses too (Work on `/projects/…` and `/apps/…`, Blog on `/learn/…`). Snippets, Tools and Uses are linked from the footer (`footer` in the same file). The Blog page lists the two guides above the articles. Project, app and design pattern pages share `ReadingLayout` (the text with its sections beside it). Collections and their schemas live in `content.config.ts`: add a field there before using it in a file.
 
 ## Building blocks
 

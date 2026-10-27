@@ -26,7 +26,7 @@
       work: projects
         .filter(project => project.highlight)
         .sort((a, b) => a.highlight!.order - b.highlight!.order)
-        .map(project => ({ ...project, to: paths.has(`/${project.stem}`) ? `/${project.stem}` : '/projects' })),
+        .map(project => ({ ...project, to: paths.has(`/${project.stem}`) ? `/${project.stem}` : '/work' })),
       stack: technologies,
       articles,
       // Each links to its section on /uses, where the name and note are written out.
@@ -142,8 +142,8 @@
           </span>
         </NuxtLink>
       </div>
-      <GoLink to="/projects" class="mt-1">
-        All projects
+      <GoLink to="/work" class="mt-1">
+        All work
       </GoLink>
     </section>
 

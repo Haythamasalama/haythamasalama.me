@@ -1,6 +1,7 @@
 ---
 title: Bridge
 group: Structural
+icon: lucide:bridge
 summary: 'Split a class into two parts that can change on their own: what it does, and how it gets done.'
 description: 'The Bridge pattern splits an abstraction from its implementation so each side can grow on its own, without a class for every pair. Explained with a worked Java example of apps that run on two platforms.'
 example: 'An application that runs on Windows or Mac'

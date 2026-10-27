@@ -1,6 +1,7 @@
 ---
 title: Proxy
 group: Structural
+icon: lucide:shield-check
 summary: 'A stand-in with the same interface as the real object, which controls when and how the real one is used.'
 description: 'The Proxy pattern puts a stand-in in front of a real object to control access to it: create it only when needed, check calls, or reach it over a network. Explained with a worked Java example of a database.'
 example: 'A database that connects only when asked'

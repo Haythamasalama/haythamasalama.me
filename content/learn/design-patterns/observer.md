@@ -1,6 +1,7 @@
 ---
 title: Observer
 group: Behavioral
+icon: lucide:bell
 summary: 'One object announces a change, and every object that subscribed to it hears about it.'
 description: 'The Observer pattern lets one object announce a change to every object that subscribed to it, without knowing who they are or what they do. Explained with a worked Java example of a tweet and its followers.'
 example: 'A tweet and its followers'

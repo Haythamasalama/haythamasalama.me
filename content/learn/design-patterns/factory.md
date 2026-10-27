@@ -1,6 +1,7 @@
 ---
 title: Factory
 group: Creational
+icon: lucide:factory
 summary: 'One place decides which concrete class to create, so the rest of the code only asks for what it needs.'
 description: 'The Factory pattern moves the choice of which class to create into one place, so client code asks for an object by name and gets back an interface. Explained with a worked Java example of a pizza shop.'
 example: 'A pizza shop that makes margherita and pepperoni'

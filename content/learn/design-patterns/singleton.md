@@ -1,6 +1,7 @@
 ---
 title: Singleton
 group: Creational
+icon: lucide:circle-dot
 summary: 'A class that makes sure only one instance of itself exists, and hands everyone that same instance.'
 description: 'The Singleton pattern keeps a class to a single instance and gives the whole program one way to reach it. Learn when it helps and when it hurts, with a worked Java example of a database connection.'
 example: 'A shared database connection'

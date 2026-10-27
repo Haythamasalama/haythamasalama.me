@@ -1,6 +1,7 @@
 ---
 title: Chain of Responsibility
 group: Behavioral
+icon: lucide:link
 summary: 'Pass a request along a chain of handlers, where each one can deal with it or hand it to the next.'
 description: 'The Chain of Responsibility pattern passes a request along a line of handlers, and each one can act on it, stop it or pass it on. Explained with a worked Java example of middleware that checks web requests.'
 example: 'Middleware that checks a web request'

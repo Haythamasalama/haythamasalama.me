@@ -58,8 +58,8 @@
 <template>
   <article v-if="data">
     <header class="pt-16 md:pt-[72px]">
-      <NuxtLink to="/projects" class="go link-muted -ml-0.5 inline-flex min-h-11 items-center text-sm">
-        <span class="mr-1.5" aria-hidden="true">←</span> Projects
+      <NuxtLink to="/work" class="go link-muted -ml-0.5 inline-flex min-h-11 items-center text-sm">
+        <span class="mr-1.5" aria-hidden="true">←</span> Work
       </NuxtLink>
       <div class="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <LogoTile :mark="data.project.mark" :size="52" />
@@ -113,8 +113,8 @@
           <span class="line-clamp-3 text-[13px] leading-[1.55] text-muted">{{ item.description }}</span>
         </NuxtLink>
       </div>
-      <GoLink to="/projects" class="mt-2">
-        All projects
+      <GoLink to="/work" class="mt-2">
+        All work
       </GoLink>
     </footer>
   </article>

@@ -1,6 +1,7 @@
 ---
 title: Composite
 group: Structural
+icon: lucide:network
 summary: 'Treat a single object and a group of objects the same way, by building them into a tree.'
 description: 'The Composite pattern builds objects into a tree so that a single item and a whole group can be treated the same way. Explained with a worked Java example of files and directories in a file system.'
 example: 'Files and directories in a file system'

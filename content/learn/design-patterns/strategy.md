@@ -1,6 +1,7 @@
 ---
 title: Strategy
 group: Behavioral
+icon: lucide:shuffle
 summary: 'Put each way of doing a task in its own class, and choose which one to use while the program runs.'
 description: 'The Strategy pattern puts each version of an algorithm in its own class, so you can swap them while the program runs. Explained with a worked Java example of a logger that writes to a file or the console.'
 example: 'A logger that writes to a file or the console'

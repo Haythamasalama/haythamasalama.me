@@ -3,37 +3,18 @@
   const route = useRoute();
 
   const menuOpen = ref(false);
-  const openGroup = ref<string | null>(null);
-  const navRoot = useTemplateRef<HTMLElement>('navRoot');
 
-  /** A group is "current" when the page is one of its children. */
-  const isCurrentGroup = (item: (typeof nav)[number]) =>
-    !!item.children?.some(child => route.path.startsWith(child.to));
+  /** A link is current on its own page, the pages below it, and the sections it `includes` (Work → /projects). */
+  const isCurrent = (item: { to: string; includes?: string[] }) =>
+    [item.to, ...item.includes ?? []].some(base => route.path === base || route.path.startsWith(`${base}/`));
 
-  /** The mobile menu as one flat list, so each row can settle in just after the one above it. */
-  const menuRows = computed(() => nav.flatMap(item => item.children
-    ? [{ group: true, label: item.label, to: '' }, ...item.children.map(child => ({ group: false, label: child.label, to: child.to }))]
-    : [{ group: false, label: item.label, to: 'to' in item ? item.to : '' }]));
-
-  function toggleGroup (label: string) {
-    openGroup.value = openGroup.value === label ? null : label;
-  }
-
-  // Close menus whenever the page changes.
+  // Close the menu whenever the page changes.
   watch(() => route.path, () => {
     menuOpen.value = false;
-    openGroup.value = null;
   });
-
-  function closeOnOutside (event: MouseEvent) {
-    if (openGroup.value && !navRoot.value?.contains(event.target as Node)) {
-      openGroup.value = null;
-    }
-  }
 
   function closeOnEscape (event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      openGroup.value = null;
       menuOpen.value = false;
     }
   }
@@ -44,12 +25,10 @@
   });
 
   onMounted(() => {
-    document.addEventListener('click', closeOnOutside);
     document.addEventListener('keydown', closeOnEscape);
   });
 
   onBeforeUnmount(() => {
-    document.removeEventListener('click', closeOnOutside);
     document.removeEventListener('keydown', closeOnEscape);
     document.documentElement.classList.remove('overflow-hidden');
   });
@@ -69,53 +48,19 @@
       </NuxtLink>
 
       <nav
-        ref="navRoot"
         aria-label="Primary"
-        class="hidden flex-wrap items-center gap-x-4 text-sm md:flex"
+        class="hidden flex-wrap items-center gap-x-5 text-sm md:flex"
       >
-        <template v-for="item in nav" :key="item.label">
-          <div v-if="item.children" class="relative">
-            <button
-              type="button"
-              class="link-muted inline-flex min-h-11 cursor-pointer items-center gap-1"
-              :class="isCurrentGroup(item) && '!text-fg'"
-              :aria-expanded="openGroup === item.label"
-              :aria-controls="`menu-${item.label}`"
-              @click="toggleGroup(item.label)"
-            >
-              {{ item.label }}
-              <Icon
-                name="lucide:chevron-down"
-                class="size-3.5 transition-transform"
-                :class="openGroup === item.label && 'rotate-180'"
-              />
-            </button>
-            <ul
-              v-show="openGroup === item.label"
-              :id="`menu-${item.label}`"
-              class="absolute top-full right-0 z-20 mt-1 w-64 rounded-xl border border-line bg-bg p-1.5 shadow-lg"
-            >
-              <li v-for="child in item.children" :key="child.to">
-                <NuxtLink
-                  :to="child.to"
-                  class="flex flex-col gap-0.5 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
-                  active-class="bg-surface"
-                >
-                  <span class="text-fg">{{ child.label }}</span>
-                  <span class="text-[13px] text-faint">{{ child.description }}</span>
-                </NuxtLink>
-              </li>
-            </ul>
-          </div>
-          <NuxtLink
-            v-else
-            :to="item.to"
-            class="link-muted inline-flex min-h-11 items-center"
-            active-class="!text-fg"
-          >
-            {{ item.label }}
-          </NuxtLink>
-        </template>
+        <NuxtLink
+          v-for="item in nav"
+          :key="item.to"
+          :to="item.to"
+          class="link-muted inline-flex min-h-11 items-center"
+          :class="isCurrent(item) && '!text-fg'"
+          :aria-current="isCurrent(item) ? 'page' : undefined"
+        >
+          {{ item.label }}
+        </NuxtLink>
 
         <NuxtLink
           :to="contact.to"
@@ -161,23 +106,22 @@
           aria-label="Primary"
           class="mx-auto flex max-w-[880px] flex-col px-6 pt-20 pb-10 text-base tracking-[-0.01em]"
         >
-          <template v-for="(row, index) in menuRows" :key="row.label">
-            <span v-if="row.group" class="menu-item eyebrow mt-6 mb-1" :style="{ '--i': index }">{{ row.label }}</span>
-            <NuxtLink
-              v-else
-              :to="row.to"
-              class="menu-item link-muted flex min-h-11 items-center"
-              :style="{ '--i': index }"
-              active-class="!text-fg"
-              @click="menuOpen = false"
-            >
-              {{ row.label }}
-            </NuxtLink>
-          </template>
+          <NuxtLink
+            v-for="(item, index) in nav"
+            :key="item.to"
+            :to="item.to"
+            class="menu-item link-muted flex min-h-11 items-center"
+            :class="isCurrent(item) && '!text-fg'"
+            :aria-current="isCurrent(item) ? 'page' : undefined"
+            :style="{ '--i': index }"
+            @click="menuOpen = false"
+          >
+            {{ item.label }}
+          </NuxtLink>
           <NuxtLink
             :to="contact.to"
             class="menu-item mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-chip text-sm text-fg transition-colors hover:bg-surface"
-            :style="{ '--i': menuRows.length }"
+            :style="{ '--i': nav.length }"
             @click="menuOpen = false"
           >
             <Icon name="lucide:mail" class="size-4" />

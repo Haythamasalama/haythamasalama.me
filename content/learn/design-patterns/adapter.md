@@ -1,6 +1,7 @@
 ---
 title: Adapter
 group: Structural
+icon: lucide:plug
 summary: 'A thin wrapper that lets a class work with code that expects a different interface.'
 description: 'The Adapter pattern wraps a class so it matches the interface your code expects, letting two incompatible parts work together without changing either. Explained with a worked Java example of a card reader.'
 example: 'A USB drive used through a memory card interface'

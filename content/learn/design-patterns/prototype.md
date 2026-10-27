@@ -1,6 +1,7 @@
 ---
 title: Prototype
 group: Creational
+icon: lucide:copy
 summary: 'Create a new object by copying an existing one, then change only what differs.'
 description: 'The Prototype pattern creates new objects by copying an existing one, so you skip the setup and change only what differs. Learn when copying beats building, with a worked Java example of a car.'
 example: 'Copies of a Ford Mustang'

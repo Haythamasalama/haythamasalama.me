@@ -1,6 +1,7 @@
 ---
 title: Command
 group: Behavioral
+icon: lucide:square-terminal
 summary: 'Turn a request into an object, so it can be passed around, queued, logged or undone.'
 description: 'The Command pattern turns a request into an object, so you can pass it around, queue it, log it or undo it later. Explained with a worked Java example of commands that switch a light on and off.'
 example: 'Commands that turn a light on and off'

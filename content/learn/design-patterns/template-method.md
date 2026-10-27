@@ -1,6 +1,7 @@
 ---
 title: Template Method
 group: Behavioral
+icon: lucide:layout-template
 summary: 'A base class fixes the steps of a task, and subclasses fill in the steps that differ.'
 description: 'The Template Method pattern fixes the steps of a task in a base class and lets subclasses fill in only the steps that differ. Explained with a worked Java example of importing CSV, Excel and Word files.'
 example: 'Importing CSV, Excel and Word files'

@@ -1,6 +1,7 @@
 ---
 title: Iterator
 group: Behavioral
+icon: lucide:list-ordered
 summary: 'Walk through the items of a collection one by one, without knowing how the collection stores them.'
 description: 'The Iterator pattern lets you walk through a collection item by item without knowing how it stores its items inside. Explained with a worked Java example of an iterator over a collection built on an array.'
 example: 'A small collection backed by an array'

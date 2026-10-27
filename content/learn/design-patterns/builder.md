@@ -1,6 +1,7 @@
 ---
 title: Builder
 group: Creational
+icon: lucide:hammer
 summary: 'Build a complex object step by step, setting only the parts you need, then get the finished object in one call.'
 description: 'The Builder pattern constructs a complex object step by step, so you set only the parts you need and get back a finished object that does not change. Explained with a worked Java example of a car.'
 example: 'A car with maker, model, year, colour and gearbox'

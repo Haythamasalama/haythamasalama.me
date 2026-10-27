@@ -12,7 +12,7 @@ import { liveImagePath, liveImages } from './shared/live-pages';
  * ahead of the home page. It is rendered on each request instead.
  */
 const markdownRoutes = [
-  '/about.md', '/projects.md', '/apps.md', '/articles.md', '/learn.md', '/learn/vue.md', '/learn/design-patterns.md',
+  '/about.md', '/work.md', '/articles.md', '/learn/vue.md', '/learn/design-patterns.md',
   '/tools.md', '/uses.md', '/brand.md',
   ...readdirSync('content', { recursive: true, encoding: 'utf8' })
     .filter(file => /^(projects|apps|articles|learn\/design-patterns)\/.+\.md$/.test(file.replaceAll('\\', '/')))
@@ -98,14 +98,19 @@ export default defineNuxtConfig({
     '/about': { isr: 6 * 60 * 60, prerender: false },
     '/open-source': { isr: 6 * 60 * 60, prerender: false },
     '/api/open-source': { isr: 6 * 60 * 60 },
-    '/projects': { prerender: true },
+    // Work is one page for projects and apps; their own pages keep /projects/<name> and /apps/<name>.
+    '/work': { prerender: true },
+    '/projects': { redirect: { to: '/work', statusCode: 301 } },
+    '/projects.md': { redirect: { to: '/work.md', statusCode: 301 } },
     '/projects/**': { prerender: true },
     // EasyShoot moved from Projects to Apps.
     '/projects/easyshoot': { redirect: { to: '/apps/easyshoot', statusCode: 301 } },
     '/projects/easyshoot.md': { redirect: { to: '/apps/easyshoot.md', statusCode: 301 } },
-    '/apps': { prerender: true },
+    '/apps': { redirect: { to: '/work#apps', statusCode: 301 } },
+    '/apps.md': { redirect: { to: '/work.md', statusCode: 301 } },
     '/apps/**': { prerender: true },
-    '/learn': { prerender: true },
+    // The guides are listed on the Blog.
+    '/learn': { redirect: { to: '/articles#guides', statusCode: 301 } },
     '/learn/**': { prerender: true },
     '/articles/**': { prerender: true },
     // Gists are fetched at request time and cached for an hour, so new ones

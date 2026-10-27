@@ -1,6 +1,7 @@
 ---
 title: State
 group: Behavioral
+icon: lucide:toggle-left
 summary: 'An object changes its behaviour when its internal state changes, as if it had changed its class.'
 description: 'The State pattern lets an object change its behaviour when its internal state changes, with one class per state instead of long chains of if statements. Explained with a worked Java example of a transaction.'
 example: 'A transaction that moves from pending to approved'

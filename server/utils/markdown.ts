@@ -25,7 +25,7 @@ export interface MarkdownPage {
 export const markdownPath = (path: string) => `${path === '/' ? '/index' : path.replace(/\/$/, '')}.md`;
 
 /** Pages built from collections, in the order `llms.txt` and `llms-full.txt` list them. */
-export const staticPages = ['/', '/about', '/projects', '/apps', '/articles', '/learn', '/learn/vue', '/learn/design-patterns', '/tools', '/uses', '/brand'] as const;
+export const staticPages = ['/', '/about', '/work', '/articles', '/learn/vue', '/learn/design-patterns', '/tools', '/uses', '/brand'] as const;
 
 /** Pages that read GitHub at request time, like their HTML versions. */
 export const livePages = ['/open-source', '/snippets'] as const;
@@ -139,7 +139,7 @@ async function home (event: H3Event) {
   const work = projects
     .filter(project => project.highlight)
     .sort((a, b) => a.highlight!.order - b.highlight!.order)
-    .map(project => link(project.highlight!.title, project.page ?? '/projects', `${project.highlight!.description} (${project.highlight!.period})`));
+    .map(project => link(project.highlight!.title, project.page ?? '/work', `${project.highlight!.description} (${project.highlight!.period})`));
 
   return document({ path: '/', title: site().name, description: site().description }, [
     `${site().role}${profile ? ` · ${profile.location}` : ''}`,
@@ -206,31 +206,6 @@ async function about (event: H3Event) {
   ]);
 }
 
-async function projects (event: H3Event) {
-  const list = await projectsWithPages(event);
-
-  const card = (project: typeof list[number]) => [
-    `### ${project.title}`,
-    project.context ?? String(project.year),
-    project.description,
-    [
-      project.page && `Case study: ${markOf(project.page)}`,
-      ...(project.links ?? []).map(item => `${item.label}: ${item.to}`)
-    ].filter(Boolean).join('\n')
-  ].filter(Boolean).join('\n\n');
-
-  return document({
-    path: '/projects',
-    title: 'Projects',
-    description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today.'
-  }, [
-    '## Case studies',
-    list.filter(project => project.page).map(card).join('\n\n'),
-    '## Earlier work',
-    list.filter(project => !project.page).map(card).join('\n\n')
-  ]);
-}
-
 async function project (event: H3Event, path: string) {
   const [page, card] = await Promise.all([
     queryCollection(event, 'projectPages').path(path).first(),
@@ -261,19 +236,40 @@ async function appsWithPages (event: H3Event) {
 const appLinks = (app: { links?: { label: string; to: string }[]; repo: string }) =>
   [...(app.links ?? []).map(item => `${item.label}: ${item.to}`), `Source: ${app.repo}`];
 
-async function apps (event: H3Event) {
-  const list = await appsWithPages(event);
+/** Work: projects (case studies, then earlier ones) and the apps I maintain, on one page. */
+async function work (event: H3Event) {
+  const [list, appList] = await Promise.all([projectsWithPages(event), appsWithPages(event)]);
 
-  return document({
-    path: '/apps',
-    title: 'Apps',
-    description: 'Free, open-source apps by Haytham A. Salama: EasyShoot for screenshots on the Mac, a dashboard for WhatsApp Business templates, and more.'
-  }, list.map(app => [
-    `## ${app.name}`,
+  const card = (project: typeof list[number]) => [
+    `### ${project.title}`,
+    project.context ?? String(project.year),
+    project.description,
+    [
+      project.page && `Case study: ${markOf(project.page)}`,
+      ...(project.links ?? []).map(item => `${item.label}: ${item.to}`)
+    ].filter(Boolean).join('\n')
+  ].filter(Boolean).join('\n\n');
+
+  const appCard = (app: typeof appList[number]) => [
+    `### ${app.name}`,
     `${app.kind} · ${[...app.platforms ?? [], app.license && `${app.license} licence`].filter(Boolean).join(' · ')} · since ${app.since}`,
     app.description,
     [app.page && `About the app: ${markOf(app.page)}`, ...appLinks(app)].filter(Boolean).join('\n')
-  ].join('\n\n')));
+  ].join('\n\n');
+
+  return document({
+    path: '/work',
+    title: 'Work',
+    description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today, plus free, open-source apps of his own.'
+  }, [
+    '## Case studies',
+    list.filter(project => project.page).map(card).join('\n\n'),
+    '## Apps',
+    'Free, open-source apps I build and maintain.',
+    appList.map(appCard).join('\n\n'),
+    '## Earlier work',
+    list.filter(project => !project.page).map(card).join('\n\n')
+  ]);
 }
 
 async function appPage (event: H3Event, path: string) {
@@ -290,24 +286,6 @@ async function appPage (event: H3Event, path: string) {
     card.description,
     [[...card.platforms ?? [], `since ${card.since}`, card.license && `${card.license} licence`].filter(Boolean).join(' · '), ...appLinks(card)].join('\n'),
     plainMarkdown(page.rawbody)
-  ]);
-}
-
-async function learn (event: H3Event) {
-  const articles = await queryCollection(event, 'articles').select('path', 'title', 'description', 'date').order('date', 'DESC').limit(3).all();
-
-  return document({
-    path: '/learn',
-    title: 'Learn',
-    description: 'Learning material by Haytham A. Salama: a step-by-step path to Vue.js, design patterns explained with Java examples, and practical articles.'
-  }, [
-    '## Paths',
-    [
-      link('Vue.js path', markdownPath('/learn/vue'), 'Vue one stage at a time, from your first component to Vue Router and Pinia.'),
-      link('Design patterns', markdownPath('/learn/design-patterns'), 'The classic patterns in plain words, each with a small Java example.')
-    ].join('\n'),
-    '## From the blog',
-    articles.map(article => link(article.title, markdownPath(article.path), article.description)).join('\n')
   ]);
 }
 
@@ -376,8 +354,14 @@ async function articles (event: H3Event) {
   return document({
     path: '/articles',
     title: 'Blog',
-    description: 'Short, practical notes on Laravel, Vue and shipping software by Haytham A. Salama.'
+    description: 'Short, practical notes on Laravel, Vue and shipping software by Haytham A. Salama, plus guides to Vue.js and design patterns.'
   }, [
+    '## Guides',
+    [
+      link('Vue.js path', markdownPath('/learn/vue'), 'Vue one stage at a time, from your first component to Vue Router and Pinia.'),
+      link('Design patterns', markdownPath('/learn/design-patterns'), 'The classic patterns in plain words, each with a small Java example.')
+    ].join('\n'),
+    '## Articles',
     list.map(article => link(article.title, markdownPath(article.path), `${article.description} (${article.date}, ${article.category})`)).join('\n')
   ]);
 }
@@ -548,10 +532,8 @@ export async function pageMarkdown (event: H3Event, path: string): Promise<{ pag
   switch (path) {
     case '/': return done(await home(event));
     case '/about': return done(await about(event));
-    case '/projects': return done(await projects(event));
-    case '/apps': return done(await apps(event));
+    case '/work': return done(await work(event));
     case '/articles': return done(await articles(event));
-    case '/learn': return done(await learn(event));
     case '/learn/vue': return done(await vuePath(event));
     case '/learn/design-patterns': return done(await designPatterns(event));
     case '/tools': return done(await tools(event));

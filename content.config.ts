@@ -176,11 +176,14 @@ export default defineContentConfig({
         source: z.string().url(),
         before: z.array(z.object({
           title: z.string(),
+          icon: z.string(),
           topics: z.array(z.string()).default([]),
           links: z.array(link).default([])
         })),
         steps: z.array(z.object({
           title: z.string(),
+          /** Iconify name for the stage's tile, e.g. `lucide:zap`. */
+          icon: z.string(),
           /** A small project to build, instead of a stage to study. */
           project: z.boolean().default(false),
           note: z.string().optional(),
@@ -196,6 +199,8 @@ export default defineContentConfig({
       source: 'learn/design-patterns/*.md',
       schema: z.object({
         group: z.enum(patternGroupNames),
+        /** Iconify name for the pattern's tile, e.g. `lucide:bell` for Observer. */
+        icon: z.string(),
         /** The idea in one sentence, for the cards. */
         summary: z.string(),
         description: z.string(),

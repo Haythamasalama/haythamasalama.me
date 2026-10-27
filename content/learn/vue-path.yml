@@ -3,12 +3,15 @@ intro: 'Learn Vue one stage at a time, with two projects on the way. Most stages
 source: https://github.com/Haythamasalama/vue-path
 before:
 - title: HTML
+  icon: simple-icons:html5
 - title: CSS
+  icon: simple-icons:css
   topics:
   - Flexbox
   - Grid
   - Positioning
 - title: JavaScript
+  icon: simple-icons:javascript
   topics:
   - Higher-order functions
   - Arrow functions
@@ -19,6 +22,7 @@ before:
     to: https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv
 steps:
 - title: What is Vue?
+  icon: lucide:circle-help
   topics:
   - Single-page applications (SPA)
   - Server-side rendering (SSR)
@@ -27,6 +31,7 @@ steps:
   - label: Vue.js Crash Course, Traversy Media
     to: https://www.youtube.com/watch?v=VeNfHj6MhgA
 - title: Install Vue
+  icon: lucide:download
   topics:
   - From a CDN (an overview)
   - Vue CLI (an overview)
@@ -35,19 +40,23 @@ steps:
   - label: 'Quick start: creating a Vue application'
     to: https://vuejs.org/guide/quick-start.html#creating-a-vue-application
 - title: Your first component
+  icon: lucide:component
   topics:
   - What a component is
   - The script tag
   - The template tag
   - The style tag
 - title: Two ways to write components
+  icon: lucide:git-compare
   note: An overview for now. From the next stages on, learn how each topic looks in both, but focus on the Composition API.
   topics:
   - Options API
   - Composition API
 - title: The folder structure
+  icon: lucide:folder-tree
   note: An overview of where things live in a new project.
 - title: Template syntax
+  icon: lucide:code-xml
   topics:
   - Writing HTML in templates
   - Attribute bindings
@@ -68,6 +77,7 @@ steps:
   - label: Class and style bindings
     to: https://vuejs.org/guide/essentials/class-and-style.html
 - title: Reactivity
+  icon: lucide:zap
   topics:
   - ref
   - reactive
@@ -75,14 +85,17 @@ steps:
   - label: Reactivity fundamentals
     to: https://vuejs.org/guide/essentials/reactivity-fundamentals.html
 - title: Computed properties
+  icon: lucide:sigma
   links:
   - label: Computed properties
     to: https://vuejs.org/guide/essentials/computed.html
 - title: Forms and v-model
+  icon: lucide:text-cursor-input
   links:
   - label: Form input bindings
     to: https://vuejs.org/guide/essentials/forms.html
 - title: 'Build it: a to-do list'
+  icon: lucide:list-checks
   project: true
   topics:
   - Add a task
@@ -90,6 +103,7 @@ steps:
   - Delete a task
   - Mark a task as done
 - title: Components
+  icon: lucide:blocks
   topics:
   - Registration
   - Props
@@ -101,24 +115,29 @@ steps:
   - label: Component registration
     to: https://vuejs.org/guide/components/registration.html
 - title: Watchers
+  icon: lucide:eye
   links:
   - label: Watchers
     to: https://vuejs.org/guide/essentials/watchers.html
 - title: Lifecycle hooks
+  icon: lucide:refresh-cw
   links:
   - label: Lifecycle hooks
     to: https://vuejs.org/guide/essentials/lifecycle.html
 - title: Composables
+  icon: lucide:layers
   links:
   - label: Composables
     to: https://vuejs.org/guide/reusability/composables.html
 - title: 'Build it: a weather app'
+  icon: lucide:cloud-sun
   project: true
   note: Follow a full project from start to finish, then build one of your own.
   links:
   - label: Weather App Build (with Vue 3 & Tailwind CSS), Net Ninja
     to: https://www.youtube.com/playlist?list=PL4cUxeGkcC9hfoy8vFQ5tbXO3vY0xhhUZ
 - title: Going further
+  icon: lucide:rocket
   topics:
   - TypeScript with the Composition API
   - Vue Router

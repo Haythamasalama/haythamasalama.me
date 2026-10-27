@@ -27,7 +27,7 @@
     const paths = new Set(pages.map(page => page.path));
 
     return apps.slice(0, 3).map(app => ({
-      to: paths.has(`/${app.stem}`) ? `/${app.stem}` : `/apps#${slugify(app.name)}`,
+      to: paths.has(`/${app.stem}`) ? `/${app.stem}` : `/work#${slugify(app.name)}`,
       name: app.name,
       kind: app.kind,
       description: app.description,
@@ -68,8 +68,8 @@
 <template>
   <article v-if="data">
     <header class="pt-16 md:pt-[72px]">
-      <NuxtLink to="/apps" class="go link-muted -ml-0.5 inline-flex min-h-11 items-center text-sm">
-        <span class="mr-1.5" aria-hidden="true">←</span> Apps
+      <NuxtLink to="/work#apps" class="go link-muted -ml-0.5 inline-flex min-h-11 items-center text-sm">
+        <span class="mr-1.5" aria-hidden="true">←</span> Work
       </NuxtLink>
       <div class="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <LogoTile :mark="app.mark" :size="52" />
@@ -126,7 +126,7 @@
           <span class="line-clamp-3 text-[13px] leading-[1.55] text-muted">{{ item.description }}</span>
         </NuxtLink>
       </div>
-      <GoLink to="/apps" class="mt-2">
+      <GoLink to="/work#apps" class="mt-2">
         All apps
       </GoLink>
     </footer>

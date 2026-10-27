@@ -1,6 +1,7 @@
 ---
 title: Facade
 group: Structural
+icon: lucide:door-open
 summary: 'One simple class in front of a complex system, so callers talk to it instead of to every part.'
 description: 'The Facade pattern puts one simple class in front of a complex subsystem, so callers make one call instead of many and need not know how the parts fit. Explained with a worked Java example of trading shares.'
 example: 'Buying and selling shares through one class'

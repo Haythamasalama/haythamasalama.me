@@ -1,6 +1,7 @@
 ---
 title: Decorator
 group: Structural
+icon: lucide:gift
 summary: 'Wrap an object in another object that adds behaviour, without changing the original class.'
 description: 'The Decorator pattern wraps an object to add behaviour at runtime, so you can stack extras without a subclass for every mix. Explained with a worked Java example of booking plans that add to the price.'
 example: 'Booking plans that add to the price'

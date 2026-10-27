@@ -70,15 +70,13 @@ export function usePageSeo (seo: PageSeo) {
     }, { alt });
   }
 
-  // Home, then the section (Projects, Blog, Design patterns), then the page. Sections
-  // can sit inside a menu group, and the most specific one wins.
-  const links = nav.flatMap((item): { label: string; to?: string }[] => 'children' in item && item.children ? item.children : [item]);
-  const section = links
-    .filter(item => item.to && path.startsWith(`${item.to}/`))
-    .sort((a, b) => b.to!.length - a.to!.length)[0];
+  // Home, then the section (Work, Blog), then the page. A section also covers the
+  // addresses it `includes`: a project at /projects/winch is under Work.
+  const section = nav.find((item: { to: string; includes?: string[] }) =>
+    [item.to, ...item.includes ?? []].some(base => path.startsWith(`${base}/`)));
   const trail = [
     { name: 'Home', url: site.url },
-    ...section?.to ? [{ name: section.label, url: `${site.url}${section.to}` }] : [],
+    ...section ? [{ name: section.label, url: `${site.url}${section.to}` }] : [],
     ...path === '/' ? [] : [{ name: seo.title, url }]
   ];
 

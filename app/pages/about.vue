@@ -152,7 +152,7 @@
           :mark="job.mark"
         />
       </ol>
-      <GoLink to="/projects" class="mt-1">
+      <GoLink to="/work" class="mt-1">
         Projects in detail
       </GoLink>
     </section>

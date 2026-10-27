@@ -1,6 +1,7 @@
 ---
 title: Flyweight
 group: Structural
+icon: lucide:feather
 summary: 'Share the common part of many similar objects, so large numbers of them cost little memory.'
 description: 'The Flyweight pattern shares the common state of many similar objects, so a program can hold large numbers of them in little memory. Explained with a worked Java example of trees in a forest.'
 example: 'Trees in a forest that share their shape and colour'
