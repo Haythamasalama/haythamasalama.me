@@ -7,8 +7,9 @@ import { liveImagePath, liveImages } from './shared/live-pages';
  * The Markdown version of every page that doesn't read GitHub (see
  * `server/middleware/markdown.ts`). The crawler skips `.md` links, so they are
  * listed here: the fixed pages, then one per project page and article.
- * `/index.md` is not: Vercel serves a static `index.md` as the directory index
- * of `/`, ahead of the home page's ISR function.
+ * `/index.md` is not, and has no route rule either: Vercel serves any output
+ * named `index.*` (a static `index.md`, an ISR function `index.md-isr`) as `/`,
+ * ahead of the home page. It is rendered on each request instead.
  */
 const markdownRoutes = [
   '/about.md', '/projects.md', '/articles.md', '/tools.md', '/uses.md', '/brand.md',
@@ -106,9 +107,6 @@ export default defineNuxtConfig({
     '/tools': { prerender: true },
     '/uses': { prerender: true },
     '/brand': { prerender: true },
-    // Home's Markdown is rendered on the first request and kept until the next
-    // deploy; prerendered, it would replace the home page (see markdownRoutes).
-    '/index.md': { isr: true, prerender: false },
     // The live pages' Markdown versions follow the pages themselves.
     '/open-source.md': { isr: 6 * 60 * 60, prerender: false },
     '/snippets.md': { isr: 3600, prerender: false },
