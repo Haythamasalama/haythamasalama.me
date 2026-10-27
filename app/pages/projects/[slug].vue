@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  definePageMeta({ wide: true });
-
   const route = useRoute();
   const path = route.path.replace(/\/$/, '');
 

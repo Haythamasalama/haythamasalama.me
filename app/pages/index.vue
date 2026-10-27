@@ -254,9 +254,10 @@
         <li v-for="(item, index) in data?.desk" :key="item.name">
           <NuxtLink :to="item.to" class="group/desk relative block rounded-[11px]">
             <LogoTile :mark="item.mark" :size="44" />
-            <!-- A tooltip with the name, on hover and keyboard focus; the ends align to the edge so it never leaves the page. -->
+            <!-- A tooltip with the name, on hover and keyboard focus; the ends align to the edge so it never leaves the page.
+                 Touch screens have no hover, so there it is only read out, and can't widen the page. -->
             <span
-              class="pointer-events-none absolute bottom-full z-10 mb-2 translate-y-1 rounded-md border border-line bg-raised px-2.5 py-1.5 text-xs whitespace-nowrap opacity-0 shadow-sm transition-[opacity,translate] group-hover/desk:translate-y-0 group-hover/desk:opacity-100 group-focus-visible/desk:translate-y-0 group-focus-visible/desk:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none"
+              class="pointer-events-none absolute bottom-full z-10 mb-2 translate-y-1 [@media(hover:none)]:sr-only rounded-md border border-line bg-raised px-2.5 py-1.5 text-xs whitespace-nowrap opacity-0 shadow-sm transition-[opacity,translate] group-hover/desk:translate-y-0 group-hover/desk:opacity-100 group-focus-visible/desk:translate-y-0 group-focus-visible/desk:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none"
               :class="index === 0 ? 'left-0' : index === data!.desk.length - 1 ? 'right-0' : 'left-1/2 -translate-x-1/2'"
             >
               <span class="text-fg">{{ item.name }}</span>

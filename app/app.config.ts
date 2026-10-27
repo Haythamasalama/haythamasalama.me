@@ -21,7 +21,8 @@ export default defineAppConfig({
   footer: [
     { label: 'Snippets', to: '/snippets' },
     { label: 'Tools', to: '/tools' },
-    { label: 'Uses', to: '/uses' }
+    { label: 'Uses', to: '/uses' },
+    { label: 'Brand', to: '/brand' }
   ],
 
   /** The highlighted link at the end of the navigation. */

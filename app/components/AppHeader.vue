@@ -104,7 +104,7 @@
         <nav
           id="mobile-menu"
           aria-label="Primary"
-          class="mx-auto flex max-w-[880px] flex-col px-6 pt-20 pb-10 text-base tracking-[-0.01em]"
+          class="mx-auto flex max-w-[1040px] flex-col px-6 pt-20 pb-10 text-base tracking-[-0.01em]"
         >
           <NuxtLink
             v-for="(item, index) in nav"

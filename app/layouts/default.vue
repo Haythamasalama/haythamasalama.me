@@ -1,11 +1,3 @@
-<script setup lang="ts">
-  const route = useRoute();
-
-  // Lists and grids use the full width; paragraphs are capped at a readable
-  // measure in main.css. The brand guide gets a little more room.
-  const maxWidth = computed(() => route.meta.wide ? 'max-w-[1040px]' : 'max-w-[880px]');
-</script>
-
 <template>
   <div class="min-h-dvh">
     <a
@@ -14,7 +6,9 @@
     >
       Skip to content
     </a>
-    <div class="mx-auto px-6" :class="maxWidth">
+    <!-- One 1040px column on every page: lists and grids use the full width, and
+         paragraphs are capped at a readable measure in main.css. -->
+    <div class="mx-auto max-w-[1040px] px-6">
       <AppHeader />
       <main id="main">
         <slot />

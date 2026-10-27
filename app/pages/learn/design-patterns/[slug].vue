@@ -1,8 +1,6 @@
 <script setup lang="ts">
   import { patternGroups } from '#shared/pattern-groups';
 
-  definePageMeta({ wide: true });
-
   const route = useRoute();
   const path = route.path.replace(/\/$/, '');
 
@@ -40,7 +38,6 @@
   });
 
   const group = computed(() => patternGroups.find(item => item.name === pattern.value?.group));
-  const others = computed(() => (siblings.value ?? []).filter(item => item.path !== path));
   const next = computed(() => {
     const list = siblings.value ?? [];
     const index = list.findIndex(item => item.path === path);
@@ -107,17 +104,29 @@
         </span>
         <span class="text-[13px] leading-[1.55] text-muted">{{ next.summary }}</span>
       </NuxtLink>
-      <SectionTitle class="mb-2">
-        More {{ pattern.group.toLowerCase() }} patterns
-      </SectionTitle>
-      <ul class="flex flex-wrap gap-x-5">
-        <li v-for="item in others" :key="item.path">
-          <NuxtLink :to="item.path" class="link-muted inline-flex min-h-11 items-center text-sm">
-            {{ item.title }}
-          </NuxtLink>
-        </li>
-      </ul>
-      <GoLink to="/learn/design-patterns" class="mt-2">
+      <nav :aria-label="`${pattern.group} patterns`">
+        <SectionTitle class="mb-3 flex items-center gap-2">
+          <Icon :name="group?.icon ?? 'lucide:blocks'" class="size-3.5" aria-hidden="true" />
+          {{ pattern.group }} patterns
+        </SectionTitle>
+        <!-- The whole group, with this pattern marked, so it reads as a menu. -->
+        <ul class="flex flex-wrap gap-2">
+          <li v-for="item in siblings" :key="item.path">
+            <NuxtLink
+              :to="item.path"
+              class="inline-flex min-h-11 items-center gap-2 rounded-full border py-1.5 pr-4 pl-2 text-sm transition-colors"
+              :class="item.path === path ? 'border-fg bg-surface text-fg' : 'border-chip text-muted hover:bg-surface hover:text-fg'"
+              :aria-current="item.path === path ? 'page' : undefined"
+            >
+              <span class="flex size-7 items-center justify-center rounded-full bg-surface text-mark">
+                <Icon :name="item.icon" class="size-3.5" aria-hidden="true" />
+              </span>
+              {{ item.title }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </nav>
+      <GoLink to="/learn/design-patterns" class="mt-4">
         All design patterns
       </GoLink>
     </footer>
