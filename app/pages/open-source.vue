@@ -85,12 +85,7 @@
         </NuxtLink>
       </div>
 
-      <StatStrip
-        v-if="stats.length"
-        :stats="stats"
-        size="lg"
-        class="mt-10"
-      />
+      <StatStrip v-if="stats.length" :stats="stats" size="lg" class="mt-10" />
       <p v-if="activity" class="mt-6 inline-flex items-center gap-1.5 font-mono text-xs text-faint">
         <Icon name="lucide:refresh-cw" class="size-3" />
         Synced from GitHub <time :datetime="activity.fetchedAt">{{ formatDay(activity.fetchedAt) }}</time>
@@ -188,12 +183,12 @@
         </SectionTitle>
         <span v-if="live" class="font-mono text-xs text-faint">biggest project first</span>
       </div>
-      <ol class="mt-4 flex flex-col gap-3">
+      <ol class="mt-3 flex flex-col">
         <li
           v-for="project in projects"
           :id="project.id"
           :key="project.id"
-          class="flex scroll-mt-6 items-start gap-4 rounded-2xl border border-line p-4 md:p-5"
+          class="flex items-start gap-4 py-3.5"
         >
           <LogoTile :mark="project.mark" :size="40" />
           <div class="flex min-w-0 flex-auto flex-col gap-0.5">
@@ -236,14 +231,14 @@
     </section>
 
     <section v-if="issueRepos.length || discussions.length || created.length" aria-labelledby="elsewhere" class="pt-14 md:pt-[72px]">
-      <SectionTitle id="elsewhere" class="mb-4">
+      <SectionTitle id="elsewhere" class="mb-2">
         Issues, discussions &amp; projects I started
       </SectionTitle>
-      <ul class="flex flex-col divide-y divide-line overflow-hidden rounded-2xl border border-line">
+      <ul class="flex flex-col">
         <li
           v-for="repo in issueRepos"
           :key="repo.name"
-          class="flex min-h-12 flex-col justify-center gap-0.5 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+          class="flex min-h-12 flex-col justify-center gap-0.5 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
         >
           <span class="inline-flex min-w-0 items-center gap-3">
             <Icon name="lucide:circle-dot" class="size-[15px] shrink-0 text-faint" />
@@ -267,7 +262,7 @@
         <li
           v-for="entry in discussions"
           :key="entry.id"
-          class="flex min-h-12 flex-col justify-center gap-0.5 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+          class="flex min-h-12 flex-col justify-center gap-0.5 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
         >
           <span class="inline-flex items-center gap-3">
             <Icon name="lucide:message-square" class="size-[15px] shrink-0 text-faint" />
@@ -288,7 +283,7 @@
         <li
           v-for="entry in created"
           :key="entry.id"
-          class="flex min-h-12 flex-col justify-center gap-0.5 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+          class="flex min-h-12 flex-col justify-center gap-0.5 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
         >
           <span class="inline-flex items-center gap-3">
             <Icon name="lucide:plus" class="size-[15px] shrink-0 text-faint" />
@@ -302,22 +297,20 @@
     </section>
 
     <section aria-labelledby="start" class="pt-14 md:pt-[72px]">
-      <SectionTitle id="start" class="mb-4">
+      <SectionTitle id="start" class="mb-3">
         Getting started?
       </SectionTitle>
-      <div class="rounded-2xl border border-line px-5 pt-4 pb-2">
-        <p class="text-[15px] leading-[1.7] text-muted">
-          What worked for me, from a first issue to a merged pull request.
-        </p>
-        <div class="mt-1 flex flex-wrap gap-x-[22px]">
-          <GoLink to="/articles/software-engineering/how_to_contribute_to_open_source_projects">
-            How to contribute to open source
-          </GoLink>
-          <NuxtLink :to="profileUrl" class="link-muted inline-flex min-h-11 items-center gap-2 text-sm">
-            <Icon name="simple-icons:github" class="size-4 text-mark" />
-            Follow me on GitHub ↗
-          </NuxtLink>
-        </div>
+      <p class="text-[15px] leading-[1.7] text-muted">
+        What worked for me, from a first issue to a merged pull request.
+      </p>
+      <div class="mt-2 flex flex-wrap gap-x-[22px]">
+        <GoLink to="/articles/software-engineering/how_to_contribute_to_open_source_projects">
+          How to contribute to open source
+        </GoLink>
+        <NuxtLink :to="profileUrl" class="link-muted inline-flex min-h-11 items-center gap-2 text-sm">
+          <Icon name="simple-icons:github" class="size-4 text-mark" />
+          Follow me on GitHub ↗
+        </NuxtLink>
       </div>
     </section>
   </div>

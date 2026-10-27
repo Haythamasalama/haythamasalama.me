@@ -122,15 +122,15 @@
     </section>
 
     <section aria-labelledby="work" class="animate-rise pt-[72px] [animation-delay:.55s]">
-      <SectionTitle id="work" class="mb-4">
+      <SectionTitle id="work" class="mb-3">
         Selected work
       </SectionTitle>
-      <div class="flex flex-col divide-y divide-line overflow-hidden rounded-2xl border border-line">
+      <div class="flex flex-col">
         <NuxtLink
           v-for="project in data?.work"
           :key="project.id"
           :to="project.to"
-          class="flex items-start gap-3.5 p-4 transition-colors hover:bg-surface"
+          class="-mx-3 flex items-start gap-3.5 rounded-[10px] p-3 transition-colors hover:bg-surface"
         >
           <LogoTile :mark="project.mark" :size="36" />
           <span class="flex min-w-0 flex-auto flex-col gap-1">
@@ -142,7 +142,7 @@
           </span>
         </NuxtLink>
       </div>
-      <GoLink to="/work" class="mt-2">
+      <GoLink to="/work" class="mt-1">
         All work
       </GoLink>
     </section>
@@ -155,12 +155,12 @@
         {{ openSourceSummary || 'I like fixing the tools I depend on.' }}
       </p>
       <StatStrip v-if="openSourceStats.length" :stats="openSourceStats" class="mt-4" />
-      <div class="mt-3 flex flex-col divide-y divide-line overflow-hidden rounded-2xl border border-line">
+      <div class="mt-3 flex flex-col">
         <NuxtLink
           v-for="item in openSource"
           :key="item.key"
           :to="item.url"
-          class="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-surface"
+          class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
         >
           <img
             v-if="!item.icon && item.avatar"
@@ -180,7 +180,7 @@
           </span>
         </NuxtLink>
       </div>
-      <GoLink to="/open-source" class="mt-2">
+      <GoLink to="/open-source" class="mt-1">
         All contributions
       </GoLink>
     </section>
@@ -210,15 +210,15 @@
     </section>
 
     <section aria-labelledby="blog" class="pt-16">
-      <SectionTitle id="blog" class="mb-4">
+      <SectionTitle id="blog" class="mb-3">
         Blog
       </SectionTitle>
-      <div class="flex flex-col divide-y divide-line overflow-hidden rounded-2xl border border-line">
+      <div class="flex flex-col">
         <NuxtLink
           v-for="article in data?.articles"
           :key="article.path"
           :to="article.path"
-          class="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-surface"
+          class="-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface"
         >
           <Icon :name="article.icon" class="size-4 shrink-0 text-mark" />
           <span class="flex min-w-0 flex-auto flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
@@ -227,7 +227,7 @@
           </span>
         </NuxtLink>
       </div>
-      <div class="mt-2 flex flex-wrap gap-x-[22px]">
+      <div class="mt-1 flex flex-wrap gap-x-[22px]">
         <GoLink to="/articles">
           All posts
         </GoLink>
