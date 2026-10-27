@@ -45,6 +45,17 @@
 
   const projects = computed(() => data.value?.projects ?? []);
   const apps = computed(() => data.value?.apps ?? []);
+
+  // Everything shows by default; the chips narrow the page to projects or apps.
+  const ALL = 'All';
+  const filter = ref(ALL);
+  const filters = computed(() => [
+    { label: ALL, count: projects.value.length + apps.value.length },
+    { label: 'Projects', count: projects.value.length },
+    { label: 'Apps', count: apps.value.length }
+  ]);
+  const showProjects = computed(() => filter.value !== 'Apps');
+  const showApps = computed(() => filter.value !== 'Projects');
   const caseStudies = computed(() => projects.value.filter(project => project.page));
   const earlier = computed(() => projects.value.filter(project => !project.page));
 
@@ -97,6 +108,7 @@
           :key="item.anchor"
           :to="{ hash: `#${item.anchor}` }"
           class="inline-flex min-h-11 items-center gap-2.5 rounded-full border border-edge py-1.5 pr-4 pl-1.5 text-sm transition-colors hover:bg-surface"
+          @click="filter = ALL"
         >
           <LogoTile :mark="item.mark" :size="30" />
           {{ item.name }}
@@ -104,7 +116,11 @@
       </div>
     </section>
 
-    <section v-if="spotlight" aria-labelledby="spotlight" class="pt-14 md:pt-20">
+    <div class="pt-12 md:pt-16">
+      <FilterChips v-model="filter" :options="filters" label="Show" />
+    </div>
+
+    <section v-if="spotlight && showProjects" aria-labelledby="spotlight" class="pt-10">
       <SectionTitle id="spotlight" class="mb-4">
         Building now
       </SectionTitle>
@@ -151,98 +167,77 @@
       </article>
     </section>
 
-    <section aria-labelledby="case-studies" class="pt-14 md:pt-20">
+    <section v-if="showProjects" aria-labelledby="case-studies" class="pt-14 md:pt-16">
       <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <SectionTitle id="case-studies">
           Case studies
         </SectionTitle>
         <span class="font-mono text-xs text-faint">newest first</span>
       </div>
-      <ol class="mt-3 flex flex-col">
+      <ul class="mt-4 grid gap-3 sm:grid-cols-2">
         <li
           v-for="project in listed"
           :id="project.anchor"
           :key="project.id"
-          class="flex items-start gap-4 py-3.5"
+          class="scroll-mt-6"
         >
-          <LogoTile :mark="project.mark" :size="40" />
-          <div class="flex min-w-0 flex-auto flex-col gap-0.5">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-              <NuxtLink :to="project.page" class="link text-base font-semibold">
-                {{ project.title }}
-              </NuxtLink>
-              <span class="font-mono text-[13px] text-faint">{{ project.year }}</span>
-            </div>
-            <span class="font-mono text-xs text-faint">{{ project.context }}</span>
-            <p class="mt-1 text-sm leading-[1.6] text-muted">
-              {{ project.description }}
-            </p>
-            <div class="flex flex-wrap gap-x-5">
-              <GoLink :to="project.page!" class="text-[13px]">
-                About the project
-              </GoLink>
-              <NuxtLink
-                v-for="link in project.links"
-                :key="link.to"
-                :to="link.to"
-                class="link-muted inline-flex min-h-11 items-center gap-1.5 text-[13px]"
-              >
-                {{ link.label }}
-                <Icon name="lucide:arrow-up-right" class="size-3.5" />
-              </NuxtLink>
-            </div>
-          </div>
+          <NuxtLink
+            :to="project.page"
+            class="group flex h-full flex-col gap-3 rounded-2xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface md:p-5"
+          >
+            <span class="flex items-start gap-3">
+              <LogoTile :mark="project.mark" :size="40" />
+              <span class="flex min-w-0 flex-auto flex-col gap-1">
+                <span class="flex items-baseline justify-between gap-3">
+                  <span class="text-base leading-snug font-semibold">{{ project.title }}</span>
+                  <span class="shrink-0 font-mono text-xs text-faint">{{ project.year }}</span>
+                </span>
+                <span class="font-mono text-xs text-faint">{{ project.context }}</span>
+              </span>
+            </span>
+            <span class="line-clamp-3 text-sm leading-[1.6] text-muted">{{ project.description }}</span>
+          </NuxtLink>
         </li>
-      </ol>
+      </ul>
     </section>
 
-    <section v-if="apps.length" aria-labelledby="apps" class="pt-14 md:pt-[72px]">
+    <section v-if="apps.length && showApps" aria-labelledby="apps" class="pt-14 md:pt-16">
       <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <SectionTitle id="apps">
           Apps
         </SectionTitle>
         <span class="font-mono text-xs text-faint">free and open source</span>
       </div>
-      <ul class="mt-3 flex flex-col">
+      <ul class="mt-4 grid gap-3 sm:grid-cols-2">
         <li
           v-for="app in apps"
           :id="app.anchor"
           :key="app.id"
-          class="flex items-start gap-4 py-3.5"
+          class="scroll-mt-6"
         >
-          <LogoTile :mark="app.mark" :size="40" />
-          <div class="flex min-w-0 flex-auto flex-col gap-0.5">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-              <NuxtLink v-if="app.page" :to="app.page" class="link text-base font-semibold">
-                {{ app.name }}
-              </NuxtLink>
-              <span v-else class="text-base font-semibold">{{ app.name }}</span>
-              <span class="font-mono text-[13px] text-faint">{{ app.since }}</span>
-            </div>
-            <span class="font-mono text-xs text-faint">{{ [app.kind, ...app.platforms ?? []].join(' · ') }}</span>
-            <p class="mt-1 text-sm leading-[1.6] text-muted">
-              {{ app.description }}
-            </p>
-            <div class="flex flex-wrap gap-x-5">
-              <GoLink v-if="app.page" :to="app.page" class="text-[13px]">
-                About the app
-              </GoLink>
-              <NuxtLink
-                v-for="link in [...app.links ?? [], { label: 'GitHub', to: app.repo }]"
-                :key="link.to"
-                :to="link.to"
-                class="link-muted inline-flex min-h-11 items-center gap-1.5 text-[13px]"
-              >
-                {{ link.label }}
-                <Icon name="lucide:arrow-up-right" class="size-3.5" />
-              </NuxtLink>
-            </div>
-          </div>
+          <NuxtLink
+            :to="app.page ?? app.repo"
+            class="group flex h-full flex-col gap-3 rounded-2xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface md:p-5"
+          >
+            <span class="flex items-start gap-3">
+              <LogoTile :mark="app.mark" :size="40" />
+              <span class="flex min-w-0 flex-auto flex-col gap-1">
+                <span class="flex items-baseline justify-between gap-3">
+                  <span class="text-base leading-snug font-semibold">
+                    {{ app.name }}<span v-if="!app.page" class="ml-1 font-normal text-muted" aria-hidden="true">↗</span>
+                  </span>
+                  <span class="shrink-0 font-mono text-xs text-faint">{{ app.since }}</span>
+                </span>
+                <span class="font-mono text-xs text-faint">{{ [app.kind, ...app.platforms ?? []].join(' · ') }}</span>
+              </span>
+            </span>
+            <span class="line-clamp-3 text-sm leading-[1.6] text-muted">{{ app.description }}</span>
+          </NuxtLink>
         </li>
       </ul>
     </section>
 
-    <section v-if="earlier.length" aria-labelledby="earlier" class="pt-14 md:pt-[72px]">
+    <section v-if="earlier.length && showProjects" aria-labelledby="earlier" class="pt-14 md:pt-[72px]">
       <SectionTitle id="earlier" class="mb-2">
         Earlier &amp; smaller projects
       </SectionTitle>
