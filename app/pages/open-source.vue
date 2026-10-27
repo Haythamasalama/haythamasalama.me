@@ -85,12 +85,16 @@
         </NuxtLink>
       </div>
 
-      <StatStrip
-        v-if="stats.length"
-        :stats="stats"
-        size="lg"
-        class="mt-10"
-      />
+      <dl v-if="stats.length" class="mt-12 grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4">
+        <div v-for="stat in stats" :key="stat.label" class="flex flex-col-reverse justify-end gap-1">
+          <dt class="text-[13px] leading-snug text-faint">
+            {{ stat.label }}
+          </dt>
+          <dd class="font-mono text-2xl font-medium md:text-[30px]">
+            {{ stat.value }}
+          </dd>
+        </div>
+      </dl>
       <p v-if="activity" class="mt-6 inline-flex items-center gap-1.5 font-mono text-xs text-faint">
         <Icon name="lucide:refresh-cw" class="size-3" />
         Synced from GitHub <time :datetime="activity.fetchedAt">{{ formatDay(activity.fetchedAt) }}</time>
