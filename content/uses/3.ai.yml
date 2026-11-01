@@ -2,15 +2,18 @@ title: AI
 order: 3
 items:
 - name: Claude
+  url: https://claude.ai/
   note: Thinking, writing & code
   mark:
     icon: simple-icons:claude
   desk: 8
 - name: Claude Design
+  url: https://claude.ai/design
   note: Prototypes & visuals
   mark:
     icon: simple-icons:anthropic
 - name: Gemini
+  url: https://gemini.google.com/
   note: Research & Google apps
   mark:
     icon: simple-icons:googlegemini

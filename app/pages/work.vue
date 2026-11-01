@@ -32,7 +32,7 @@
 
   usePageSeo({
     title: 'Work',
-    description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today, plus free, open-source apps of his own.',
+    description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today, plus free apps of his own.',
     schema: 'CollectionPage',
     entity: {
       '@type': 'ItemList',
@@ -206,7 +206,7 @@
         <SectionTitle id="apps">
           Apps
         </SectionTitle>
-        <span class="font-mono text-xs text-faint">free and open source</span>
+        <span class="font-mono text-xs text-faint">free apps I build</span>
       </div>
       <ul class="mt-4 grid gap-3 sm:grid-cols-2">
         <li
@@ -216,7 +216,7 @@
           class="scroll-mt-6"
         >
           <NuxtLink
-            :to="app.page ?? app.repo"
+            :to="app.page ?? app.repo ?? app.links?.[0]?.to"
             class="group flex h-full flex-col gap-3 rounded-2xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface md:p-5"
           >
             <span class="flex items-start gap-3">

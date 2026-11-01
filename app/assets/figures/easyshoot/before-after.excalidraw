@@ -772,7 +772,7 @@
       "type": "text",
       "x": 44,
       "y": 290,
-      "width": 340,
+      "width": 348.5,
       "height": 63.75,
       "angle": 0,
       "strokeColor": "#868e96",
@@ -793,8 +793,8 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "text": "long pages need several shots\nArabic text breaks or runs left-to-right\nsome tools upload the image",
-      "originalText": "long pages need several shots\nArabic text breaks or runs left-to-right\nsome tools upload the image",
+      "text": "hiding private details takes another tool\nArabic text breaks or runs left-to-right\nsome tools upload the image",
+      "originalText": "hiding private details takes another tool\nArabic text breaks or runs left-to-right\nsome tools upload the image",
       "fontSize": 17,
       "fontFamily": 5,
       "textAlign": "left",
@@ -1274,7 +1274,7 @@
     },
     {
       "type": "image",
-      "x": 592,
+      "x": 613.25,
       "y": 294,
       "width": 22,
       "height": 22,
@@ -1299,7 +1299,7 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "fileId": "lucide-scroll-text",
+      "fileId": "lucide-eye-off",
       "status": "saved",
       "scale": [
         1,
@@ -1310,9 +1310,9 @@
     },
     {
       "type": "text",
-      "x": 624,
+      "x": 645.25,
       "y": 294.375,
-      "width": 442,
+      "width": 399.5,
       "height": 21.25,
       "angle": 0,
       "strokeColor": "#495057",
@@ -1335,8 +1335,8 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "text": "scrolling capture stitches long pages into one image",
-      "originalText": "scrolling capture stitches long pages into one image",
+      "text": "pixelate or blur hides private details in place",
+      "originalText": "pixelate or blur hides private details in place",
       "fontSize": 17,
       "fontFamily": 5,
       "textAlign": "left",
@@ -1464,10 +1464,10 @@
       "dataURL": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIj48cmVjdCB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHg9IjgiIHk9IjgiIHJ4PSIyIiByeT0iMiIvPjxwYXRoIGQ9Ik00IDE2Yy0xLjEgMC0yLS45LTItMlY0YzAtMS4xLjktMiAyLTJoMTBjMS4xIDAgMiAuOSAyIDIiLz48L2c+PC9zdmc+",
       "created": 1
     },
-    "lucide-scroll-text": {
+    "lucide-eye-off": {
       "mimeType": "image/svg+xml",
-      "id": "lucide-scroll-text",
-      "dataURL": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIj48cGF0aCBkPSJNMTUgMTJoLTVtNS00aC01bTkgOVY1YTIgMiAwIDAgMC0yLTJINCIvPjxwYXRoIGQ9Ik04IDIxaDEyYTIgMiAwIDAgMCAyLTJ2LTFhMSAxIDAgMCAwLTEtMUgxMWExIDEgMCAwIDAtMSAxdjFhMiAyIDAgMSAxLTQgMFY1YTIgMiAwIDEgMC00IDB2MmExIDEgMCAwIDAgMSAxaDMiLz48L2c+PC9zdmc+",
+      "id": "lucide-eye-off",
+      "dataURL": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIj48cGF0aCBkPSJNMTAuNzMzIDUuMDc2YTEwLjc0NCAxMC43NDQgMCAwIDEgMTEuMjA1IDYuNTc1YTEgMSAwIDAgMSAwIC42OTZhMTAuOCAxMC44IDAgMCAxLTEuNDQ0IDIuNDltLTYuNDEtLjY3OWEzIDMgMCAwIDEtNC4yNDItNC4yNDIiLz48cGF0aCBkPSJNMTcuNDc5IDE3LjQ5OWExMC43NSAxMC43NSAwIDAgMS0xNS40MTctNS4xNTFhMSAxIDAgMCAxIDAtLjY5NmExMC43NSAxMC43NSAwIDAgMSA0LjQ0Ni01LjE0M00yIDJsMjAgMjAiLz48L2c+PC9zdmc+",
       "created": 1
     },
     "lucide-hard-drive": {

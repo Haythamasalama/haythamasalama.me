@@ -1,16 +1,18 @@
 name: EasyShoot
 kind: Screenshot app for macOS
-description: 'Capture, mark up and frame screenshots in one window, with scrolling capture and Arabic right-to-left text. Nothing is uploaded.'
+description: 'Capture, mark up and frame screenshots on your Mac, with blur for private details and Arabic right-to-left text. No account, and nothing is uploaded. Coming soon to the Mac App Store.'
 mark:
   logo: easyshoot
 platforms:
 - macOS 14+
 since: Oct 2026
-license: MIT
-repo: https://github.com/Haythamasalama/easyshoot
 links:
 - label: Website
-  to: https://easyshoot.haythamasalama.me
-- label: Download
-  to: https://github.com/Haythamasalama/easyshoot/releases/latest
+  to: https://easyshoot.haythamasalama.me/
+- label: User guide
+  to: https://easyshoot.haythamasalama.me/docs/
+- label: Support
+  to: https://easyshoot.haythamasalama.me/support.html
+- label: Privacy
+  to: https://easyshoot.haythamasalama.me/privacy.html
 order: 1

@@ -233,8 +233,8 @@ async function appsWithPages (event: H3Event) {
   return apps.map(app => ({ ...app, page: paths.has(`/${app.stem}`) ? `/${app.stem}` : undefined }));
 }
 
-const appLinks = (app: { links?: { label: string; to: string }[]; repo: string }) =>
-  [...(app.links ?? []).map(item => `${item.label}: ${item.to}`), `Source: ${app.repo}`];
+const appLinks = (app: { links?: { label: string; to: string }[]; repo?: string }) =>
+  [...(app.links ?? []).map(item => `${item.label}: ${item.to}`), app.repo && `Source: ${app.repo}`].filter(Boolean);
 
 /** Work: projects (case studies, then earlier ones) and the apps I maintain, on one page. */
 async function work (event: H3Event) {
@@ -260,12 +260,12 @@ async function work (event: H3Event) {
   return document({
     path: '/work',
     title: 'Work',
-    description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today, plus free, open-source apps of his own.'
+    description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today, plus free apps of his own.'
   }, [
     '## Case studies',
     list.filter(project => project.page).map(card).join('\n\n'),
     '## Apps',
-    'Free, open-source apps I build and maintain.',
+    'Free apps I build and maintain.',
     appList.map(appCard).join('\n\n'),
     '## Earlier work',
     list.filter(project => !project.page).map(card).join('\n\n')
@@ -408,7 +408,7 @@ async function uses (event: H3Event) {
   }, [
     'My own setup: the hardware and software I open every day. Recommendations live on Tools.',
     ...sections.map(section => `## ${section.title}\n\n${section.items
-      .map(item => `- **${item.name}**: ${item.note}${item.theme ? ` (theme: ${item.theme})` : ''}`)
+      .map(item => `- **${item.url ? `[${item.name}](${item.url})` : item.name}**: ${item.note}${item.theme ? ` (theme: ${item.theme})` : ''}`)
       .join('\n')}`)
   ]);
 }

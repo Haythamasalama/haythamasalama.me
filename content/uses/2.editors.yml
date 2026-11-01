@@ -2,28 +2,33 @@ title: Editors & terminal
 order: 2
 items:
 - name: PhpStorm
+  url: https://www.jetbrains.com/phpstorm/
   note: Laravel & PHP
   mark:
     icon: simple-icons:phpstorm
   theme: GitHub Dark
   desk: 2
 - name: VS Code
+  url: https://code.visualstudio.com/
   note: Front end & quick edits
   mark:
     icon: simple-icons:visualstudiocode
   theme: One Dark Pro Night Flat
   desk: 3
 - name: IntelliJ IDEA
+  url: https://www.jetbrains.com/idea/
   note: Java
   mark:
     icon: simple-icons:intellijidea
   desk: 4
 - name: iTerm2
+  url: https://iterm2.com/
   note: Terminal
   mark:
     icon: simple-icons:iterm2
   desk: 5
 - name: Oh My Zsh
+  url: https://ohmyz.sh/
   note: Shell
   mark:
     icon: simple-icons:zsh

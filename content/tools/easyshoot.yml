@@ -1,7 +1,7 @@
 name: EasyShoot
 category: Images & screenshots
 kind: App
-description: Screenshots with arrows, steps and a clean frame, in seconds.
-url: https://github.com/Haythamasalama/easyshoot
+description: Mac screenshots with arrows, steps, blur and a clean frame, in seconds.
+url: https://easyshoot.haythamasalama.me/
 icon: brand:easyshoot
 featured: true

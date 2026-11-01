@@ -13,9 +13,8 @@ s.squiggle({ x: 34, y: 70, w: 560 });
 s.rect({ x: 32, y: 116, w: 300, h: 300, stroke: C.line, dashed: true });
 s.text({ x: 48, y: 128, text: 'Capture', size: 18, color: C.muted });
 s.iconBox({ x: 52, y: 166, w: 260, h: 52, icon: 'square-dashed', label: 'area, window, fullscreen', size: 16, stroke: C.ink });
-s.iconBox({ x: 52, y: 234, w: 260, h: 52, icon: 'move-vertical', label: 'scrolling frames', size: 16, stroke: C.ink });
-s.iconBox({ x: 52, y: 302, w: 260, h: 52, icon: 'rows-3', label: 'stitcher joins rows', size: 16, stroke: C.soft, labelColor: C.soft });
-s.arrow({ points: [[182, 288], [182, 300]], color: C.muted });
+s.iconBox({ x: 52, y: 234, w: 260, h: 52, icon: 'clipboard', label: 'an image on the clipboard', size: 16, stroke: C.ink });
+s.iconBox({ x: 52, y: 302, w: 260, h: 52, icon: 'shield-check', label: 'ScreenCaptureKit', size: 16, stroke: C.soft, labelColor: C.soft });
 
 // The document and the renderer
 s.arrow({ points: [[334, 222], [408, 222]], color: C.iris });
