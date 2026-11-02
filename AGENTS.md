@@ -106,6 +106,11 @@ Skills for this stack are pinned in `skills-lock.json` and are not committed: `n
 - Share images are drawn at build time (`ogImage.zeroRuntime`), so nothing renders on Vercel and no `NUXT_APP_SECRET` is needed. `@nuxt/fonts` is there only to hand Geist to the image renderer (`@takumi-rs/core`): every remote provider is off and it reads the Fontsource packages already installed. It now writes the Geist `@font-face` rules into the page head instead of `main.css`, with the same files and subsets.
 - TypeScript stays on 6.x: `typescript-eslint` and `vue-tsc` do not support the TypeScript 7 native compiler yet, so Dependabot ignores TypeScript major updates.
 - `overrides` in `package.json` exist only to clear security advisories:
-  - `@nuxt/devtools` is forced to `4.0.0-beta.4` (npm's `latest` tag) because DevTools 3.x depends on a vulnerable `simple-git`. Nuxt 4.6 still asks for `^3.4.2`; drop the override once Nuxt depends on DevTools 4.
+  - `@nuxt/devtools` is forced to `4.0.0` because DevTools 3.x depends on a vulnerable `simple-git`. Nuxt 4.6.3 still asks for `^3.4.4`; drop the override once Nuxt depends on DevTools 4.
   - `@tailwindcss/typography` gets `postcss-selector-parser` `^7.1.6` instead of its pinned 6.0.10; the generated CSS is byte-identical. Drop it once the plugin updates the dependency.
-- `npm audit` may still list `braces` (via `@nuxt/content` → `micromatch`) and `node-forge` (Nuxt dev server via `listhen`). Neither has a patched release, both are build/dev-time only, and neither ships in the deployed server bundle. Do not run `npm audit fix --force`: it "fixes" them by downgrading Nuxt and Nuxt Content.
+- `npm audit` and Dependabot still list four advisories that are left alone on purpose. All four run only at build or lint time, and none of them is in `.output/server`:
+  - `zod` 3.25.76, which `@nuxt/content` pins to `^3.25.76` for collection schemas. The fix exists only in zod 4.6.6, and forcing zod 4 on Nuxt Content would break its zod 3 API.
+  - `minimatch` 10.2.6 (Nuxt Content, ESLint) and 9/5 (`archiver` via `nitropack`). The fix exists only in minimatch 11, and the attack needs a glob pattern from an attacker; every pattern here comes from the repository.
+  - `glob` 13 (`@vercel/nft`) and 10 (`archiver-utils`). The fix exists only in glob 14, and their ranges stop at 13 and 10.
+  - `deepmerge` 4.3.1 (`@rollup/plugin-node-resolve`) has no patched release.
+- Do not run `npm audit fix --force`: it "fixes" these by downgrading Nuxt Content to 2.x.
