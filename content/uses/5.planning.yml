@@ -1,26 +1,31 @@
 title: Planning
 order: 5
 items:
+- name: EasyShoot
+  url: https://easyshoot.haythamasalama.me/
+  note: My app for annotated screenshots
+  mark:
+    logo: easyshoot
+  desk: 10
 - name: Notion
+  url: https://www.notion.com/
   note: Notes & docs
   mark:
     icon: simple-icons:notion
   desk: 6
 - name: Google Docs
+  url: https://docs.google.com/
   note: Shared writing
   mark:
     icon: simple-icons:googledocs
 - name: Notability
+  url: https://notability.com/
   note: Handwritten notes
   mark:
     icon: lucide:pen-line
 - name: Excalidraw
+  url: https://excalidraw.com/
   note: Sketches & diagrams
   mark:
     icon: simple-icons:excalidraw
   desk: 7
-- name: EasyShoot
-  note: Clear, annotated screenshots
-  mark:
-    logo: easyshoot
-  desk: 10

@@ -49,7 +49,7 @@
       'operatingSystem': (app.value.platforms ?? []).join(', '),
       'isAccessibleForFree': true,
       'creator': { '@id': useSchemaIds().person },
-      'sameAs': [app.value.repo, ...(app.value.links ?? []).map(link => link.to)]
+      'sameAs': [app.value.repo, ...(app.value.links ?? []).map(link => link.to)].filter(Boolean)
     }
   });
 
@@ -59,9 +59,17 @@
     ...app.value.license ? [{ text: `${app.value.license} licence`, icon: 'lucide:scale' }] : []
   ]);
 
+  const linkIcons: Record<string, string> = {
+    'Download': 'lucide:download',
+    'App Store': 'simple-icons:appstore',
+    'User guide': 'lucide:book-open',
+    'Support': 'lucide:life-buoy',
+    'Privacy': 'lucide:shield-check'
+  };
+
   const links = computed(() => [
-    ...(app.value.links ?? []).map(link => ({ ...link, icon: link.label === 'Download' ? 'lucide:download' : 'lucide:globe' })),
-    { label: 'GitHub', to: app.value.repo, icon: 'simple-icons:github' }
+    ...(app.value.links ?? []).map(link => ({ ...link, icon: linkIcons[link.label] ?? 'lucide:globe' })),
+    ...app.value.repo ? [{ label: 'GitHub', to: app.value.repo, icon: 'simple-icons:github' }] : []
   ]);
 </script>
 

@@ -28,7 +28,7 @@ before.forEach(([icon, label], i) => {
   if (i < before.length - 1) s.arrow({ points: [[x + 108, 204], [x + 120, 204]], color: C.muted });
 });
 
-s.text({ x: 44, y: 290, text: 'long pages need several shots\nArabic text breaks or runs left-to-right\nsome tools upload the image', size: 17, color: C.muted });
+s.text({ x: 44, y: 290, text: 'hiding private details takes another tool\nArabic text breaks or runs left-to-right\nsome tools upload the image', size: 17, color: C.muted });
 
 // With EasyShoot: capture, mark up and frame in one window
 s.text({ x: 588, y: 108, text: 'With EasyShoot', size: 22, color: C.iris });
@@ -46,7 +46,7 @@ after.forEach(([icon, label], i) => {
   if (i < after.length - 1) s.arrow({ points: [[x + 148, 204], [x + 166, 204]], color: C.iris });
 });
 
-s.iconBox({ x: 588, y: 282, w: 482, h: 46, icon: 'scroll-text', label: 'scrolling capture stitches long pages into one image', size: 17, stroke: C.soft, labelColor: C.soft });
+s.iconBox({ x: 588, y: 282, w: 482, h: 46, icon: 'eye-off', label: 'pixelate or blur hides private details in place', size: 17, stroke: C.soft, labelColor: C.soft });
 s.icon({ x: 590, y: 350, size: 22, name: 'hard-drive', color: C.iris });
 s.text({ x: 622, y: 350, text: 'everything stays on the Mac: no account, no cloud', size: 17, color: C.iris });
 

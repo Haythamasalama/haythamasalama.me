@@ -2,19 +2,23 @@ title: Databases & browsers
 order: 4
 items:
 - name: Sequel Ace
+  url: https://sequel-ace.com/
   note: MySQL client
   mark:
     icon: lucide:database
 - name: MySQL Workbench
+  url: https://www.mysql.com/products/workbench/
   note: Modelling & admin
   mark:
     icon: simple-icons:mysql
 - name: Chrome
+  url: https://www.google.com/chrome/
   note: Development
   mark:
     icon: simple-icons:googlechrome
   desk: 9
 - name: Safari
+  url: https://www.apple.com/safari/
   note: Everyday browsing
   mark:
     icon: simple-icons:safari

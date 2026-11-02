@@ -148,7 +148,8 @@ export default defineContentConfig({
         /** First release, as "Oct 2026". */
         since: z.string(),
         license: z.string().optional(),
-        repo: z.string().url(),
+        /** Public source code, for open-source apps. */
+        repo: z.string().url().optional(),
         /** Ways to get it: the website, a download, a live demo. */
         links: z.array(link).default([]),
         order: z.number()
@@ -291,6 +292,8 @@ export default defineContentConfig({
           name: z.string(),
           note: z.string(),
           mark,
+          /** Its official page, opened in a new tab. */
+          url: z.string().url().optional(),
           /** The colour theme I run it with, for editors and terminals. */
           theme: z.string().optional(),
           /** Position in "On my desk" on the home page, if pinned there. */
