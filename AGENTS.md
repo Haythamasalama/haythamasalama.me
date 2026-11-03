@@ -85,8 +85,19 @@ This repo's own skills (`.claude/skills/`) and agents (`.claude/agents/`) hold t
 | `tools` | the Tools page and its categories |
 | `brand` | the visual identity |
 | `content` | voice, honesty, attribution and what is safe to publish about employers |
+| `commit-messages` | commit messages, pull request titles and bodies, review replies and merging, per Conventional Commits 1.0.0 |
 
 Agents: `project-writer`, `article-writer`, `open-source-editor`, `tools-editor`, `page-editor` (any other page) and `site-reviewer` (read-only review before shipping). Drafts and exports for LinkedIn, Medium and X go in `claudedocs/`, which is not committed.
+
+## Commits and pull requests
+
+The `commit-messages` skill holds the rules; it is a copy of the one in the owner's `skills` repository, so change it there first and copy it back. What is particular to this repo:
+
+- Pull requests are squash-merged into `master`. The PR title becomes the commit, as `type(scope): description (#N)`, so it follows Conventional Commits.
+- Types in the history: `feat` for anything a visitor can see (a page, a project, a section), `fix`, `refactor`, `docs` for `AGENTS.md`, skills and `DESIGN.md`, and `chore(deps)` / `chore(deps-dev)` for Dependabot. A dependency update that clears an advisory is `fix(deps)`.
+- Scopes are optional and rare; use one when a change stays inside one page or area (`feat(about): …`).
+- Describe the change in the visitor's terms ("a clearer About story"), not the files touched. The squash body explains why, in short bullets when there are several changes, and keeps the `Co-authored-by` footer.
+- The body of a PR says how it was checked: `npm run lint && npm run typecheck && npm run build`, and for UI changes both themes at desktop and phone widths.
 
 ## Third-party agent skills
 
