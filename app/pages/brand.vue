@@ -71,7 +71,7 @@
     { name: 'Line', hex: '#1F1F23', role: 'Borders, dividers' },
     { name: 'Text', hex: '#EDEDEF', role: '16.7 : 1 on Ink' },
     { name: 'Muted', hex: '#A1A1AA', role: '7.7 : 1 on Ink' },
-    { name: 'Paper', hex: '#FFFFFF', role: 'Page, light theme', edge: 'light' },
+    { name: 'Paper', hex: '#F7F7F5', role: 'Page, light theme', edge: 'light' },
     { name: 'Iris 500', hex: '#7F7CF2', role: 'The creative' },
     { name: 'Azure 500', hex: '#4F9BFF', role: 'The engineer' }
   ];
