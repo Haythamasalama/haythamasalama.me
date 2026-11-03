@@ -43,126 +43,57 @@
 
   const projects = computed(() => data.value?.projects ?? []);
   const apps = computed(() => data.value?.apps ?? []);
-
-  const caseStudies = computed(() => projects.value.filter(project => project.page));
-  const earlier = computed(() => projects.value.filter(project => !project.page));
-
-  /** What I'm building now: the newest project still running, at full width with a Now badge. */
-  const spotlight = computed(() => caseStudies.value.find(project => project.context?.includes('now')));
 </script>
 
 <template>
   <div>
-    <section aria-labelledby="title" class="pt-16 md:pt-[88px]">
-      <p class="eyebrow">
-        Work
-      </p>
-      <h1
-        id="title"
-        class="mt-4 max-w-[720px] text-[34px] leading-[1.08] font-semibold tracking-[-0.03em] md:text-[46px] md:leading-[1.06]"
-      >
-        Apps and systems I’ve <span class="text-gradient">built</span>.
-      </h1>
-      <p class="mt-5 text-base leading-[1.7] text-soft md:text-[17px]">
-        Free apps I build and maintain, then the fintech and logistics platforms I’ve worked on, each with what I did
-        and how it is built.
-      </p>
-    </section>
+    <PageHeader title="Work">
+      <p>Free apps I build and maintain, and the systems I’ve built for the teams that run on them.</p>
+    </PageHeader>
 
-    <section v-if="apps.length" aria-labelledby="apps" class="pt-14 md:pt-16">
+    <section v-if="apps.length" aria-labelledby="apps" class="pt-12">
       <SectionTitle id="apps" class="mb-4">
         Apps
       </SectionTitle>
-      <ul class="grid gap-3 sm:grid-cols-2">
+      <ul class="flex flex-col divide-y divide-line border-y border-line">
         <li
           v-for="app in apps"
           :id="app.anchor"
           :key="app.id"
           class="scroll-mt-6"
         >
-          <NuxtLink
+          <ItemRow
             :to="app.page ?? app.repo ?? app.links?.[0]?.to"
-            class="group flex h-full flex-col gap-3 rounded-2xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface md:p-5"
+            :external="!app.page"
+            :mark="app.mark"
+            :title="app.name"
+            :meta="app.kind"
           >
-            <span class="flex items-start gap-3">
-              <LogoTile :mark="app.mark" :size="40" />
-              <span class="flex min-w-0 flex-auto flex-col gap-1">
-                <span class="flex items-baseline justify-between gap-3">
-                  <span class="text-base leading-snug font-semibold">
-                    {{ app.name }}<span v-if="!app.page" class="ml-1 font-normal text-muted" aria-hidden="true">↗</span>
-                  </span>
-                  <span class="shrink-0 font-mono text-xs text-faint">{{ app.since }}</span>
-                </span>
-                <span class="font-mono text-xs text-faint">{{ app.kind }}</span>
-              </span>
-            </span>
-            <span class="text-sm leading-[1.6] text-muted">{{ app.description }}</span>
-          </NuxtLink>
+            {{ app.description }}
+          </ItemRow>
         </li>
       </ul>
     </section>
 
-    <section aria-labelledby="projects" class="pt-14 md:pt-16">
+    <section aria-labelledby="projects" class="pt-14">
       <SectionTitle id="projects" class="mb-4">
         Projects
       </SectionTitle>
-      <ul class="grid gap-3 sm:grid-cols-2">
+      <ul class="flex flex-col divide-y divide-line border-y border-line">
         <li
-          v-for="project in caseStudies"
+          v-for="project in projects"
           :id="project.anchor"
           :key="project.id"
           class="scroll-mt-6"
-          :class="project === spotlight && 'sm:col-span-2'"
         >
-          <NuxtLink
+          <ItemRow
             :to="project.page"
-            class="group flex h-full flex-col gap-3 rounded-2xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface md:p-5"
+            :mark="project.mark"
+            :title="project.title"
+            :meta="project.context"
           >
-            <span class="flex items-start gap-3">
-              <LogoTile :mark="project.mark" :size="40" />
-              <span class="flex min-w-0 flex-auto flex-col gap-1">
-                <span class="flex items-baseline justify-between gap-3">
-                  <span class="text-base leading-snug font-semibold">{{ project.title }}</span>
-                  <span
-                    v-if="project === spotlight"
-                    class="border-gradient inline-flex h-6 shrink-0 items-center gap-1.5 rounded-full px-2.5 font-mono text-[10px] font-medium tracking-[0.1em] uppercase"
-                  >
-                    <span class="size-1.5 animate-live rounded-full bg-linear-135 from-iris-500 to-azure-500" aria-hidden="true" />
-                    Now
-                  </span>
-                  <span v-else class="shrink-0 font-mono text-xs text-faint">{{ project.year }}</span>
-                </span>
-                <span class="font-mono text-xs text-faint">{{ project.context }}</span>
-              </span>
-            </span>
-            <span class="text-sm leading-[1.6] text-muted">{{ project.description }}</span>
-          </NuxtLink>
-        </li>
-      </ul>
-    </section>
-
-    <section v-if="earlier.length" aria-labelledby="earlier" class="pt-14 md:pt-[72px]">
-      <SectionTitle id="earlier" class="mb-2">
-        Earlier &amp; smaller projects
-      </SectionTitle>
-      <ul class="flex flex-col">
-        <li
-          v-for="project in earlier"
-          :id="project.anchor"
-          :key="project.id"
-          class="flex items-start gap-4 py-3"
-        >
-          <LogoTile :mark="project.mark" :size="32" :icon-size="16" />
-          <div class="flex min-w-0 flex-auto flex-col gap-0.5">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-              <span class="text-[15px] font-medium">{{ project.title }}</span>
-              <span class="font-mono text-[13px] text-faint">{{ project.year }}</span>
-            </div>
-            <span v-if="project.context" class="font-mono text-xs text-faint">{{ project.context }}</span>
-            <p class="mt-1 text-sm leading-[1.6] text-muted">
-              {{ project.description }}
-            </p>
-            <div v-if="project.links?.length" class="flex flex-wrap gap-x-5">
+            {{ project.description }}
+            <span v-if="!project.page && project.links?.length" class="flex flex-wrap gap-x-5">
               <NuxtLink
                 v-for="link in project.links"
                 :key="link.to"
@@ -172,8 +103,8 @@
                 {{ link.label }}
                 <Icon name="lucide:arrow-up-right" class="size-3.5" />
               </NuxtLink>
-            </div>
-          </div>
+            </span>
+          </ItemRow>
         </li>
       </ul>
     </section>

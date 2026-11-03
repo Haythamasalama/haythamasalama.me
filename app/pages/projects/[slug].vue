@@ -99,19 +99,16 @@
         More projects
       </SectionTitle>
       <div class="grid gap-3 sm:grid-cols-3">
-        <NuxtLink
+        <ContentCard
           v-for="item in more"
           :key="item.path"
           :to="item.path"
-          class="flex flex-col gap-3 rounded-xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface"
+          :mark="item.mark"
+          :title="item.title"
+          :meta="String(item.year)"
         >
-          <span class="flex items-center justify-between">
-            <LogoTile :mark="item.mark" :size="32" :icon-size="16" />
-            <span class="font-mono text-xs text-faint">{{ item.year }}</span>
-          </span>
-          <span class="text-[15px] leading-snug font-medium">{{ item.title }}</span>
-          <span class="line-clamp-3 text-[13px] leading-[1.55] text-muted">{{ item.description }}</span>
-        </NuxtLink>
+          {{ item.description }}
+        </ContentCard>
       </div>
       <GoLink to="/work" class="mt-2">
         All work

@@ -120,19 +120,16 @@
         More apps
       </SectionTitle>
       <div class="grid gap-3 sm:grid-cols-3">
-        <NuxtLink
+        <ContentCard
           v-for="item in more"
           :key="item.to"
           :to="item.to"
-          class="flex flex-col gap-3 rounded-xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface"
+          :mark="item.mark"
+          :title="item.name"
+          :meta="item.kind"
         >
-          <LogoTile :mark="item.mark" :size="32" :icon-size="16" />
-          <span class="flex flex-col gap-0.5">
-            <span class="text-[15px] leading-snug font-medium">{{ item.name }}</span>
-            <span class="font-mono text-xs text-faint">{{ item.kind }}</span>
-          </span>
-          <span class="line-clamp-3 text-[13px] leading-[1.55] text-muted">{{ item.description }}</span>
-        </NuxtLink>
+          {{ item.description }}
+        </ContentCard>
       </div>
       <GoLink to="/work#apps" class="mt-2">
         All apps

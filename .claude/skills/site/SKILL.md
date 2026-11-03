@@ -25,7 +25,7 @@ The personal site of Haytham A. Salama. It runs on Nuxt 4, Nuxt Content 3 and Ta
 |---|---|---|---|
 | `/` | `app/pages/index.vue` | `site` in `app/app.config.ts`, `projects` (cards with a `highlight`), `projectPages`, `technologies` (`home: true`), latest 3 `articles`, `uses` (items with `desk`), `useOpenSource()` | `work`, `open-source`, `skills`, `blog`, `desk` |
 | `/about` | `app/pages/about.vue` | `profile.yml`, `experience/*.yml`, `education/*.yml`, `technologies`, `useOpenSource()` | `about`, `experience`, `open-source`, `skills`, `education`, `vision`, `hello` |
-| `/work` | `app/pages/work.vue` | `projects/*.yml` and `apps/*.yml`, plus `projectPages` and `appPages` to know which have a page; `/projects` and `/apps` redirect here | `apps`, `projects`, `earlier` |
+| `/work` | `app/pages/work.vue` | `projects/*.yml` and `apps/*.yml`, plus `projectPages` and `appPages` to know which have a page; `/projects` and `/apps` redirect here | `apps`, `projects` |
 | `/projects/<slug>` | `app/pages/projects/[slug].vue` | `projects/<slug>.md` for the story, `projects/<slug>.yml` for title, period and links | headings in the Markdown |
 | `/apps/<slug>` | `app/pages/apps/[slug].vue` | `apps/<slug>.md` for the story, `apps/<slug>.yml` for name, platforms and links | headings in the Markdown |
 | `/learn/vue` | `app/pages/learn/vue.vue` | `learn/vue-path.yml`; ticked topics stay in the visitor's `localStorage` | `before-you-start`, `the-path`, one id per stage |
@@ -42,6 +42,7 @@ Navigation, the contact link and the social links live in `app/app.config.ts`. T
 ## Building blocks
 
 - **Page layout:** `PageHeader` (title and intro), `SectionTitle` (a section with a shareable `#id`), `AnchorLink`, `GoLink` (a muted "→" link), `ProseBody` (Markdown in the reading style).
+- **Lists and cards:** `ItemRow` for a list of things (Work, Blog articles) inside `ul.divide-y`, and `ContentCard` for a clickable card in a grid (guides, tools, design patterns, the More grids). Use these two rather than styling a new row or card by hand.
 - **Marks:** `LogoTile` and `BrandLogo` show a `mark`: `logo` (a one-colour mask registered in `app/utils/logos.ts`), `icon` (Iconify name), `image` (a photo in `public/`, shown greyscale) or `text` (a monogram).
 - **Markdown components** (`app/components/content/`):
   - `::sketch-figure{name="<project>/<file>" alt="…"}`: an Excalidraw figure (see the `figures` skill).

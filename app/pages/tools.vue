@@ -205,22 +205,18 @@
             v-if="view === 'grid'"
             class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
           >
-            <NuxtLink
+            <ContentCard
               v-for="tool in section.tools"
               :key="tool.id"
               :to="tool.url"
               target="_blank"
-              class="flex flex-col gap-3 rounded-xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface"
+              external
+              :mark="{ icon: tool.icon }"
+              :title="tool.name"
+              :meta="tool.kind"
             >
-              <span class="flex items-start justify-between gap-3">
-                <LogoTile :mark="{ icon: tool.icon }" :size="40" :icon-size="20" />
-                <span class="pt-0.5 font-mono text-[11px] text-faint">{{ tool.kind }}</span>
-              </span>
-              <span class="flex flex-col gap-1">
-                <span class="text-[15px] font-medium">{{ tool.name }}</span>
-                <span class="text-sm leading-[1.55] text-muted">{{ tool.description }}</span>
-              </span>
-            </NuxtLink>
+              {{ tool.description }}
+            </ContentCard>
           </div>
 
           <ul v-else class="flex flex-col border-t border-line">

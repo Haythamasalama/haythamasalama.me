@@ -174,7 +174,7 @@ Rendering: `-webkit-font-smoothing: antialiased; text-rendering: optimizeLegibil
 | Logo tiles | size ÷ 4 (36 → 9px, 44 → 11px, 52 → 13px) |
 | Code blocks, figures, screenshots, callouts, stat strip, download rows | 12px (`rounded-xl`) |
 | Swatch / info cards, bio cards | 14px |
-| Content cards (projects, apps, principles) | 16px (`rounded-2xl`) |
+| Content cards, principle cards | 16px (`rounded-2xl`) |
 | Hero panel (brand) | 22px |
 | App icon | 28px at 120px, 14px at 60px |
 | Chips, pills, nav CTA, filter chips, toggles, avatars | 9999px (`rounded-full`) |
@@ -254,6 +254,10 @@ Colour transitions 0.2s with `--ease-out-soft`.
 **Role:** Work, articles, contributions on Home
 Whole row is the link: `-mx-3 flex gap-3 rounded-[10px] p-3 transition-colors hover:bg-surface` (bleeds into the gutter so the hover fill aligns text with the column). Left: a LogoTile (36px) or 16px icon in `mark`. Middle: title 15px 500 (`fg`) + description 14px `muted`. Right, baseline-aligned: date/period in Geist Mono 12px `faint`. No borders between rows.
 
+### Item Row
+**Role:** A full list of things: `/work` and the articles on `/articles`
+`ItemRow` inside `ul.flex.flex-col.divide-y.divide-line.border-y.border-line`. `flex items-start gap-3.5 px-2 py-4`, hover `bg-surface`. Left: a 36px LogoTile. Middle: title 15px 500 (`fg`) with its meta beside it in Geist Mono 12px `faint`, then the description 14px `muted`. Right: `→`, or `↗` for a link that leaves the site. An item with no page is a plain row with no arrow.
+
 ### Logo Tile
 **Role:** Company logo, tool icon or avatar in a square
 Square at 36 / 44 / 52px, radius = size ÷ 4, `border border-edge bg-surface text-mark`, glyph 18–22px. Logos are one-colour masks that follow the theme; photos (GitHub avatars) are greyscale via `.avatar-mono`. A text fallback uses Geist Mono 13px 500 `soft`.
@@ -271,8 +275,8 @@ Square at 36 / 44 / 52px, radius = size ÷ 4, `border border-edge bg-surface tex
 `rounded-full border border-chip p-0.5` holding 32px round icon buttons; active `bg-surface text-fg`, rest `text-muted`, hover `fg`.
 
 ### Content Card
-**Role:** Project, app or tool card in a grid
-`flex flex-col gap-3 rounded-2xl border border-line p-4 md:p-5`, transparent fill; hover `border-chip bg-surface`. Featured variant uses `bg-raised`. Title 15–17px 500/600, description 14px `muted`, meta in Geist Mono 12px `faint`.
+**Role:** Any clickable card in a grid: guides, tools, design patterns, the More projects and More apps grids
+`ContentCard`: `flex h-full flex-col gap-3 rounded-2xl border border-line p-4 md:p-5`, transparent fill; hover `border-chip bg-surface`. A 40px LogoTile beside the title 15px 500 (`fg`) and meta in Geist Mono 12px `faint`, an arrow at the end of the title line (`→`, or `↗` for a link that leaves the site), then the description 14px `muted`.
 
 ### Principle Card
 **Role:** Numbered statement

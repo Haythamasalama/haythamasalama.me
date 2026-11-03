@@ -69,20 +69,16 @@
         Guides
       </SectionTitle>
       <div class="grid gap-3 sm:grid-cols-2">
-        <NuxtLink
+        <ContentCard
           v-for="guide in guides"
           :key="guide.to"
           :to="guide.to"
-          class="group flex flex-col gap-3 rounded-2xl border border-line bg-raised p-5 transition-colors hover:border-chip"
+          :mark="{ icon: guide.icon }"
+          :title="guide.title"
+          :meta="guide.meta"
         >
-          <LogoTile :mark="{ icon: guide.icon }" :size="40" />
-          <span class="text-[17px] font-semibold tracking-[-0.01em]">{{ guide.title }}</span>
-          <span class="text-sm leading-[1.6] text-muted">{{ guide.text }}</span>
-          <span class="mt-auto flex items-center justify-between pt-1 font-mono text-xs text-faint">
-            {{ guide.meta }}
-            <span class="text-muted transition-colors group-hover:text-fg" aria-hidden="true">→</span>
-          </span>
-        </NuxtLink>
+          {{ guide.text }}
+        </ContentCard>
       </div>
     </section>
 
@@ -97,29 +93,20 @@
           {{ group.year }}
         </AnchorLink>
       </h2>
-      <div class="flex flex-col">
-        <NuxtLink
-          v-for="article in group.articles"
-          :key="article.path"
-          :to="article.path"
-          class="-mx-3 flex items-start gap-3.5 rounded-[10px] px-3 py-3.5 transition-colors hover:bg-surface"
-        >
-          <LogoTile :mark="{ icon: article.icon }" :size="36" />
-          <span class="flex min-w-0 flex-auto flex-col gap-1.5">
-            <span class="text-base leading-[1.45] font-medium">{{ article.title }}</span>
-            <span class="text-sm leading-relaxed text-muted">{{ article.description }}</span>
-            <span class="flex flex-wrap gap-x-3.5 gap-y-1 font-mono text-xs text-faint">
-              <time :datetime="article.date">{{ formatDay(article.date) }}</time>
-              <span>{{ article.category }}</span>
-              <span>{{ article.readingTime }}</span>
-            </span>
-          </span>
-        </NuxtLink>
-      </div>
+      <ul class="flex flex-col divide-y divide-line border-y border-line">
+        <li v-for="article in group.articles" :key="article.path">
+          <ItemRow :to="article.path" :mark="{ icon: article.icon }" :title="article.title">
+            <template #meta>
+              <time :datetime="article.date">{{ formatDay(article.date) }}</time> · {{ article.category }} · {{ article.readingTime }}
+            </template>
+            {{ article.description }}
+          </ItemRow>
+        </li>
+      </ul>
     </section>
 
     <section class="pt-10">
-      <p class="flex max-w-none items-center gap-2.5 border-t border-line pt-6 text-[15px] leading-[1.7] text-muted">
+      <p class="flex max-w-none items-center gap-2.5 text-[15px] leading-[1.7] text-muted">
         <Icon name="simple-icons:medium" class="size-4 shrink-0 text-mark" />
         <span>
           I also write on <NuxtLink to="https://medium.com/@haythamasalama" class="link-underline">Medium ↗</NuxtLink>,

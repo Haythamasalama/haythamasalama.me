@@ -16,7 +16,7 @@ Node.js `22.22.3+` or `24.15+` (see `.nvmrc`). Before finishing a change, run `n
 
 - `app/`: Nuxt 4 source directory
   - `pages/`: one file per route; `articles/[...slug].vue` renders every article
-  - `components/`: layout (`AppHeader`, `AppFooter`, `SignatureMark`) and small UI pieces (`LogoTile`, `TechChip`, `FilterChips`, `GoLink`, …)
+  - `components/`: layout (`AppHeader`, `AppFooter`, `SignatureMark`) and small UI pieces (`LogoTile`, `ItemRow`, `ContentCard`, `TechChip`, `FilterChips`, `GoLink`, …)
   - `components/OgImage/Page.takumi.vue`: the share image of every prerendered page, drawn at build time by `nuxt-og-image`
   - `components/content/`: components used from Markdown (`ProsePre` code blocks, `::alert-info`, `::sketch-figure`, `::project-shot`)
   - `components/brand/`: pieces of the brand guidelines page
