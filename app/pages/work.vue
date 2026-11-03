@@ -13,13 +13,12 @@
     const projects = list
       .sort((a, b) => b.year - a.year || a.order - b.order)
       .map((project) => {
-        const [name, summary] = project.title.split(' · ');
+        const labels = projectLabels(project);
 
         return {
           ...project,
-          name: name!,
-          summary: summary ?? project.context?.split(' · ')[0],
-          anchor: slugify(name!),
+          ...labels,
+          anchor: slugify(labels.name),
           page: paths.has(`/${project.stem}`) ? `/${project.stem}` : undefined
         };
       });
@@ -62,7 +61,7 @@
       <SectionTitle id="apps" class="mb-4">
         Apps
       </SectionTitle>
-      <ul class="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <li
           v-for="app in apps"
           :id="app.anchor"
@@ -84,7 +83,7 @@
       <SectionTitle id="projects" class="mb-4">
         Projects
       </SectionTitle>
-      <ul class="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <li
           v-for="project in caseStudies"
           :id="project.anchor"
@@ -102,7 +101,7 @@
           v-for="project in earlier"
           :id="project.anchor"
           :key="project.id"
-          class="scroll-mt-6 sm:col-span-2 md:col-span-3"
+          class="scroll-mt-6 sm:col-span-2 lg:col-span-3"
         >
           <div class="flex flex-col gap-1 rounded-2xl border border-line p-4 pb-2 md:p-5 md:pb-3">
             <div class="flex items-start gap-3">

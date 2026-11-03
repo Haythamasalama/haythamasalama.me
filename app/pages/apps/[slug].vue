@@ -119,7 +119,7 @@
       <SectionTitle class="mb-5">
         More apps
       </SectionTitle>
-      <div class="grid gap-3 sm:grid-cols-3">
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <ContentCard
           v-for="item in more"
           :key="item.to"
@@ -127,6 +127,7 @@
           :mark="item.mark"
           :title="item.name"
           :meta="item.kind"
+          class="sm:max-lg:nth-3:hidden"
         >
           {{ item.description }}
         </ContentCard>

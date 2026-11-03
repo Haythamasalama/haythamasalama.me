@@ -30,7 +30,7 @@
       .filter(project => paths.has(`/${project.stem}`))
       .sort((a, b) => b.year - a.year || a.order - b.order)
       .slice(0, 3)
-      .map(project => ({ path: `/${project.stem}`, title: project.title, description: project.description, mark: project.mark, year: project.year }));
+      .map(project => ({ ...projectLabels(project), path: `/${project.stem}`, description: project.description, mark: project.mark }));
   });
 
   usePageSeo({
@@ -98,14 +98,15 @@
       <SectionTitle class="mb-5">
         More projects
       </SectionTitle>
-      <div class="grid gap-3 sm:grid-cols-3">
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <ContentCard
           v-for="item in more"
           :key="item.path"
           :to="item.path"
           :mark="item.mark"
-          :title="item.title"
-          :meta="String(item.year)"
+          :title="item.name"
+          :meta="item.summary"
+          class="sm:max-lg:nth-3:hidden"
         >
           {{ item.description }}
         </ContentCard>
