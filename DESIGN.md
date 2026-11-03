@@ -40,18 +40,18 @@ Semantic tokens switch with the theme (`.dark` is the default on `:root`; `.ligh
 
 | Name | Value | Token | Role |
 |---|---|---|---|
-| Paper | `#FFFFFF` | `--bg` | Page background |
-| Surface | `#F4F4F5` | `--surface` | Tiles, hover |
-| Raised | `#FAFAFA` | `--raised` | Cards, code, figures |
-| Line | `#E4E4E7` | `--line` | Borders |
-| Edge | `#E4E4E7` | `--edge` | Tile borders |
-| Chip | `#D4D4D8` | `--chip` | Chip borders |
-| Text | `#0B0B0C` | `--fg` | Primary text |
+| Paper | `#F7F7F5` | `--bg` | Page background |
+| Surface | `#ECECE8` | `--surface` | Tiles, hover |
+| Raised | `#F2F2EF` | `--raised` | Cards, code, figures |
+| Line | `#E2E2DE` | `--line` | Borders |
+| Edge | `#E2E2DE` | `--edge` | Tile borders |
+| Chip | `#D3D3CE` | `--chip` | Chip borders |
+| Text | `#1D1D20` | `--fg` | Primary text |
 | Soft | `#3F3F46` | `--soft` | Body |
 | Muted | `#52525B` | `--muted` | Secondary |
-| Faint | `#6B6B74` | `--faint` | Meta, eyebrows |
-| Mark | `#27272A` | `--mark` | Icons, logos |
-| Underline | `#D4D4D8` | `--underline` | Link underline |
+| Faint | `#68686F` | `--faint` | Meta, eyebrows |
+| Mark | `#2C2C31` | `--mark` | Icons, logos |
+| Underline | `#D3D3CE` | `--underline` | Link underline |
 | Accent | `#2873D1` | `--accent` | Azure 600 |
 | Accent 2 | `#6762D3` | `--accent-2` | Iris 600 |
 | Gradient | `linear-gradient(90deg, #6762D3, #2873D1)` | `--gradient` | Same uses as dark |
@@ -353,9 +353,9 @@ Ink background, 2px signature-gradient hairline across the top, white signature 
 
 | Level | Name | Dark | Light | Purpose |
 |---|---|---|---|---|
-| 0 | Ink / Paper (`bg`) | `#0B0B0C` | `#FFFFFF` | Page |
-| 1 | Raised (`raised`) | `#0F0F11` | `#FAFAFA` | Cards, code, figures, callouts — a barely-lifted panel |
-| 2 | Surface (`surface`) | `#131316` | `#F4F4F5` | Tiles, hover fills, active chips |
+| 0 | Ink / Paper (`bg`) | `#0B0B0C` | `#F7F7F5` | Page |
+| 1 | Raised (`raised`) | `#0F0F11` | `#F2F2EF` | Cards, code, figures, callouts — a barely-lifted panel |
+| 2 | Surface (`surface`) | `#131316` | `#ECECE8` | Tiles, hover fills, active chips |
 | — | Line / Edge / Chip | `#1F1F23` / `#232328` / `#2A2A30` | `#E4E4E7` / `#E4E4E7` / `#D4D4D8` | Borders, from quietest to strongest |
 
 ## Elevation
@@ -384,7 +384,7 @@ All of them stop under `prefers-reduced-motion: reduce`. Anchor links scroll smo
 
 | Scope | Dark | Light |
 |---|---|---|
-| Background | `#0F0F11` | `#FAFAFA` |
+| Background | `#0F0F11` | `#F2F2EF` |
 | Text | `#C4C4CC` | `#3F3F46` |
 | Punctuation / operators | `#85858F` | `#71717A` |
 | Comment (italic) | `#6B6B74` | `#8B8B94` |
@@ -415,9 +415,9 @@ A single centred column, 880px wide with 24px gutters (1040px for brand, project
 ## Agent Prompt Guide
 
 **Quick Color Reference**
-- page background: `#0B0B0C` (Ink) · light `#FFFFFF` (Paper)
-- card / code background: `#0F0F11` (Raised) · light `#FAFAFA`
-- tile / hover fill: `#131316` (Surface) · light `#F4F4F5`
+- page background: `#0B0B0C` (Ink) · light `#F7F7F5` (Paper)
+- card / code background: `#0F0F11` (Raised) · light `#F2F2EF`
+- tile / hover fill: `#131316` (Surface) · light `#ECECE8`
 - border: `#1F1F23` (Line) · stronger `#2A2A30` (Chip)
 - heading / primary text: `#EDEDEF` (Text)
 - body text: `#C4C4CC` (Soft)
@@ -481,18 +481,18 @@ A single centred column, 880px wide with 24px gutters (1040px for brand, project
 }
 
 .light {
-  --bg: #FFFFFF;
-  --surface: #F4F4F5;
-  --raised: #FAFAFA;
-  --line: #E4E4E7;
-  --edge: #E4E4E7;
-  --chip: #D4D4D8;
-  --fg: #0B0B0C;
+  --bg: #F7F7F5;
+  --surface: #ECECE8;
+  --raised: #F2F2EF;
+  --line: #E2E2DE;
+  --edge: #E2E2DE;
+  --chip: #D3D3CE;
+  --fg: #1D1D20;
   --soft: #3F3F46;
   --muted: #52525B;
-  --faint: #6B6B74;
-  --mark: #27272A;
-  --underline: #D4D4D8;
+  --faint: #68686F;
+  --mark: #2C2C31;
+  --underline: #D3D3CE;
   --accent: #2873D1;   /* Azure 600 */
   --accent-2: #6762D3; /* Iris 600 */
   --gradient: linear-gradient(90deg, #6762D3, #2873D1);

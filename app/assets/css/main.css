@@ -25,7 +25,7 @@
   --font-serif: 'Instrument Serif', Georgia, serif;
 
   --color-ink: #0b0b0c;
-  --color-paper: #ffffff;
+  --color-paper: #f7f7f5;
 
   --color-iris-50: #f5f6fe;
   --color-iris-100: #e9ebfe;
@@ -130,18 +130,18 @@
 }
 
 .light {
-  --bg: #ffffff;
-  --surface: #f4f4f5;
-  --raised: #fafafa;
-  --line: #e4e4e7;
-  --edge: #e4e4e7;
-  --chip: #d4d4d8;
-  --fg: #0b0b0c;
+  --bg: #f7f7f5;
+  --surface: #ecece8;
+  --raised: #f2f2ef;
+  --line: #e2e2de;
+  --edge: #e2e2de;
+  --chip: #d3d3ce;
+  --fg: #1d1d20;
   --soft: #3f3f46;
   --muted: #52525b;
-  --faint: #6b6b74;
-  --mark: #27272a;
-  --underline: #d4d4d8;
+  --faint: #68686f;
+  --mark: #2c2c31;
+  --underline: #d3d3ce;
   --accent: var(--color-azure-600);
   --accent-2: var(--color-iris-600);
   --gradient: linear-gradient(90deg, var(--color-iris-600), var(--color-azure-600));

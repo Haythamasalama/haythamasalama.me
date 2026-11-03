@@ -22,7 +22,7 @@ function createTheme (name: string, type: 'dark' | 'light', c: Palette): ThemeRe
     name,
     type,
     settings: [
-      { settings: { foreground: c.text, background: type === 'dark' ? '#0F0F11' : '#FAFAFA' } },
+      { settings: { foreground: c.text, background: type === 'dark' ? '#0F0F11' : '#F2F2EF' } },
       { scope: ['comment', 'punctuation.definition.comment', 'string.comment'], settings: { foreground: c.comment, fontStyle: 'italic' } },
       {
         scope: ['keyword', 'storage', 'storage.type', 'storage.modifier', 'keyword.control', 'keyword.operator.new', 'keyword.operator.expression', 'keyword.other', 'entity.name.tag', 'support.type.primitive'],
@@ -83,5 +83,5 @@ export const codeThemeLight = createTheme('haytham-light', 'light', {
   value: '#195CAE', // Azure 700
   type: '#3F3B87', // Iris 800
   property: '#534DAF', // Iris 700
-  function: '#0B0B0C'
+  function: '#1D1D20'
 });

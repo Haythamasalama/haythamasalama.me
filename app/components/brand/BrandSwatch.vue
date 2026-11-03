@@ -29,7 +29,7 @@
 
   const edgeClass = computed(() => {
     if (edge === 'always') return 'shadow-[inset_0_0_0_1px_#2A2A30]';
-    if (edge === 'light') return 'light:shadow-[inset_0_0_0_1px_#E4E4E7]';
+    if (edge === 'light') return 'light:shadow-[inset_0_0_0_1px_#E2E2DE]';
 
     return '';
   });
