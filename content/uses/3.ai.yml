@@ -6,7 +6,6 @@ items:
   note: Thinking, writing & code
   mark:
     icon: simple-icons:claude
-  desk: 8
 - name: Claude Design
   url: https://claude.ai/design
   note: Prototypes & visuals

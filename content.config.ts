@@ -295,9 +295,7 @@ export default defineContentConfig({
           /** Its official page, opened in a new tab. */
           url: z.string().url().optional(),
           /** The colour theme I run it with, for editors and terminals. */
-          theme: z.string().optional(),
-          /** Position in "On my desk" on the home page, if pinned there. */
-          desk: z.number().optional()
+          theme: z.string().optional()
         }))
       })
     })
