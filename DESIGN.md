@@ -145,7 +145,7 @@ Rendering: `-webkit-font-smoothing: antialiased; text-rendering: optimizeLegibil
 | 0.5 | 2px | Badge vertical padding, ViewToggle inset |
 | 1 | 4px | Tight gaps |
 | 1.5 | 6px | Chip gaps, arrow offset |
-| 2 | 8px | Chip/list gaps, desk tile gap |
+| 2 | 8px | Chip/list gaps |
 | 2.5 | 10px | Card inner gaps, row padding (y) |
 | 3 | 12px | Row padding, grid gaps, hover bleed (`-mx-3 p-3`) |
 | 3.5 | 14px | Pill padding (x), row gap |
@@ -338,7 +338,7 @@ Ink background, 2px signature-gradient hairline across the top, white signature 
 - Label data in Geist Mono (dates, periods, counts, repos, file names) and section headings with the uppercase mono eyebrow.
 - Separate with 1px `line` borders and `raised` fills instead of shadows.
 - Give every interactive element a 44px tap target and a visible `focus-visible` ring (2px `accent-2`, 2px offset, 4px radius).
-- Respect `prefers-reduced-motion`: turn off the signature drawing, rise, pulse, menu stagger and hover transforms.
+- Respect `prefers-reduced-motion`: turn off the signature drawing, rise, pulse, menu stagger, the apps loop and hover transforms.
 - Show logos and icons in one colour (`mark`); show photos of logos in greyscale.
 
 ### Don't
@@ -378,6 +378,7 @@ Ink background, 2px signature-gradient hairline across the top, white signature 
 | live | 2.2s ease-out infinite, Iris ring 0 → 9px | Live dot |
 | draw | per-stroke duration and delay, `cubic-bezier(0.55, 0, 0.35, 1)` | Signature |
 | menu-in | 0.32s, `translateY(-6px)` → 0, 28ms stagger | Mobile menu |
+| marquee | 50s linear infinite, `translateX(-50%)`, pauses on hover and focus | My apps on the home page |
 | arrow nudge | 0.25s, `translateX(3px)` | GoLink |
 | photo | 0.3s, `rotate(-3deg) scale(1.04)` | Portrait hover |
 

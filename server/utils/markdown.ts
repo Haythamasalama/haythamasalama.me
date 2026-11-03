@@ -129,7 +129,7 @@ async function skills (event: H3Event, homeOnly = false) {
 }
 
 async function home (event: H3Event) {
-  const { socials } = useAppConfig();
+  const { socials, apps } = useAppConfig();
   const [projects, articles, profile] = await Promise.all([
     projectsWithPages(event),
     queryCollection(event, 'articles').order('date', 'DESC').limit(3).all(),
@@ -151,6 +151,8 @@ async function home (event: H3Event) {
     await skills(event, true),
     '## Latest writing',
     articles.map(article => link(article.title, article.path, article.description)).join('\n'),
+    '## My apps',
+    apps.map((app: { name: string; to: string; kind: string }) => link(app.name, app.to, app.kind)).join('\n'),
     '## Elsewhere',
     socials.map((social: { label: string; to: string }) => link(social.label, social.to)).join('\n')
   ]);

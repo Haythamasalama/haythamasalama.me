@@ -6,13 +6,11 @@ items:
   note: My app for annotated screenshots
   mark:
     logo: easyshoot
-  desk: 10
 - name: Notion
   url: https://www.notion.com/
   note: Notes & docs
   mark:
     icon: simple-icons:notion
-  desk: 6
 - name: Google Docs
   url: https://docs.google.com/
   note: Shared writing
@@ -28,4 +26,3 @@ items:
   note: Sketches & diagrams
   mark:
     icon: simple-icons:excalidraw
-  desk: 7

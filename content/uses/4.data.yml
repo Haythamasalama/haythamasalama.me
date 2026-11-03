@@ -16,7 +16,6 @@ items:
   note: Development
   mark:
     icon: simple-icons:googlechrome
-  desk: 9
 - name: Safari
   url: https://www.apple.com/safari/
   note: Everyday browsing

@@ -19,6 +19,13 @@ export default defineAppConfig({
     { label: 'Blog', to: '/articles', includes: ['/learn'] }
   ],
 
+  /** My own apps, on the home page. */
+  apps: [
+    { name: 'Runarks', kind: 'Governed access to production databases', logo: 'runarks', to: 'https://runarks.com/' },
+    { name: 'EasyShoot', kind: 'Screenshot app for macOS · coming soon', logo: 'easyshoot', to: 'https://easyshoot.haythamasalama.me/' },
+    { name: 'WhatsApp Business Monitor', kind: 'Dashboard for WhatsApp Business', logo: 'whatsapp-manager', to: 'https://github.com/haythamasalama/whatsapp-business-monitor' }
+  ],
+
   /** Smaller pages, linked from the footer. */
   footer: [
     { label: 'Snippets', to: '/snippets' },
