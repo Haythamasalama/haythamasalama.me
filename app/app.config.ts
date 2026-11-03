@@ -10,8 +10,10 @@ export default defineAppConfig({
 
   nav: [
     { label: 'About', to: '/about' },
-    // Project and app pages keep their own addresses, under Work.
-    { label: 'Work', to: '/work', includes: ['/projects', '/apps'] },
+    // Apps and projects share the Work page and keep their own addresses.
+    { label: 'Apps', to: '/work#apps', includes: ['/apps'] },
+    { label: 'Work', to: '/work', includes: ['/projects'] },
+    { label: 'Skills', to: 'https://skills.haythamasalama.me' },
     { label: 'Open Source', to: '/open-source' },
     // Articles, plus the Vue.js path and the design patterns under /learn.
     { label: 'Blog', to: '/articles', includes: ['/learn'] }
@@ -23,6 +25,13 @@ export default defineAppConfig({
     { label: 'Tools', to: '/tools' },
     { label: 'Uses', to: '/uses' },
     { label: 'Brand', to: '/brand' }
+  ],
+
+  /** Smaller pages, behind the arrow at the end of the navigation. */
+  more: [
+    { label: 'Tools', to: '/tools' },
+    { label: 'Snippets', to: '/snippets' },
+    { label: 'Uses', to: '/uses' }
   ],
 
   /** The highlighted link at the end of the navigation. */

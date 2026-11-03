@@ -236,7 +236,7 @@ async function appsWithPages (event: H3Event) {
 const appLinks = (app: { links?: { label: string; to: string }[]; repo?: string }) =>
   [...(app.links ?? []).map(item => `${item.label}: ${item.to}`), app.repo && `Source: ${app.repo}`].filter(Boolean);
 
-/** Work: projects (case studies, then earlier ones) and the apps I maintain, on one page. */
+/** Work: the apps I maintain, then projects (case studies, then earlier ones), on one page. */
 async function work (event: H3Event) {
   const [list, appList] = await Promise.all([projectsWithPages(event), appsWithPages(event)]);
 
@@ -262,11 +262,11 @@ async function work (event: H3Event) {
     title: 'Work',
     description: 'What Haytham A. Salama has built and shipped, from a physics app in high school to fintech and logistics platforms today, plus free apps of his own.'
   }, [
-    '## Case studies',
-    list.filter(project => project.page).map(card).join('\n\n'),
     '## Apps',
     'Free apps I build and maintain.',
     appList.map(appCard).join('\n\n'),
+    '## Projects',
+    list.filter(project => project.page).map(card).join('\n\n'),
     '## Earlier work',
     list.filter(project => !project.page).map(card).join('\n\n')
   ]);

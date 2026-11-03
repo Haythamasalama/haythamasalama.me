@@ -204,7 +204,7 @@ Rendering: `-webkit-font-smoothing: antialiased; text-rendering: optimizeLegibil
 
 ### Header
 **Role:** Top bar with the signature logo and primary navigation
-Flex row, `justify-between`, `pt-4` (`md:pt-7`), no background, no border. Left: the animated `SignatureMark` (72px wide mobile, 80px desktop), redrawn on every page change. Right (≥ md): text links at 14px, `muted` at rest, `fg` on hover and for the current page (`aria-current="page"`), 20px gap, each 44px tall. Ends with a **Contact** pill: `rounded-full border border-chip px-3.5 min-h-9 text-fg`, hover `bg-surface`. Mobile: a 44px icon button with two 1.5px lines that rotate into a cross; the menu is a full-screen `bg-bg` overlay whose links slide in one after another (28ms stagger, `menu-in` 0.32s).
+Flex row, `justify-between`, `pt-4` (`md:pt-7`), no background, no border. Left: the animated `SignatureMark` (72px wide mobile, 80px desktop), redrawn on every page change. Right (≥ md): text links at 14px, `muted` at rest, `fg` on hover and for the current page (`aria-current="page"`), 20px gap, each 44px tall. After the links, a **More** button with a chevron opens a panel of smaller pages: `rounded-xl border border-line bg-raised p-1.5`, 44px links, hover `bg-surface`. Ends with a **Contact** pill: `rounded-full border border-chip px-3.5 min-h-9 text-fg`, hover `bg-surface`. Mobile: a 44px icon button with two 1.5px lines that rotate into a cross; the menu is a full-screen `bg-bg` overlay whose links slide in one after another (28ms stagger, `menu-in` 0.32s), with the smaller pages under a More eyebrow.
 
 ### Footer
 **Role:** Copyright, secondary links, socials and theme toggle
