@@ -2,7 +2,10 @@
   import { liveImagePath } from '#shared/live-pages';
   import { skillGroups } from '#shared/skill-groups';
 
-  const { site, socials } = useAppConfig();
+  const { site, socials, apps } = useAppConfig();
+
+  // The loop moves the row by half its width, so four copies always fill the column.
+  const appRow = [...apps, ...apps, ...apps, ...apps];
 
   usePageSeo({
     title: site.name,
@@ -11,12 +14,11 @@
   });
 
   const { data } = await useAsyncData('home', async () => {
-    const [projects, pages, technologies, articles, uses] = await Promise.all([
+    const [projects, pages, technologies, articles] = await Promise.all([
       queryCollection('projects').all(),
       queryCollection('projectPages').select('path').all(),
       queryCollection('technologies').where('home', '=', true).order('order', 'ASC').all(),
-      queryCollection('articles').order('date', 'DESC').limit(3).all(),
-      queryCollection('uses').all()
+      queryCollection('articles').order('date', 'DESC').limit(3).all()
     ]);
 
     const paths = new Set(pages.map(page => page.path));
@@ -28,12 +30,7 @@
         .sort((a, b) => a.highlight!.order - b.highlight!.order)
         .map(project => ({ ...project, to: paths.has(`/${project.stem}`) ? `/${project.stem}` : '/work' })),
       stack: technologies,
-      articles,
-      // Each links to its section on /uses, where the name and note are written out.
-      desk: uses
-        .flatMap(section => section.items.map(item => ({ ...item, to: `/uses#${slugify(section.title)}` })))
-        .filter(item => item.desk)
-        .sort((a, b) => a.desk! - b.desk!)
+      articles
     };
   });
 
@@ -246,33 +243,37 @@
       </div>
     </section>
 
-    <section aria-labelledby="desk" class="pt-16">
-      <SectionTitle id="desk" class="mb-4">
-        On my desk
-      </SectionTitle>
-      <ul aria-label="Daily tools" class="flex flex-wrap gap-2">
-        <li v-for="(item, index) in data?.desk" :key="item.name">
-          <NuxtLink :to="item.to" class="group/desk relative block rounded-[11px]">
-            <LogoTile :mark="item.mark" :size="44" />
-            <!-- A tooltip with the name, on hover and keyboard focus; the ends align to the edge so it never leaves the page.
-                 Touch screens have no hover, so there it is only read out, and can't widen the page. -->
-            <span
-              class="pointer-events-none absolute bottom-full z-10 mb-2 translate-y-1 [@media(hover:none)]:sr-only rounded-md border border-line bg-raised px-2.5 py-1.5 text-xs whitespace-nowrap opacity-0 shadow-sm transition-[opacity,translate] group-hover/desk:translate-y-0 group-hover/desk:opacity-100 group-focus-visible/desk:translate-y-0 group-focus-visible/desk:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none"
-              :class="index === 0 ? 'left-0' : index === data!.desk.length - 1 ? 'right-0' : 'left-1/2 -translate-x-1/2'"
+    <section aria-labelledby="my-apps" class="pt-16">
+      <div class="flex items-baseline justify-between gap-4">
+        <SectionTitle id="my-apps">
+          My apps
+        </SectionTitle>
+        <GoLink to="/work" external>
+          All work
+        </GoLink>
+      </div>
+      <div class="marquee-fade mt-2 overflow-hidden">
+        <ul class="marquee flex w-max gap-4 py-1 pr-4">
+          <li
+            v-for="(app, index) in appRow"
+            :key="index"
+            class="shrink-0"
+            :class="index >= apps.length && 'marquee-copy'"
+            :aria-hidden="index >= apps.length ? 'true' : undefined"
+          >
+            <NuxtLink
+              :to="app.to"
+              :tabindex="index >= apps.length ? -1 : undefined"
+              class="flex items-center gap-3.5 rounded-[14px] border border-line py-3 pr-5 pl-3 transition-colors hover:border-chip hover:bg-raised"
             >
-              <span class="text-fg">{{ item.name }}</span>
-              <span class="text-faint"> · {{ item.note }}</span>
-            </span>
-          </NuxtLink>
-        </li>
-      </ul>
-      <div class="mt-2 flex flex-wrap gap-x-[22px]">
-        <GoLink to="/uses">
-          Everything I use
-        </GoLink>
-        <GoLink to="/tools">
-          Tools I recommend
-        </GoLink>
+              <LogoTile :mark="{ logo: app.logo }" :size="44" />
+              <span class="flex flex-col">
+                <span class="text-[15px] leading-snug font-medium">{{ app.name }}</span>
+                <span class="font-mono text-xs text-faint">{{ app.kind }}</span>
+              </span>
+            </NuxtLink>
+          </li>
+        </ul>
       </div>
     </section>
   </div>

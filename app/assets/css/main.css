@@ -276,6 +276,27 @@
   }
 }
 
+/* My apps on the home page. The row ends with one gap (`pr-4`), so half its width is exactly two
+   copies and the loop shows no jump. */
+.marquee {
+  animation: marquee 50s linear infinite;
+}
+
+.marquee:hover,
+.marquee:focus-within {
+  animation-play-state: paused;
+}
+
+.marquee-fade {
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Signature draw animation */
 .signature path {
   stroke: var(--fg);
@@ -309,6 +330,25 @@
   .animate-rise,
   .menu-item {
     animation: none;
+  }
+
+  .marquee {
+    width: auto;
+    flex-wrap: wrap;
+    animation: none;
+  }
+
+  .marquee > li {
+    max-width: 100%;
+  }
+
+  .marquee-copy {
+    display: none;
+  }
+
+  .marquee-fade {
+    overflow: visible;
+    mask-image: none;
   }
 
   .photo:hover,
