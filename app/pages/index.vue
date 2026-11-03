@@ -5,7 +5,7 @@
   const { site, socials, apps } = useAppConfig();
 
   // The loop moves the row by half its width, so four copies always fill the column.
-  const appRow = [...apps, ...apps, ...apps, ...apps];
+  const appRow = [...apps, ...apps, ...apps, ...apps].map((app, index) => ({ ...app, copy: index >= apps.length }));
 
   usePageSeo({
     title: site.name,
@@ -258,12 +258,12 @@
             v-for="(app, index) in appRow"
             :key="index"
             class="shrink-0"
-            :class="index >= apps.length && 'marquee-copy'"
-            :aria-hidden="index >= apps.length ? 'true' : undefined"
+            :class="app.copy && 'marquee-copy'"
+            :aria-hidden="app.copy ? 'true' : undefined"
           >
             <NuxtLink
               :to="app.to"
-              :tabindex="index >= apps.length ? -1 : undefined"
+              :tabindex="app.copy ? -1 : undefined"
               class="flex items-center gap-3.5 rounded-[14px] border border-line py-3 pr-5 pl-3 transition-colors hover:border-chip hover:bg-raised"
             >
               <LogoTile :mark="{ logo: app.logo }" :size="44" />
