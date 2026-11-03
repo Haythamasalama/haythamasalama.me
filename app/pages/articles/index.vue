@@ -69,20 +69,16 @@
         Guides
       </SectionTitle>
       <div class="grid gap-3 sm:grid-cols-2">
-        <NuxtLink
+        <ContentCard
           v-for="guide in guides"
           :key="guide.to"
           :to="guide.to"
-          class="group flex flex-col gap-3 rounded-2xl border border-line bg-raised p-5 transition-colors hover:border-chip"
+          :mark="{ icon: guide.icon }"
+          :title="guide.title"
+          :meta="guide.meta"
         >
-          <LogoTile :mark="{ icon: guide.icon }" :size="40" />
-          <span class="text-[17px] font-semibold tracking-[-0.01em]">{{ guide.title }}</span>
-          <span class="text-sm leading-[1.6] text-muted">{{ guide.text }}</span>
-          <span class="mt-auto flex items-center justify-between pt-1 font-mono text-xs text-faint">
-            {{ guide.meta }}
-            <span class="text-muted transition-colors group-hover:text-fg" aria-hidden="true">→</span>
-          </span>
-        </NuxtLink>
+          {{ guide.text }}
+        </ContentCard>
       </div>
     </section>
 

@@ -90,23 +90,13 @@
       </div>
       <ul class="grid gap-3 sm:grid-cols-2">
         <li v-for="pattern in group.patterns" :key="pattern.path">
-          <NuxtLink
-            :to="pattern.path"
-            class="group flex h-full items-start gap-3.5 rounded-xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface"
-          >
-            <LogoTile :mark="{ icon: pattern.icon }" :size="36" />
-            <span class="flex min-w-0 flex-auto flex-col gap-1">
-              <span class="flex items-center justify-between gap-3">
-                <span class="text-[15px] font-medium">{{ pattern.title }}</span>
-                <span class="text-muted transition-colors group-hover:text-fg" aria-hidden="true">→</span>
-              </span>
-              <span class="text-[13px] leading-[1.55] text-muted">{{ pattern.summary }}</span>
-              <span class="mt-1 inline-flex items-start gap-1.5 font-mono text-[11.5px] leading-[1.5] text-faint">
-                <Icon name="lucide:lightbulb" class="mt-px size-3 shrink-0" aria-hidden="true" />
-                {{ pattern.example }}
-              </span>
+          <ContentCard :to="pattern.path" :mark="{ icon: pattern.icon }" :title="pattern.title">
+            {{ pattern.summary }}
+            <span class="mt-2 flex items-start gap-1.5 font-mono text-[11.5px] leading-[1.5] text-faint">
+              <Icon name="lucide:lightbulb" class="mt-px size-3 shrink-0" aria-hidden="true" />
+              {{ pattern.example }}
             </span>
-          </NuxtLink>
+          </ContentCard>
         </li>
       </ul>
     </section>

@@ -1,21 +1,50 @@
 <script setup lang="ts">
-  const { nav, contact } = useAppConfig();
+  const { nav, more, contact } = useAppConfig();
   const route = useRoute();
 
   const menuOpen = ref(false);
+  const moreOpen = ref(false);
+  const moreRoot = useTemplateRef<HTMLElement>('moreRoot');
+  const moreButton = useTemplateRef<HTMLButtonElement>('moreButton');
 
-  /** A link is current on its own page, the pages below it, and the sections it `includes` (Work → /projects). */
-  const isCurrent = (item: { to: string; includes?: string[] }) =>
-    [item.to, ...item.includes ?? []].some(base => route.path === base || route.path.startsWith(`${base}/`));
+  // The server never sees the hash, so it only counts after hydration.
+  const hash = ref('');
 
-  // Close the menu whenever the page changes.
+  watch(() => route.hash, (value) => {
+    hash.value = value;
+  });
+
+  /**
+   * The one current link. An exact address wins, so /work#apps marks Apps and not Work; otherwise
+   * a link is current on its own page, the pages below it, and the sections it `includes`.
+   */
+  const current = computed(() => {
+    const links: { to: string; includes?: string[] }[] = [...nav, ...more];
+
+    return links.find(item => item.to === route.path + hash.value)
+      ?? links.find(item => [item.to, ...item.includes ?? []].some(base => route.path === base || route.path.startsWith(`${base}/`)));
+  });
+  const isCurrent = (item: { to: string }) => current.value?.to === item.to;
+
+  // Close the menus whenever the page changes.
   watch(() => route.path, () => {
     menuOpen.value = false;
+    moreOpen.value = false;
   });
 
   function closeOnEscape (event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      menuOpen.value = false;
+    if (event.key !== 'Escape') return;
+
+    menuOpen.value = false;
+    if (moreOpen.value) {
+      moreOpen.value = false;
+      moreButton.value?.focus();
+    }
+  }
+
+  function closeMoreOutside (event: Event) {
+    if (!moreRoot.value?.contains(event.target as Node)) {
+      moreOpen.value = false;
     }
   }
 
@@ -25,11 +54,16 @@
   });
 
   onMounted(() => {
+    hash.value = route.hash;
     document.addEventListener('keydown', closeOnEscape);
+    document.addEventListener('pointerdown', closeMoreOutside);
+    document.addEventListener('focusin', closeMoreOutside);
   });
 
   onBeforeUnmount(() => {
     document.removeEventListener('keydown', closeOnEscape);
+    document.removeEventListener('pointerdown', closeMoreOutside);
+    document.removeEventListener('focusin', closeMoreOutside);
     document.documentElement.classList.remove('overflow-hidden');
   });
 </script>
@@ -61,6 +95,50 @@
         >
           {{ item.label }}
         </NuxtLink>
+
+        <div ref="moreRoot" class="relative">
+          <button
+            ref="moreButton"
+            type="button"
+            class="link-muted inline-flex min-h-11 cursor-pointer items-center gap-1"
+            :class="(moreOpen || more.some(isCurrent)) && '!text-fg'"
+            :aria-expanded="moreOpen"
+            aria-controls="more-menu"
+            @click="moreOpen = !moreOpen"
+          >
+            More
+            <Icon
+              name="lucide:chevron-down"
+              class="size-3.5 transition-[rotate] duration-200 motion-reduce:transition-none"
+              :class="moreOpen && 'rotate-180'"
+            />
+          </button>
+
+          <Transition
+            enter-active-class="transition-[opacity,translate] duration-150 motion-reduce:transition-none"
+            enter-from-class="-translate-y-1 opacity-0"
+            leave-active-class="transition-opacity duration-100 motion-reduce:transition-none"
+            leave-to-class="opacity-0"
+          >
+            <ul
+              v-if="moreOpen"
+              id="more-menu"
+              class="absolute top-full right-0 min-w-36 rounded-xl border border-line bg-raised p-1.5"
+            >
+              <li v-for="item in more" :key="item.to">
+                <NuxtLink
+                  :to="item.to"
+                  class="link-muted flex min-h-11 items-center rounded-lg px-3 transition-colors hover:bg-surface"
+                  :class="isCurrent(item) && '!text-fg'"
+                  :aria-current="isCurrent(item) ? 'page' : undefined"
+                  @click="moreOpen = false"
+                >
+                  {{ item.label }}
+                </NuxtLink>
+              </li>
+            </ul>
+          </Transition>
+        </div>
 
         <NuxtLink
           :to="contact.to"
@@ -118,10 +196,25 @@
           >
             {{ item.label }}
           </NuxtLink>
+          <p class="menu-item eyebrow mt-6 flex min-h-11 items-center" :style="{ '--i': nav.length }">
+            More
+          </p>
+          <NuxtLink
+            v-for="(item, index) in more"
+            :key="item.to"
+            :to="item.to"
+            class="menu-item link-muted flex min-h-11 items-center"
+            :class="isCurrent(item) && '!text-fg'"
+            :aria-current="isCurrent(item) ? 'page' : undefined"
+            :style="{ '--i': nav.length + 1 + index }"
+            @click="menuOpen = false"
+          >
+            {{ item.label }}
+          </NuxtLink>
           <NuxtLink
             :to="contact.to"
             class="menu-item mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-chip text-sm text-fg transition-colors hover:bg-surface"
-            :style="{ '--i': nav.length }"
+            :style="{ '--i': nav.length + more.length + 1 }"
             @click="menuOpen = false"
           >
             <Icon name="lucide:mail" class="size-4" />

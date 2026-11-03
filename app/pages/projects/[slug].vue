@@ -30,7 +30,7 @@
       .filter(project => paths.has(`/${project.stem}`))
       .sort((a, b) => b.year - a.year || a.order - b.order)
       .slice(0, 3)
-      .map(project => ({ path: `/${project.stem}`, title: project.title, description: project.description, mark: project.mark, year: project.year }));
+      .map(project => ({ ...projectLabels(project), path: `/${project.stem}`, description: project.description, mark: project.mark }));
   });
 
   usePageSeo({
@@ -98,20 +98,18 @@
       <SectionTitle class="mb-5">
         More projects
       </SectionTitle>
-      <div class="grid gap-3 sm:grid-cols-3">
-        <NuxtLink
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ContentCard
           v-for="item in more"
           :key="item.path"
           :to="item.path"
-          class="flex flex-col gap-3 rounded-xl border border-line p-4 transition-colors hover:border-chip hover:bg-surface"
+          :mark="item.mark"
+          :title="item.name"
+          :meta="item.summary"
+          class="sm:max-lg:nth-3:hidden"
         >
-          <span class="flex items-center justify-between">
-            <LogoTile :mark="item.mark" :size="32" :icon-size="16" />
-            <span class="font-mono text-xs text-faint">{{ item.year }}</span>
-          </span>
-          <span class="text-[15px] leading-snug font-medium">{{ item.title }}</span>
-          <span class="line-clamp-3 text-[13px] leading-[1.55] text-muted">{{ item.description }}</span>
-        </NuxtLink>
+          {{ item.description }}
+        </ContentCard>
       </div>
       <GoLink to="/work" class="mt-2">
         All work

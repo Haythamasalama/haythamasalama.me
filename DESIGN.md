@@ -174,7 +174,7 @@ Rendering: `-webkit-font-smoothing: antialiased; text-rendering: optimizeLegibil
 | Logo tiles | size ÷ 4 (36 → 9px, 44 → 11px, 52 → 13px) |
 | Code blocks, figures, screenshots, callouts, stat strip, download rows | 12px (`rounded-xl`) |
 | Swatch / info cards, bio cards | 14px |
-| Content cards (projects, apps, principles) | 16px (`rounded-2xl`) |
+| Content cards, principle cards | 16px (`rounded-2xl`) |
 | Hero panel (brand) | 22px |
 | App icon | 28px at 120px, 14px at 60px |
 | Chips, pills, nav CTA, filter chips, toggles, avatars | 9999px (`rounded-full`) |
@@ -204,7 +204,7 @@ Rendering: `-webkit-font-smoothing: antialiased; text-rendering: optimizeLegibil
 
 ### Header
 **Role:** Top bar with the signature logo and primary navigation
-Flex row, `justify-between`, `pt-4` (`md:pt-7`), no background, no border. Left: the animated `SignatureMark` (72px wide mobile, 80px desktop), redrawn on every page change. Right (≥ md): text links at 14px, `muted` at rest, `fg` on hover and for the current page (`aria-current="page"`), 20px gap, each 44px tall. Ends with a **Contact** pill: `rounded-full border border-chip px-3.5 min-h-9 text-fg`, hover `bg-surface`. Mobile: a 44px icon button with two 1.5px lines that rotate into a cross; the menu is a full-screen `bg-bg` overlay whose links slide in one after another (28ms stagger, `menu-in` 0.32s).
+Flex row, `justify-between`, `pt-4` (`md:pt-7`), no background, no border. Left: the animated `SignatureMark` (72px wide mobile, 80px desktop), redrawn on every page change. Right (≥ md): text links at 14px, `muted` at rest, `fg` on hover and for the current page (`aria-current="page"`), 20px gap, each 44px tall. After the links, a **More** button with a chevron opens a panel of smaller pages: `rounded-xl border border-line bg-raised p-1.5`, 44px links, hover `bg-surface`. Ends with a **Contact** pill: `rounded-full border border-chip px-3.5 min-h-9 text-fg`, hover `bg-surface`. Mobile: a 44px icon button with two 1.5px lines that rotate into a cross; the menu is a full-screen `bg-bg` overlay whose links slide in one after another (28ms stagger, `menu-in` 0.32s), with the smaller pages under a More eyebrow.
 
 ### Footer
 **Role:** Copyright, secondary links, socials and theme toggle
@@ -251,7 +251,7 @@ Colour transitions 0.2s with `--ease-out-soft`.
 `link-muted inline-flex min-h-11 items-center text-sm` with a trailing `→` (or `↗` for external) 6px away that nudges 3px right on hover (0.25s).
 
 ### List Row (hover row)
-**Role:** Work, articles, contributions on Home
+**Role:** Selected work and articles, contributions on Home
 Whole row is the link: `-mx-3 flex gap-3 rounded-[10px] p-3 transition-colors hover:bg-surface` (bleeds into the gutter so the hover fill aligns text with the column). Left: a LogoTile (36px) or 16px icon in `mark`. Middle: title 15px 500 (`fg`) + description 14px `muted`. Right, baseline-aligned: date/period in Geist Mono 12px `faint`. No borders between rows.
 
 ### Logo Tile
@@ -271,8 +271,8 @@ Square at 36 / 44 / 52px, radius = size ÷ 4, `border border-edge bg-surface tex
 `rounded-full border border-chip p-0.5` holding 32px round icon buttons; active `bg-surface text-fg`, rest `text-muted`, hover `fg`.
 
 ### Content Card
-**Role:** Project, app or tool card in a grid
-`flex flex-col gap-3 rounded-2xl border border-line p-4 md:p-5`, transparent fill; hover `border-chip bg-surface`. Featured variant uses `bg-raised`. Title 15–17px 500/600, description 14px `muted`, meta in Geist Mono 12px `faint`.
+**Role:** Any clickable card in a grid: Work, guides, tools, design patterns, the More projects and More apps grids
+`ContentCard`: `flex h-full flex-col gap-3 rounded-2xl border border-line p-4 md:p-5`, transparent fill; hover `border-chip bg-surface`. A 40px LogoTile beside the title 15px 500 (`fg`) and an optional meta in Geist Mono 12px `faint`, an arrow at the end of the title line (`→`, or `↗` for a link that leaves the site), then an optional description 14px `muted`. On Work it has no description. Grids use two columns from `sm` and three from `lg`: three narrow cards wrap their titles badly at tablet width.
 
 ### Principle Card
 **Role:** Numbered statement
