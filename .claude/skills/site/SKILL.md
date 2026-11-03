@@ -42,7 +42,7 @@ Navigation, the contact link and the social links live in `app/app.config.ts`. T
 ## Building blocks
 
 - **Page layout:** `PageHeader` (title and intro), `SectionTitle` (a section with a shareable `#id`), `AnchorLink`, `GoLink` (a muted "→" link), `ProseBody` (Markdown in the reading style).
-- **Lists and cards:** `ItemRow` for a list of things (Work, Blog articles) inside `ul.divide-y`, and `ContentCard` for a clickable card in a grid (guides, tools, design patterns, the More grids). Use these two rather than styling a new row or card by hand.
+- **Cards:** `ContentCard` for any clickable card in a grid (Work, guides, tools, design patterns, the More grids). Use it rather than styling a new card by hand. The meta and the description are optional.
 - **Marks:** `LogoTile` and `BrandLogo` show a `mark`: `logo` (a one-colour mask registered in `app/utils/logos.ts`), `icon` (Iconify name), `image` (a photo in `public/`, shown greyscale) or `text` (a monogram).
 - **Markdown components** (`app/components/content/`):
   - `::sketch-figure{name="<project>/<file>" alt="…"}`: an Excalidraw figure (see the `figures` skill).

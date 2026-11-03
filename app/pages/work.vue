@@ -12,11 +12,16 @@
     // when content/projects or content/apps holds a .md with its file name.
     const projects = list
       .sort((a, b) => b.year - a.year || a.order - b.order)
-      .map(project => ({
-        ...project,
-        anchor: slugify(project.title.split(' · ')[0]!),
-        page: paths.has(`/${project.stem}`) ? `/${project.stem}` : undefined
-      }));
+      .map((project) => {
+        const name = project.title.split(' · ')[0]!;
+
+        return {
+          ...project,
+          name,
+          anchor: slugify(name),
+          page: paths.has(`/${project.stem}`) ? `/${project.stem}` : undefined
+        };
+      });
     const apps = appList.map(app => ({
       ...app,
       anchor: slugify(app.name),
@@ -41,8 +46,9 @@
     }
   });
 
-  const projects = computed(() => data.value?.projects ?? []);
   const apps = computed(() => data.value?.apps ?? []);
+  const caseStudies = computed(() => data.value?.projects.filter(project => project.page) ?? []);
+  const earlier = computed(() => data.value?.projects.filter(project => !project.page) ?? []);
 </script>
 
 <template>
@@ -55,22 +61,19 @@
       <SectionTitle id="apps" class="mb-4">
         Apps
       </SectionTitle>
-      <ul class="flex flex-col divide-y divide-line border-y border-line">
+      <ul class="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
         <li
           v-for="app in apps"
           :id="app.anchor"
           :key="app.id"
           class="scroll-mt-6"
         >
-          <ItemRow
-            :to="app.page ?? app.repo ?? app.links?.[0]?.to"
+          <ContentCard
+            :to="(app.page ?? app.repo ?? app.links?.[0]?.to)!"
             :external="!app.page"
             :mark="app.mark"
             :title="app.name"
-            :meta="app.kind"
-          >
-            {{ app.description }}
-          </ItemRow>
+          />
         </li>
       </ul>
     </section>
@@ -79,34 +82,33 @@
       <SectionTitle id="projects" class="mb-4">
         Projects
       </SectionTitle>
-      <ul class="flex flex-col divide-y divide-line border-y border-line">
+      <ul class="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
         <li
-          v-for="project in projects"
+          v-for="project in caseStudies"
           :id="project.anchor"
           :key="project.id"
           class="scroll-mt-6"
         >
-          <ItemRow
-            :to="project.page"
-            :mark="project.mark"
-            :title="project.title"
-            :meta="project.context"
-          >
-            {{ project.description }}
-            <span v-if="!project.page && project.links?.length" class="flex flex-wrap gap-x-5">
-              <NuxtLink
-                v-for="link in project.links"
-                :key="link.to"
-                :to="link.to"
-                class="link-muted inline-flex min-h-11 items-center gap-1.5 text-[13px]"
-              >
-                {{ link.label }}
-                <Icon name="lucide:arrow-up-right" class="size-3.5" />
-              </NuxtLink>
-            </span>
-          </ItemRow>
+          <ContentCard :to="project.page!" :mark="project.mark" :title="project.name" />
         </li>
       </ul>
+      <p
+        v-for="project in earlier"
+        :id="project.anchor"
+        :key="project.id"
+        class="mt-4 flex max-w-none scroll-mt-6 flex-wrap items-center gap-x-5 text-[13px] text-muted"
+      >
+        <span class="font-mono text-xs text-faint">{{ project.name }}</span>
+        <NuxtLink
+          v-for="link in project.links"
+          :key="link.to"
+          :to="link.to"
+          class="link-muted inline-flex min-h-11 items-center gap-1.5"
+        >
+          {{ link.label }}
+          <Icon name="lucide:arrow-up-right" class="size-3.5" />
+        </NuxtLink>
+      </p>
     </section>
   </div>
 </template>
