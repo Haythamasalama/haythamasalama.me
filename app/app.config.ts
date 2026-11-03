@@ -28,6 +28,7 @@ export default defineAppConfig({
 
   /** Smaller pages, linked from the footer. */
   footer: [
+    { label: 'Skills', to: 'https://skills.haythamasalama.me' },
     { label: 'Snippets', to: '/snippets' },
     { label: 'Tools', to: '/tools' },
     { label: 'Uses', to: '/uses' },
