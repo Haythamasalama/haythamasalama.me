@@ -13,12 +13,13 @@
     const projects = list
       .sort((a, b) => b.year - a.year || a.order - b.order)
       .map((project) => {
-        const name = project.title.split(' · ')[0]!;
+        const [name, summary] = project.title.split(' · ');
 
         return {
           ...project,
-          name,
-          anchor: slugify(name),
+          name: name!,
+          summary: summary ?? project.context?.split(' · ')[0],
+          anchor: slugify(name!),
           page: paths.has(`/${project.stem}`) ? `/${project.stem}` : undefined
         };
       });
@@ -73,6 +74,7 @@
             :external="!app.page"
             :mark="app.mark"
             :title="app.name"
+            :meta="app.kind"
           />
         </li>
       </ul>
@@ -89,26 +91,41 @@
           :key="project.id"
           class="scroll-mt-6"
         >
-          <ContentCard :to="project.page!" :mark="project.mark" :title="project.name" />
+          <ContentCard
+            :to="project.page!"
+            :mark="project.mark"
+            :title="project.name"
+            :meta="project.summary"
+          />
+        </li>
+        <li
+          v-for="project in earlier"
+          :id="project.anchor"
+          :key="project.id"
+          class="scroll-mt-6 sm:col-span-2 md:col-span-3"
+        >
+          <div class="flex flex-col gap-1 rounded-2xl border border-line p-4 pb-2 md:p-5 md:pb-3">
+            <div class="flex items-start gap-3">
+              <LogoTile :mark="project.mark" :size="40" />
+              <div class="flex min-w-0 flex-col gap-0.5">
+                <span class="text-[15px] leading-snug font-medium text-fg">{{ project.name }}</span>
+                <span class="font-mono text-xs text-faint">{{ project.summary }}</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-x-5 sm:pl-[52px]">
+              <NuxtLink
+                v-for="link in project.links"
+                :key="link.to"
+                :to="link.to"
+                class="link-muted inline-flex min-h-11 items-center gap-1.5 text-[13px]"
+              >
+                {{ link.label }}
+                <Icon name="lucide:arrow-up-right" class="size-3.5" />
+              </NuxtLink>
+            </div>
+          </div>
         </li>
       </ul>
-      <p
-        v-for="project in earlier"
-        :id="project.anchor"
-        :key="project.id"
-        class="mt-4 flex max-w-none scroll-mt-6 flex-wrap items-center gap-x-5 text-[13px] text-muted"
-      >
-        <span class="font-mono text-xs text-faint">{{ project.name }}</span>
-        <NuxtLink
-          v-for="link in project.links"
-          :key="link.to"
-          :to="link.to"
-          class="link-muted inline-flex min-h-11 items-center gap-1.5"
-        >
-          {{ link.label }}
-          <Icon name="lucide:arrow-up-right" class="size-3.5" />
-        </NuxtLink>
-      </p>
     </section>
   </div>
 </template>

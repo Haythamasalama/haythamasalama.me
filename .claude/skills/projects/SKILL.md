@@ -29,7 +29,7 @@ Most visitors don't read long text (owner's feedback, 2026-10-12). Keep a page t
 | `public/projects/<slug>/*.webp` | screenshots |
 | `claudedocs/projects/<slug>/` | the LinkedIn draft and figure exports; local only, never committed |
 
-The `.yml` and `.md` share a file name. The page exists once the `.md` exists. /work opens with a short intro, then "Apps" and "Projects": a three-column grid of `ContentCard`s, newest first, showing only the logo and the part of the title before the middle dot, so that part should name the project on its own. A project without a page is one line of links under the grid. The home page links to the page from "Selected work".
+The `.yml` and `.md` share a file name. The page exists once the `.md` exists. /work opens with a short intro, then "Apps" and "Projects": a three-column grid of `ContentCard`s, newest first. Each shows the logo, the part of the title before the middle dot, and under it the part after the dot, or the first part of `context` when the title has no dot. A project without a page is a full-width card with its links at the end of the grid. The home page links to the page from "Selected work".
 
 ## The card
 

@@ -272,7 +272,7 @@ Square at 36 / 44 / 52px, radius = size ÷ 4, `border border-edge bg-surface tex
 
 ### Content Card
 **Role:** Any clickable card in a grid: Work, guides, tools, design patterns, the More projects and More apps grids
-`ContentCard`: `flex h-full flex-col gap-3 rounded-2xl border border-line p-4 md:p-5`, transparent fill; hover `border-chip bg-surface`. A 40px LogoTile beside the title 15px 500 (`fg`) and an optional meta in Geist Mono 12px `faint`, an arrow at the end of the title line (`→`, or `↗` for a link that leaves the site), then an optional description 14px `muted`. On Work it is the logo and title alone, three columns from `md`.
+`ContentCard`: `flex h-full flex-col gap-3 rounded-2xl border border-line p-4 md:p-5`, transparent fill; hover `border-chip bg-surface`. A 40px LogoTile beside the title 15px 500 (`fg`) and an optional meta in Geist Mono 12px `faint`, an arrow at the end of the title line (`→`, or `↗` for a link that leaves the site), then an optional description 14px `muted`. On Work it has no description, three columns from `md`.
 
 ### Principle Card
 **Role:** Numbered statement
